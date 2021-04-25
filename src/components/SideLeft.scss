@@ -1,0 +1,133 @@
+.side-left {
+    position: fixed;
+    width: 40px;
+    bottom: 0px;
+    left: 40px;
+    right: auto;
+    z-index: 10;
+    mix-blend-mode: difference;
+
+    &:after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 100px;
+        margin: 0px auto;
+        background-color: #fff;
+    }
+}
+
+.side-left-sns {
+    position: fixed;
+    width: 40px;
+    bottom: 120px;
+    left: 40px;
+    right: auto;
+    z-index: 10;
+    mix-blend-mode: difference;
+
+    &.linkedin {
+        bottom: 210px;
+    }
+
+    &.github {
+        bottom: 165px;
+    }
+
+    &.codepen {
+        svg {
+            stroke: #fff;
+            fill: transparent;
+        }
+
+        &:hover {
+            a {
+                svg {
+                    stroke: #0c9;
+                    fill: transparent;
+                }
+            }
+        }
+    }
+
+    a {
+        display: inline-block;
+        padding: 10px;
+        transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+        svg {
+            fill: #fff;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &:hover {
+        mix-blend-mode: normal;
+
+        a {
+            transform: translateY(-3px);
+
+            svg {
+                fill: #0c9;
+            }
+        }
+    }
+}
+
+.side-right {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    bottom: 0;
+    left: auto;
+    right: 40px;
+    z-index: 10;
+    mix-blend-mode: difference;
+
+    &:after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 100px;
+        margin: 0px auto;
+        background-color: #fff;
+    }
+}
+
+.side-right-mail {
+    position: fixed;
+    bottom: 120px;
+    left: auto;
+    right: 40px;
+    color: #fff;
+    z-index: 10;
+    mix-blend-mode: difference;
+
+    a {
+        display: inline-block;
+        padding: 10px;
+        writing-mode: vertical-rl;
+        transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    &:hover {
+        mix-blend-mode: normal;
+
+        a {
+            color: #0c9;
+            transform: translateY(-3px);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .side-left,
+    .side-left-sns,
+    .side-right,
+    .side-right-mail {
+        display: none;
+    }
+}

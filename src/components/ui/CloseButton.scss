@@ -1,0 +1,62 @@
+.close-button {
+    display: block;
+    width: 35px;
+    height: 35px;
+    padding: 12px;
+    background: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    span {
+        position: absolute;
+        top: 18px;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        transition: 0.4s cubic-bezier(0.694, 0.048, 0.335, 1);
+
+        &:first-child {
+            left: 0;
+            transform: rotate(45deg);
+        }
+
+        &:last-child {
+            right: 0;
+            transform: rotate(-45deg);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+        }
+
+        &:before {
+            background-color: #0c9;
+            transition: 0.3s ease;
+        }
+    }
+
+    &:hover {
+        transform: scale(1.1);
+
+        span {
+            background-color: #0c9;
+
+            &:first-child {
+                transform: rotate(-45deg);
+            }
+
+            &:last-child {
+                transform: rotate(45deg);
+            }
+
+            &:before {
+                width: 100%;
+            }
+        }
+    }
+}

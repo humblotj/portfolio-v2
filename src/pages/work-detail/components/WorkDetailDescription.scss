@@ -1,0 +1,45 @@
+.work-detail-description {
+    padding: 0 80px;
+
+    > div {
+        margin: 25px 0;
+    }
+
+    h2 {
+        font-size: 38px;
+        text-transform: uppercase;
+    }
+
+    .desc-heading {
+        margin-bottom: 10px;
+
+        h3 {
+            position: relative;
+            font-size: 15px;
+            text-transform: uppercase;
+            padding-left: 16px;
+
+            &:after {
+                content: "";
+                position: absolute;
+                width: 12px;
+                height: 2px;
+                background: #0c9;
+                left: 0;
+                bottom: 8px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .work-detail-description {
+        padding: 0 60px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .work-detail-description {
+        padding: 0 40px;
+    }
+}

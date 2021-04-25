@@ -1,0 +1,38 @@
+.sns {
+    position: absolute;
+    width: 40px;
+    top: 50%;
+    left: 20px;
+    transform: translate(0, -50%);
+    mix-blend-mode: difference;
+    z-index: 20;
+
+    li {
+        display: inline-block;
+
+        &:first-child {
+            margin-bottom: 15px;
+        }
+
+        a {
+            display: inline-block;
+
+            svg {
+                fill: #fff;
+                width: 24px;
+                height: 24px;
+                transition: 0.25s;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .sns {
+        display: none;
+    }
+}

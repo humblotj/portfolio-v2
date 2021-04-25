@@ -1,0 +1,72 @@
+@import "styles/animations";
+
+.loading {
+    position: fixed;
+    inset: 0;
+    transition: 0.3s;
+
+    &.is-loading {
+        background: #fff;
+        z-index: 1000;
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        height: 50vh;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        background: #1c2020;
+        transition: 0.3s;
+    }
+
+    &:before {
+        top: 0;
+        transform: translateY(-100%);
+    }
+
+    &:after {
+        bottom: 0;
+        transform: translateY(100%);
+    }
+
+    &.is-loading {
+        &:before,
+        &:after {
+            transform: translateY(0);
+        }
+
+        .loader {
+            opacity: 1;
+        }
+    }
+
+    .loader {
+        position: absolute;
+        width: 60px;
+        height: 50px;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        margin: 0 auto;
+        opacity: 0;
+        z-index: 1;
+        transition: 0.3s;
+
+        > div {
+            height: 100%;
+            width: 8px;
+            background: #fff;
+            float: left;
+            margin-left: 2px;
+            animation: delay 0.8s infinite ease-in-out;
+
+            @for $i from 2 through 6 {
+                &:nth-child(#{$i}) {
+                    animation-delay: #{-0.7 + ($i - 2) * 0.1}s;
+                }
+            }
+        }
+    }
+}

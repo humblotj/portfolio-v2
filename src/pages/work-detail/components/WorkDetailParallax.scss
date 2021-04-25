@@ -1,0 +1,11 @@
+.preview-container {
+    padding: 0 80px;
+
+    > div {
+        display: block;
+
+        .image-wrap {
+            opacity: 0;
+        }
+    }
+}

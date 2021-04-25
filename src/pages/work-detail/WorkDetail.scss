@@ -1,0 +1,53 @@
+.work-detail-sec {
+    padding-top: 60px;
+
+    .back-arrow {
+        position: fixed;
+        top: 30px;
+        left: 60px;
+        z-index: 99;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+    }
+
+    .work-links {
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+
+        .btn:not(:last-child) {
+            margin-right: 40px;
+        }
+    }
+
+    > div {
+        &:not(.work-preview-carousel) {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .work-detail-sec {
+        .preview-container {
+            padding: 0 60px;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .work-detail-sec {
+        .back-arrow {
+            left: 50px;
+        }
+
+        .preview-container {
+            padding: 0 40px;
+        }
+    }
+}

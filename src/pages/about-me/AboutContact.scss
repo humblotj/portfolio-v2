@@ -1,0 +1,174 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+}
+
+.modal-content {
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    max-width: 95%;
+    height: 90%;
+    outline: none;
+    position: fixed;
+    background-color: #1c1d25;
+    overflow: hidden;
+    visibility: hidden;
+    transition: visibility 1s, box-shadow 0.3s;
+
+    &.ReactModal__Content--after-open {
+        visibility: visible;
+        box-shadow: 0 20px 80px 0 rgb(0 0 0 / 55%);
+        transition: visibility 1s, box-shadow 0.5s ease 0.4s;
+
+        .contact {
+            transition-delay: 0.2s;
+        }
+        .about {
+            transition-delay: 0s;
+        }
+
+        .contact,
+        .about {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+    }
+
+    h2 {
+        position: absolute;
+        font-size: 190px;
+        z-index: 0;
+    }
+
+    .send-email,
+    .about-footer {
+        position: absolute;
+        transform-style: preserve-3d;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10%;
+        text-align: left;
+        width: 70%;
+        margin: 0 auto;
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(to right, #0c9, #0c9 50%, #fff 50%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%;
+            background-position: 100%;
+            transition: background-position 200ms ease;
+            transition-delay: 100ms;
+
+            svg {
+                margin-right: 8px;
+                transition: 25ms;
+                path:first-of-type {
+                    fill: #0c9;
+                }
+                path:last-of-type {
+                    fill: #fff;
+                }
+
+                rect {
+                    transition: 100ms linear;
+                    transition-delay: 275ms;
+                }
+            }
+
+            &:hover {
+                background-position: 0 100%;
+                color: #0c9;
+
+                rect {
+                    transition-delay: 0ms;
+                    transform: translateX(100%);
+                }
+            }
+        }
+    }
+
+    .close-button {
+        position: absolute;
+        top: 60px;
+        right: 7%;
+        z-index: 100;
+        opacity: 0;
+        animation: blink 1350ms steps(8) forwards;
+    }
+}
+
+.about,
+.contact {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    .modal-content {
+        height: 100%;
+        width: 100%;
+        max-width: none;
+        overflow-y: auto;
+
+        &.ReactModal__Content--after-open {
+            // transform: translateX(0);
+            .about,
+            .contact {
+                transform: translateX(0) !important;
+            }
+        }
+
+        .close-button {
+            top: 40px;
+            right: 10%;
+
+            span {
+                background-color: #1c1d25;
+            }
+        }
+
+        .about,
+        .contact {
+            position: relative;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            padding: 40px 0;
+            transform: translateX(-100%) !important;
+            transition: transform 0.45s cubic-bezier(0.694, 0.048, 0.335, 1) !important;
+
+            .about-info,
+            .about-footer,
+            .send-message,
+            .send-email {
+                width: 80%;
+                position: relative;
+                left: auto;
+                right: auto;
+                transform: none;
+            }
+
+            .about-footer,
+            .send-email {
+                margin-top: 40px;
+            }
+        }
+    }
+}

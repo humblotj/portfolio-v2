@@ -1,0 +1,29 @@
+.reveal {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    .reveal-text {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    .reveal-mask {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        background-color: #0c9;
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        z-index: 2;
+    }
+
+    &.secondary {
+        .reveal-mask {
+            background-color: #191a1e;
+        }
+    }
+}
