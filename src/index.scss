@@ -124,3 +124,11 @@ main {
 :focus:not(:focus-visible) {
   outline: none;
 }
+
+@media only screen and (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+}
+  
+  
