@@ -7,6 +7,20 @@
         margin: 0 auto;
         margin-top: 80px;
         padding: 80px;
+
+        .project-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+
+            a:first-child {
+                margin-left: 20px;
+            }
+
+            a:last-child {
+                margin-right: 40px;
+            }
+        }
     }
 
     .alice-carousel {
@@ -114,6 +128,16 @@
     .work-preview-carousel {
         .work-preview-carousel-inner {
             padding: 40px;
+
+            .project-controls {
+                a:first-child {
+                    margin-left: -30px;
+                }
+
+                a:last-child {
+                    margin-right: 90px;
+                }
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ import './ImageWrap.scss';
 import image from '../../assets/test.jpeg';
 import image2 from '../../assets/test1.jpeg';
 import useSize from '../../hooks/useSize';
+import SuspenseImg from '../SuspenseImg';
 
 interface Props {
   isMobile?: boolean
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const ImageWrap = ({ isMobile = false, isParallax = false }: Props) => {
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
 
   return (
@@ -29,7 +30,7 @@ const ImageWrap = ({ isMobile = false, isParallax = false }: Props) => {
             strength={200}
           />
         )
-          : <img src={isMobile ? image2 : image} alt="" /> }
+          : <SuspenseImg src={isMobile ? image2 : image} /> }
       </div>
     </div>
   );

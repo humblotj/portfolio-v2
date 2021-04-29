@@ -1,26 +1,119 @@
-import { useContext } from 'react';
-import cx from 'classnames';
+import { useContext, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { useLocation } from 'react-router-dom';
 
 import { StoreContext } from '../context/StoreProvider';
 import './Loading.scss';
 
-const Loading = () => {
-  const { store: { isLoading } } = useContext(StoreContext);
+interface Props {
+  enableComponent: () => void,
+  hasImportFinished: boolean
+}
+
+const Loading = ({ enableComponent, hasImportFinished }: Props) => {
+  const { store: { isInit } } = useContext(StoreContext);
+  const ref = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  const background = location.pathname === '/' ? '#23282a' : '#fff';
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
+
+    gsap.to(element,
+      {
+        background,
+        zIndex: 1000,
+        duration: 0,
+      });
+    gsap.fromTo(element.querySelector('.loader'),
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: isInit ? 0.3 : 0,
+      });
+    gsap.fromTo(element.querySelector('.before'),
+      {
+        y: '-100%',
+      },
+      {
+        y: 0,
+        duration: isInit ? 0.3 : 0,
+      });
+    gsap.fromTo(element.querySelector('.after'),
+      {
+        y: '100%',
+      },
+      {
+        y: 0,
+        duration: isInit ? 0.3 : 0,
+      });
+  }, []);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
+
+    if (hasImportFinished) {
+      gsap.fromTo(element,
+        {
+          zIndex: 1,
+          background,
+        },
+        {
+          zIndex: 0,
+          duration: 0.3,
+          background,
+        });
+      gsap.fromTo(element.querySelectorAll('.loader > div'),
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+          duration: 0.3,
+        });
+      gsap.fromTo(element.querySelector('.before'),
+        {
+          y: 0,
+        },
+        {
+          y: '-100%',
+          duration: 0.3,
+        });
+      gsap.fromTo(element.querySelector('.after'),
+        {
+          y: 0,
+        },
+        {
+          y: '100%',
+          duration: 0.3,
+          onComplete: () => enableComponent(),
+        });
+    }
+  }, [hasImportFinished]);
 
   return (
-    <>
-      <div className={cx('loading', { 'is-loading': isLoading })}>
-        <div className="loader">
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      </div>
 
-    </>
+    <div ref={ref} className="loading">
+      <div className="before" aria-hidden />
+      <div className="after" aria-hidden />
+      <div className="loader">
+        <div aria-hidden />
+        <div aria-hidden />
+        <div aria-hidden />
+        <div aria-hidden />
+        <div aria-hidden />
+        <div aria-hidden />
+      </div>
+    </div>
   );
 };
 

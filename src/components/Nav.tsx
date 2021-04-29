@@ -1,8 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import './Nav.scss';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import FakeLink from './ui/FakeLink';
 import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
@@ -14,7 +15,10 @@ interface Props {
   onClose: () => void
 }
 
+const tl = gsap.timeline();
+
 const Nav = ({ open, onClose }: Props) => {
+  const ref = useRef<HTMLDivElement>(null);
   const { dispatch } = useContext(StoreContext);
   const location = useLocation();
 
@@ -23,22 +27,63 @@ const Nav = ({ open, onClose }: Props) => {
     dispatch({ type: 'SET_CONTACT_MODAL_OPEN', payload: true });
   };
 
+  useEffect(() => {
+    if (open) {
+      const element = ref.current;
+      if (!element) {
+        return;
+      }
+
+      const items = element.querySelectorAll('nav li');
+      for (let i = 0; i < items.length; i++) {
+        tl.fromTo(
+          items[i],
+          {
+            opacity: 0,
+            x: '100%',
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+            delay: i * 0.15 + 0.35,
+          },
+          'nav',
+        );
+      }
+      tl.addLabel('nav');
+
+      const sns = element.querySelectorAll('.sns li');
+      for (let i = 0; i < sns.length; i++) {
+        tl.fromTo(
+          sns[i],
+          {
+            opacity: 0,
+            y: '50%',
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            delay: i * 0.15,
+          },
+          'sns',
+        );
+      }
+      tl.addLabel('sns');
+    } else {
+      tl.clear();
+    }
+  }, [open]);
+
   return (
-    <div className={cx('nav-overlay', { open })}>
+    <div ref={ref} className={cx('nav-overlay', { open })}>
       <nav>
         <ul>
           <li>
             <Link
-              to={{
-                pathname: '/',
-                state: { from: location.pathname },
-              }}
+              to="/"
               onClick={onClose}
-              className={cx({
-                active:
-                location.pathname === '/'
-                && location.hash === '',
-              })}
             >
               <span data-content="Home" aria-hidden />
               Home
@@ -48,15 +93,9 @@ const Nav = ({ open, onClose }: Props) => {
             <Link
               to={{
                 pathname: '/',
-                hash: '#work',
-                state: { from: location.pathname },
+                state: 'work',
               }}
               onClick={onClose}
-              className={cx({
-                active:
-                 location.pathname === '/'
-                 && location.hash === '#work',
-              })}
             >
               <span data-content="My work" aria-hidden />
               My work
@@ -72,15 +111,9 @@ const Nav = ({ open, onClose }: Props) => {
             <Link
               to={{
                 pathname: '/',
-                hash: '#contact',
-                state: { from: location.pathname },
+                state: 'contact',
               }}
               onClick={onClose}
-              className={cx({
-                active:
-                location.pathname === '/'
-                && location.hash === '#contact',
-              })}
             >
               <span data-content="Contact" aria-hidden />
               Contact
@@ -88,7 +121,7 @@ const Nav = ({ open, onClose }: Props) => {
           </li>
         </ul>
       </nav>
-      <ul>
+      <ul className="sns">
         <li>
           <a href="https://www.linkedin.com/in/jean-h-25b1871a0/" aria-label="LinkedIn">
             <LinkedInIcon />

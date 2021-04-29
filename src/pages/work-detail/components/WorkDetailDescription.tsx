@@ -3,12 +3,17 @@ import { gsap } from 'gsap';
 
 import TagList from '../../../components/ui/TagList';
 import './WorkDetailDescription.scss';
+import TextBounce from '../../../components/ui/TextBounce';
 
 const WorkDetailDescription = () => {
-  const ref = useRef<any>();
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = ref.current;
+    if (!element) {
+      return;
+    }
+
     const reveal = element.querySelectorAll('.reveal:not(.no-mask)');
 
     for (let i = 0; i < reveal.length; i++) {
@@ -27,6 +32,7 @@ const WorkDetailDescription = () => {
           scaleX: 0,
           transformOrigin: '100% 50%',
           duration: 0.5,
+          delay: 0.2,
         },
         'reveal',
       );
@@ -36,6 +42,7 @@ const WorkDetailDescription = () => {
           opacity: 1,
           y: 0,
           duration: 0.5,
+          delay: 0.2,
         },
         'reveal',
       );
@@ -49,7 +56,7 @@ const WorkDetailDescription = () => {
           opacity: 1,
           y: 0,
           duration: 1,
-          delay: 1,
+          delay: 1.2,
         },
       );
     }
@@ -64,7 +71,9 @@ const WorkDetailDescription = () => {
         </div>
         <br />
         <div className="reveal desc-heading">
-          <h2 className="reveal-text">Jean Trello</h2>
+          <h2 className="reveal-text">
+            <TextBounce text="Jean Trello" />
+          </h2>
           <div className="reveal-mask" aria-hidden />
         </div>
       </div>

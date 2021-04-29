@@ -1,4 +1,5 @@
-import { Route, Switch } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -9,31 +10,52 @@ import ScrollToTop from './components/ScrollToTop';
 import SideLeft from './components/SideLeft';
 import Strokes from './components/Strokes';
 import StoreProvider from './context/StoreProvider';
-import AboutContact from './pages/about-me/AboutContact';
-import Main from './pages/main/Main';
-import WorkDetail from './pages/work-detail/WorkDetail';
+import AboutMe from './pages/about-me/AboutMe';
+import useSuspenseAnimation from './hooks/useSuspenseAnimation';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const App = () => (
-  <>
-    <ScrollToTop />
-    <StoreProvider>
-      <Header />
-      <Strokes />
-      <SideLeft />
-      <Loading />
-      <Switch>
-        <Route path="/work/:id">
-          <WorkDetail />
-        </Route>
-        <Route path="/">
-          <Main />
-        </Route>
-      </Switch>
-      <AboutContact />
-    </StoreProvider>
-  </>
-);
+const App = () => {
+  const {
+    DeferredComponent: Main,
+    hasImportFinished: hasImportFinishedMain,
+    enableComponent: enableComponentMain,
+  } = useSuspenseAnimation(
+    import('./pages/main/Main'),
+  );
+  const {
+    DeferredComponent: WorkDetail,
+    hasImportFinished: hasImportFinishedWork,
+    enableComponent: enableComponentWork,
+  } = useSuspenseAnimation(
+    import('./pages/work-detail/WorkDetail'),
+  );
+
+  const location = useLocation();
+
+  return (
+    <>
+      <StoreProvider>
+        <ScrollToTop />
+        <Header />
+        <Strokes />
+        <SideLeft />
+        <Suspense fallback={(
+          <Loading
+            hasImportFinished={location.pathname === '/' ? hasImportFinishedMain : hasImportFinishedWork}
+            enableComponent={location.pathname === '/' ? enableComponentMain : enableComponentWork}
+          />
+          )}
+        >
+          <Switch>
+            <Route path="/work/:id" component={WorkDetail} />
+            <Route path="/" component={Main} />
+          </Switch>
+        </Suspense>
+        <AboutMe />
+      </StoreProvider>
+    </>
+  );
+};
 
 export default App;

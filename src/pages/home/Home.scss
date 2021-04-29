@@ -4,6 +4,13 @@
     height: 100vh;
     color: #fff;
 
+    .rubber {
+        display: inline-block;
+        &:hover {
+            animation: rubber 1s;
+        }
+    }
+
     .strokes {
         background-color: #23282a;
     }
@@ -30,8 +37,6 @@
     .welcome-buttons {
         display: flex;
         margin-bottom: 40px;
-        opacity: 0;
-        animation: blink 1350ms 1650ms steps(8) forwards;
 
         button:first-child {
             margin-right: 40px;

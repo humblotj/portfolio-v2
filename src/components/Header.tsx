@@ -1,4 +1,5 @@
 import {
+  useContext,
   useEffect, useMemo, useRef, useState,
 } from 'react';
 import { gsap } from 'gsap';
@@ -6,11 +7,11 @@ import { gsap } from 'gsap';
 import { useLocation } from 'react-router-dom';
 import Nav from './Nav';
 import BurgerMenu from './ui/BurgerMenu';
-import useInit from '../hooks/useInit';
+import { StoreContext } from '../context/StoreProvider';
 
 const Header = () => {
+  const { store: { isInit, isLoading } } = useContext(StoreContext);
   const location = useLocation();
-  const isInit = useInit();
   const [navOpen, setNavOpen] = useState(false);
   const tl = useMemo(() => gsap.timeline(), []);
 
@@ -22,11 +23,15 @@ const Header = () => {
     setNavOpen(false);
   };
 
-  const ref = useRef<any>();
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (!isInit || (location.pathname === '/' && (location.state as any)?.from !== '/')) {
+    if (isInit && (location.pathname === '/' && !location.state)) {
       const element = ref.current;
+      if (!element || isLoading) {
+        return;
+      }
+
       tl.fromTo(element.querySelector('.wrapper-menu'),
         {
           autoAlpha: 0,
@@ -35,7 +40,7 @@ const Header = () => {
         {
           autoAlpha: 0.8,
           duration: 0.1,
-          delay: 0.8 + 0.5 + 0.25 * 3,
+          delay: 0.8 + 0.7 + 0.25 * 3,
           pointerEvents: 'none',
         });
       tl.to(element.querySelector('.wrapper-menu'),
@@ -63,7 +68,7 @@ const Header = () => {
           pointerEvents: 'auto',
         });
     }
-  }, [location]);
+  }, [location, isLoading]);
 
   return (
     <header ref={ref}>

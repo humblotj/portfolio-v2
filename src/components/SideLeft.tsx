@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useLocation } from 'react-router-dom';
 
@@ -6,21 +6,21 @@ import './SideLeft.scss';
 import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
 import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
-import useInit from '../hooks/useInit';
+import { StoreContext } from '../context/StoreProvider';
 
 const SideLeft = () => {
+  const { store: { isInit, isLoading } } = useContext(StoreContext);
   const location = useLocation();
-  const isInit = useInit();
 
-  const ref1 = useRef<any>();
-  const ref2 = useRef<any>();
-  const ref3 = useRef<any>();
-  const ref4 = useRef<any>();
-  const ref5 = useRef<any>();
-  const ref6 = useRef<any>();
+  const ref1 = useRef<HTMLDivElement>(null);
+  const ref2 = useRef<HTMLDivElement>(null);
+  const ref3 = useRef<HTMLDivElement>(null);
+  const ref4 = useRef<HTMLDivElement>(null);
+  const ref5 = useRef<HTMLDivElement>(null);
+  const ref6 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isInit || location.pathname === '/') {
+    if (isInit && (location.pathname === '/' && !location.state)) {
       const refs = [ref1.current, ref2.current, ref3.current,
         ref4.current, ref5.current, ref6.current];
       const tl = gsap.timeline();
@@ -33,7 +33,7 @@ const SideLeft = () => {
         {
           autoAlpha: 0.8,
           duration: 0.1,
-          delay: 0.8 + 0.5 + 0.25 * 3,
+          delay: 0.8 + 0.7 + 0.25 * 3,
           pointerEvents: 'none',
         });
       tl.to(refs,
@@ -61,7 +61,7 @@ const SideLeft = () => {
           pointerEvents: 'auto',
         });
     }
-  }, [location]);
+  }, [location, isLoading]);
 
   return (
     <>
@@ -80,7 +80,7 @@ const SideLeft = () => {
           <CodepenIcon />
         </a>
       </div>
-      <div ref={ref4} className="side-left" />
+      <div ref={ref4} className="side-left" aria-hidden />
       <div ref={ref5} className="side-right-mail">
         <a href="mailto:jhumblot1@gmail.com">jhumblot1@gmail.com</a>
       </div>

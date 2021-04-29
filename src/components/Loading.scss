@@ -3,43 +3,24 @@
 .loading {
     position: fixed;
     inset: 0;
-    transition: 0.3s;
 
-    &.is-loading {
-        background: #fff;
-        z-index: 1000;
-    }
-
-    &:before,
-    &:after {
-        content: "";
+    .before,
+    .after {
         height: 50vh;
         width: 100%;
         position: fixed;
         left: 0;
-        background: #1c2020;
-        transition: 0.3s;
+        background: #19151b;
     }
 
-    &:before {
+    .before {
         top: 0;
         transform: translateY(-100%);
     }
 
-    &:after {
+    .after {
         bottom: 0;
         transform: translateY(100%);
-    }
-
-    &.is-loading {
-        &:before,
-        &:after {
-            transform: translateY(0);
-        }
-
-        .loader {
-            opacity: 1;
-        }
     }
 
     .loader {
@@ -50,7 +31,6 @@
         left: 50%;
         transform: translateY(-50%) translateX(-50%);
         margin: 0 auto;
-        opacity: 0;
         z-index: 1;
         transition: 0.3s;
 

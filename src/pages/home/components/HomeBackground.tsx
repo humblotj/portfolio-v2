@@ -1,17 +1,25 @@
+import { useContext, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { useEffect, useRef } from 'react';
+
+import { StoreContext } from '../../../context/StoreProvider';
 import './HomeBackground.scss';
 
 const HomeBackground = () => {
-  const ref = useRef<any>();
+  const ref = useRef<HTMLDivElement>(null);
+  const { store: { isInit } } = useContext(StoreContext);
 
   useEffect(() => {
     const element = ref.current;
+    if (!element) {
+      return;
+    }
+
     const tl = gsap.timeline();
     tl.to(element.querySelector('.overlay'),
       {
         scaleX: 1,
         duration: 0.8,
+        delay: isInit ? 0 : 0.3,
       });
     tl.to(element.querySelector('.overlay'),
       {

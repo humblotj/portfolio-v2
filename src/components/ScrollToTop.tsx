@@ -6,8 +6,12 @@ const ScrollToTop: FunctionComponent<RouteComponentProps> = ({ history }) => {
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });
+    window.onbeforeunload = () => {
+      window.scrollTo(0, 0);
+    };
     return () => {
       unlisten();
+      window.onbeforeunload = null;
     };
   }, []);
 

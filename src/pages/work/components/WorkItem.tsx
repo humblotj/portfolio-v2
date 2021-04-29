@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { gsap, Power3 } from 'gsap';
-import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { Link, useLocation } from 'react-router-dom';
 import cx from 'classnames';
 
 import './WorkItem.scss';
@@ -12,13 +12,18 @@ interface Props {
 }
 
 const WorkItem = ({ index }: Props) => {
-  const ref = useRef<any>();
+  const ref = useRef<HTMLLIElement>(null);
+  const location = useLocation();
 
   useEffect(() => {
     const element = ref.current;
+    if (!element) {
+      return;
+    }
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ref.current,
+        trigger: element,
         start: 'top 75%',
       },
     });

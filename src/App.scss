@@ -1,6 +1,6 @@
 .reveal {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     overflow: hidden;
 
     .reveal-text {
@@ -18,7 +18,7 @@
         background-color: #0c9;
         transform-origin: 0 50%;
         transform: scaleX(0);
-        z-index: 2;
+        z-index: 200000;
     }
 
     &.secondary {

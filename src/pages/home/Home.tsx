@@ -2,7 +2,6 @@ import {
   useContext, useEffect, useRef,
 } from 'react';
 import { gsap } from 'gsap';
-
 import { useLocation } from 'react-router-dom';
 
 import './Home.scss';
@@ -11,10 +10,11 @@ import { StoreContext } from '../../context/StoreProvider';
 import Strokes from '../../components/Strokes';
 import HomeBackground from './components/HomeBackground';
 import ScrollTo from '../../components/ui/ScrollTo';
+import TextBounce from '../../components/ui/TextBounce';
 
 const Home = () => {
-  const ref = useRef<any>();
-  const { dispatch } = useContext(StoreContext);
+  const ref = useRef<HTMLElement>(null);
+  const { store: { isInit }, dispatch } = useContext(StoreContext);
   const location = useLocation();
 
   const openContactModal = () => dispatch({ type: 'SET_CONTACT_MODAL_OPEN', payload: true });
@@ -25,38 +25,81 @@ const Home = () => {
 
   useEffect(() => {
     const element = ref.current;
-    const revealMask = element.querySelectorAll('.reveal-mask');
-    const revealText = element.querySelectorAll('.reveal-text');
+    if (!element) {
+      return;
+    }
 
-    for (let i = 0; i < revealMask.length; i++) {
+    const reveal = element.querySelectorAll('.reveal');
+
+    for (let i = 0; i < reveal.length; i++) {
       const tl = gsap.timeline();
       tl.to(
-        revealMask[i],
+        reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 1,
           duration: 0.8 + i * 0.25,
+          delay: isInit ? 0 : 0.3,
         },
       );
       tl.add('reveal');
       tl.to(
-        revealMask[i],
+        reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 0,
           transformOrigin: '100% 50%',
           duration: 0.5,
+          delay: 0.2,
         },
         'reveal',
       );
       tl.to(
-        revealText[i],
+        reveal[i].querySelector('.reveal-text'),
         {
           opacity: 1,
           y: 0,
           duration: 0.5,
+          delay: 0.2,
         },
         'reveal',
       );
     }
+
+    const tl = gsap.timeline();
+    tl.fromTo(element.querySelector('.welcome-buttons'),
+      {
+        autoAlpha: 0,
+        pointerEvents: 'none',
+      },
+      {
+        autoAlpha: 0.8,
+        duration: 0.1,
+        delay: 0.8 + 0.7 + 0.25 * 3,
+        pointerEvents: 'none',
+      });
+    tl.to(element.querySelector('.welcome-buttons'),
+      {
+        autoAlpha: 0.1,
+        duration: 0.1,
+        pointerEvents: 'none',
+      });
+    tl.to(element.querySelector('.welcome-buttons'),
+      {
+        autoAlpha: 0.8,
+        duration: 0.1,
+        pointerEvents: 'none',
+      });
+    tl.to(element.querySelector('.welcome-buttons'),
+      {
+        autoAlpha: 0.2,
+        duration: 0.2,
+        pointerEvents: 'none',
+      });
+    tl.to(element.querySelector('.welcome-buttons'),
+      {
+        autoAlpha: 1,
+        duration: 0.4,
+        pointerEvents: 'auto',
+      });
   }, []);
 
   return (
@@ -68,14 +111,14 @@ const Home = () => {
           <h1 aria-label="Hi, my name is Jean.">
             <div className="reveal">
               <span className="reveal-text">
-                Hi,
+                <TextBounce text="Hi," />
               </span>
               <div className="reveal-mask" aria-hidden />
             </div>
             <br />
             <div className="reveal">
               <span className="reveal-text">
-                my name is Jean.
+                <TextBounce text="my name is Jean." />
               </span>
               <div className="reveal-mask" aria-hidden />
             </div>
@@ -92,8 +135,7 @@ const Home = () => {
         </div>
         <ScrollTo to={{
           pathname: '/',
-          hash: '#work',
-          state: { from: location.pathname },
+          state: 'work',
         }}
         >
           <div className="reveal">

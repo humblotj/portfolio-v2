@@ -1,7 +1,7 @@
 .work-detail-sec {
     padding-top: 60px;
 
-    .back-arrow {
+    > .back-arrow {
         position: fixed;
         top: 30px;
         left: 60px;
@@ -21,6 +21,14 @@
 
         .btn:not(:last-child) {
             margin-right: 40px;
+        }
+
+        .btn.primary {
+            color: #0c9;
+
+            &:hover {
+                color: #fff;
+            }
         }
     }
 

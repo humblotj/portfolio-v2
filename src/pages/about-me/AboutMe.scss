@@ -15,9 +15,10 @@
     width: 1000px;
     max-width: 95%;
     height: 90%;
+    min-height: 800px;
     outline: none;
     position: fixed;
-    background-color: #1c1d25;
+    background-color: rgb(35, 40, 42, 0.7);
     overflow: hidden;
     visibility: hidden;
     transition: visibility 1s, box-shadow 0.3s;
@@ -27,18 +28,10 @@
         box-shadow: 0 20px 80px 0 rgb(0 0 0 / 55%);
         transition: visibility 1s, box-shadow 0.5s ease 0.4s;
 
-        .contact {
-            transition-delay: 0.2s;
-        }
-        .about {
-            transition-delay: 0s;
-        }
-
-        .contact,
-        .about {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
+        .about,
+        .skills {
+            box-shadow: 0 20px 80px 0 rgb(0 0 0 / 55%);
+            clip-path: inset(-80px 0 -80px 0);
         }
     }
 
@@ -48,7 +41,6 @@
         z-index: 0;
     }
 
-    .send-email,
     .about-footer {
         position: absolute;
         transform-style: preserve-3d;
@@ -104,13 +96,11 @@
         top: 60px;
         right: 7%;
         z-index: 100;
-        opacity: 0;
-        animation: blink 1350ms steps(8) forwards;
     }
 }
 
 .about,
-.contact {
+.skills {
     position: absolute;
     top: 0;
     left: 0;
@@ -118,6 +108,18 @@
     width: 50%;
     height: 100%;
     overflow: hidden;
+}
+
+.about {
+    .close-button {
+        display: none;
+    }
+}
+.skills {
+    .close-button {
+        top: 40px;
+        display: inline-block;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -128,10 +130,11 @@
         overflow-y: auto;
 
         &.ReactModal__Content--after-open {
-            // transform: translateX(0);
             .about,
-            .contact {
+            .skills {
                 transform: translateX(0) !important;
+                box-shadow: 0 0 80px 0px rgb(0 0 0 / 45%);
+                clip-path: inset(0 -80px 0 -80px);
             }
         }
 
@@ -145,7 +148,7 @@
         }
 
         .about,
-        .contact {
+        .skills {
             position: relative;
             width: 100%;
             height: auto;
@@ -156,8 +159,7 @@
 
             .about-info,
             .about-footer,
-            .send-message,
-            .send-email {
+            .skills-content {
                 width: 80%;
                 position: relative;
                 left: auto;
@@ -165,10 +167,20 @@
                 transform: none;
             }
 
-            .about-footer,
-            .send-email {
+            .about-footer {
                 margin-top: 40px;
             }
+        }
+    }
+
+    .about {
+        .close-button {
+            display: inline-block;
+        }
+    }
+    .skills {
+        .close-button {
+            display: none;
         }
     }
 }

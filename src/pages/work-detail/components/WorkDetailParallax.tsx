@@ -4,12 +4,15 @@ import ImageWrap from '../../../components/ui/ImageWrap';
 import './WorkDetailParallax.scss';
 
 const WorkDetailParallax = () => {
-  const ref = useRef<any>();
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = ref.current;
-    const tl = gsap.timeline();
+    if (!element) {
+      return;
+    }
 
+    const tl = gsap.timeline();
     tl.to(
       element.querySelector('.reveal-mask'),
       {
@@ -24,6 +27,7 @@ const WorkDetailParallax = () => {
         scaleX: 0,
         transformOrigin: '100% 50%',
         duration: 0.5,
+        delay: 0.2,
       },
       'reveal',
     );
@@ -32,6 +36,7 @@ const WorkDetailParallax = () => {
       {
         opacity: 1,
         duration: 0.5,
+        delay: 0.2,
       },
       'reveal',
     );

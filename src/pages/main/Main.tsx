@@ -1,28 +1,35 @@
-import { createRef, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Footer from '../../components/Footer';
+import { StoreContext } from '../../context/StoreProvider';
 import Contact from '../contact/Contact';
 import Home from '../home/Home';
 import Work from '../work/Work';
 
 const Main = () => {
-  const workRef = createRef<HTMLDivElement>();
-  const contactRef = createRef<HTMLDivElement>();
+  const { store: { isInit }, dispatch } = useContext(StoreContext);
   const location = useLocation();
+  const workRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (location.hash) {
-      if (location.hash === '#work') {
+    if (location.state && isInit) {
+      if (location.state === 'work') {
         workRef.current?.scrollIntoView({ behavior: 'smooth' });
       }
-      if (location.hash === '#contact') {
+      if (location.state === 'contact') {
         contactRef.current?.scrollIntoView({ behavior: 'smooth' });
       }
-    } else {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
   }, [location]);
+
+  useEffect(() => {
+    if (!isInit) {
+      dispatch({ type: 'ON_INIT', payload: null });
+    }
+    dispatch({ type: 'SET_IS_LOADING', payload: false });
+  }, []);
 
   return (
     <>

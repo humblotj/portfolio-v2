@@ -4,6 +4,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 import './WorkPreviewCarousel.scss';
 import image from '../../../assets/test.jpeg';
+import BackArrow from '../../../components/ui/BackArrow';
 
 interface Props {
   items: string[],
@@ -26,6 +27,10 @@ const WorkPreviewCarousel = ({ items }: Props) => {
           disableDotsControls
           items={PreviewItem(items)}
         />
+        <div className="project-controls">
+          <BackArrow>Previous Work</BackArrow>
+          <BackArrow direction="right">Next Work</BackArrow>
+        </div>
       </div>
     </div>
 

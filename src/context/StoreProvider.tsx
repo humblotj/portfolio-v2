@@ -3,7 +3,9 @@ import reducer from './reducer';
 
 const initialState = {
   isContactModalOpen: false,
-  isLoading: false,
+  isLoading: true,
+  scrollTo: '',
+  isInit: false,
 };
 
 export const StoreContext = createContext({
