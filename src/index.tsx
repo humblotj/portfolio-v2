@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.scss';
-import '@fontsource/ibm-plex-sans/300.css';
-import '@fontsource/ibm-plex-sans/500.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
