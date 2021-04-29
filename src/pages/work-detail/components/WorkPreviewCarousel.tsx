@@ -27,10 +27,10 @@ const WorkPreviewCarousel = ({ items }: Props) => {
           disableDotsControls
           items={PreviewItem(items)}
         />
-        <div className="project-controls">
-          <BackArrow>Previous Work</BackArrow>
-          <BackArrow direction="right">Next Work</BackArrow>
-        </div>
+      </div>
+      <div className="project-controls">
+        <BackArrow>Previous Work</BackArrow>
+        <BackArrow direction="right">Next Work</BackArrow>
       </div>
     </div>
 

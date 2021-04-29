@@ -6,11 +6,9 @@
 
 .modal-content {
     position: absolute;
-    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 1000px;
     max-width: 95%;
@@ -128,6 +126,9 @@
         width: 100%;
         max-width: none;
         overflow-y: auto;
+        top: auto;
+        left: auto;
+        transform: none;
 
         &.ReactModal__Content--after-open {
             .about,
@@ -171,7 +172,7 @@
                 margin-top: 40px;
             }
         }
-    }
+    
 
     .about {
         .close-button {
@@ -179,8 +180,11 @@
         }
     }
     .skills {
+        padding: 40px 0 80px;
+
         .close-button {
             display: none;
         }
     }
+  }
 }

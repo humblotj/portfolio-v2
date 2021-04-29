@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { StoreContext } from '../context/StoreProvider';
 import './Loading.scss';
+import Strokes from './Strokes';
 
 interface Props {
   enableComponent: () => void,
@@ -103,8 +104,13 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
   return (
 
     <div ref={ref} className="loading">
-      <div className="before" aria-hidden />
-      <div className="after" aria-hidden />
+      <Strokes secondary={location.pathname === '/'} />
+      <div className="before" aria-hidden>
+        <Strokes secondary />
+      </div>
+      <div className="after" aria-hidden>
+        <Strokes secondary />
+      </div>
       <div className="loader">
         <div aria-hidden />
         <div aria-hidden />

@@ -7,19 +7,21 @@
         margin: 0 auto;
         margin-top: 80px;
         padding: 80px;
+    }
 
-        .project-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 60px;
+    .project-controls {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 80px 80px;
 
-            a:first-child {
-                margin-left: 20px;
-            }
+        a:first-child {
+            margin-left: 20px;
+        }
 
-            a:last-child {
-                margin-right: 40px;
-            }
+        a:last-child {
+            margin-right: 40px;
         }
     }
 
@@ -109,6 +111,10 @@
             padding: 60px;
         }
 
+        .project-controls {
+            padding: 60px;
+        }
+
         .alice-carousel__prev-btn,
         .alice-carousel__next-btn {
             width: 60px;
@@ -128,15 +134,17 @@
     .work-preview-carousel {
         .work-preview-carousel-inner {
             padding: 40px;
+        }
 
-            .project-controls {
-                a:first-child {
-                    margin-left: -30px;
-                }
+        .project-controls {
+            padding: 40px;
 
-                a:last-child {
-                    margin-right: 90px;
-                }
+            a:first-child {
+                margin-left: -30px;
+            }
+
+            a:last-child {
+                margin-right: 90px;
             }
         }
     }
