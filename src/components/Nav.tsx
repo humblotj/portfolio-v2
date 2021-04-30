@@ -9,6 +9,7 @@ import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
 import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
 import { StoreContext } from '../context/StoreProvider';
+import Strokes from './Strokes';
 
 interface Props {
   open: boolean,
@@ -78,6 +79,7 @@ const Nav = ({ open, onClose }: Props) => {
 
   return (
     <div ref={ref} className={cx('nav-overlay', { open })}>
+      <Strokes />
       <nav>
         <ul>
           <li>

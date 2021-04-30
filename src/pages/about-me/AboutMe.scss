@@ -1,6 +1,9 @@
 .modal-overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 110;
 }
 
@@ -172,19 +175,18 @@
                 margin-top: 40px;
             }
         }
-    
 
-    .about {
-        .close-button {
-            display: inline-block;
+        .about {
+            .close-button {
+                display: inline-block;
+            }
+        }
+        .skills {
+            padding: 40px 0;
+
+            .close-button {
+                display: none;
+            }
         }
     }
-    .skills {
-        padding: 40px 0 80px;
-
-        .close-button {
-            display: none;
-        }
-    }
-  }
 }

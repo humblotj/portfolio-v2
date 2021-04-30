@@ -2,7 +2,6 @@ import {
   useContext, useEffect, useRef,
 } from 'react';
 import { gsap } from 'gsap';
-import { useLocation } from 'react-router-dom';
 
 import './Home.scss';
 import Button from '../../components/ui/Button';
@@ -14,8 +13,7 @@ import TextBounce from '../../components/ui/TextBounce';
 
 const Home = () => {
   const ref = useRef<HTMLElement>(null);
-  const { store: { isInit }, dispatch } = useContext(StoreContext);
-  const location = useLocation();
+  const { dispatch } = useContext(StoreContext);
 
   const openContactModal = () => dispatch({ type: 'SET_CONTACT_MODAL_OPEN', payload: true });
   const loading = () => {
@@ -33,12 +31,12 @@ const Home = () => {
 
     for (let i = 0; i < reveal.length; i++) {
       const tl = gsap.timeline();
-      tl.to(
+      tl.fromTo(
         reveal[i].querySelector('.reveal-mask'),
+        { scaleX: 0 },
         {
           scaleX: 1,
           duration: 0.8 + i * 0.25,
-          delay: isInit ? 0 : 0.3,
         },
       );
       tl.add('reveal');
@@ -65,7 +63,9 @@ const Home = () => {
     }
 
     const tl = gsap.timeline();
-    tl.fromTo(element.querySelector('.welcome-buttons'),
+
+    const blink = document.querySelectorAll('.blink');
+    tl.fromTo(blink,
       {
         autoAlpha: 0,
         pointerEvents: 'none',
@@ -76,25 +76,25 @@ const Home = () => {
         delay: 0.8 + 0.7 + 0.25 * 3,
         pointerEvents: 'none',
       });
-    tl.to(element.querySelector('.welcome-buttons'),
+    tl.to(blink,
       {
         autoAlpha: 0.1,
         duration: 0.1,
         pointerEvents: 'none',
       });
-    tl.to(element.querySelector('.welcome-buttons'),
+    tl.to(blink,
       {
         autoAlpha: 0.8,
         duration: 0.1,
         pointerEvents: 'none',
       });
-    tl.to(element.querySelector('.welcome-buttons'),
+    tl.to(blink,
       {
         autoAlpha: 0.2,
         duration: 0.2,
         pointerEvents: 'none',
       });
-    tl.to(element.querySelector('.welcome-buttons'),
+    tl.to(blink,
       {
         autoAlpha: 1,
         duration: 0.4,
@@ -129,7 +129,7 @@ const Home = () => {
             </span>
             <div className="reveal-mask" aria-hidden />
           </div>
-          <div className="welcome-buttons">
+          <div className="welcome-buttons blink">
             <Button onClick={openContactModal}>About me</Button>
           </div>
         </div>

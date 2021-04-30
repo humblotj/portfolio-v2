@@ -19,7 +19,6 @@ const useSuspenseAnimation = (import_: Promise<any>) => {
       Promise.all([import_,
         new Promise((resolve) => setTimeout(resolve, 2000)),
       ]).then(([imp, _]: any) => {
-        console.log(imp);
         // triggers re-render, so containing component can react
         setState((prev) => ({ ...prev, status: 'IMPORT_FINISHED' }));
         return imp;

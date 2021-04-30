@@ -2,7 +2,10 @@
 
 .loading {
     position: fixed;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     .before,
     .after {
@@ -10,7 +13,13 @@
         width: 100%;
         position: fixed;
         left: 0;
-        background: #19151b;
+        background: #1e2324;
+
+        .strokes {
+            div {
+                background: #23282a;
+            }
+        }
     }
 
     .before {

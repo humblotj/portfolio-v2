@@ -13,7 +13,7 @@ const Main = () => {
   const workRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  const scrollTo = () => {
     if (location.state && isInit) {
       if (location.state === 'work') {
         workRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -22,13 +22,17 @@ const Main = () => {
         contactRef.current?.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  };
+
+  useEffect(() => {
+    scrollTo();
+    document.querySelector('.wrapper-menu');
   }, [location]);
 
   useEffect(() => {
     if (!isInit) {
       dispatch({ type: 'ON_INIT', payload: null });
     }
-    dispatch({ type: 'SET_IS_LOADING', payload: false });
   }, []);
 
   return (

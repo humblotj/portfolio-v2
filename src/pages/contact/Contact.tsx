@@ -10,72 +10,77 @@ import useCombinedRefs from '../../hooks/useCombinedRefs';
 const Contact = forwardRef<HTMLElement>((props, ref) => {
   const innerRef = useCombinedRefs(ref) as any;
 
-  useEffect(() => {
-    if (innerRef.current) {
-      const element = innerRef.current as unknown as HTMLElement;
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: innerRef.current,
-          start: 'top 85%',
-        },
+  const animate = (element: HTMLElement) => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: innerRef.current,
+        start: 'top 85%',
+      },
+    });
+    tl.addLabel('start');
+    tl.fromTo(element.querySelector('form'),
+      {
+        opacity: 0,
+        scale: 0,
+      },
+      {
+        opacity: 1,
+        scale: 1.05,
+        duration: 0.6,
+        delay: 0.5,
       });
-      tl.addLabel('start');
-      tl.fromTo(element.querySelector('form'),
-        {
-          opacity: 0,
-          scale: 0,
-        },
-        {
-          opacity: 1,
-          scale: 1.05,
-          duration: 0.6,
-          delay: 0.5,
-        });
-      tl.to(element.querySelector('form'),
-        {
-          opacity: 1,
-          scale: 0.95,
-          duration: 0.2,
-        });
-      tl.to(element.querySelector('form'),
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.2,
-        });
-      tl.fromTo(element.querySelector('h2'),
-        {
-          opacity: 0,
-          x: '-300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-        }, 'start');
-      tl.fromTo(element.querySelector('.divider'),
-        {
-          opacity: 0,
-          x: '300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-          delay: 0.25,
-        }, 'start');
-      tl.fromTo(element.querySelector('.send-message > p'),
-        {
-          opacity: 0,
-          x: '300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-          delay: 0.5,
-        }, 'start');
+    tl.to(element.querySelector('form'),
+      {
+        opacity: 1,
+        scale: 0.95,
+        duration: 0.2,
+      });
+    tl.to(element.querySelector('form'),
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.2,
+      });
+    tl.fromTo(element.querySelector('h2'),
+      {
+        opacity: 0,
+        x: '-300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+      }, 'start');
+    tl.fromTo(element.querySelector('.divider'),
+      {
+        opacity: 0,
+        x: '300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+        delay: 0.25,
+      }, 'start');
+    tl.fromTo(element.querySelector('.send-message > p'),
+      {
+        opacity: 0,
+        x: '300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+        delay: 0.5,
+      }, 'start');
+  };
+
+  useEffect(() => {
+    const element = innerRef.current as unknown as HTMLElement;
+    if (!element) {
+      return;
     }
+    setTimeout(() => animate(element), 100);
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { gsap } from 'gsap';
 
 import './WorkDetail.scss';
 import WorkDetailDescription from './components/WorkDetailDescription';
@@ -15,7 +16,12 @@ const WorkDetail = () => {
     if (!isInit) {
       dispatch({ type: 'ON_INIT', payload: null });
     }
-    dispatch({ type: 'SET_IS_LOADING', payload: false });
+    const blink = document.querySelectorAll('.blink');
+    gsap.to(blink, { opacity: 1, duration: 0 });
+
+    return () => {
+      gsap.to(blink, { opacity: 0, duration: 0 });
+    };
   }, []);
 
   return (

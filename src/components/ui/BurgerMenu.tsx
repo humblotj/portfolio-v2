@@ -10,7 +10,7 @@ interface Props {
 const BurgerMenu = ({ open, toggleNav }: Props) => (
   <button
     type="button"
-    className={cx('wrapper-menu', { open })}
+    className={cx('wrapper-menu', 'blink', { open })}
     onClick={toggleNav}
     aria-pressed={open}
   >

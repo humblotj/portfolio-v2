@@ -14,16 +14,11 @@ interface Props {
 const WorkItem = ({ index }: Props) => {
   const ref = useRef<HTMLLIElement>(null);
 
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return;
-    }
-
+  const animate = (element: HTMLElement) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
-        start: 'top 85%',
+        start: 'top 75%',
       },
     });
     tl.addLabel('start');
@@ -42,7 +37,7 @@ const WorkItem = ({ index }: Props) => {
     tl.fromTo(element.querySelector('.work-preview'),
       {
         opacity: 0,
-        x: '0%',
+        x: '50%',
         y: '-50%',
       },
       {
@@ -51,6 +46,17 @@ const WorkItem = ({ index }: Props) => {
         y: '-50%',
         duration: 1,
       }, 'start');
+  };
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
+
+    setTimeout(() => {
+      animate(element);
+    }, 100);
   }, []);
 
   return (

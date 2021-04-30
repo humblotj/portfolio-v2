@@ -6,49 +6,54 @@ import './Work.scss';
 const Work = forwardRef<HTMLElement>((props, ref) => {
   const workHeaderRef = useRef<HTMLDivElement>(null);
 
+  const animate = (element: HTMLElement) => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        start: 'top 85%',
+      },
+    });
+    tl.addLabel('start');
+    tl.fromTo(element.querySelector('h2'),
+      {
+        opacity: 0,
+        x: '300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+      }, 'start');
+    tl.fromTo(element.querySelector('.divider'),
+      {
+        opacity: 0,
+        x: '-300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+        delay: 0.25,
+      }, 'start');
+    tl.fromTo(element.querySelector('h4'),
+      {
+        opacity: 0,
+        x: '-300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+        delay: 0.5,
+      }, 'start');
+  };
+
   useEffect(() => {
     const element = workHeaderRef.current;
-    if (element) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: element,
-          start: 'top 75%',
-        },
-      });
-      tl.addLabel('start');
-      tl.fromTo(element.querySelector('h2'),
-        {
-          opacity: 0,
-          x: '300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-        }, 'start');
-      tl.fromTo(element.querySelector('.divider'),
-        {
-          opacity: 0,
-          x: '-300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-          delay: 0.25,
-        }, 'start');
-      tl.fromTo(element.querySelector('h4'),
-        {
-          opacity: 0,
-          x: '-300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-          delay: 0.5,
-        }, 'start');
+    if (!element) {
+      return;
     }
+    setTimeout(() => animate(element), 100);
   }, []);
 
   return (

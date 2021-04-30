@@ -25,39 +25,13 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => (
         {' '}
         <strong>French software developer</strong>
         {' '}
-        based in
-        {' '}
-        <strong>Seoul</strong>
-        .
+        based in Seoul.
         <br />
-        I graduated from a French school engineering with a Master of Science degree.
-        I worked for several Korean start-ups where I learned how to work
-        {' '}
-        <strong>independently</strong>
-        {' '}
-        but also in a
-        {' '}
-        <strong>team</strong>
-        {' '}
-        and successfully
-        {' '}
-        <strong>build</strong>
-        {' '}
-        something from the ground up.
+        I specialize in front-end development
+        but also love experimenting with new backend technologies,
+        with the aim to improve productivity, quality, performance and speed.
         <br />
-        I am looking for new
-        {' '}
-        <strong>exciting</strong>
-        {' '}
-        challenges and
-        {' '}
-        <strong>opportunities</strong>
-        {' '}
-        to support a new company to build their next
-        {' '}
-        <strong>big</strong>
-        {' '}
-        things.
+        I am open to new technologies and development opportunities.
       </p>
     </div>
     <div className="about-footer">

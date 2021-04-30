@@ -18,8 +18,9 @@ const WorkDetailDescription = () => {
 
     for (let i = 0; i < reveal.length; i++) {
       const tl = gsap.timeline();
-      tl.to(
+      tl.fromTo(
         reveal[i].querySelector('.reveal-mask'),
+        { scaleX: 0 },
         {
           scaleX: 1,
           duration: 0.8 + i * 0.1,

@@ -30,7 +30,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
         zIndex: 1000,
         duration: 0,
       });
-    gsap.fromTo(element.querySelector('.loader'),
+    gsap.fromTo(element.querySelector('.loader > div'),
       {
         opacity: 0,
       },
@@ -106,10 +106,10 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
     <div ref={ref} className="loading">
       <Strokes secondary={location.pathname === '/'} />
       <div className="before" aria-hidden>
-        <Strokes secondary />
+        <Strokes />
       </div>
       <div className="after" aria-hidden>
-        <Strokes secondary />
+        <Strokes />
       </div>
       <div className="loader">
         <div aria-hidden />

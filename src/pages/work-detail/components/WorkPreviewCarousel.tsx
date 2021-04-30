@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
+/* eslint-disable no-param-reassign */
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 
 import './WorkPreviewCarousel.scss';
 import image from '../../../assets/test.jpeg';
@@ -16,25 +17,23 @@ const PreviewItem = (items: string[]) => items.map((item, i) => (
   </div>
 ));
 
-const WorkPreviewCarousel = ({ items }: Props) => {
-  const [activeIndex] = useState(0);
+const WorkPreviewCarousel = ({ items }: Props) => (
+  <div className="work-preview-carousel">
+    <div className="work-preview-carousel-inner">
 
-  return (
-    <div className="work-preview-carousel">
-      <div className="work-preview-carousel-inner">
-        <AliceCarousel
-          activeIndex={activeIndex}
-          disableDotsControls
-          items={PreviewItem(items)}
-        />
-      </div>
-      <div className="project-controls">
-        <BackArrow>Previous Work</BackArrow>
-        <BackArrow direction="right">Next Work</BackArrow>
-      </div>
+      <Slider
+        slidesToShow={1}
+        infinite={false}
+      >
+        {PreviewItem(items)}
+      </Slider>
     </div>
+    <div className="project-controls">
+      <BackArrow>Previous Work</BackArrow>
+      <BackArrow direction="right">Next Work</BackArrow>
+    </div>
+  </div>
 
-  );
-};
+);
 
 export default WorkPreviewCarousel;

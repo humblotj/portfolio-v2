@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import cx from 'classnames';
-import { Parallax } from 'react-parallax';
+import { gsap } from 'gsap';
 
 import './ImageWrap.scss';
 import image from '../../assets/test.jpeg';
@@ -17,6 +17,22 @@ const ImageWrap = ({ isMobile = false, isParallax = false }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
 
+  useEffect(() => {
+    if (isParallax) {
+      setTimeout(() => {
+        if (ref.current) {
+          gsap.to(ref.current.querySelector('img'), {
+            yPercent: -10,
+            ease: 'none',
+            scrollTrigger: {
+              scrub: true,
+            },
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div
       ref={ref}
@@ -24,13 +40,7 @@ const ImageWrap = ({ isMobile = false, isParallax = false }: Props) => {
       style={{ height: width * (isMobile ? 1.6417 : 0.5925) }}
     >
       <div className="image-crop">
-        {isParallax ? (
-          <Parallax
-            bgImage={image2}
-            strength={200}
-          />
-        )
-          : <SuspenseImg src={isMobile ? image2 : image} /> }
+        <SuspenseImg src={(isMobile || isParallax) ? image2 : image} />
       </div>
     </div>
   );

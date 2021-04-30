@@ -1,5 +1,5 @@
 .skills {
-    background-color: #23282a;
+    background: #1e2324;
     color: #fff;
     left: auto;
     right: 0;
@@ -75,14 +75,5 @@
         .skills-content {
             top: 8%;
         }
-    }
-}
-
-
-@media only screen and (max-width: 576px) {
-    .skills {
-        h2 {
-            bottom: 30px;
-        }    
     }
 }

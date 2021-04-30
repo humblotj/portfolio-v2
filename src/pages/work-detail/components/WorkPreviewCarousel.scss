@@ -25,10 +25,6 @@
         }
     }
 
-    .alice-carousel {
-        position: initial;
-    }
-
     .wrap {
         position: relative;
         display: inline-block;
@@ -38,69 +34,42 @@
         }
     }
 
-    .alice-carousel__prev-btn,
-    .alice-carousel__next-btn {
+    .slick-slider {
+        position: initial;
+    }
+
+    .slick-arrow {
         width: 80px;
         height: 80px;
-        padding: 80px 0 0 0;
-        margin: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        position: absolute;
+        cursor: pointer;
+        background: #fff url("/assets/icons/arrow.svg") center center no-repeat;
+        background-size: 24px 24px;
+        transition: 0.3s;
+        z-index: 1;
 
-        &.alice-carousel__prev-btn {
-            left: 0;
+        &::before {
+            content: none;
         }
 
-        &.alice-carousel__next-btn {
+        &.slick-prev {
+            left: 0;
+            transform: translate(0, -50%) rotate(180deg);
+        }
+
+        &.slick-next {
             right: 0;
         }
 
-        .alice-carousel__prev-btn-wrapper,
-        .alice-carousel__next-btn-wrapper {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            top: 0;
-            left: 0;
-        }
-
-        .alice-carousel__prev-btn-item,
-        .alice-carousel__next-btn-item {
-            cursor: pointer;
-            background: #fff url("/assets/icons/arrow.svg") center center no-repeat;
-            background-size: 24px 24px;
-            transition: 0.3s;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-
-            > span {
-                display: none;
-            }
-
-            &.__inactive {
-                opacity: 0;
-            }
-        }
-
-        .alice-carousel__prev-btn-item {
-            transform: rotate(180deg);
+        &.slick-disabled {
+            opacity: 0;
         }
     }
 }
 
 @media only screen and (min-width: 1440px) {
     .work-preview-carousel {
-        .alice-carousel__prev-btn,
-        .alice-carousel__next-btn {
-            &.alice-carousel__prev-btn {
-                left: -80px;
-            }
-
-            &.alice-carousel__next-btn {
-                right: -80px;
-            }
+        .work-preview-carousel-inner {
+            padding: 180px;
         }
     }
 }
@@ -115,17 +84,9 @@
             padding: 60px;
         }
 
-        .alice-carousel__prev-btn,
-        .alice-carousel__next-btn {
+        .slick-arrow {
             width: 60px;
             height: 60px;
-            padding-top: 60px;
-
-            .alice-carousel__prev-btn-wrapper,
-            .alice-carousel__next-btn-wrapper {
-                width: 60px;
-                height: 60px;
-            }
         }
     }
 }

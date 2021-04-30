@@ -13,8 +13,9 @@ const WorkDetailParallax = () => {
     }
 
     const tl = gsap.timeline();
-    tl.to(
+    tl.fromTo(
       element.querySelector('.reveal-mask'),
+      { scaleX: 0 },
       {
         scaleX: 1,
         duration: 1.3,
