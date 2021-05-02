@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import firebase from 'firebase';
@@ -26,24 +26,28 @@ firebase.initializeApp({
 });
 export const db = firebase.firestore();
 
-const App = () => (
-  <Provider store={store}>
-    <FirestoreProvider {...config} firebase={firebase}>
-      <ScrollToTop />
-      <Header />
-      <Strokes />
-      <SideLeft />
-      <Switch>
-        <Route path="/work/:id">
-          <WorkDetailSuspense />
-        </Route>
-        <Route path="/">
-          <MainSuspense />
-        </Route>
-      </Switch>
-      <AboutMe />
-    </FirestoreProvider>
-  </Provider>
-);
+const App = () => {
+  const location = useLocation();
+
+  return (
+    <Provider store={store}>
+      <FirestoreProvider {...config} firebase={firebase}>
+        <ScrollToTop />
+        <Header />
+        <Strokes />
+        <SideLeft />
+        <Switch>
+          <Route path="/work/:id" key={location.pathname}>
+            <WorkDetailSuspense />
+          </Route>
+          <Route path="/">
+            <MainSuspense />
+          </Route>
+        </Switch>
+        <AboutMe />
+      </FirestoreProvider>
+    </Provider>
+  );
+};
 
 export default App;
