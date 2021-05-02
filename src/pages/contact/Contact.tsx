@@ -14,7 +14,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: innerRef.current,
-        start: 'top 85%',
+        start: 'top 70%',
       },
     });
     tl.addLabel('start');
