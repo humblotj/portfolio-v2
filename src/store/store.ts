@@ -2,11 +2,17 @@
 import {
   combineReducers, configureStore, createSlice,
 } from '@reduxjs/toolkit';
+import { WorkDetailProps, WorkProps } from '../interface';
 
-const initialState = {
+const initialState: {
+  isAboutModalOpen: boolean,
+  isInit: boolean,
+  works: WorkProps[],
+  workDetails: WorkDetailProps | null,
+} = {
   isAboutModalOpen: false,
   isInit: false,
-  works: null,
+  works: [],
   workDetails: null,
 };
 

@@ -1,8 +1,6 @@
 import {
   lazy, useCallback, useState,
 } from 'react';
-import firebase from 'firebase';
-import 'firebase/firestore';
 
 const deferPromise = () => {
   let resolve;
@@ -12,19 +10,19 @@ const deferPromise = () => {
   return { resolve, promise };
 };
 
-const useSuspenseAnimation = (import_: Promise<any>) => {
+const useSuspenseAnimation = (import_: Promise<any>,
+  { fetchData, setData }: {fetchData: Promise<any>, setData: any}) => {
   const [state, setState] = useState(() => {
     const deferred: any = deferPromise();
     // component object reference  is kept stable, since it's stored in state.
-    const db = firebase.firestore();
-    const collection = db.collection('projects').doc('jrello');
     const DeferredComponent = lazy(() => Promise.all([
-      // again some fake delay for illustration
       Promise.all([import_,
-        collection.get(),
+        fetchData,
         new Promise((resolve) => setTimeout(resolve, 2000)),
       ]).then(([imp, query, _]: any) => {
-        console.log(query.data());
+        if (fetchData) {
+          setData(query);
+        }
         // triggers re-render, so containing component can react
         setState((prev) => ({ ...prev, status: 'IMPORT_FINISHED' }));
         return imp;

@@ -10,12 +10,12 @@ import WorkPreviewCarousel from './components/WorkPreviewCarousel';
 import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
 import WorkDetailParallax from './components/WorkDetailParallax';
-import { onInit, selectIsInit } from '../../store/store';
+import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 
 const WorkDetail = () => {
   const dispatch = useDispatch();
   const isInit = useSelector(selectIsInit);
-  const { id } = useParams<{id: string}>();
+  const work = useSelector(selectWorkDetails);
 
   useEffect(() => {
     if (!isInit) {
@@ -29,23 +29,23 @@ const WorkDetail = () => {
     };
   }, []);
 
+  if (!work) {
+    return null;
+  }
+
   return (
-    <FirestoreDocument path={`/project-details/${id}`}>
-      {(d) => (d.value && (
-        <section className="work-detail-sec">
-          <BackArrow>
-            Turn Back Home
-          </BackArrow>
-          <WorkDetailDescription work={d.value} />
-          <WorkDetailParallax preview={d.value?.mainPreview} />
-          <div className="work-links">
-            <Button>Visit Site</Button>
-            <Button color="secondary">View Code</Button>
-          </div>
-          <WorkPreviewCarousel work={d.value} />
-        </section>
-      ))}
-    </FirestoreDocument>
+    <section className="work-detail-sec">
+      <BackArrow>
+        Turn Back Home
+      </BackArrow>
+      <WorkDetailDescription work={work} />
+      <WorkDetailParallax preview={work.mainPreview} />
+      <div className="work-links">
+        <Button>Visit Site</Button>
+        <Button color="secondary">View Code</Button>
+      </div>
+      <WorkPreviewCarousel work={work} />
+    </section>
   );
 };
 

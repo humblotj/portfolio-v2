@@ -24,6 +24,7 @@ const config = JSON.parse(process.env.REACT_APP_API_KEY as any);
 firebase.initializeApp({
   ...config,
 });
+export const db = firebase.firestore();
 
 const App = () => (
   <Provider store={store}>

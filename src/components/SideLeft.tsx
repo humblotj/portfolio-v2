@@ -22,7 +22,7 @@ const SideLeft = () => (
     </div>
     <div className="side-left blink" aria-hidden />
     <div className="side-right-mail blink">
-      <a href="mailto:jhumblot1@gmail.com">jhumblot1@gmail.com</a>
+      <a href="mailto:jeanhumblot.dev@gmail.com">jeanhumblot.dev@gmail.com</a>
     </div>
     <div className="side-right blink" aria-hidden />
   </>

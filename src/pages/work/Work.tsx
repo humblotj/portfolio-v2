@@ -1,11 +1,14 @@
-import { FirestoreCollection } from '@react-firebase/firestore';
-import gsap from 'gsap/all';
 import { forwardRef, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { useSelector } from 'react-redux';
+
 import { WorkProps } from '../../interface';
+import { selectWorks } from '../../store/store';
 import WorkItem from './components/WorkItem';
 import './Work.scss';
 
 const Work = forwardRef<HTMLElement>((props, ref) => {
+  const works = useSelector(selectWorks);
   const workHeaderRef = useRef<HTMLDivElement>(null);
 
   const animate = (element: HTMLElement) => {
@@ -67,18 +70,15 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
           <div className="divider" aria-hidden />
         </div>
         <ul>
-          <FirestoreCollection path="/projects/" orderBy={[{ field: 'order', type: 'desc' }]}>
-            {(d) => (d.isLoading ? 'Loading'
-              : d.value.map((work: WorkProps,
-                index: number) => (
-                  <WorkItem
-                    key={work.name}
-                    id={d.ids[index]}
-                    work={work}
-                    index={index}
-                  />
-              )))}
-          </FirestoreCollection>
+          {works.map((work: WorkProps,
+            index: number) => (
+              <WorkItem
+                key={work.name}
+                id={work.id as string}
+                work={work}
+                index={index}
+              />
+          ))}
         </ul>
       </div>
     </section>

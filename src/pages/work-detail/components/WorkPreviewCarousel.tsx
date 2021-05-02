@@ -38,15 +38,15 @@ const WorkPreviewCarousel = ({ work }: Props) => {
       </div>
       <div className="project-controls">
         <BackArrow
-          to={previousWork}
-          disabled={!previousWork}
+          to={nextWork}
+          disabled={!nextWork}
         >
           Previous Work
         </BackArrow>
         <BackArrow
           direction="right"
-          to={nextWork}
-          disabled={!nextWork}
+          to={previousWork}
+          disabled={!previousWork}
         >
           Next Work
         </BackArrow>
