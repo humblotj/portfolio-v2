@@ -27,9 +27,18 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => (
         {' '}
         based in Seoul.
         <br />
-        I specialize in front-end development
-        but also love experimenting with new backend technologies,
-        with the aim to improve productivity, quality, performance and speed.
+        I specialize in front-end development – building
+        {' '}
+        <strong>
+          efficient, interactive,
+          modern, performant
+        </strong>
+        , and
+        {' '}
+        <strong>scalable</strong>
+        {' '}
+        projects –
+        but also like experimenting with new backend technologies.
         <br />
         I am open to new technologies and development opportunities.
       </p>
