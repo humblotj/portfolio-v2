@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import firebase from 'firebase';
 import { Provider } from 'react-redux';
 import 'firebase/firestore';
+import 'firebase/analytics';
 
 import './App.scss';
 import store from './store/store';
@@ -24,6 +25,7 @@ firebase.initializeApp({
   ...config,
 });
 export const db = firebase.firestore();
+firebase.analytics();
 
 const App = () => {
   const location = useLocation();
