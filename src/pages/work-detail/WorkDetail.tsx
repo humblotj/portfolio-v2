@@ -50,7 +50,7 @@ const WorkDetail = () => {
       <WorkDetailParallax preview={work.mainPreview} />
       <div className="work-links">
         {work.links?.length ? work.links.map(({ type, url }) => (
-          <Button onClick={() => goTo(url)}>{types[type]}</Button>
+          <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>
         ))
           : <Button>Coming Soon</Button>}
 
