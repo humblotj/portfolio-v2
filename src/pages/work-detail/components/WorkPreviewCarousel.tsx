@@ -1,10 +1,8 @@
-/* eslint-disable no-param-reassign */
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
 import './WorkPreviewCarousel.scss';
-import image from '../../../assets/test.jpeg';
 import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
 
@@ -14,7 +12,7 @@ interface Props {
 
 const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
   <div className="wrap" data-value={i + 1} key={item.url}>
-    <img src={item.url} alt="" draggable={false} />
+    <img className={item.type} src={item.url} alt="" draggable={false} />
   </div>
 ));
 

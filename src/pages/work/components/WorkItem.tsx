@@ -24,7 +24,7 @@ const WorkItem = ({ index, work, id }: Props) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
-        start: 'top 75%',
+        start: 'top 80%',
       },
     });
     tl.addLabel('start');

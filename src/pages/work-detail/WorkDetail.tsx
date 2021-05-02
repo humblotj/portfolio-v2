@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
-import { useParams } from 'react-router-dom';
-import { FirestoreDocument } from '@react-firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './WorkDetail.scss';
@@ -33,6 +31,16 @@ const WorkDetail = () => {
     return null;
   }
 
+  const goTo = (url: string) => {
+    window.open(url, '_blank');
+  };
+
+  const types = {
+    ios: 'Apple Store',
+    android: 'Play Store',
+    web: 'Visit site',
+  };
+
   return (
     <section className="work-detail-sec">
       <BackArrow>
@@ -41,8 +49,20 @@ const WorkDetail = () => {
       <WorkDetailDescription work={work} />
       <WorkDetailParallax preview={work.mainPreview} />
       <div className="work-links">
-        <Button>Visit Site</Button>
-        <Button color="secondary">View Code</Button>
+        {work.links?.length ? work.links.map(({ type, url }) => (
+          <Button onClick={() => goTo(url)}>{types[type]}</Button>
+        ))
+          : <Button>Coming Soon</Button>}
+
+        {work.repoUrl
+        && (
+        <Button
+          color="secondary"
+          onClick={() => goTo(work.repoUrl || '')}
+        >
+          View Code
+        </Button>
+        )}
       </div>
       <WorkPreviewCarousel work={work} />
     </section>

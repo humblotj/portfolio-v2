@@ -1,6 +1,7 @@
 export interface ImgProp {
     type: 'web' | 'mobile',
     url: string,
+    noParallax?: boolean
 }
 
 export interface WorkProps {
@@ -14,11 +15,13 @@ export interface WorkProps {
 
 export interface WorkDetailProps {
     description: string,
+    links: {type: 'web' | 'ios' | 'android', url: string}[],
     mainPreview: ImgProp,
     name: string,
     nextWork: string,
     pictures: ImgProp[],
     previousWork: string,
+    repoUrl?: string,
     techs: string[],
     year: number
 }

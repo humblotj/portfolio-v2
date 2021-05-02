@@ -3,12 +3,12 @@ import { gsap } from 'gsap';
 import { useSelector } from 'react-redux';
 
 import { WorkProps } from '../../interface';
-import { selectWorks } from '../../store/store';
+import { selectWorksSorted } from '../../store/store';
 import WorkItem from './components/WorkItem';
 import './Work.scss';
 
 const Work = forwardRef<HTMLElement>((props, ref) => {
-  const works = useSelector(selectWorks);
+  const works = useSelector(selectWorksSorted);
   const workHeaderRef = useRef<HTMLDivElement>(null);
 
   const animate = (element: HTMLElement) => {

@@ -1,11 +1,23 @@
 .preview-container {
     padding: 0 80px;
 
+    &.is-mobile {
+        max-width: 460px!important;
+    }
+
     > div {
         display: block;
 
         .image-wrap {
             opacity: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .preview-container {    
+        &.is-mobile {
+            max-width: 350px!important;
         }
     }
 }

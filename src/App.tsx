@@ -5,7 +5,6 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import firebase from 'firebase';
 import { Provider } from 'react-redux';
 import 'firebase/firestore';
-import { FirestoreProvider } from '@react-firebase/firestore';
 
 import './App.scss';
 import store from './store/store';
@@ -31,21 +30,19 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <FirestoreProvider {...config} firebase={firebase}>
-        <ScrollToTop />
-        <Header />
-        <Strokes />
-        <SideLeft />
-        <Switch>
-          <Route path="/work/:id" key={location.pathname}>
-            <WorkDetailSuspense />
-          </Route>
-          <Route path="/">
-            <MainSuspense />
-          </Route>
-        </Switch>
-        <AboutMe />
-      </FirestoreProvider>
+      <ScrollToTop />
+      <Header />
+      <Strokes />
+      <SideLeft />
+      <Switch>
+        <Route path="/work/:id" key={location.pathname}>
+          <WorkDetailSuspense />
+        </Route>
+        <Route path="/">
+          <MainSuspense />
+        </Route>
+      </Switch>
+      <AboutMe />
     </Provider>
   );
 };

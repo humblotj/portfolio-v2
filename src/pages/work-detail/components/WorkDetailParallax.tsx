@@ -1,5 +1,7 @@
-import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import cx from 'classnames';
+
 import ImageWrap from '../../../components/ui/ImageWrap';
 import { ImgProp } from '../../../interface';
 import './WorkDetailParallax.scss';
@@ -49,9 +51,9 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   }
 
   return (
-    <div ref={ref} className="preview-container">
+    <div ref={ref} className={cx('preview-container', { 'is-mobile': preview.type === 'mobile' })}>
       <div className="reveal">
-        <ImageWrap isParallax src={preview.url} isMobile={preview.type === 'mobile'} />
+        <ImageWrap isParallax={!preview.noParallax} src={preview.url} isMobile={preview.type === 'mobile'} />
         <div className="reveal-mask" />
       </div>
     </div>

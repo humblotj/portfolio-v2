@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import {
-  combineReducers, configureStore, createSlice,
+  combineReducers, configureStore, createSelector, createSlice,
 } from '@reduxjs/toolkit';
 import { WorkDetailProps, WorkProps } from '../interface';
 
@@ -50,6 +50,9 @@ export const selectIsAboutModalOpen = (
 ) => state.store.isAboutModalOpen;
 export const selectIsInit = (state: { store: typeof initialState }) => state.store.isInit;
 export const selectWorks = (state: { store: typeof initialState }) => state.store.works;
+export const selectWorksSorted = createSelector(selectWorks, (works) => works.slice().sort(
+  (a, b) => (a.order < b.order ? 1 : -1),
+));
 export const selectWorkDetails = (state: { store: typeof initialState }) => state.store.workDetails;
 
 const reducer = combineReducers({ store: store.reducer });

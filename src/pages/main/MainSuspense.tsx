@@ -22,8 +22,7 @@ const MainSuspense = () => {
         query.forEach((doc: any) => {
           works.push({ ...doc.data(), id: doc.id });
         });
-        console.log(works.sort((a, b) => (a.order < b.order ? 1 : -1)));
-        dispatch(onSetWorks(works.sort((a, b) => (a.order < b.order ? 0 : 1))));
+        dispatch(onSetWorks(works));
       },
     },
   );
