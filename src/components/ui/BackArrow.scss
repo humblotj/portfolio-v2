@@ -6,6 +6,12 @@
     position: relative;
     text-decoration: none;
     padding: 5px 0 5px 20px;
+    transition: opacity 0.3s;
+
+    &.disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
 
     &.right {
         &:before,

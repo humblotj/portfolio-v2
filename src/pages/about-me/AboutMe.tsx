@@ -1,21 +1,21 @@
-import {
-  useContext, useEffect, useState,
-} from 'react';
+import { useEffect, useState } from 'react';
 import { gsap, Power1 } from 'gsap';
 import Modal from 'react-modal';
-import { StoreContext } from '../../context/StoreProvider';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './AboutMe.scss';
 import About from './components/About';
 import Skills from './components/Skills';
+import { onToggleAboutModal, selectIsAboutModalOpen } from '../../store/store';
 
 Modal.setAppElement('body');
 
 const AboutMe = () => {
   const [contentRef, setContentRef] = useState<HTMLDivElement|null>(null);
+  const dispatch = useDispatch();
+  const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
 
-  const { store: { isContactModalOpen }, dispatch } = useContext(StoreContext);
-  const closeContactModal = () => dispatch({ type: 'SET_CONTACT_MODAL_OPEN', payload: false });
+  const closeContactModal = () => dispatch(onToggleAboutModal(false));
 
   useEffect(() => {
     if (!contentRef) {
@@ -126,11 +126,11 @@ const AboutMe = () => {
 
   return (
     <>
-      {isContactModalOpen && (
+      {isAboutModalOpen && (
       <Modal
         overlayClassName="modal-overlay"
         className="modal-content"
-        isOpen={isContactModalOpen}
+        isOpen={isAboutModalOpen}
         contentRef={(node) => { setContentRef(node); }}
       >
         <About closeContactModal={closeContactModal} />

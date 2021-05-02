@@ -1,61 +1,48 @@
-import { Suspense } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+/* eslint-disable react/jsx-props-no-spreading */
+import { Route, Switch } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import firebase from 'firebase';
+import { Provider } from 'react-redux';
+import 'firebase/firestore';
+import { FirestoreProvider } from '@react-firebase/firestore';
 
 import './App.scss';
+import store from './store/store';
 import Header from './components/Header';
-import Loading from './components/Loading';
 import ScrollToTop from './components/ScrollToTop';
 import SideLeft from './components/SideLeft';
 import Strokes from './components/Strokes';
-import StoreProvider from './context/StoreProvider';
 import AboutMe from './pages/about-me/AboutMe';
-import useSuspenseAnimation from './hooks/useSuspenseAnimation';
+import MainSuspense from './pages/main/MainSuspense';
+import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const App = () => {
-  const {
-    DeferredComponent: Main,
-    hasImportFinished: hasImportFinishedMain,
-    enableComponent: enableComponentMain,
-  } = useSuspenseAnimation(
-    import('./pages/main/Main'),
-  );
-  const {
-    DeferredComponent: WorkDetail,
-    hasImportFinished: hasImportFinishedWork,
-    enableComponent: enableComponentWork,
-  } = useSuspenseAnimation(
-    import('./pages/work-detail/WorkDetail'),
-  );
+const config = JSON.parse(process.env.REACT_APP_API_KEY as any);
 
-  const location = useLocation();
+firebase.initializeApp({
+  ...config,
+});
 
-  return (
-    <>
-      <StoreProvider>
-        <ScrollToTop />
-        <Header />
-        <Strokes />
-        <SideLeft />
-        <Suspense fallback={(
-          <Loading
-            hasImportFinished={location.pathname === '/' ? hasImportFinishedMain : hasImportFinishedWork}
-            enableComponent={location.pathname === '/' ? enableComponentMain : enableComponentWork}
-          />
-          )}
-        >
-          <Switch>
-            <Route path="/work/:id" component={WorkDetail} />
-            <Route path="/" component={Main} />
-          </Switch>
-        </Suspense>
-        <AboutMe />
-      </StoreProvider>
-    </>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <FirestoreProvider {...config} firebase={firebase}>
+      <ScrollToTop />
+      <Header />
+      <Strokes />
+      <SideLeft />
+      <Switch>
+        <Route path="/work/:id">
+          <WorkDetailSuspense />
+        </Route>
+        <Route path="/">
+          <MainSuspense />
+        </Route>
+      </Switch>
+      <AboutMe />
+    </FirestoreProvider>
+  </Provider>
+);
 
 export default App;

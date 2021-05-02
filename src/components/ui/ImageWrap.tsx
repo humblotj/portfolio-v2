@@ -9,11 +9,12 @@ import useSize from '../../hooks/useSize';
 import SuspenseImg from '../SuspenseImg';
 
 interface Props {
+  src?: string
   isMobile?: boolean
   isParallax?: boolean
 }
 
-const ImageWrap = ({ isMobile = false, isParallax = false }: Props) => {
+const ImageWrap = ({ src, isMobile = false, isParallax = false }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
 
@@ -40,7 +41,7 @@ const ImageWrap = ({ isMobile = false, isParallax = false }: Props) => {
       style={{ height: width * (isMobile ? 1.6417 : 0.5925) }}
     >
       <div className="image-crop">
-        <SuspenseImg src={(isMobile || isParallax) ? image2 : image} />
+        <img src={src || ''} alt="" />
       </div>
     </div>
   );

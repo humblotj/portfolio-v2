@@ -4,13 +4,18 @@ import { gsap } from 'gsap';
 import TagList from '../../../components/ui/TagList';
 import './WorkDetailDescription.scss';
 import TextBounce from '../../../components/ui/TextBounce';
+import { WorkDetailProps } from '../../../interface';
 
-const WorkDetailDescription = () => {
+interface Props {
+  work: WorkDetailProps
+}
+
+const WorkDetailDescription = ({ work }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) {
+    if (!element || !work) {
       return;
     }
 
@@ -61,7 +66,15 @@ const WorkDetailDescription = () => {
         },
       );
     }
-  }, []);
+  }, [work]);
+
+  if (!work) {
+    return null;
+  }
+
+  const {
+    name, description, year, techs,
+  } = work;
 
   return (
     <div ref={ref} className="work-detail-description">
@@ -73,7 +86,7 @@ const WorkDetailDescription = () => {
         <br />
         <div className="reveal desc-heading">
           <h2 className="reveal-text">
-            <TextBounce text="Jean Trello" />
+            <TextBounce text={name} />
           </h2>
           <div className="reveal-mask" aria-hidden />
         </div>
@@ -86,10 +99,7 @@ const WorkDetailDescription = () => {
         <br />
         <div className="reveal no-mask">
           <p className="reveal-text">
-            ThinkW is web development company located in Calgary.
-            The company specializes in building eCommerce websites, SEO and Social Networks.
-            The design of the website should be clean but at the same time make usage of bright.
-            The portfolio page should get special attention because that’s how they get most of.
+            {description}
           </p>
         </div>
       </div>
@@ -100,7 +110,7 @@ const WorkDetailDescription = () => {
         </div>
         <br />
         <div className="reveal no-mask">
-          <p className="reveal-text">2020</p>
+          <p className="reveal-text">{year}</p>
         </div>
       </div>
       <div>
@@ -111,7 +121,7 @@ const WorkDetailDescription = () => {
         <br />
         <div className="desc-heading reveal no-mask">
           <div className="reveal-text">
-            <TagList tags={['React', 'Redux', 'Javascript']} />
+            <TagList tags={techs} />
           </div>
         </div>
       </div>

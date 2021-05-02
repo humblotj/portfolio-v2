@@ -1,10 +1,11 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { StoreContext } from '../context/StoreProvider';
 import './Loading.scss';
 import Strokes from './Strokes';
+import { selectIsInit } from '../store/store';
 
 interface Props {
   enableComponent: () => void,
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const Loading = ({ enableComponent, hasImportFinished }: Props) => {
-  const { store: { isInit } } = useContext(StoreContext);
+  const isInit = useSelector(selectIsInit);
   const ref = useRef<HTMLDivElement>(null);
   const location = useLocation();
 

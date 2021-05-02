@@ -1,5 +1,7 @@
+import { FirestoreCollection } from '@react-firebase/firestore';
 import gsap from 'gsap/all';
 import { forwardRef, useEffect, useRef } from 'react';
+import { WorkProps } from '../../interface';
 import WorkItem from './components/WorkItem';
 import './Work.scss';
 
@@ -65,7 +67,18 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
           <div className="divider" aria-hidden />
         </div>
         <ul>
-          {[0, 1, 2].map((i) => <WorkItem key={i} index={i} />)}
+          <FirestoreCollection path="/projects/" orderBy={[{ field: 'order', type: 'desc' }]}>
+            {(d) => (d.isLoading ? 'Loading'
+              : d.value.map((work: WorkProps,
+                index: number) => (
+                  <WorkItem
+                    key={work.name}
+                    id={d.ids[index]}
+                    work={work}
+                    index={index}
+                  />
+              )))}
+          </FirestoreCollection>
         </ul>
       </div>
     </section>

@@ -1,14 +1,15 @@
 import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 import ImageWrap from '../../../components/ui/ImageWrap';
+import { ImgProp } from '../../../interface';
 import './WorkDetailParallax.scss';
 
-const WorkDetailParallax = () => {
+const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) {
+    if (!element || !preview) {
       return;
     }
 
@@ -41,11 +42,16 @@ const WorkDetailParallax = () => {
       },
       'reveal',
     );
-  }, []);
+  }, [preview]);
+
+  if (!preview) {
+    return null;
+  }
+
   return (
     <div ref={ref} className="preview-container">
       <div className="reveal">
-        <ImageWrap isParallax />
+        <ImageWrap isParallax src={preview.url} isMobile={preview.type === 'mobile'} />
         <div className="reveal-mask" />
       </div>
     </div>

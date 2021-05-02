@@ -6,13 +6,19 @@ import cx from 'classnames';
 import './WorkItem.scss';
 import { ReactComponent as ArrowIcon } from '../../../assets/icons/arrow.svg';
 import ImageWrap from '../../../components/ui/ImageWrap';
+import { WorkProps } from '../../../interface';
 
 interface Props {
-  index: number
+  index: number,
+  work: WorkProps,
+  id: string
 }
 
-const WorkItem = ({ index }: Props) => {
+const WorkItem = ({ index, work, id }: Props) => {
   const ref = useRef<HTMLLIElement>(null);
+  const {
+    isPersonal, name, preview, techs,
+  } = work;
 
   const animate = (element: HTMLElement) => {
     const tl = gsap.timeline({
@@ -63,16 +69,18 @@ const WorkItem = ({ index }: Props) => {
     <li ref={ref} className="work-item">
       <span className="counter">{(`${index + 1}`).padStart(2, '0')}</span>
       <Link
-        to={`work/${index}`}
+        to={`work/${id}`}
       >
         <div className="work-item-content">
-          <h4>Personal Work</h4>
+          <h4>{isPersonal ? 'Personal Work' : 'Company Work'}</h4>
           <div className="work-item-title">
-            <h3>Jean Trello</h3>
-            <p>Angular</p>
+            <h3>{name}</h3>
+            <p style={{ color: techs[0]?.color }}>
+              {techs.map((tech, index) => (index !== 0 ? `, ${tech.name}` : tech.name))}
+            </p>
           </div>
-          <div className={cx('work-preview', { 'is-mobile': index === 1 })}>
-            <ImageWrap isMobile={index === 1} />
+          <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
+            <ImageWrap src={preview.url} isMobile={preview.type === 'mobile'} />
           </div>
           <ArrowIcon className="arrow-icon" />
           <p>See more</p>

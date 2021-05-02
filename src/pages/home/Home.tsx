@@ -1,25 +1,19 @@
-import {
-  useContext, useEffect, useRef,
-} from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useDispatch } from 'react-redux';
 
 import './Home.scss';
 import Button from '../../components/ui/Button';
-import { StoreContext } from '../../context/StoreProvider';
 import Strokes from '../../components/Strokes';
 import HomeBackground from './components/HomeBackground';
 import ScrollTo from '../../components/ui/ScrollTo';
 import TextBounce from '../../components/ui/TextBounce';
+import { onToggleAboutModal } from '../../store/store';
 
 const Home = () => {
   const ref = useRef<HTMLElement>(null);
-  const { dispatch } = useContext(StoreContext);
-
-  const openContactModal = () => dispatch({ type: 'SET_CONTACT_MODAL_OPEN', payload: true });
-  const loading = () => {
-    dispatch({ type: 'SET_IS_LOADING', payload: true });
-    setTimeout(() => dispatch({ type: 'SET_IS_LOADING', payload: false }), 1500);
-  };
+  const dispatch = useDispatch();
+  const openContactModal = () => dispatch(onToggleAboutModal(true));
 
   useEffect(() => {
     const element = ref.current;

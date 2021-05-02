@@ -1,15 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import './Nav.scss';
-import { useContext, useEffect, useRef } from 'react';
 import FakeLink from './ui/FakeLink';
 import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
 import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
-import { StoreContext } from '../context/StoreProvider';
 import Strokes from './Strokes';
+import { onToggleAboutModal } from '../store/store';
 
 interface Props {
   open: boolean,
@@ -20,12 +21,11 @@ const tl = gsap.timeline();
 
 const Nav = ({ open, onClose }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { dispatch } = useContext(StoreContext);
-  const location = useLocation();
+  const dispatch = useDispatch();
 
   const onOpenContact = () => {
     onClose();
-    dispatch({ type: 'SET_CONTACT_MODAL_OPEN', payload: true });
+    dispatch(onToggleAboutModal(true));
   };
 
   useEffect(() => {
