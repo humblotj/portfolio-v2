@@ -29,6 +29,10 @@ const Nav = ({ open, onClose }: Props) => {
   };
 
   useEffect(() => {
+    if (window.innerWidth < 768) {
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
     if (open) {
       const element = ref.current;
       if (!element) {
