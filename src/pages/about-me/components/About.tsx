@@ -22,9 +22,7 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => (
       <br />
       <p className="about-description">
         Hi! I&apos;m Jean, a
-        {' '}
-        <strong>French software developer</strong>
-        {' '}
+        French software developer
         based in Seoul.
         <br />
         I specialize in front-end development – building
@@ -40,7 +38,14 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => (
         projects –
         but also like experimenting with new backend technologies.
         <br />
-        I am open to new technologies and development opportunities.
+        I am open to
+        {' '}
+        <strong>new technologies</strong>
+        {' '}
+        and
+        {' '}
+        <strong>development opportunities</strong>
+        .
       </p>
     </div>
     <div className="about-footer">
