@@ -15,7 +15,6 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
-        start: 'top 85%',
       },
     });
     tl.addLabel('start');
