@@ -213,7 +213,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           <dt>
             <div className="reveal">
               <h3 className="reveal-text">
-                Wants to learn:
+                Want to learn:
               </h3>
               <div className="reveal-mask" aria-hidden />
             </div>
