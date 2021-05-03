@@ -51,7 +51,7 @@
         transition: all 0.25s cubic-bezier(0.785, 0.785, 0.15, 0.86);
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
         background: #0c9;
         color: #fff;
 
@@ -64,6 +64,10 @@
             opacity: 1;
             transform: scale(1);
         }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
     }
 }
 

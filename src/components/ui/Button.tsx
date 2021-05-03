@@ -9,16 +9,18 @@ interface Props {
     onClick?: () => void,
     children?: ReactNode,
     color?: string,
+    disabled?: boolean
 }
 
 const Button = ({
-  type = 'button', onClick = () => {}, children = null, color = 'primary',
+  type = 'button', onClick = () => {}, children = null, color = 'primary', disabled = false,
 }: Props) => (
   <button
     type={type}
     className={cx('btn', color)}
     onClick={onClick}
     data-text={children}
+    disabled={disabled}
   >
     {children}
   </button>

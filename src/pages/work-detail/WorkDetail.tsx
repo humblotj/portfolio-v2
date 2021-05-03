@@ -52,7 +52,7 @@ const WorkDetail = () => {
         {work.links?.length ? work.links.map(({ type, url }) => (
           <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>
         ))
-          : <Button>Coming Soon</Button>}
+          : <Button disabled>Coming Soon</Button>}
 
         {work.repoUrl
         && (
