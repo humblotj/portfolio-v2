@@ -1,5 +1,8 @@
-import { forwardRef, useEffect } from 'react';
+import {
+  FormEvent, forwardRef, useEffect, useRef,
+} from 'react';
 import { gsap } from 'gsap';
+import emailjs from 'emailjs-com';
 
 import './Contact.scss';
 import Button from '../../components/ui/Button';
@@ -9,6 +12,7 @@ import useCombinedRefs from '../../hooks/useCombinedRefs';
 
 const Contact = forwardRef<HTMLElement>((props, ref) => {
   const innerRef = useCombinedRefs(ref) as any;
+  const formRef = useRef<HTMLFormElement>(null);
 
   const animate = (element: HTMLElement) => {
     const tl = gsap.timeline({
@@ -83,6 +87,19 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
     setTimeout(() => animate(element), 100);
   }, []);
 
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    emailjs.sendForm(process.env.SERVICE_ID || '',
+      process.env.TEMPLATE_ID || '', e.target as any, process.env.USER_ID || '')
+      .then(() => {
+        formRef.current?.reset();
+        alert('Email Sent');
+      }, (error) => {
+        alert(error.text);
+      });
+  };
+
   return (
     <section ref={innerRef} className="contact-sec">
       <ContactMask />
@@ -93,10 +110,10 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
           <p>
             Have a question or want to work together?
           </p>
-          <form action="">
-            <TextField label="Name" />
-            <TextField label="E-mail" />
-            <TextField label="Message" textarea />
+          <form onSubmit={sendEmail} ref={formRef}>
+            <TextField label="Name" name="fromName" />
+            <TextField label="E-mail" name="fromEmail" />
+            <TextField label="Message" textarea name="message" />
             <div className="submit-wrap">
               <Button type="submit" color="red">Send Message</Button>
             </div>

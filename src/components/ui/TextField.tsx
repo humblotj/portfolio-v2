@@ -7,11 +7,12 @@ interface Props {
     label?:string,
     className?: string,
     placeholder?: string,
-    error?: boolean
+    error?: boolean,
+    name?: string
 }
 
 const TextField = ({
-  textarea = false, label = '', className = '', placeholder = '', error = false,
+  textarea = false, label = '', className = '', placeholder = '', error = false, name = '',
 }: Props) => {
   const InputElement = textarea ? 'textarea' : 'input';
 
@@ -22,6 +23,7 @@ const TextField = ({
         className={cx('form-control required', className)}
         placeholder={placeholder}
         required
+        name={name}
       />
       <span className="required">{label}</span>
       <span className="border" aria-hidden />
