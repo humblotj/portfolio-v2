@@ -25,7 +25,10 @@ firebase.initializeApp({
   ...config,
 });
 export const db = firebase.firestore();
-firebase.analytics();
+
+if (process.env.NODE_ENV !== 'development') {
+  firebase.analytics();
+}
 
 const App = () => {
   const location = useLocation();

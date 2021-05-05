@@ -5,6 +5,7 @@ import cx from 'classnames';
 import ImageWrap from '../../../components/ui/ImageWrap';
 import { ImgProp } from '../../../interface';
 import './WorkDetailParallax.scss';
+// import Laptop from '../../../components/Laptop';
 
 const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,8 +53,13 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
 
   return (
     <div ref={ref} className={cx('preview-container', { 'is-mobile': preview.type === 'mobile' })}>
+      {/* <Laptop src={preview.url} /> */}
       <div className="reveal">
-        <ImageWrap isParallax={!preview.noParallax} src={preview.url} isMobile={preview.type === 'mobile'} />
+        <ImageWrap
+          isParallax={!preview.noParallax}
+          src={preview.url}
+          isMobile={preview.type === 'mobile'}
+        />
         <div className="reveal-mask" />
       </div>
     </div>
