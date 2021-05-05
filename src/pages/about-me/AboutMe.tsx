@@ -108,7 +108,7 @@ const AboutMe = () => {
       {
         opacity: 1,
         duration: 0.5,
-        delay: 0.9,
+        delay: 0.7 + 0.25 * 2,
         y: '0',
       },
       'reveal',
@@ -118,7 +118,7 @@ const AboutMe = () => {
       {
         opacity: 0,
         duration: 0.5,
-        delay: 0.9,
+        delay: 0.7 + 0.25 * 2,
       },
       'reveal',
     );
