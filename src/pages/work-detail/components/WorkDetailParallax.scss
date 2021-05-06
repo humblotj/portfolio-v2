@@ -1,17 +1,19 @@
 .preview-container {
-    padding: 0 80px;
+    display: flex;
+    justify-content: center;
+    padding: 0 80px 20px;
 
     &.is-mobile {
         max-width: 460px!important;
     }
 
-    > div {
-        display: block;
+    // > div {
+    //     display: block;
 
-        .image-wrap {
-            opacity: 0;
-        }
-    }
+    //     .image-wrap {
+    //         opacity: 0;
+    //     }
+    // }
 }
 
 @media only screen and (max-width: 576px) {

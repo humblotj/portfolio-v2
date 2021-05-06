@@ -1,5 +1,5 @@
 .mockup {
-    display: inline-block;
+    display: inline-flex;
     position: relative;
     z-index: 3;
     text-align: center;
@@ -7,76 +7,69 @@
     perspective: 2400px;
     perspective-origin: 50% 100%;
     opacity: 0;
-    transition: 500ms opacity;
-}
+    transform: translateX(100%);
 
-.mockup.loaded {
-    opacity: 1;
-}
+    img {
+        display: block;
+        max-width: 100%;
+        backface-visibility: hidden;
+    }
 
-.mockup .part .top,
-.mockup .part .bottom {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+    .image-crop {
+        position: absolute;
+        top: 8%;
+        left: 4%;
+        bottom: 6%;
+        width: 92%;
+        z-index: 0;
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 1px);
+        overflow: hidden;
 
-.mockup .part.top {
-    transform: translate3d(0, 0, 0) rotateX(-90deg);
-}
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
 
-.mockup:hover .part.top {
-    transform: translate3d(0, 0, 0) rotateX(0deg);
-}
+    .part {
+        display: inline-block;
+        position: relative;
+        transform-style: preserve-3d;
+        transform-origin: 50% 100%;
 
-.mockup .part {
-    display: inline-block;
-    position: relative;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    transform-origin: 50% 100%;
-    transition: 900ms;
-}
+        .top,
+        .bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
-.mockup.opened .part .top {
-    transform: translate3d(0, 0, -11px) rotateX(90deg) scale(1, 1);
-}
+        .top {
+            transform: translate3d(0, 0, -11px) rotateX(90deg) scale(1, 1);
 
-.mockup .part .top {
-    transform-origin: 50% 0;
-    transform: translate3d(0, 0, -11px) rotateX(90deg);
-    transition: 900ms;
-}
+            transform-origin: 50% 0;
+            transform: translate3d(0, 0, -11px) rotateX(90deg);
+        }
 
-.mockup img {
-    display: block;
-    max-width: 100%;
-    backface-visibility: hidden;
-}
+        .cover {
+            position: relative;
+        }
 
-.mockup .part .cover {
-    position: relative;
-}
+        .bottom {
+            transform-origin: 50% 0;
+            transform: translate3d(0, 0, 0) rotateX(90deg);
+        }
 
-.mockup .video {
-    display: block;
-    position: absolute;
-    top: 8%;
-    left: 4%;
-    width: 92%;
-    border-radius: 6px;
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 1px);
-}
+        &.top {
+            transform: translate3d(0, 0, 0) rotateX(-90deg);
+        }
 
-.mockup .part.bottom {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate3d(0, 0, 0) rotateX(-90deg);
-}
-
-.mockup .part .bottom {
-    transform-origin: 50% 0;
-    transform: translate3d(0, 0, 0) rotateX(90deg);
+        &.bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate3d(0, 0, 0) rotateX(-90deg);
+        }
+    }
 }
