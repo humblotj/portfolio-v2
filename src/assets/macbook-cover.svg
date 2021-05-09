@@ -24,10 +24,10 @@
                 <g id="Mockup" transform="translate(0.000000, 0.500000)">
                     <g id="Fill-1">
                         <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-4"></use>
-                        <use fill-opacity="0.25" fill="#D1F9FF" fill-rule="evenodd" style="mix-blend-mode: color;" xlink:href="#path-4"></use>
+                        <use fill-opacity="0.9" fill="#000000" fill-rule="evenodd" xlink:href="#path-4"></use>
                         <path stroke="url(#linearGradient-2)" stroke-width="3" d="M72.333,2 C64.3256468,2 57.834,8.49220739 57.834,16.5 L57.834,463.5 C57.834,468.746806 62.08666,473 67.333,473 L737.333,473 C742.579573,473 746.833,468.746573 746.833,463.5 L746.833,16.5 C746.833,8.49220739 740.341353,2 732.334,2 L72.333,2 Z"></path>
                         <path stroke="url(#linearGradient-3)" stroke-width="2.5" d="M72.333,1.75 C64.1875708,1.75 57.584,8.35414103 57.584,16.5 L57.584,463.5 C57.584,468.88487 61.9485818,473.25 67.333,473.25 L737.333,473.25 C742.717644,473.25 747.083,468.884644 747.083,463.5 L747.083,16.5 C747.083,8.35414103 740.479429,1.75 732.334,1.75 L72.333,1.75 Z"></path>
-                        <use stroke-opacity="0.25" stroke="#D1F9FF" stroke-width="1" xlink:href="#path-4"></use>
+                        <use stroke-opacity="0.25" stroke="#000000" stroke-width="1" xlink:href="#path-4"></use>
                     </g>
                 </g>
             </g>

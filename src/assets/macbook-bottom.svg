@@ -53,20 +53,20 @@
                         <g id="Fill-6">
                             <use fill="url(#linearGradient-1)" xlink:href="#path-3"></use>
                             <use fill="url(#linearGradient-2)" xlink:href="#path-3"></use>
-                            <use fill-opacity="0.25" fill="#D1F9FF" style="mix-blend-mode: color;" xlink:href="#path-3"></use>
+                            <use fill-opacity="0.25" fill="#D1F9FF" xlink:href="#path-3"></use>
                         </g>
                         <g id="Fill-8">
                             <use fill="url(#linearGradient-4)" xlink:href="#path-5"></use>
-                            <use fill-opacity="0.25" fill="#D1F9FF" style="mix-blend-mode: color;" xlink:href="#path-5"></use>
+                            <use fill-opacity="0.25" fill="#D1F9FF" xlink:href="#path-5"></use>
                         </g>
                         <g id="Fill-10">
                             <use fill="url(#linearGradient-6)" xlink:href="#path-7"></use>
-                            <use fill-opacity="0.25" fill="#D1F9FF" style="mix-blend-mode: color;" xlink:href="#path-7"></use>
+                            <use fill-opacity="0.25" fill="#D1F9FF" xlink:href="#path-7"></use>
                         </g>
                         <g id="Fill-12">
                             <use fill="url(#linearGradient-8)" xlink:href="#path-10"></use>
                             <use fill="url(#linearGradient-9)" xlink:href="#path-10"></use>
-                            <use fill-opacity="0.25" fill="#D1F9FF" style="mix-blend-mode: color;" xlink:href="#path-10"></use>
+                            <use fill-opacity="0.25" fill="#D1F9FF" xlink:href="#path-10"></use>
                         </g>
                     </g>
                 </g>

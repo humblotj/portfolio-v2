@@ -7,7 +7,6 @@ import WorkDetailDescription from './components/WorkDetailDescription';
 import WorkPreviewCarousel from './components/WorkPreviewCarousel';
 import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
-import WorkDetailParallax from './components/WorkDetailParallax';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 
 const WorkDetail = () => {
@@ -47,7 +46,6 @@ const WorkDetail = () => {
         Turn Back Home
       </BackArrow>
       <WorkDetailDescription work={work} />
-      <WorkDetailParallax preview={work.mainPreview} />
       <div className="work-links">
         {work.links?.length ? work.links.map(({ type, url }) => (
           <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>

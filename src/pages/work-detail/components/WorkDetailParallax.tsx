@@ -1,14 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import ImageWrap from '../../../components/ui/ImageWrap';
 import { ImgProp } from '../../../interface';
 import './WorkDetailParallax.scss';
-// import Laptop from '../../../components/Laptop';
 
 const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = preview.type === 'mobile';
+  const [animationIsComplete, setAnimationIsComplete] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -17,33 +18,14 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
     }
 
     const tl = gsap.timeline();
-    tl.fromTo(
-      element.querySelector('.reveal-mask'),
-      { scaleX: 0 },
-      {
-        scaleX: 1,
-        duration: 1.3,
-      },
-    );
-    tl.add('reveal');
     tl.to(
-      element.querySelector('.reveal-mask'),
+      element,
       {
-        scaleX: 0,
-        transformOrigin: '100% 50%',
-        duration: 0.5,
-        delay: 0.2,
-      },
-      'reveal',
-    );
-    tl.to(
-      element.querySelector('.image-wrap'),
-      {
+        x: 0,
         opacity: 1,
-        duration: 0.5,
-        delay: 0.2,
+        duration: 1.3,
+        onComplete: () => setAnimationIsComplete(true),
       },
-      'reveal',
     );
   }, [preview]);
 
@@ -52,16 +34,13 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   }
 
   return (
-    <div ref={ref} className={cx('preview-container', { 'is-mobile': preview.type === 'mobile' })}>
-      {/* <Laptop src={preview.url} /> */}
-      <div className="reveal">
-        <ImageWrap
-          isParallax={!preview.noParallax}
-          src={preview.url}
-          isMobile={preview.type === 'mobile'}
-        />
-        <div className="reveal-mask" />
-      </div>
+    <div ref={ref} className={cx('preview-container', { 'is-mobile': isMobile })}>
+      <ImageWrap
+        src={preview.url}
+        isMobile={isMobile}
+        startAnimation={animationIsComplete}
+        isParallax
+      />
     </div>
   );
 };

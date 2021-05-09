@@ -33,15 +33,15 @@
             <g id="Fill-6">
                 <use fill="url(#linearGradient-1)" xlink:href="#path-3"></use>
                 <use fill="url(#linearGradient-2)" xlink:href="#path-3"></use>
-                <use fill-opacity="0.25" fill="#D1F9FF" style="mix-blend-mode: color;" xlink:href="#path-3"></use>
+                <use fill-opacity="0.25" fill="#D1F9FF"  xlink:href="#path-3"></use>
             </g>
             <g id="Fill-6">
                 <use fill="url(#linearGradient-4)" xlink:href="#path-5"></use>
-                <use fill-opacity="0.25" fill="#00BBD8" style="mix-blend-mode: color;" xlink:href="#path-5"></use>
+                <use fill-opacity="0.25" fill="#00BBD8" xlink:href="#path-5"></use>
             </g>
             <g id="Fill-8" transform="translate(402.333500, 4.250000) scale(1, -1) translate(-402.333500, -4.250000) ">
                 <use fill="url(#linearGradient-4)" xlink:href="#path-6"></use>
-                <use fill-opacity="0.25" fill="#D1F9FF" style="mix-blend-mode: color;" xlink:href="#path-6"></use>
+                <use fill-opacity="0.25" fill="#D1F9FF" xlink:href="#path-6"></use>
                 <use fill-opacity="0.34" fill="#FFFFFF" xlink:href="#path-6"></use>
             </g>
         </g>
