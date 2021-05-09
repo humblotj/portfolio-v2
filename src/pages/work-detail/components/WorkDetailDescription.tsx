@@ -5,6 +5,9 @@ import TagList from '../../../components/ui/TagList';
 import './WorkDetailDescription.scss';
 import TextBounce from '../../../components/ui/TextBounce';
 import { WorkDetailProps } from '../../../interface';
+import Laptop from '../../../components/ui/Laptop';
+import Phone from '../../../components/ui/Phone';
+import WorkDetailParallax from './WorkDetailParallax';
 
 interface Props {
   work: WorkDetailProps
@@ -19,53 +22,63 @@ const WorkDetailDescription = ({ work }: Props) => {
       return;
     }
 
-    const reveal = element.querySelectorAll('.reveal:not(.no-mask)');
+    setTimeout(() => {
+      const reveal = element.querySelectorAll('.reveal:not(.no-mask)');
 
-    for (let i = 0; i < reveal.length; i++) {
-      const tl = gsap.timeline();
-      tl.fromTo(
-        reveal[i].querySelector('.reveal-mask'),
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          duration: 0.8 + i * 0.1,
-        },
-      );
-      tl.add('reveal');
-      tl.to(
-        reveal[i].querySelector('.reveal-mask'),
-        {
-          scaleX: 0,
-          transformOrigin: '100% 50%',
-          duration: 0.5,
-          delay: 0.2,
-        },
-        'reveal',
-      );
-      tl.to(
-        reveal[i].querySelector('.reveal-text'),
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          delay: 0.2,
-        },
-        'reveal',
-      );
-    }
+      for (let i = 0; i < reveal.length; i++) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: reveal[i].querySelector('.reveal-mask') as any,
+          },
+        });
+        tl.to(
+          reveal[i].querySelector('.reveal-mask'),
+          {
+            scaleX: 1,
+            duration: 0.8 + i * 0.1,
+          },
+        );
+        tl.add('reveal');
+        tl.to(
+          reveal[i].querySelector('.reveal-mask'),
+          {
+            scaleX: 0,
+            transformOrigin: '100% 50%',
+            duration: 0.5,
+            delay: 0.2,
+          },
+          'reveal',
+        );
+        tl.to(
+          reveal[i].querySelector('.reveal-text'),
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            delay: 0.2,
+          },
+          'reveal',
+        );
+      }
 
-    const revealNoMask = element.querySelectorAll('.reveal.no-mask');
-    for (let i = 0; i < revealNoMask.length; i++) {
-      gsap.to(
-        revealNoMask[i].querySelector('.reveal-text'),
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay: 1.2,
-        },
-      );
-    }
+      const revealNoMask = element.querySelectorAll('.reveal.no-mask');
+      for (let i = 0; i < revealNoMask.length; i++) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: revealNoMask[i].querySelector('.reveal-text') as any,
+          },
+        });
+        tl.to(
+          revealNoMask[i].querySelector('.reveal-text'),
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 1.2,
+          },
+        );
+      }
+    }, 100);
   }, [work]);
 
   if (!work) {
@@ -91,6 +104,7 @@ const WorkDetailDescription = ({ work }: Props) => {
           <div className="reveal-mask" aria-hidden />
         </div>
       </div>
+      <WorkDetailParallax preview={work.mainPreview} />
       <div>
         <div className="reveal desc-heading secondary">
           <h3 className="reveal-text">About</h3>

@@ -66,9 +66,8 @@ const AboutMe = () => {
     const aboutReveal = contentRef.querySelectorAll('.about .reveal');
     for (let i = 0; i < aboutReveal.length; i++) {
       const tl = gsap.timeline();
-      tl.fromTo(
+      tl.to(
         aboutReveal[i].querySelector('.reveal-mask'),
-        { scaleX: 0 },
         {
           scaleX: 1,
           duration: 0.8 + i * 0.25,

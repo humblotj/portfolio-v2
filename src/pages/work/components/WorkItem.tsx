@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
@@ -80,7 +80,12 @@ const WorkItem = ({ index, work, id }: Props) => {
             </p>
           </div>
           <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
-            <ImageWrap src={preview.url} isMobile={preview.type === 'mobile'} />
+            <ImageWrap
+              src={preview.url}
+              isMobile={preview.type === 'mobile'}
+              startAnimation
+              noAnimation
+            />
           </div>
           <ArrowIcon className="arrow-icon" />
           <p>See more</p>

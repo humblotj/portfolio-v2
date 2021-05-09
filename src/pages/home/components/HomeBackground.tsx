@@ -13,8 +13,7 @@ const HomeBackground = () => {
     }
 
     const tl = gsap.timeline();
-    tl.fromTo(element.querySelector('.overlay'),
-      { scaleX: 0 },
+    tl.to(element.querySelector('.overlay'),
       {
         scaleX: 1,
         duration: 0.8,

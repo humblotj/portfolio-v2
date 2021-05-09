@@ -17,7 +17,7 @@
     .work-links {
         display: flex;
         justify-content: center;
-        padding-top: 40px;
+        padding: 0 20px;
 
         .btn:not(:last-child) {
             margin-right: 40px;
@@ -40,13 +40,13 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-    .work-detail-sec {
-        .preview-container {
-            padding: 0 60px;
-        }
-    }
-}
+// @media only screen and (max-width: 768px) {
+//     .work-detail-sec {
+//         .preview-container {
+//             padding: 0 60px;
+//         }
+//     }
+// }
 
 @media only screen and (max-width: 576px) {
     .work-detail-sec {
@@ -54,8 +54,8 @@
             left: 50px;
         }
 
-        .preview-container {
-            padding: 0 40px;
-        }
+        // .preview-container {
+        //     padding: 0 40px;
+        // }
     }
 }

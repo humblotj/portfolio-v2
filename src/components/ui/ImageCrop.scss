@@ -1,0 +1,29 @@
+.image-crop {
+    position: absolute;
+    width: 92%;
+    top: 8%;
+    left: 4%;
+    bottom: 6%;
+
+    z-index: 0;
+    overflow: hidden;
+
+    &.is-mobile {
+        width: 100%;
+        top: 11.5%;
+        bottom: 12.5%;
+        left: 0;
+        right: 0;
+
+        img {
+            width: 75.5% !important;
+        }
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+}
