@@ -174,7 +174,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           <dt>
             <div className="reveal">
               <h3 className="reveal-text">
-                Familar with:
+                Familiar with:
               </h3>
               <div className="reveal-mask" aria-hidden />
             </div>
