@@ -12,6 +12,7 @@
     z-index: 3;
     text-align: center;
     perspective-origin: 50% 100%;
+    transform-style: preserve-3d;
 
     img {
         display: block;
