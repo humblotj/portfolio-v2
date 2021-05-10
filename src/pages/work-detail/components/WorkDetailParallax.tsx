@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
+import { gsap, Power4 } from 'gsap';
 import cx from 'classnames';
 
 import ImageWrap from '../../../components/ui/ImageWrap';
@@ -17,15 +17,27 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
       return;
     }
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+      },
+    });
+    tl.addLabel('start');
     tl.to(
       element,
       {
         x: 0,
-        opacity: 1,
         duration: 1.3,
         onComplete: () => setAnimationIsComplete(true),
-      },
+      }, 'start',
+    );
+    tl.to(
+      element,
+      {
+        opacity: 1,
+        ease: Power4.easeIn,
+        duration: 1.3,
+      }, 'start',
     );
   }, [preview]);
 
