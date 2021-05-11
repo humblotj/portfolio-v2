@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { gsap, Power4 } from 'gsap';
+import { gsap, Power2 } from 'gsap';
 import cx from 'classnames';
 
 import ImageWrap from '../../../components/ui/ImageWrap';
@@ -35,7 +35,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
       element,
       {
         opacity: 1,
-        ease: Power4.easeIn,
+        ease: Power2.easeIn,
         duration: 1.3,
       }, 'start',
     );
