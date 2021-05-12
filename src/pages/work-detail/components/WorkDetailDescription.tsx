@@ -23,60 +23,62 @@ const WorkDetailDescription = ({ work }: Props) => {
     }
 
     setTimeout(() => {
-      const reveal = element.querySelectorAll('.reveal:not(.no-mask)');
+      const descParts = element.querySelectorAll('.desc-part');
 
-      for (let i = 0; i < reveal.length; i++) {
+      for (let j = 0; j < descParts.length; j++) {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: reveal[i].querySelector('.reveal-mask') as any,
+            trigger: descParts[j].querySelector('.reveal:not(.desc-heading)') as any,
           },
         });
-        tl.to(
-          reveal[i].querySelector('.reveal-mask'),
-          {
-            scaleX: 1,
-            duration: 0.8 + i * 0.1,
-          },
-        );
-        tl.add('reveal');
-        tl.to(
-          reveal[i].querySelector('.reveal-mask'),
-          {
-            scaleX: 0,
-            transformOrigin: '100% 50%',
-            duration: 0.5,
-            delay: 0.2,
-          },
-          'reveal',
-        );
-        tl.to(
-          reveal[i].querySelector('.reveal-text'),
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            delay: 0.2,
-          },
-          'reveal',
-        );
-      }
 
-      const revealNoMask = element.querySelectorAll('.reveal.no-mask');
-      for (let i = 0; i < revealNoMask.length; i++) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: revealNoMask[i].querySelector('.reveal-text') as any,
-          },
-        });
-        tl.to(
-          revealNoMask[i].querySelector('.reveal-text'),
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: 1.2,
-          },
-        );
+        const reveal = descParts[j].querySelectorAll('.reveal:not(.no-mask)');
+        tl.addLabel('start');
+        for (let i = 0; i < reveal.length; i++) {
+          tl.to(
+            reveal[i].querySelector('.reveal-mask'),
+            {
+              scaleX: 1,
+              duration: 0.8 + i * 0.1,
+            },
+            'start',
+          );
+          tl.add('reveal');
+          tl.to(
+            reveal[i].querySelector('.reveal-mask'),
+            {
+              scaleX: 0,
+              transformOrigin: '100% 50%',
+              duration: 0.5,
+              delay: 0.2,
+            },
+            'reveal',
+          );
+          tl.to(
+            reveal[i].querySelector('.reveal-text'),
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              delay: 0.2,
+            },
+            'reveal',
+          );
+        }
+
+        const revealNoMask = descParts[j].querySelectorAll('.reveal.no-mask');
+        for (let i = 0; i < revealNoMask.length; i++) {
+          tl.to(
+            revealNoMask[i].querySelector('.reveal-text'),
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              delay: 1.2,
+            },
+            'start',
+          );
+        }
       }
     }, 100);
   }, [work]);
@@ -91,13 +93,13 @@ const WorkDetailDescription = ({ work }: Props) => {
 
   return (
     <div ref={ref} className="work-detail-description">
-      <div>
+      <div className="desc-part">
         <div className="reveal desc-heading secondary">
           <h3 className="reveal-text">Project</h3>
           <div className="reveal-mask" aria-hidden />
         </div>
         <br />
-        <div className="reveal desc-heading">
+        <div className="reveal">
           <h2 className="reveal-text">
             <TextBounce text={name} />
           </h2>
@@ -105,7 +107,7 @@ const WorkDetailDescription = ({ work }: Props) => {
         </div>
       </div>
       <WorkDetailParallax preview={work.mainPreview} />
-      <div>
+      <div className="desc-part">
         <div className="reveal desc-heading secondary">
           <h3 className="reveal-text">About</h3>
           <div className="reveal-mask" aria-hidden />
@@ -117,7 +119,7 @@ const WorkDetailDescription = ({ work }: Props) => {
           </p>
         </div>
       </div>
-      <div>
+      <div className="desc-part">
         <div className="reveal desc-heading secondary">
           <h3 className="reveal-text">Year</h3>
           <div className="reveal-mask" aria-hidden />
@@ -127,13 +129,13 @@ const WorkDetailDescription = ({ work }: Props) => {
           <p className="reveal-text">{year}</p>
         </div>
       </div>
-      <div>
+      <div className="desc-part">
         <div className="reveal desc-heading secondary">
           <h3 className="reveal-text">Technologies</h3>
           <div className="reveal-mask" aria-hidden />
         </div>
         <br />
-        <div className="desc-heading reveal no-mask">
+        <div className="reveal no-mask">
           <div className="reveal-text">
             <TagList tags={techs} />
           </div>
