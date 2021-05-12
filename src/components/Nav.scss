@@ -10,27 +10,18 @@
     width: 100%;
     height: 0;
     opacity: 0;
-    visibility: hidden;
-    transition: 350ms;
     overflow: hidden;
     z-index: 100;
 
     .strokes {
         height: 0;
-        transition: 350ms;
         div {
             background: #23282a;
         }
     }
 
-    &.open {
-        opacity: 1;
-        visibility: visible;
-        height: 100%;
-
-        .strokes {
-            height: 100%;
-        }
+    &.opened {
+        height: fill-available!important;
     }
 
     nav {

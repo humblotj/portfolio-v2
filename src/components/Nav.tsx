@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { gsap } from 'gsap';
@@ -22,6 +22,7 @@ const tl = gsap.timeline();
 const Nav = ({ open, onClose }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const [animationEnded, setAnimationEnded] = useState(false);
 
   const onOpenContact = () => {
     onClose();
@@ -32,12 +33,33 @@ const Nav = ({ open, onClose }: Props) => {
     if (window.innerWidth < 768) {
       document.body.style.overflow = open ? 'hidden' : '';
     }
+    tl.clear();
+
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
 
     if (open) {
-      const element = ref.current;
-      if (!element) {
-        return;
-      }
+      tl.addLabel('start');
+      tl.to(
+        element,
+        {
+          opacity: 1,
+          height: '100%',
+          duration: 0.35,
+          onComplete: () => setAnimationEnded(true),
+        },
+        'start',
+      );
+      tl.to(
+        element.querySelectorAll('.strokes'),
+        {
+          height: '100%',
+          duration: 0.35,
+        },
+        'start',
+      );
 
       const items = element.querySelectorAll('nav li');
       for (let i = 0; i < items.length; i++) {
@@ -51,7 +73,7 @@ const Nav = ({ open, onClose }: Props) => {
             opacity: 1,
             x: 0,
             duration: 0.5,
-            delay: i * 0.15 + 0.35,
+            delay: i * 0.15,
           },
           'nav',
         );
@@ -77,12 +99,30 @@ const Nav = ({ open, onClose }: Props) => {
       }
       tl.addLabel('sns');
     } else {
-      tl.clear();
+      setAnimationEnded(false);
+      tl.addLabel('start');
+      tl.to(
+        element,
+        {
+          opacity: 0,
+          height: 0,
+          duration: 0.35,
+        },
+        'start',
+      );
+      tl.to(
+        element.querySelectorAll('.strokes'),
+        {
+          height: 0,
+          duration: 0.35,
+        },
+        'start',
+      );
     }
   }, [open]);
 
   return (
-    <div ref={ref} className={cx('nav-overlay', { open })}>
+    <div ref={ref} className={cx('nav-overlay', { opened: animationEnded })}>
       <Strokes />
       <nav>
         <ul>
