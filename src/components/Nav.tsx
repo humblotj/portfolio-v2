@@ -48,7 +48,6 @@ const Nav = ({ open, onClose }: Props) => {
           opacity: 1,
           height: '100%',
           duration: 0.35,
-          onComplete: () => setAnimationEnded(true),
         },
         'start',
       );
