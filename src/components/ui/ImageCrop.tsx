@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import { ReactNode, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import cx from 'classnames';
@@ -33,8 +34,13 @@ const ImageCrop = ({
   return (
     <div ref={ref} className={cx('image-crop', { 'is-mobile': isMobile })}>
       <div>
-
-        <img src={src || ''} alt="" />
+        {src.includes('mp4')
+          ? (
+            <video autoPlay loop>
+              <source src={src} type="video/mp4" />
+            </video>
+          )
+          : <img src={src || ''} alt="" />}
       </div>
       {children}
     </div>
