@@ -15,15 +15,25 @@
         left: 0;
         right: 0;
 
-        img {
+        img, video {
             width: 75.5% !important;
         }
     }
 
-    img, video {
+    img {
         display: block;
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
+    }
+
+    video {
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        height: 100%;
+        margin: auto;
     }
 }

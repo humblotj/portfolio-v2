@@ -36,8 +36,8 @@ const ImageCrop = ({
       <div>
         {src.includes('mp4')
           ? (
-            <video autoPlay loop>
-              <source src={src} type="video/mp4" />
+            <video autoPlay loop muted>
+              <source src={src} />
             </video>
           )
           : <img src={src || ''} alt="" />}
