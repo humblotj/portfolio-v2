@@ -51,7 +51,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
         src={preview.url}
         isMobile={isMobile}
         startAnimation={animationIsComplete}
-        isParallax
+        isParallax={!preview.noParallax}
       />
     </div>
   );

@@ -5,8 +5,6 @@ import TagList from '../../../components/ui/TagList';
 import './WorkDetailDescription.scss';
 import TextBounce from '../../../components/ui/TextBounce';
 import { WorkDetailProps } from '../../../interface';
-import Laptop from '../../../components/ui/Laptop';
-import Phone from '../../../components/ui/Phone';
 import WorkDetailParallax from './WorkDetailParallax';
 
 interface Props {
