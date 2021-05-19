@@ -9,7 +9,7 @@ import useSize from '../../../hooks/useSize';
 
 const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [width] = useSize(ref);
+  const [width, height] = useSize(ref);
   const isMobile = preview.type === 'mobile';
   const [animationIsComplete, setAnimationIsComplete] = useState(false);
 
@@ -51,7 +51,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
     <div
       ref={ref}
       className={cx('preview-container', { 'is-mobile': isMobile })}
-      style={!isMobile ? { height: `${width * 0.6715 + 40}px` } : undefined}
+      // style={!isMobile ? { height: `${height}px` } : undefined}
     >
       <ImageWrap
         src={preview.url}
