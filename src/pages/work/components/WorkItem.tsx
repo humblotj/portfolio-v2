@@ -34,7 +34,7 @@ const WorkItem = ({ index, work, id }: Props) => {
         transformOrigin: '100% 50%',
         duration: 1,
       }, 'start');
-    tl.to(element.querySelector('.work-item-title'),
+    tl.to(element.querySelectorAll('.work-item-title > *'),
       {
         opacity: 1,
         y: 0,

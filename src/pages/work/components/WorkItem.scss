@@ -67,8 +67,11 @@
             flex-direction: column;
             justify-content: center;
             max-width: 55%;
-            opacity: 0;
-            transform: translateY(50%);
+
+            h3, p {
+                opacity: 0;
+                transform: translateY(80px);
+            }
 
             h3 {
                 font-size: 40px;
