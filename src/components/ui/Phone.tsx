@@ -22,7 +22,6 @@ const Phone = ({
     if (!element || !startAnimation) {
       return;
     }
-    console.log(startAnimation);
 
     const tl = gsap.timeline({
       scrollTrigger: {

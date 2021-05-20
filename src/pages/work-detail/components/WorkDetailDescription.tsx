@@ -86,14 +86,18 @@ const WorkDetailDescription = ({ work }: Props) => {
   }
 
   const {
-    name, description, year, techs,
+    name, primaryColor, description, year, techs,
   } = work;
 
   return (
     <div ref={ref} className="work-detail-description">
       <div className="desc-part">
         <div className="reveal desc-heading secondary">
-          <h3 className="reveal-text">Project</h3>
+          <h3
+            className="reveal-text"
+          >
+            Project
+          </h3>
           <div className="reveal-mask" aria-hidden />
         </div>
         <br />
@@ -101,7 +105,7 @@ const WorkDetailDescription = ({ work }: Props) => {
           <h2 className="reveal-text">
             <TextBounce text={name} />
           </h2>
-          <div className="reveal-mask" aria-hidden />
+          <div className="reveal-mask" style={{ backgroundColor: primaryColor }} aria-hidden />
         </div>
       </div>
       <WorkDetailParallax preview={work.mainPreview} />

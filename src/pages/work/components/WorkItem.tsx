@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
 import './WorkItem.scss';
-import { ReactComponent as ArrowIcon } from '../../../assets/icons/arrow.svg';
+import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.svg';
 import ImageWrap from '../../../components/ui/ImageWrap';
 import { WorkProps } from '../../../interface';
+import TechIcon from '../../../components/ui/TechIcon';
 
 interface Props {
   index: number,
@@ -17,7 +18,7 @@ interface Props {
 const WorkItem = ({ index, work, id }: Props) => {
   const ref = useRef<HTMLLIElement>(null);
   const {
-    isPersonal, name, preview, techs,
+    isPersonal, name, primaryColor, description, preview, techs,
   } = work;
 
   const animate = (element: HTMLElement) => {
@@ -67,7 +68,7 @@ const WorkItem = ({ index, work, id }: Props) => {
 
   return (
     <li ref={ref} className="work-item">
-      <span className="counter">{(`${index + 1}`).padStart(2, '0')}</span>
+      {/* <span className="counter">{(`${index + 1}`).padStart(2, '0')}</span> */}
       <Link
         to={`work/${id}`}
       >
@@ -75,8 +76,8 @@ const WorkItem = ({ index, work, id }: Props) => {
           <h4>{isPersonal ? 'Personal Work' : 'Company Work'}</h4>
           <div className="work-item-title">
             <h3>{name}</h3>
-            <p style={{ color: techs[0]?.color }}>
-              {techs.map((tech, index) => (index !== 0 ? `, ${tech.name}` : tech.name))}
+            <p>
+              {description}
             </p>
           </div>
           <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
@@ -87,10 +88,19 @@ const WorkItem = ({ index, work, id }: Props) => {
               noAnimation
             />
           </div>
-          <ArrowIcon className="arrow-icon" />
-          <p>See more</p>
+          <ul>
+            {techs.map((tech) => (
+              <li>
+                <TechIcon name={tech.name} />
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="work-item-mask" aria-hidden />
+        <div className="learn-more">
+          <p>Learn more</p>
+          <ArrowRight />
+        </div>
       </Link>
     </li>
   );
