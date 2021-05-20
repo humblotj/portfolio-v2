@@ -4,6 +4,7 @@
     padding: 0 32px;
     margin-bottom: 64px;
     transition: all 0.25s ease-in-out;
+    pointer-events: none;
 
     > a {
         position: relative;

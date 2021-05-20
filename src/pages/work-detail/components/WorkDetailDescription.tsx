@@ -105,7 +105,7 @@ const WorkDetailDescription = ({ work }: Props) => {
           <h2 className="reveal-text">
             <TextBounce text={name} />
           </h2>
-          <div className="reveal-mask" style={{ backgroundColor: primaryColor }} aria-hidden />
+          <div className="reveal-mask" aria-hidden />
         </div>
       </div>
       <WorkDetailParallax preview={work.mainPreview} />

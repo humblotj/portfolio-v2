@@ -8,6 +8,7 @@ import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.
 import ImageWrap from '../../../components/ui/ImageWrap';
 import { WorkProps } from '../../../interface';
 import TechIcon from '../../../components/ui/TechIcon';
+import useSize from '../../../hooks/useSize';
 
 interface Props {
   index: number,
@@ -20,15 +21,19 @@ const WorkItem = ({ index, work, id }: Props) => {
   const {
     isPersonal, name, primaryColor, description, preview, techs,
   } = work;
+  const [width, height] = useSize();
 
   const animate = (element: HTMLElement) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
-        start: 'top 80%',
+        start: 'top 90%',
       },
     });
-    tl.addLabel('start');
+    const isLargeWidth = width > 768;
+    const isOdd = index % 2 === 1;
+    // eslint-disable-next-line no-nested-ternary
+    tl.addLabel('start', isLargeWidth ? isOdd ? 0.25 : 0 : 0);
     tl.to(element.querySelector('.work-item-mask'),
       {
         scaleX: 0,
@@ -53,6 +58,7 @@ const WorkItem = ({ index, work, id }: Props) => {
         y: '-50%',
         duration: 1,
       }, 'start');
+    tl.set(element, { pointerEvents: 'auto' });
   };
 
   useEffect(() => {
@@ -90,7 +96,7 @@ const WorkItem = ({ index, work, id }: Props) => {
           </div>
           <ul>
             {techs.map((tech) => (
-              <li>
+              <li key={tech.name}>
                 <TechIcon name={tech.name} />
               </li>
             ))}

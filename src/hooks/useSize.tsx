@@ -5,9 +5,14 @@ import {
 import ResizeObserver from 'resize-observer-polyfill';
 
 const useSize = (
-  ref: RefObject<HTMLElement>,
+  ref?: RefObject<HTMLElement>,
   callback?: (entry: DOMRectReadOnly) => void,
 ) => {
+  if (!ref) {
+    const { innerWidth: width, innerHeight: height } = window;
+    return [width, height];
+  }
+
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 

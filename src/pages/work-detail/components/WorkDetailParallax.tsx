@@ -5,11 +5,11 @@ import cx from 'classnames';
 import ImageWrap from '../../../components/ui/ImageWrap';
 import { ImgProp } from '../../../interface';
 import './WorkDetailParallax.scss';
-import useSize from '../../../hooks/useSize';
+// import useSize from '../../../hooks/useSize';
 
 const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [width, height] = useSize(ref);
+  // const [width, height] = useSize(ref);
   const isMobile = preview.type === 'mobile';
   const [animationIsComplete, setAnimationIsComplete] = useState(false);
 
