@@ -48,23 +48,44 @@
 
 @media only screen and (max-width: 768px) {
     .work-sec {
-        padding: 60px 30px 30px;
+        padding: 60px 40px 30px;
 
         .work-content {
+            h4 {
+                margin-bottom: 10px;
+                font-size: 11px;
+            }
+            
             .work-header {
                 padding: 0 50px 90px 50px;
+                
+                h2 {
+                    font-size: 38px;
+                }
+
+                .divider {
+                    margin: 15px 0 15px 30px;
+                }
             }
         }
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 576px) {
     .work-sec {
-        padding: 60px 20px 0;
+        padding: 60px 25px 0;
 
         .work-content {
             .work-header {
                 padding: 0 50px 90px 50px;
+                 
+                h2 {
+                    font-size: 32px;
+                }
+                
+                .divider {
+                    margin: 15px 0 15px 15px;
+                }
             }
         }
     }
