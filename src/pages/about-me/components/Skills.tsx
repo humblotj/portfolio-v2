@@ -15,6 +15,7 @@ import { ReactComponent as Sass } from '../../../assets/icons/sass.svg';
 import { ReactComponent as Firebase } from '../../../assets/icons/firebase.svg';
 import { ReactComponent as VueJs } from '../../../assets/icons/vuejs.svg';
 import { ReactComponent as Gsap } from '../../../assets/icons/gsap.svg';
+import { ReactComponent as Lottie } from '../../../assets/icons/lottie.svg';
 import { ReactComponent as Jest } from '../../../assets/icons/jest.svg';
 import { ReactComponent as NodeJs } from '../../../assets/icons/nodejs.svg';
 import { ReactComponent as MongoDB } from '../../../assets/icons/mongodb.svg';
@@ -188,6 +189,10 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
               <li>
                 <Bounce><Gsap /></Bounce>
                 <span>Gsap</span>
+              </li>
+              <li className="medium">
+                <Bounce><Lottie /></Bounce>
+                <span>Lottie</span>
               </li>
               <li className="medium">
                 <Bounce><Jest /></Bounce>
