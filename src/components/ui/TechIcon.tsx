@@ -36,6 +36,8 @@ const TechIcon = ({ name }: {name: string}) => {
       return <VueJs />;
     case 'Gsap':
       return <Gsap />;
+    case 'Node.js':
+      return <NodeJs />;
     default:
       return null;
   }
