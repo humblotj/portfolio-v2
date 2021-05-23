@@ -17,6 +17,7 @@ import { ReactComponent as Java } from '../../assets/icons/java.svg';
 import { ReactComponent as Flutter } from '../../assets/icons/flutter.svg';
 import { ReactComponent as GraphQL } from '../../assets/icons/graphql.svg';
 import { ReactComponent as D3js } from '../../assets/icons/d3js.svg';
+import { ReactComponent as Spring } from '../../assets/icons/spring.svg';
 
 const TechIcon = ({ name }: {name: string}) => {
   switch (name) {
@@ -38,6 +39,8 @@ const TechIcon = ({ name }: {name: string}) => {
       return <Gsap />;
     case 'Node.js':
       return <NodeJs />;
+    case 'Spring':
+      return <Spring />;
     default:
       return null;
   }
