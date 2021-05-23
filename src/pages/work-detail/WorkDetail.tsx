@@ -20,18 +20,18 @@ const WorkDetail = () => {
       dispatch(onInit());
     }
 
-    const element = ref.current;
-    if (element) {
-      setTimeout(() => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: element,
-          },
-        }); tl.to(element, {
-          opacity: 1, y: 0, duration: 1, delay: 1.2,
-        });
-      }, 100);
-    }
+    // const element = ref.current;
+    // if (element) {
+    //   setTimeout(() => {
+    //     const tl = gsap.timeline({
+    //       scrollTrigger: {
+    //         trigger: element,
+    //       },
+    //     }); tl.to(element, {
+    //       opacity: 1, y: 0, duration: 1,
+    //     });
+    //   }, 100);
+    // }
 
     const blink = document.querySelectorAll('.blink');
     gsap.to(blink, { opacity: 1, duration: 0 });
