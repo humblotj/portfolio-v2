@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +11,6 @@ import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 
 const WorkDetail = () => {
   const dispatch = useDispatch();
-  const ref = useRef<HTMLDivElement>(null);
   const isInit = useSelector(selectIsInit);
   const work = useSelector(selectWorkDetails);
 
@@ -19,19 +18,6 @@ const WorkDetail = () => {
     if (!isInit) {
       dispatch(onInit());
     }
-
-    // const element = ref.current;
-    // if (element) {
-    //   setTimeout(() => {
-    //     const tl = gsap.timeline({
-    //       scrollTrigger: {
-    //         trigger: element,
-    //       },
-    //     }); tl.to(element, {
-    //       opacity: 1, y: 0, duration: 1,
-    //     });
-    //   }, 100);
-    // }
 
     const blink = document.querySelectorAll('.blink');
     gsap.to(blink, { opacity: 1, duration: 0 });
@@ -61,7 +47,7 @@ const WorkDetail = () => {
         Turn Back Home
       </BackArrow>
       <WorkDetailDescription work={work} />
-      <div ref={ref} className="work-links">
+      <div className="work-links">
         {work.links?.length ? work.links.map(({ type, url }) => (
           <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>
         ))
