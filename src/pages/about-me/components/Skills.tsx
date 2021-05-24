@@ -152,11 +152,11 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
                 <Bounce><RxJs /></Bounce>
                 <span>RxJs</span>
               </li>
-              <li>
+              <li className="medium">
                 <Bounce><TypeScript /></Bounce>
                 <span>TypeScript</span>
               </li>
-              <li>
+              <li className="medium">
                 <Bounce><ES6 /></Bounce>
                 <span>ES6</span>
               </li>
