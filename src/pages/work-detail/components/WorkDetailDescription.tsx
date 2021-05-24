@@ -76,6 +76,16 @@ const WorkDetailDescription = ({ work }: Props) => {
             },
             'start',
           );
+
+          if (i === revealNoMask.length - 1) {
+            tl.to(document.querySelector('.work-links'), {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              delay: 1.2,
+            },
+            'start');
+          }
         }
       }
     }, 100);
