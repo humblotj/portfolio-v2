@@ -20,7 +20,7 @@
             background: #191a1e;
         }
 
-        &:hover {
+        &:hover:not(:disabled) {
             background: #191a1e;
         }
     }
