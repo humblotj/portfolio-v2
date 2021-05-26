@@ -1,21 +1,21 @@
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import FakeLink from './FakeLink';
 
 import './ScrollTo.scss';
 
 interface Props {
-  to: any,
+  onClick: () => void,
   children?: ReactNode
 }
 
-const ScrollTo = ({ to, children = null }: Props) => (
+const ScrollTo = ({ onClick, children = null }: Props) => (
   <div className="scroll-to">
-    <Link to={to}>
+    <FakeLink onClick={onClick}>
       {children}
       <div className="scroll-stroke">
         <div />
       </div>
-    </Link>
+    </FakeLink>
   </div>
 );
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useDispatch } from 'react-redux';
 
@@ -10,7 +10,7 @@ import ScrollTo from '../../components/ui/ScrollTo';
 import TextBounce from '../../components/ui/TextBounce';
 import { onToggleAboutModal } from '../../store/store';
 
-const Home = () => {
+const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   const ref = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
@@ -126,11 +126,7 @@ const Home = () => {
             <Button onClick={openContactModal}>About me</Button>
           </div>
         </div>
-        <ScrollTo to={{
-          pathname: '/',
-          state: 'work',
-        }}
-        >
+        <ScrollTo onClick={() => workRef.current?.scrollIntoView({ behavior: 'smooth' })}>
           <div className="reveal">
             <span className="reveal-text">
               Selected works

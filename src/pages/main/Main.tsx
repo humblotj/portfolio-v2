@@ -39,7 +39,7 @@ const Main = () => {
 
   return (
     <>
-      <Home />
+      <Home workRef={workRef} />
       <Work ref={workRef} />
       <Contact ref={contactRef} />
       <Footer />
