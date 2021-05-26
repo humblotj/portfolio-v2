@@ -27,7 +27,7 @@ const WorkItem = ({ index, work, id }: Props) => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
-        start: 'top 90%',
+        start: '35% bottom',
       },
     });
     const isLargeWidth = width > 768;
@@ -101,8 +101,8 @@ const WorkItem = ({ index, work, id }: Props) => {
               </li>
             ))}
           </ul>
+          <div className="work-item-mask" aria-hidden />
         </div>
-        <div className="work-item-mask" aria-hidden />
         <div className="learn-more">
           <p>Learn more</p>
           <ArrowRight />
