@@ -11,7 +11,8 @@ const deferPromise = () => {
 };
 
 const useSuspenseAnimation = (import_: Promise<any>,
-  { fetchData, setData }: {fetchData: Promise<any>, setData: any}) => {
+  { fetchData, setData }: {fetchData: Promise<any>|null, setData: any}
+  = { fetchData: null, setData: null }) => {
   const [state, setState] = useState(() => {
     const deferred: any = deferPromise();
     // component object reference  is kept stable, since it's stored in state.

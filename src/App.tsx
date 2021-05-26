@@ -16,6 +16,7 @@ import Strokes from './components/Strokes';
 import AboutMe from './pages/about-me/AboutMe';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
+import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,8 +44,11 @@ const App = () => {
         <Route path="/work/:id" key={location.pathname}>
           <WorkDetailSuspense />
         </Route>
-        <Route path="/">
+        <Route path="/" exact>
           <MainSuspense />
+        </Route>
+        <Route>
+          <NotFoundSuspense />
         </Route>
       </Switch>
       <AboutMe />
