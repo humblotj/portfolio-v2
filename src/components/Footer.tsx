@@ -7,7 +7,7 @@ const Footer = () => (
   <footer>
     <ul>
       <li>
-        <a href="https://www.linkedin.com/in/jean-h-25b1871a0/" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">
           <LinkedInIcon />
         </a>
       </li>
