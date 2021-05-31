@@ -1,25 +1,18 @@
 .phone {
     position: relative;
     width: 100%;
+    margin: -20% 0;
 
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+    .phone-mockup {
+        position: relative;
+        width: 100%;
         z-index: 1;
-        pointer-events: none;
-        background: url("../../assets/iphone-mask.png") no-repeat;
-        background-size: 100%;
     }
 
     .phone-overlay {
         position: absolute;
         background: linear-gradient(rgba(0, 0, 0, 0), #111);
         height: 100%;
-        width: 75.5% !important;
         margin: 0 auto;
         top: 0;
         left: 0;

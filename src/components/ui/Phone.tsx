@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import useSize from '../../hooks/useSize';
 import ImageCrop from './ImageCrop';
+import PhoneMockup from '../../assets/phone-mockup.png';
 import './Phone.scss';
 
 interface Props {
@@ -41,8 +42,9 @@ const Phone = ({
     <div
       ref={ref}
       className="phone"
-      style={{ height: width * 1.6417 }}
+      style={{ height: width * 1.5778 }}
     >
+      <img src={PhoneMockup} alt="mockup" className="phone-mockup" />
       <ImageCrop
         src={src}
         isMobile

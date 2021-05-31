@@ -1,23 +1,20 @@
 .image-crop {
     position: absolute;
-    width: 92%;
-    top: 8%;
-    left: 4%;
-    bottom: 6%;
-
     z-index: 0;
     overflow: hidden;
 
-    &.is-mobile {
-        width: 100%;
-        top: 11.5%;
-        bottom: 12.5%;
-        left: 0;
-        right: 0;
+    &:not(.is-mobile) {
+        width: 92%;
+        top: 8%;
+        left: 4%;
+        bottom: 6%;
+    }
 
-        img, video {
-            width: 75.5% !important;
-        }
+    &.is-mobile {
+        border-radius: 5%;
+        margin: 18.6% 25.1%;
+        top: 0;
+        bottom: 8%;
     }
 
     img {
@@ -25,6 +22,8 @@
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
+        object-fit: fill;
+        min-height: 100%;
     }
 
     video {

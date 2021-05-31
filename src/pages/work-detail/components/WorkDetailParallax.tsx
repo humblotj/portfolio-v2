@@ -14,6 +14,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
   const getInitialHeight = () => {
     const windowWidth = window.innerWidth;
     const coeff = 0.6715;
+
     if (windowWidth > 1014) {
       return 694 * coeff + 40;
     }
@@ -21,7 +22,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
       return (windowWidth - 160 - 160) * coeff + 40;
     }
     if (windowWidth > 576) {
-      return (windowWidth - 120 - 160) * coeff + 30;
+      return (windowWidth - 120 - 160) * coeff + 40;
     }
     return (windowWidth - 80 - 40) * coeff + 20;
   };
@@ -70,7 +71,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
         src={preview.url}
         isMobile={isMobile}
         startAnimation={animationIsComplete}
-        isParallax={!preview.noParallax}
+        isParallax={preview.isParallax}
       />
     </div>
   );

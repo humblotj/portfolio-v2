@@ -1,7 +1,7 @@
 export interface ImgProp {
     type: 'web' | 'mobile',
     url: string,
-    noParallax?: boolean,
+    isParallax?: boolean,
 }
 
 export interface WorkProps {
