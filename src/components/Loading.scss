@@ -6,6 +6,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    height: 100vh;
 
     .before,
     .after {
@@ -28,7 +29,7 @@
     }
 
     .after {
-        bottom: 0;
+        top: 50vh;
         transform: translateY(100%);
     }
 

@@ -41,23 +41,13 @@ const Nav = ({ open, onClose }: Props) => {
     }
 
     if (open) {
-      tl.addLabel('start');
       tl.to(
-        element,
+        [element, ...element.querySelectorAll('.strokes')],
         {
           opacity: 1,
-          height: '100%',
+          height: '100vh',
           duration: 0.35,
         },
-        'start',
-      );
-      tl.to(
-        element.querySelectorAll('.strokes'),
-        {
-          height: '100%',
-          duration: 0.35,
-        },
-        'start',
       );
 
       const items = element.querySelectorAll('nav li');
@@ -99,29 +89,19 @@ const Nav = ({ open, onClose }: Props) => {
       tl.addLabel('sns');
     } else {
       setAnimationEnded(false);
-      tl.addLabel('start');
       tl.to(
-        element,
+        [element, ...element.querySelectorAll('.strokes')],
         {
           opacity: 0,
           height: 0,
           duration: 0.35,
         },
-        'start',
-      );
-      tl.to(
-        element.querySelectorAll('.strokes'),
-        {
-          height: 0,
-          duration: 0.35,
-        },
-        'start',
       );
     }
   }, [open]);
 
   return (
-    <div ref={ref} className={cx('nav-overlay', { opened: animationEnded })}>
+    <div ref={ref} className={cx('nav-overlay', 'fixed', { opened: animationEnded })} data-top="0">
       <Strokes />
       <nav>
         <ul>

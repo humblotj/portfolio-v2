@@ -16,10 +16,11 @@ const useSuspenseAnimation = (import_: Promise<any>,
   const [state, setState] = useState(() => {
     const deferred: any = deferPromise();
     // component object reference  is kept stable, since it's stored in state.
+
     const DeferredComponent = lazy(() => Promise.all([
       Promise.all([import_,
         fetchData,
-        new Promise((resolve) => setTimeout(resolve, 1500)),
+        new Promise((resolve) => setTimeout(resolve, 1000)),
       ]).then(([imp, query, _]: any) => {
         if (fetchData) {
           setData(query);

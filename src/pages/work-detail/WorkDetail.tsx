@@ -8,11 +8,13 @@ import WorkPreviewCarousel from './components/WorkPreviewCarousel';
 import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
+import useScrollbar from '../../hooks/useScrollbar';
 
 const WorkDetail = () => {
   const dispatch = useDispatch();
   const isInit = useSelector(selectIsInit);
   const work = useSelector(selectWorkDetails);
+  const { onListenerTrigger } = useScrollbar();
 
   useEffect(() => {
     if (!isInit) {
@@ -21,7 +23,7 @@ const WorkDetail = () => {
 
     const blink = document.querySelectorAll('.blink');
     gsap.to(blink, { opacity: 1, duration: 0 });
-
+    onListenerTrigger();
     return () => {
       gsap.to(blink, { opacity: 0, duration: 0 });
     };
@@ -43,7 +45,7 @@ const WorkDetail = () => {
 
   return (
     <section className="work-detail-sec">
-      <BackArrow>
+      <BackArrow className="fixed" data-top="30">
         Turn Back Home
       </BackArrow>
       <WorkDetailDescription work={work} />

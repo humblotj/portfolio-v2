@@ -104,7 +104,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
 
   return (
 
-    <div ref={ref} className="loading">
+    <div ref={ref} className="loading fixed" data-top="0" data-bottom="0">
       <Strokes secondary={location.pathname === '/'} />
       <div className="before" aria-hidden>
         <Strokes />

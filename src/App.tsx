@@ -1,14 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { Provider } from 'react-redux';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/analytics';
 
 import './App.scss';
-import store from './store/store';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import SideLeft from './components/SideLeft';
@@ -17,6 +16,7 @@ import AboutMe from './pages/about-me/AboutMe';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
+import useScrollbar from './hooks/useScrollbar';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,9 +33,14 @@ if (process.env.NODE_ENV !== 'development') {
 
 const App = () => {
   const location = useLocation();
+  const { onInitScrollbar } = useScrollbar();
+
+  useEffect(() => {
+    onInitScrollbar();
+  }, []);
 
   return (
-    <Provider store={store}>
+    <>
       <ScrollToTop />
       <Header />
       <Strokes />
@@ -52,7 +57,7 @@ const App = () => {
         </Route>
       </Switch>
       <AboutMe />
-    </Provider>
+    </>
   );
 };
 
