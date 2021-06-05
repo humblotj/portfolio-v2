@@ -16,7 +16,6 @@ import AboutMe from './pages/about-me/AboutMe';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
-import useScrollbar from './hooks/useScrollbar';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,11 +32,6 @@ if (process.env.NODE_ENV !== 'development') {
 
 const App = () => {
   const location = useLocation();
-  const { onInitScrollbar } = useScrollbar();
-
-  useEffect(() => {
-    onInitScrollbar();
-  }, []);
 
   return (
     <>

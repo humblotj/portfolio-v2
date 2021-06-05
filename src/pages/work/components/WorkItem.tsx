@@ -21,7 +21,7 @@ const WorkItem = ({ index, work, id }: Props) => {
   const {
     isPersonal, name, primaryColor, description, preview, techs,
   } = work;
-  const [width, height] = useSize();
+  const [width] = useSize();
 
   const animate = (element: HTMLElement) => {
     const tl = gsap.timeline({

@@ -8,23 +8,20 @@ const useSize = (
   ref?: RefObject<HTMLElement>,
   callback?: (entry: DOMRectReadOnly) => void,
 ) => {
-  if (!ref) {
-    const { innerWidth: width, innerHeight: height } = window;
-    return [width, height];
-  }
-
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [size, setSize] = useState(ref ? [0, 0] : [window.innerWidth, window.innerHeight]);
 
   const handleResize = useCallback(
-    (entries: ResizeObserverEntry[]) => {
+    (entries?: ResizeObserverEntry[]) => {
+      if (!ref?.current) {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+
       if (!Array.isArray(entries)) {
         return;
       }
 
       const entry = entries[0];
-      setWidth(entry.contentRect.width);
-      setHeight(entry.contentRect.height);
+      setSize([entry.contentRect.width, entry.contentRect.height]);
 
       if (callback) {
         callback(entry.contentRect);
@@ -34,8 +31,9 @@ const useSize = (
   );
 
   useLayoutEffect(() => {
-    if (!ref.current) {
-      return;
+    if (!ref?.current) {
+      window.addEventListener('resize', handleResize as any);
+      return () => window.removeEventListener('resize', handleResize as any);
     }
 
     let RO: ResizeObserver|null = new ResizeObserver(
@@ -49,7 +47,7 @@ const useSize = (
     };
   }, [ref]);
 
-  return [width, height];
+  return size;
 };
 
 export default useSize;
