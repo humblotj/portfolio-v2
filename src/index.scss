@@ -22,6 +22,17 @@ body,
   background-color: #fff;
 }
 
+body:not(.is-init),
+body:not(.is-init) #root {
+  background-color: #1e2324;
+
+  .strokes {
+    div {
+      background: #23282a;
+    }
+  }
+}
+
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -131,5 +142,3 @@ main {
     font-size: 14px;
   }
 }
-  
-  

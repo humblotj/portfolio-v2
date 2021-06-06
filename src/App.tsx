@@ -17,6 +17,7 @@ import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
 import useScrollbar from './hooks/useScrollbar';
+import Loading from './components/Loading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,6 +38,7 @@ const App = () => {
 
   useEffect(() => {
     onInitScrollbar();
+    document.body.classList.add('is-init');
   }, []);
 
   return (
