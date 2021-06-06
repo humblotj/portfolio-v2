@@ -28,10 +28,10 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
     return (width - 80 - 40) * coeff + 20;
   };
 
-  useEffect(() => {
+  useEffect((): any => {
     const element = ref.current;
     if (!element || !preview) {
-      return;
+      return null;
     }
 
     const tl = gsap.timeline({
@@ -56,6 +56,8 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
         duration: 1.3,
       }, 'start',
     );
+
+    return () => tl.kill();
   }, [preview]);
 
   if (!preview) {
