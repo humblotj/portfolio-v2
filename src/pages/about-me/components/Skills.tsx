@@ -24,6 +24,7 @@ import { ReactComponent as Flutter } from '../../../assets/icons/flutter.svg';
 import { ReactComponent as GraphQL } from '../../../assets/icons/graphql.svg';
 import { ReactComponent as D3js } from '../../../assets/icons/d3js.svg';
 import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
+import { ReactComponent as SocketIO } from '../../../assets/icons/socket-io.svg';
 import CloseButton from '../../../components/ui/CloseButton';
 
 const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
@@ -206,6 +207,10 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
               <li>
                 <Bounce><MongoDB /></Bounce>
                 <span>MongoDB</span>
+              </li>
+              <li>
+                <Bounce><SocketIO /></Bounce>
+                <span>Socket.io</span>
               </li>
               <li>
                 <Bounce><Java /></Bounce>
