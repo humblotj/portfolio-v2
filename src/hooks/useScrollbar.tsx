@@ -45,7 +45,7 @@ const useScrollbar = () => {
       return;
     }
 
-    const bodyScrollbar = Scrollbar.init(document.body, { delegateTo: document });
+    const bodyScrollbar = Scrollbar.init(document.body, { damping: 0.2, delegateTo: document });
 
     window.scrollTo(0, 0);
     bodyScrollbar.setPosition(0, 0);
