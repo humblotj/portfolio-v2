@@ -23,6 +23,7 @@ import { ReactComponent as Java } from '../../../assets/icons/java.svg';
 import { ReactComponent as Flutter } from '../../../assets/icons/flutter.svg';
 import { ReactComponent as GraphQL } from '../../../assets/icons/graphql.svg';
 import { ReactComponent as D3js } from '../../../assets/icons/d3js.svg';
+import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
 import CloseButton from '../../../components/ui/CloseButton';
 
 const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
@@ -235,6 +236,10 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
               <li>
                 <Bounce><D3js /></Bounce>
                 <span>D3.js</span>
+              </li>
+              <li>
+                <Bounce><WebGL /></Bounce>
+                <span>WebGL</span>
               </li>
             </ul>
           </dd>
