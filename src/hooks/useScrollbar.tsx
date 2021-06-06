@@ -18,18 +18,6 @@ const scrollBarListener = (status: any) => {
   ScrollTrigger.update();
 };
 
-const resetStyle = () => {
-  document.querySelectorAll<HTMLElement>('.fixed').forEach((el) => {
-    if (el.dataset.top) {
-      el.style.top = `${+el.dataset.top}px`;
-    }
-    if (el.dataset.bottom) {
-      el.style.bottom = `${+el.dataset.bottom}px`;
-      el.style.top = 'auto';
-    }
-  });
-};
-
 const useScrollbar = () => {
   const [width] = useSize();
 
@@ -45,7 +33,7 @@ const useScrollbar = () => {
       return;
     }
 
-    const bodyScrollbar = Scrollbar.init(document.body, { damping: 0.2, delegateTo: document });
+    const bodyScrollbar = Scrollbar.init(document.body, { damping: 0.3, delegateTo: document });
 
     window.scrollTo(0, 0);
     bodyScrollbar.setPosition(0, 0);
