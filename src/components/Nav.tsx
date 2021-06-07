@@ -148,7 +148,7 @@ const Nav = ({ open, onClose }: Props) => {
       </nav>
       <ul className="sns">
         <li>
-          <a href="https://www.linkedin.com/in/jean-h-25b1871a0/" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">
             <LinkedInIcon />
           </a>
         </li>

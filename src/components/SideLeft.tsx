@@ -6,7 +6,7 @@ import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
 const SideLeft = () => (
   <>
     <div className="side-left-sns linkedin blink fixed" data-bottom="210">
-      <a href="https://www.linkedin.com/in/jean-h-25b1871a0/" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">
         <LinkedInIcon />
       </a>
     </div>

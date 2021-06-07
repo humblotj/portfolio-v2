@@ -78,7 +78,6 @@ const WorkDetailDescription = ({ work }: Props) => {
           );
 
           if (i === revealNoMask.length - 1 && j === descParts.length - 1) {
-            console.log(i);
             tl.to(document.querySelector('.work-links'), {
               opacity: 1,
               y: 0,
