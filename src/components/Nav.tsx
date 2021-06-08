@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { use100vh } from 'react-div-100vh';
 import { gsap } from 'gsap';
 import cx from 'classnames';
 
@@ -21,6 +22,7 @@ const tl = gsap.timeline();
 
 const Nav = ({ open, onClose }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const height = use100vh();
   const dispatch = useDispatch();
   const [animationEnded, setAnimationEnded] = useState(false);
 
@@ -45,7 +47,7 @@ const Nav = ({ open, onClose }: Props) => {
         [element, ...element.querySelectorAll('.strokes')],
         {
           opacity: 1,
-          height: '100vh',
+          height: height as number,
           duration: 0.35,
         },
       );

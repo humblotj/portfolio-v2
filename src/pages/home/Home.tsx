@@ -2,6 +2,7 @@ import { RefObject, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useDispatch } from 'react-redux';
 import Scrollbar from 'smooth-scrollbar';
+import { use100vh } from 'react-div-100vh';
 
 import './Home.scss';
 import Button from '../../components/ui/Button';
@@ -14,6 +15,7 @@ import useScrollbar from '../../hooks/useScrollbar';
 
 const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   const ref = useRef<HTMLElement>(null);
+  const height = use100vh();
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
   const bodyScrollbar = Scrollbar.get(document.body);
@@ -110,46 +112,44 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   };
 
   return (
-    <>
-      <section className="home-sec" ref={ref}>
-        <Strokes secondary />
-        <HomeBackground />
-        <div className="welcome">
-          <h1 aria-label="Hi, my name is Jean.">
-            <div className="reveal">
-              <span className="reveal-text">
-                <TextBounce text="Hi," />
-              </span>
-              <div className="reveal-mask" aria-hidden />
-            </div>
-            <br />
-            <div className="reveal">
-              <span className="reveal-text">
-                <TextBounce text="my name is Jean." />
-              </span>
-              <div className="reveal-mask" aria-hidden />
-            </div>
-          </h1>
-          <div className="reveal description">
-            <span className="reveal-text">
-              I am a front-end developer based in Seoul.
-            </span>
-            <div className="reveal-mask" aria-hidden />
-          </div>
-          <div className="welcome-buttons blink">
-            <Button onClick={openContactModal}>About me</Button>
-          </div>
-        </div>
-        <ScrollTo onClick={scrollToWork}>
+    <section className="home-sec" ref={ref} style={{ height: height as number }}>
+      <Strokes secondary />
+      <HomeBackground />
+      <div className="welcome">
+        <h1 aria-label="Hi, my name is Jean.">
           <div className="reveal">
             <span className="reveal-text">
-              Selected works
+              <TextBounce text="Hi," />
             </span>
             <div className="reveal-mask" aria-hidden />
           </div>
-        </ScrollTo>
-      </section>
-    </>
+          <br />
+          <div className="reveal">
+            <span className="reveal-text">
+              <TextBounce text="my name is Jean." />
+            </span>
+            <div className="reveal-mask" aria-hidden />
+          </div>
+        </h1>
+        <div className="reveal description">
+          <span className="reveal-text">
+            I am a front-end developer based in Seoul.
+          </span>
+          <div className="reveal-mask" aria-hidden />
+        </div>
+        <div className="welcome-buttons blink">
+          <Button onClick={openContactModal}>About me</Button>
+        </div>
+      </div>
+      <ScrollTo onClick={scrollToWork}>
+        <div className="reveal">
+          <span className="reveal-text">
+            Selected works
+          </span>
+          <div className="reveal-mask" aria-hidden />
+        </div>
+      </ScrollTo>
+    </section>
   );
 };
 
