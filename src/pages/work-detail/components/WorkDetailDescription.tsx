@@ -80,9 +80,9 @@ const WorkDetailDescription = ({ work }: Props) => {
           if (i === revealNoMask.length - 1 && j === descParts.length - 1) {
             tl.to(document.querySelector('.work-links'), {
               opacity: 1,
-              y: 0,
               duration: 1,
               delay: 1.2,
+              ease: 'power1.in',
             },
             'start');
           }
