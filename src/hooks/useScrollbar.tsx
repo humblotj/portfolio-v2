@@ -36,10 +36,10 @@ const useScrollbar = () => {
   };
 
   const onInitScrollbar = () => {
-    // if (width < 768) {
-    //   document.body.style.height = 'auto';
-    //   return;
-    // }
+    if (width < 768) {
+      document.body.style.height = 'auto';
+      return;
+    }
 
     const bodyScrollbar = Scrollbar.init(document.body, { damping: 0.4, delegateTo: document });
 
