@@ -1,11 +1,9 @@
 import Scrollbar from 'smooth-scrollbar';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { use100vh } from 'react-div-100vh';
 
 import useSize from './useSize';
 
 const useScrollbar = () => {
-  const height = use100vh();
   const [width] = useSize();
 
   const scrollBarListener = (status: any) => {
@@ -17,11 +15,7 @@ const useScrollbar = () => {
       }
       if (el.dataset.bottom) {
         el.style.bottom = 'auto';
-        if (height) {
-          el.style.top = `${height - +el.dataset.bottom - offset.y + el.offsetHeight}`;
-        } else {
-          el.style.top = `calc(100vh - ${+el.dataset.bottom - offset.y + el.offsetHeight}px)`;
-        }
+        el.style.top = `calc(100% - ${+el.dataset.bottom - offset.y + el.offsetHeight}px)`;
       }
     });
 

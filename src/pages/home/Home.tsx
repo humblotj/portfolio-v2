@@ -2,7 +2,6 @@ import { RefObject, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useDispatch } from 'react-redux';
 import Scrollbar from 'smooth-scrollbar';
-import { use100vh } from 'react-div-100vh';
 
 import './Home.scss';
 import Button from '../../components/ui/Button';
@@ -15,7 +14,6 @@ import useScrollbar from '../../hooks/useScrollbar';
 
 const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   const ref = useRef<HTMLElement>(null);
-  const height = use100vh();
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
   const bodyScrollbar = Scrollbar.get(document.body);
@@ -112,7 +110,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   };
 
   return (
-    <section className="home-sec" ref={ref} style={{ height: height as number }}>
+    <section className="home-sec" ref={ref}>
       <Strokes secondary />
       <HomeBackground />
       <div className="welcome">

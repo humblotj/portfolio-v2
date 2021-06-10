@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import { gsap } from 'gsap';
-import { use100vh } from 'react-div-100vh';
 
 import './NotFound.scss';
 import notFound from '../../assets/not-found.json';
@@ -9,7 +8,6 @@ import BackArrow from '../../components/ui/BackArrow';
 
 const NotFound = () => {
   const lottieRef = useRef<HTMLDivElement>(null);
-  const height = use100vh();
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -29,7 +27,7 @@ const NotFound = () => {
   }, []);
 
   return (
-    <section className="not-found-sec" style={{ height: height as number }}>
+    <section className="not-found-sec">
       <BackArrow>
         Turn Back Home
       </BackArrow>
