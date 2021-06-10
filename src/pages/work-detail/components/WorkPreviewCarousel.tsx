@@ -31,6 +31,7 @@ const WorkPreviewCarousel = ({ work }: Props) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: element,
+          start: '20% bottom',
         },
       });
       tl.to(
