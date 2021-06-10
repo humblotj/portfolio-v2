@@ -28,7 +28,11 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+        },
+      });
       tl.to(
         reveal[i].querySelector('.reveal-mask'),
         {
@@ -61,7 +65,11 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
 
     onListenerTrigger();
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+      },
+    });
 
     const blink = document.querySelectorAll('.blink');
     tl.fromTo(blink,
