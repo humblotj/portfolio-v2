@@ -1,8 +1,10 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { gsap } from 'gsap';
 
 import './WorkPreviewCarousel.scss';
+import { useEffect, useRef } from 'react';
 import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
 
@@ -17,6 +19,31 @@ const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
 ));
 
 const WorkPreviewCarousel = ({ work }: Props) => {
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = overlayRef.current;
+    if (!element || !work) {
+      return;
+    }
+
+    setTimeout(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+        },
+      });
+      tl.to(
+        element,
+        {
+          width: 0,
+          duration: 1.5,
+          ease: 'power1.inOut',
+        },
+      );
+    }, 100);
+  }, [work]);
+
   if (!work) {
     return null;
   }
@@ -26,7 +53,6 @@ const WorkPreviewCarousel = ({ work }: Props) => {
   return (
     <div className="work-preview-carousel">
       <div className="work-preview-carousel-inner">
-
         <Slider
           slidesToShow={1}
           infinite={false}
@@ -49,6 +75,7 @@ const WorkPreviewCarousel = ({ work }: Props) => {
           Next Work
         </BackArrow>
       </div>
+      <div className="work-preview-overlay" ref={overlayRef} />
     </div>
 
   );

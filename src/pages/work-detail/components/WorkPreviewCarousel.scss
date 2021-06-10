@@ -1,4 +1,5 @@
 .work-preview-carousel {
+    position: relative;
     background: #eff0f1;
 
     .work-preview-carousel-inner {
@@ -69,6 +70,16 @@
         &.slick-disabled {
             opacity: 0;
         }
+    }
+
+    .work-preview-overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #fff;
+        top: 0;
+        right: 0;
+        z-index: 1;
     }
 }
 
