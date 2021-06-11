@@ -31,7 +31,6 @@ const useScrollbar = () => {
 
   const onInitScrollbar = () => {
     if (width < 768) {
-      document.body.style.height = 'auto';
       return;
     }
 
