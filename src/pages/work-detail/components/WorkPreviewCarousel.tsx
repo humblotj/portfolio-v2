@@ -7,6 +7,7 @@ import './WorkPreviewCarousel.scss';
 import { useEffect, useRef } from 'react';
 import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
+import useSize from '../../../hooks/useSize';
 
 interface Props {
   work: WorkDetailProps,
@@ -20,6 +21,7 @@ const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
 
 const WorkPreviewCarousel = ({ work }: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [width] = useSize();
 
   useEffect(() => {
     const element = overlayRef.current;
@@ -38,7 +40,7 @@ const WorkPreviewCarousel = ({ work }: Props) => {
         element,
         {
           width: 0,
-          duration: 1.5,
+          duration: width > 768 ? 1.5 : 1,
           ease: 'power1.inOut',
         },
       );
