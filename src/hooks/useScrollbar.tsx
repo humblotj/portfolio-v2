@@ -1,12 +1,13 @@
 import Scrollbar from 'smooth-scrollbar';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
+import { useCallback } from 'react';
 import useSize from './useSize';
 
 const useScrollbar = () => {
   const [width] = useSize();
 
-  const scrollBarListener = (status: any) => {
+  const scrollBarListener = useCallback((status: any) => {
     const { offset } = status;
 
     document.querySelectorAll<HTMLElement>('.fixed').forEach((el) => {
@@ -20,16 +21,16 @@ const useScrollbar = () => {
     });
 
     ScrollTrigger.update();
-  };
+  }, []);
 
-  const onDestroyScrollbar = () => {
+  const onDestroyScrollbar = useCallback(() => {
     const bodyScrollbar = Scrollbar.get(document.body);
     if (bodyScrollbar) {
       bodyScrollbar.destroy();
     }
-  };
+  }, []);
 
-  const onInitScrollbar = () => {
+  const onInitScrollbar = useCallback(() => {
     if (width < 768) {
       document.body.style.height = 'auto';
       return;
@@ -52,16 +53,16 @@ const useScrollbar = () => {
 
     bodyScrollbar.addListener(scrollBarListener);
     ScrollTrigger.defaults({ scroller: document.body });
-  };
+  }, [width, scrollBarListener]);
 
-  const onListenerTrigger = () => {
+  const onListenerTrigger = useCallback(() => {
     const bodyScrollbar = Scrollbar.get(document.body);
     if (bodyScrollbar) {
       scrollBarListener(
         { offset: bodyScrollbar.offset, limit: bodyScrollbar.limit },
       );
     }
-  };
+  }, [scrollBarListener]);
 
   return { onInitScrollbar, onDestroyScrollbar, onListenerTrigger };
 };

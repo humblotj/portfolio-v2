@@ -107,6 +107,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
         duration: 0.4,
         pointerEvents: 'auto',
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollToWork = () => {

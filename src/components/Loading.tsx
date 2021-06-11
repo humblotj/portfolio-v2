@@ -55,6 +55,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
         y: 0,
         duration: isInit ? 0.3 : 0,
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -100,6 +101,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
           onComplete: () => enableComponent(),
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasImportFinished]);
 
   return (

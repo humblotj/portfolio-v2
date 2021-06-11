@@ -27,6 +27,7 @@ const WorkDetail = () => {
     return () => {
       gsap.to(blink, { opacity: 0, duration: 0 });
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!work) {

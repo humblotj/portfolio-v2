@@ -17,34 +17,35 @@ const Main = () => {
   const contactRef = useRef<HTMLElement>(null);
   const bodyScrollbar = Scrollbar.get(document.body);
 
-  const scrollTo = () => {
-    if (location.state && isInit) {
-      if (location.state === 'work') {
-        if (bodyScrollbar) {
-          bodyScrollbar.scrollTo(0, workRef.current?.offsetTop, 1000);
-        } else {
-          workRef.current?.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-      if (location.state === 'contact') {
-        if (bodyScrollbar) {
-          bodyScrollbar.scrollTo(0, contactRef.current?.offsetTop, 1000);
-        } else {
-          contactRef.current?.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-  };
-
   useEffect(() => {
+    const scrollTo = () => {
+      if (location.state && isInit) {
+        if (location.state === 'work') {
+          if (bodyScrollbar) {
+            bodyScrollbar.scrollTo(0, workRef.current?.offsetTop, 1000);
+          } else {
+            workRef.current?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+        if (location.state === 'contact') {
+          if (bodyScrollbar) {
+            bodyScrollbar.scrollTo(0, contactRef.current?.offsetTop, 1000);
+          } else {
+            contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    };
+
     scrollTo();
     document.querySelector('.wrapper-menu');
-  }, [location]);
+  }, [location, isInit, bodyScrollbar]);
 
   useEffect(() => {
     if (!isInit) {
       dispatch(onInit());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

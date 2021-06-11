@@ -31,6 +31,7 @@ const ScrollToTop: FunctionComponent<RouteComponentProps> = ({ history }) => {
       unlisten();
       window.onbeforeunload = null;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (null);

@@ -36,6 +36,7 @@ const Phone = ({
         opacity: 0,
         duration: noAnimation ? 0 : 0.9,
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
 
   return (

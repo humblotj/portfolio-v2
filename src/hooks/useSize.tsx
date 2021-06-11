@@ -27,7 +27,7 @@ const useSize = (
         callback(entry.contentRect);
       }
     },
-    [callback],
+    [callback, ref],
   );
 
   useLayoutEffect(() => {
@@ -45,7 +45,7 @@ const useSize = (
       RO?.disconnect();
       RO = null;
     };
-  }, [ref]);
+  }, [ref, handleResize]);
 
   return size;
 };
