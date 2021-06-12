@@ -70,7 +70,7 @@
             border-radius: 4px;
         }
 
-        h4 {
+        .work-tag {
             position: absolute;
             left: 50px;
             top: 50px;
@@ -168,7 +168,7 @@
         transform: translateY(-28px);
 
         .work-item-content {
-            h4 {
+            .work-tag {
                 left: 40px;
                 top: 40px;
             }
@@ -204,7 +204,7 @@
         margin-bottom: 70px;
 
         .work-item-content {
-            h4 {
+            .work-tag {
                 left: 30px;
                 top: 30px;
             }
@@ -240,7 +240,7 @@
 @media only screen and (max-width: 359px) {
     .work-item {
         .work-item-content {
-            h4 {
+            .work-tag {
                 font-size: 10px !important;
                 left: 20px;
                 top: 20px;

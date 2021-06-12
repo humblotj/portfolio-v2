@@ -13,6 +13,7 @@ const BurgerMenu = ({ open, toggleNav }: Props) => (
     className={cx('wrapper-menu', 'blink', 'fixed', { open })}
     onClick={toggleNav}
     aria-pressed={open}
+    aria-label="burger-menu"
     data-top="30"
   >
     <div className="line-menu half start" />

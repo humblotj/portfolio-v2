@@ -80,7 +80,7 @@ const WorkItem = ({ index, work, id }: Props) => {
         to={`work/${id}`}
       >
         <div className="work-item-content">
-          <h4>{isPersonal ? 'Personal Work' : 'Company Work'}</h4>
+          <span className="work-tag">{isPersonal ? 'Personal Work' : 'Company Work'}</span>
           <div className="work-item-title">
             <h3>{name}</h3>
             <p>

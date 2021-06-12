@@ -39,7 +39,7 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
         duration: 0.75,
         delay: 0.25,
       }, 'start');
-    tl.fromTo(element.querySelector('h4'),
+    tl.fromTo(element.querySelector('.work-tag'),
       {
         opacity: 0,
         x: '-300px',
@@ -64,7 +64,7 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
     <section className="work-sec" ref={ref}>
       <div className="work-content">
         <div ref={workHeaderRef} className="work-header">
-          <h4>Portfolio</h4>
+          <span className="work-tag">Portfolio</span>
           <h2>My work:</h2>
           <div className="divider" aria-hidden />
         </div>
