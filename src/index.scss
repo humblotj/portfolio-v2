@@ -1,19 +1,5 @@
 @import-normalize;
 
-@font-face {
-  font-family: "Silka";
-  font-weight: 400;
-  src: local("Silka"), url(./fonts/silka-regular-webfont.woff) format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Silka";
-  font-weight: 600;
-  src: local("Silka"), url(./fonts/silka-semibold-webfont.woff) format("woff");
-  font-display: swap;
-}
-
 html,
 body,
 #root {
