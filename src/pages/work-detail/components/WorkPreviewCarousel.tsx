@@ -7,10 +7,10 @@ import './WorkPreviewCarousel.scss';
 import { useEffect, useRef } from 'react';
 import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
-import useSize from '../../../hooks/useSize';
 
 interface Props {
   work: WorkDetailProps,
+  canStartCarAnimation: boolean
 }
 
 const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
@@ -19,13 +19,12 @@ const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
   </div>
 ));
 
-const WorkPreviewCarousel = ({ work }: Props) => {
+const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const [width] = useSize();
 
   useEffect(() => {
     const element = overlayRef.current;
-    if (!element || !work) {
+    if (!element || !work || !canStartCarAnimation) {
       return;
     }
 
@@ -39,12 +38,12 @@ const WorkPreviewCarousel = ({ work }: Props) => {
       element,
       {
         width: 0,
-        duration: width > 768 ? 1.5 : 1,
+        duration: 1,
         ease: 'power1.inOut',
       },
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [work]);
+  }, [canStartCarAnimation]);
 
   if (!work) {
     return null;

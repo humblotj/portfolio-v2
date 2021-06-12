@@ -8,10 +8,11 @@ import { WorkDetailProps } from '../../../interface';
 import WorkDetailParallax from './WorkDetailParallax';
 
 interface Props {
-  work: WorkDetailProps
+  work: WorkDetailProps,
+  setCanStartCarAnimation: (b: boolean) => void
 }
 
-const WorkDetailDescription = ({ work }: Props) => {
+const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -82,11 +83,13 @@ const WorkDetailDescription = ({ work }: Props) => {
             duration: 1,
             delay: 1.2,
             ease: 'power1.in',
+            onComplete: () => setCanStartCarAnimation(true),
           },
           'start');
         }
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [work]);
 
   if (!work) {

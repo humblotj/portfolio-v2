@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,6 +15,7 @@ const WorkDetail = () => {
   const isInit = useSelector(selectIsInit);
   const work = useSelector(selectWorkDetails);
   const { onListenerTrigger } = useScrollbar();
+  const [canStartCarAnimation, setCanStartCarAnimation] = useState(false);
 
   useEffect(() => {
     if (!isInit) {
@@ -49,7 +50,7 @@ const WorkDetail = () => {
       <BackArrow className="fixed" data-top="30">
         Turn Back Home
       </BackArrow>
-      <WorkDetailDescription work={work} />
+      <WorkDetailDescription work={work} setCanStartCarAnimation={setCanStartCarAnimation} />
       <div className="work-links">
         {work.links?.length ? work.links.map(({ type, url }) => (
           <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>
@@ -66,7 +67,7 @@ const WorkDetail = () => {
         </Button>
         )}
       </div>
-      <WorkPreviewCarousel work={work} />
+      <WorkPreviewCarousel work={work} canStartCarAnimation={canStartCarAnimation} />
     </section>
   );
 };
