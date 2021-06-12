@@ -1,13 +1,14 @@
 .work-preview-carousel {
     position: relative;
     background: #eff0f1;
+    margin-top: 80px;
 
     .work-preview-carousel-inner {
         position: relative;
         max-width: 1120px;
         margin: 0 auto;
-        margin-top: 80px;
         padding: 80px;
+        z-index: 1;
     }
 
     .project-controls {
@@ -79,7 +80,13 @@
         background: #fff;
         top: 0;
         right: 0;
+        clip: rect(auto, auto, auto, auto);
         z-index: 1;
+
+        .strokes {
+            position: fixed;
+            top: initial;
+        }
     }
 }
 

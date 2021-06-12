@@ -9,6 +9,7 @@ import Button from '../../components/ui/Button';
 import TextField from '../../components/ui/TextField';
 import { ReactComponent as ContactMask } from '../../assets/contact-mask.svg';
 import useCombinedRefs from '../../hooks/useCombinedRefs';
+import Strokes from '../../components/Strokes';
 
 const Contact = forwardRef<HTMLElement>((props, ref) => {
   const innerRef = useCombinedRefs(ref) as any;
@@ -100,6 +101,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
   return (
     <section ref={innerRef} className="contact-sec">
       <ContactMask />
+      <Strokes />
       <div className="contact-inner">
         <h2>Contact</h2>
         <div className="divider" aria-hidden />

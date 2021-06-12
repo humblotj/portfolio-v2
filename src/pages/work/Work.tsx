@@ -6,6 +6,7 @@ import { WorkProps } from '../../interface';
 import { selectWorksSorted } from '../../store/store';
 import WorkItem from './components/WorkItem';
 import './Work.scss';
+import Strokes from '../../components/Strokes';
 
 const Work = forwardRef<HTMLElement>((props, ref) => {
   const works = useSelector(selectWorksSorted);
@@ -59,6 +60,7 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
 
   return (
     <section className="work-sec" ref={ref}>
+      <Strokes />
       <div className="work-content">
         <div ref={workHeaderRef} className="work-header">
           <span className="work-tag">Portfolio</span>

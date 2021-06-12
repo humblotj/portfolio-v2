@@ -1,8 +1,13 @@
 .contact-sec {
+    position: relative;
     background-color: #23282a;
     color: #fff;
     text-align: center;
     overflow: hidden;
+
+    .strokes {
+        position: initial;
+    }
 
     .contact-inner {
         max-width: 500px;

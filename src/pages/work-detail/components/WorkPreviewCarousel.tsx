@@ -7,6 +7,8 @@ import './WorkPreviewCarousel.scss';
 import { useEffect, useRef } from 'react';
 import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
+import Strokes from '../../../components/Strokes';
+import useSize from '../../../hooks/useSize';
 
 interface Props {
   work: WorkDetailProps,
@@ -21,6 +23,7 @@ const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
 
 const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [width, height] = useSize(overlayRef);
 
   useEffect(() => {
     const element = overlayRef.current;
@@ -76,7 +79,10 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
           Next Work
         </BackArrow>
       </div>
-      <div className="work-preview-overlay" ref={overlayRef} />
+      <div className="work-preview-overlay" ref={overlayRef}>
+        <Strokes style={{ height: `${height}px` }} />
+      </div>
+      <Strokes />
     </div>
 
   );

@@ -4,10 +4,11 @@ import './Strokes.scss';
 
 interface Props {
     secondary?: boolean
+    style?: any
 }
 
-const Strokes = ({ secondary = false }: Props) => (
-  <div className={cx('strokes', { secondary })}>
+const Strokes = ({ secondary = false, style }: Props) => (
+  <div className={cx('strokes', { secondary })} style={style}>
     <div />
     <div />
     <div />

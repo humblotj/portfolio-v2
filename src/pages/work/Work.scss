@@ -1,8 +1,16 @@
 .work-sec {
     position: relative;
     padding: 100px 100px 50px;
-    overflow: hidden;
     background-color: #fff;
+    overflow: hidden;
+
+    .strokes {
+        position: initial;
+
+        > div {
+            height: 110%;
+        }
+    }
 
     .work-content {
         max-width: 1280px;
@@ -55,10 +63,10 @@
                 margin-bottom: 10px;
                 font-size: 11px;
             }
-            
+
             .work-header {
                 padding: 0 50px 90px 50px;
-                
+
                 h2 {
                     font-size: 38px;
                 }
@@ -78,11 +86,11 @@
         .work-content {
             .work-header {
                 padding: 0 50px 90px 50px;
-                 
+
                 h2 {
                     font-size: 32px;
                 }
-                
+
                 .divider {
                     margin: 15px 0 15px 15px;
                 }
@@ -90,4 +98,3 @@
         }
     }
 }
-

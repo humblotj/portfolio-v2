@@ -9,6 +9,7 @@ import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 import useScrollbar from '../../hooks/useScrollbar';
+import Strokes from '../../components/Strokes';
 
 const WorkDetail = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const WorkDetail = () => {
       <BackArrow className="fixed" data-top="30">
         Turn Back Home
       </BackArrow>
+      <Strokes />
       <WorkDetailDescription work={work} setCanStartCarAnimation={setCanStartCarAnimation} />
       <div className="work-links">
         {work.links?.length ? work.links.map(({ type, url }) => (

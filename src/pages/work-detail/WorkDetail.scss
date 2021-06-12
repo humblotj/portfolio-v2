@@ -1,4 +1,5 @@
 .work-detail-sec {
+    position: relative;
     padding-top: 60px;
     overflow: hidden;
     background: #fff;
@@ -8,6 +9,10 @@
         top: 30px;
         left: 60px;
         z-index: 99;
+    }
+
+    .strokes {
+        position: initial;
     }
 
     .close-button {

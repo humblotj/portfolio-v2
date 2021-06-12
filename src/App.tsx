@@ -45,7 +45,6 @@ const App = () => {
     <>
       <ScrollToTop />
       <Header />
-      <Strokes />
       <SideLeft />
       <Switch>
         <Route path="/work/:id" key={location.pathname}>
