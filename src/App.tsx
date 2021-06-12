@@ -6,7 +6,6 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/analytics';
-import WebFont from 'webfontloader';
 
 import './App.scss';
 import Header from './components/Header';
@@ -39,12 +38,6 @@ const App = () => {
   useEffect(() => {
     onInitScrollbar();
     document.body.classList.add('is-init');
-    WebFont.load({
-      custom: {
-        families: ['Silka'],
-        urls: ['./fonts/silka-regular-webfont.woff', './fonts/silka-semibold-webfont.woff'],
-      },
-    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
