@@ -15,11 +15,13 @@ interface Props {
 const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useEffect((): any => {
     const element = ref.current;
     if (!element || !work) {
-      return;
+      return null;
     }
+
+    let timeout: ReturnType<typeof setTimeout>;
 
     const descParts = element.querySelectorAll('.desc-part');
 
@@ -83,12 +85,15 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
             duration: 1,
             delay: 1.2,
             ease: 'power1.in',
-            onComplete: () => setCanStartCarAnimation(true),
+            // eslint-disable-next-line no-loop-func
+            onStart: () => { timeout = setTimeout(() => setCanStartCarAnimation(true), 500); },
           },
           'start');
         }
       }
     }
+
+    return () => clearTimeout(timeout);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
