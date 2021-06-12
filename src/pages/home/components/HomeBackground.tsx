@@ -12,26 +12,30 @@ const HomeBackground = () => {
       return;
     }
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+      },
+    });
     tl.to(element.querySelector('.overlay'),
       {
         scaleX: 1,
         duration: 0.8,
       });
+    tl.addLabel('start');
     tl.to(element.querySelector('.overlay'),
       {
         scaleX: 0,
         transformOrigin: '0 50%',
         duration: 0.5 + 0.25 * 3,
-      });
-    gsap.to(element.querySelector('.abstract-background'),
+      }, 'start');
+    tl.to(element.querySelector('.abstract-background'),
       {
         opacity: 1,
         duration: 0.6,
-        delay: 0.8,
-      });
+      }, 'start');
 
-    setTimeout(() => gsap.to('.abstract-background', {
+    gsap.to('.abstract-background', {
       backgroundPosition: `90% ${window.innerHeight / 2}px`,
       ease: 'none',
       scrollTrigger: {
@@ -40,7 +44,7 @@ const HomeBackground = () => {
         end: 'bottom top',
         scrub: true,
       },
-    }), 100);
+    });
   }, []);
 
   return (
