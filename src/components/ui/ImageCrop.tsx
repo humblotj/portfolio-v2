@@ -36,7 +36,7 @@ const ImageCrop = ({
     <div ref={ref} className={cx('image-crop', { 'is-mobile': isMobile })}>
       {src.includes('mp4')
         ? (
-          <video autoPlay loop muted>
+          <video autoPlay loop muted width="638.65" height="400.9">
             <source src={src} />
           </video>
         )
