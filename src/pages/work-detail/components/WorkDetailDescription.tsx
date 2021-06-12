@@ -20,75 +20,73 @@ const WorkDetailDescription = ({ work }: Props) => {
       return;
     }
 
-    setTimeout(() => {
-      const descParts = element.querySelectorAll('.desc-part');
+    const descParts = element.querySelectorAll('.desc-part');
 
-      for (let j = 0; j < descParts.length; j++) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: descParts[j].querySelector('.reveal:not(.desc-heading)') as any,
+    for (let j = 0; j < descParts.length; j++) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: descParts[j].querySelector('.reveal:not(.desc-heading)') as any,
+        },
+      });
+
+      const reveal = descParts[j].querySelectorAll('.reveal:not(.no-mask)');
+      tl.addLabel('start');
+      for (let i = 0; i < reveal.length; i++) {
+        tl.to(
+          reveal[i].querySelector('.reveal-mask'),
+          {
+            scaleX: 1,
+            duration: 0.8 + i * 0.1,
           },
-        });
+          'start',
+        );
+        tl.add('reveal');
+        tl.to(
+          reveal[i].querySelector('.reveal-mask'),
+          {
+            scaleX: 0,
+            transformOrigin: '100% 50%',
+            duration: 0.5,
+            delay: 0.2,
+          },
+          'reveal',
+        );
+        tl.to(
+          reveal[i].querySelector('.reveal-text'),
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            delay: 0.2,
+          },
+          'reveal',
+        );
+      }
 
-        const reveal = descParts[j].querySelectorAll('.reveal:not(.no-mask)');
-        tl.addLabel('start');
-        for (let i = 0; i < reveal.length; i++) {
-          tl.to(
-            reveal[i].querySelector('.reveal-mask'),
-            {
-              scaleX: 1,
-              duration: 0.8 + i * 0.1,
-            },
-            'start',
-          );
-          tl.add('reveal');
-          tl.to(
-            reveal[i].querySelector('.reveal-mask'),
-            {
-              scaleX: 0,
-              transformOrigin: '100% 50%',
-              duration: 0.5,
-              delay: 0.2,
-            },
-            'reveal',
-          );
-          tl.to(
-            reveal[i].querySelector('.reveal-text'),
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              delay: 0.2,
-            },
-            'reveal',
-          );
-        }
+      const revealNoMask = descParts[j].querySelectorAll('.reveal.no-mask');
+      for (let i = 0; i < revealNoMask.length; i++) {
+        tl.to(
+          revealNoMask[i].querySelector('.reveal-text'),
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 1.2,
+          },
+          'start',
+        );
 
-        const revealNoMask = descParts[j].querySelectorAll('.reveal.no-mask');
-        for (let i = 0; i < revealNoMask.length; i++) {
-          tl.to(
-            revealNoMask[i].querySelector('.reveal-text'),
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              delay: 1.2,
-            },
-            'start',
-          );
-
-          if (i === revealNoMask.length - 1 && j === descParts.length - 1) {
-            tl.to(document.querySelector('.work-links'), {
-              opacity: 1,
-              duration: 1,
-              delay: 1.2,
-              ease: 'power1.in',
-            },
-            'start');
-          }
+        if (i === revealNoMask.length - 1 && j === descParts.length - 1) {
+          tl.to(document.querySelector('.work-links'), {
+            opacity: 1,
+            duration: 1,
+            delay: 1.2,
+            ease: 'power1.in',
+          },
+          'start');
         }
       }
-    }, 100);
+    }
   }, [work]);
 
   if (!work) {

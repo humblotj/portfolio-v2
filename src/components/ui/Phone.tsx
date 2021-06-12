@@ -45,7 +45,7 @@ const Phone = ({
       className="phone"
       style={{ height: width * 1.5778 }}
     >
-      <img src={PhoneMockup} alt="mockup" className="phone-mockup" />
+      <img src={PhoneMockup} alt="mockup" className="phone-mockup" width="460" height="720" />
       <ImageCrop
         src={src}
         isMobile

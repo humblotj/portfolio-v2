@@ -29,47 +29,42 @@ const WorkItem = ({ index, work, id }: Props) => {
       return;
     }
 
-    const animate = (element: HTMLElement) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: element,
-          start: '35% bottom',
-        },
-      });
-      const isLargeWidth = width > 768;
-      const isOdd = index % 2 === 1;
-      // eslint-disable-next-line no-nested-ternary
-      tl.addLabel('start', isLargeWidth ? isOdd ? 0.25 : 0 : 0);
-      tl.to(element.querySelector('.work-item-mask'),
-        {
-          scaleX: 0,
-          transformOrigin: '100% 50%',
-          duration: 1,
-        }, 'start');
-      tl.to(element.querySelectorAll('.work-item-title > *'),
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-        }, 'start');
-      tl.fromTo(element.querySelector('.work-preview'),
-        {
-          opacity: 0,
-          x: '50%',
-          y: '-50%',
-        },
-        {
-          opacity: 1,
-          x: '-50%',
-          y: '-50%',
-          duration: 1,
-        }, 'start');
-      tl.set(element, { pointerEvents: 'auto' });
-    };
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        start: '35% bottom',
+      },
+    });
+    const isLargeWidth = width > 768;
+    const isOdd = index % 2 === 1;
+    // eslint-disable-next-line no-nested-ternary
+    tl.addLabel('start', isLargeWidth ? isOdd ? 0.25 : 0 : 0);
+    tl.to(element.querySelector('.work-item-mask'),
+      {
+        scaleX: 0,
+        transformOrigin: '100% 50%',
+        duration: 1,
+      }, 'start');
+    tl.to(element.querySelectorAll('.work-item-title > *'),
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+      }, 'start');
+    tl.fromTo(element.querySelector('.work-preview'),
+      {
+        opacity: 0,
+        x: '50%',
+        y: '-50%',
+      },
+      {
+        opacity: 1,
+        x: '-50%',
+        y: '-50%',
+        duration: 1,
+      }, 'start');
+    tl.set(element, { pointerEvents: 'auto' });
 
-    setTimeout(() => {
-      animate(element);
-    }, 100);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

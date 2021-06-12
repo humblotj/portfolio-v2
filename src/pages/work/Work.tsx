@@ -11,7 +11,12 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
   const works = useSelector(selectWorksSorted);
   const workHeaderRef = useRef<HTMLDivElement>(null);
 
-  const animate = (element: HTMLElement) => {
+  useEffect(() => {
+    const element = workHeaderRef.current;
+    if (!element) {
+      return;
+    }
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -50,14 +55,6 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
         duration: 0.75,
         delay: 0.5,
       }, 'start');
-  };
-
-  useEffect(() => {
-    const element = workHeaderRef.current;
-    if (!element) {
-      return;
-    }
-    setTimeout(() => animate(element), 100);
   }, []);
 
   return (

@@ -15,77 +15,73 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    const element = innerRef.current as unknown as HTMLElement;
+    const element = innerRef.current;
     if (!element) {
       return;
     }
 
-    const animate = (element: HTMLElement) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: innerRef.current,
-          start: 'top 70%',
-        },
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: innerRef.current,
+        start: 'top 70%',
+      },
+    });
+    tl.addLabel('start');
+    tl.fromTo(element.querySelector('form'),
+      {
+        opacity: 0,
+        scale: 0,
+      },
+      {
+        opacity: 1,
+        scale: 1.05,
+        duration: 0.6,
+        delay: 0.5,
       });
-      tl.addLabel('start');
-      tl.fromTo(element.querySelector('form'),
-        {
-          opacity: 0,
-          scale: 0,
-        },
-        {
-          opacity: 1,
-          scale: 1.05,
-          duration: 0.6,
-          delay: 0.5,
-        });
-      tl.to(element.querySelector('form'),
-        {
-          opacity: 1,
-          scale: 0.95,
-          duration: 0.2,
-        });
-      tl.to(element.querySelector('form'),
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.2,
-        });
-      tl.fromTo(element.querySelector('h2'),
-        {
-          opacity: 0,
-          x: '-300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-        }, 'start');
-      tl.fromTo(element.querySelector('.divider'),
-        {
-          opacity: 0,
-          x: '300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-          delay: 0.25,
-        }, 'start');
-      tl.fromTo(element.querySelector('.send-message > p'),
-        {
-          opacity: 0,
-          x: '300px',
-        },
-        {
-          opacity: 1,
-          x: '0',
-          duration: 0.75,
-          delay: 0.5,
-        }, 'start');
-    };
-
-    setTimeout(() => animate(element), 100);
+    tl.to(element.querySelector('form'),
+      {
+        opacity: 1,
+        scale: 0.95,
+        duration: 0.2,
+      });
+    tl.to(element.querySelector('form'),
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.2,
+      });
+    tl.fromTo(element.querySelector('h2'),
+      {
+        opacity: 0,
+        x: '-300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+      }, 'start');
+    tl.fromTo(element.querySelector('.divider'),
+      {
+        opacity: 0,
+        x: '300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+        delay: 0.25,
+      }, 'start');
+    tl.fromTo(element.querySelector('.send-message > p'),
+      {
+        opacity: 0,
+        x: '300px',
+      },
+      {
+        opacity: 1,
+        x: '0',
+        duration: 0.75,
+        delay: 0.5,
+      }, 'start');
   }, [innerRef]);
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {

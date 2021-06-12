@@ -10,7 +10,7 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => (
     <div className="about-info">
       <div className="pic reveal">
         <div className="pic-crop">
-          <img className="reveal-text" src={photo} alt="profile-pic" />
+          <img className="reveal-text" src={photo} alt="profile-pic" width="150" height="150" />
         </div>
         <div className="reveal-mask" aria-hidden />
       </div>

@@ -15,7 +15,7 @@ interface Props {
 
 const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
   <div className="wrap" data-value={i + 1} key={item.url}>
-    <img className={item.type} src={item.url} alt="" draggable={false} />
+    <img width={item.type === 'web' ? 760 : 300} className={item.type} src={item.url} alt="" draggable={false} />
   </div>
 ));
 
@@ -29,22 +29,20 @@ const WorkPreviewCarousel = ({ work }: Props) => {
       return;
     }
 
-    setTimeout(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: element,
-          start: '20% bottom',
-        },
-      });
-      tl.to(
-        element,
-        {
-          width: 0,
-          duration: width > 768 ? 1.5 : 1,
-          ease: 'power1.inOut',
-        },
-      );
-    }, 100);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        start: '20% bottom',
+      },
+    });
+    tl.to(
+      element,
+      {
+        width: 0,
+        duration: width > 768 ? 1.5 : 1,
+        ease: 'power1.inOut',
+      },
+    );
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [work]);
 

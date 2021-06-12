@@ -54,13 +54,15 @@ const Laptop = ({
           src={MacbookTop}
           alt=""
           className="top"
+          width="694"
+          height="12"
         />
-        <img src={MacbookCover} alt="" className="cover" />
+        <img src={MacbookCover} alt="" className="cover" width="694" height="466" />
         <ImageCrop src={src} isParallax={isParallax} />
       </div>
       <div className="part bottom">
-        <img src={MacbookCover} alt="" className="cover" />
-        <img src={MacbookBottom} alt="" className="bottom" />
+        <img src={MacbookCover} alt="" className="cover" width="694" height="466" />
+        <img src={MacbookBottom} alt="" className="bottom" width="694" height="18" />
       </div>
     </div>
   );
