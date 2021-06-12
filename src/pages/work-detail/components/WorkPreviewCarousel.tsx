@@ -43,7 +43,7 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
       },
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [work]);
+  }, [canStartCarAnimation]);
 
   if (!work) {
     return null;

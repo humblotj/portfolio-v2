@@ -90,7 +90,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [work]);
+  }, []);
 
   if (!work) {
     return null;
