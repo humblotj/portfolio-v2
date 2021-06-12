@@ -238,7 +238,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
                 <Bounce><GraphQL /></Bounce>
                 <span>GraphQL</span>
               </li>
-              <li>
+              <li className="medium">
                 <Bounce><D3js /></Bounce>
                 <span>D3.js</span>
               </li>
