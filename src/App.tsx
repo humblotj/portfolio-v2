@@ -11,7 +11,6 @@ import './App.scss';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import SideLeft from './components/SideLeft';
-import Strokes from './components/Strokes';
 import AboutMe from './pages/about-me/AboutMe';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
