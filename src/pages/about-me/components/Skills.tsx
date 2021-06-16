@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { gsap, Power2 } from 'gsap';
+import { gsap } from 'gsap';
 
 import './Skills.scss';
 import Bounce from '../../../components/ui/Bounce';
@@ -44,8 +44,9 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 1,
-          duration: 0.8 + i * 0.25,
+          duration: 0.8,
           delay: 2,
+          ease: 'power3.inOut',
         },
       );
 
@@ -55,18 +56,20 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         {
           scaleX: 0,
           transformOrigin: '100% 50%',
-          duration: 0.5,
-          delay: 0.2,
+          duration: 0.6,
+          delay: 0.1 + i * 0.25,
+          ease: 'power3.inOut',
         },
         'reveal',
       );
       tl.to(
         reveal[i].querySelector('.reveal-text'),
         {
-          opacity: 1,
           y: 0,
-          duration: 0.5,
-          delay: 0.2,
+          opacity: 1,
+          duration: 1,
+          delay: 0.3 + i * 0.25,
+          ease: 'power4.out',
         },
         'reveal',
       );
@@ -88,7 +91,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
               y: 0,
               duration: 0.4,
               delay: 3.2 + j * 0.2,
-              ease: Power2.easeOut,
+              ease: 'power2.out',
             },
           );
         }
@@ -107,7 +110,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
             y: 0,
             duration: 0.25,
             delay: 3.2 + j * 0.1,
-            ease: Power2.easeOut,
+            ease: 'power2.out',
           },
         );
       }

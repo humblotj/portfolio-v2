@@ -26,20 +26,22 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
     const descParts = element.querySelectorAll('.desc-part');
 
     for (let j = 0; j < descParts.length; j++) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: descParts[j].querySelector('.reveal:not(.desc-heading)') as any,
-        },
-      });
-
       const reveal = descParts[j].querySelectorAll('.reveal:not(.no-mask)');
-      tl.addLabel('start');
       for (let i = 0; i < reveal.length; i++) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: descParts[j],
+          },
+        });
+
+        tl.addLabel('start');
+
         tl.to(
           reveal[i].querySelector('.reveal-mask'),
           {
             scaleX: 1,
-            duration: 0.8 + i * 0.1,
+            duration: 0.8,
+            ease: 'power3.inOut',
           },
           'start',
         );
@@ -49,18 +51,20 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
           {
             scaleX: 0,
             transformOrigin: '100% 50%',
-            duration: 0.5,
-            delay: 0.2,
+            duration: 0.6,
+            delay: 0.1 + j * 0.1 + i * 0.05,
+            ease: 'power3.inOut',
           },
           'reveal',
         );
         tl.to(
           reveal[i].querySelector('.reveal-text'),
           {
-            opacity: 1,
             y: 0,
-            duration: 0.5,
-            delay: 0.2,
+            opacity: 1,
+            duration: 1,
+            delay: 0.3 + j * 0.1 + i * 0.05,
+            ease: 'power4.out',
           },
           'reveal',
         );
@@ -68,13 +72,21 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
 
       const revealNoMask = descParts[j].querySelectorAll('.reveal.no-mask');
       for (let i = 0; i < revealNoMask.length; i++) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: descParts[j],
+          },
+        });
+
+        tl.addLabel('start');
         tl.to(
           revealNoMask[i].querySelector('.reveal-text'),
           {
-            opacity: 1,
             y: 0,
+            opacity: 1,
             duration: 1,
-            delay: 1.2,
+            delay: 1.1 + j * 0.1 + i * 0.05,
+            ease: 'power4.out',
           },
           'start',
         );
@@ -82,9 +94,9 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
         if (i === revealNoMask.length - 1 && j === descParts.length - 1) {
           tl.to(document.querySelector('.work-links'), {
             opacity: 1,
-            duration: 1,
-            delay: 1.2,
-            ease: 'power1.in',
+            duration: 0.5,
+            delay: 1.1 + j * 0.1 + i * 0.05,
+            ease: 'power4.in',
             // eslint-disable-next-line no-loop-func
             onStart: () => { timeout = setTimeout(() => setCanStartCarAnimation(true), 500); },
           },

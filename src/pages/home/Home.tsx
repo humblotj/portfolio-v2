@@ -37,7 +37,8 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
         reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 1,
-          duration: 0.8 + i * 0.25,
+          duration: 0.8,
+          ease: 'power3.inOut',
         },
       );
       tl.add('reveal');
@@ -46,8 +47,9 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
         {
           scaleX: 0,
           transformOrigin: '100% 50%',
-          duration: 0.5,
-          delay: 0.2,
+          duration: 0.6,
+          delay: 0.1 + i * 0.25,
+          ease: 'power3.inOut',
         },
         'reveal',
       );
@@ -56,11 +58,25 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
-          delay: 0.2,
+          duration: 1,
+          delay: 0.3 + i * 0.25,
+          ease: 'power4.out',
         },
         'reveal',
       );
+
+      if (i === reveal.length - 1) {
+        tl.to(
+          document.body.querySelector('.scroll-stroke'),
+          {
+            scale: 1,
+            duration: 1,
+            delay: 0.3 + i * 0.25,
+            ease: 'power4.out',
+          },
+          'reveal',
+        );
+      }
     }
 
     onListenerTrigger();

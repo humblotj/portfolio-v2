@@ -21,6 +21,7 @@ const HomeBackground = () => {
       {
         scaleX: 1,
         duration: 0.8,
+        ease: 'power3.inOut',
       });
     tl.addLabel('start');
     tl.to(element.querySelector('.overlay'),
@@ -28,11 +29,13 @@ const HomeBackground = () => {
         scaleX: 0,
         transformOrigin: '0 50%',
         duration: 0.5 + 0.25 * 3,
+        ease: 'power3.inOut',
       }, 'start');
     tl.to(element.querySelector('.abstract-background'),
       {
         opacity: 1,
         duration: 0.6,
+        ease: 'power3.inOut',
       }, 'start');
 
     gsap.to('.abstract-background', {

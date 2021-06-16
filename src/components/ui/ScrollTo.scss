@@ -22,7 +22,7 @@
             bottom: 0;
             margin: auto;
             width: 1px;
-            animation: scale 1.5s forwards;
+            transform: scale(0);
 
             > div {
                 position: absolute;
