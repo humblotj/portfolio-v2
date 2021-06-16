@@ -38,13 +38,12 @@ const WorkItem = ({ index, work, id }: Props) => {
     const isLargeWidth = width > 768;
     const isOdd = index % 2 === 1;
     // eslint-disable-next-line no-nested-ternary
-    tl.addLabel('start', isLargeWidth ? isOdd ? 0.3 : 0 : 0);
+    tl.addLabel('start', isLargeWidth ? isOdd ? 0.25 : 0 : 0);
     tl.to(element.querySelector('.work-item-mask'),
       {
         scaleX: 0,
         transformOrigin: '100% 50%',
         duration: 1,
-        ease: 'power3.inOut',
       }, 'start');
     tl.to(element.querySelectorAll('.work-item-title > *'),
       {
