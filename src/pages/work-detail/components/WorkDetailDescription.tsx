@@ -62,8 +62,8 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
           {
             y: 0,
             opacity: 1,
-            duration: 1,
-            delay: 0.3 + j * 0.1 + i * 0.05,
+            duration: 0.9,
+            delay: 0.4 + j * 0.1 + i * 0.05,
             ease: 'power4.out',
           },
           'reveal',
@@ -84,8 +84,8 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
           {
             y: 0,
             opacity: 1,
-            duration: 1,
-            delay: 1.1 + j * 0.1 + i * 0.05,
+            duration: 0.9,
+            delay: 1.2 + j * 0.1 + i * 0.05,
             ease: 'power4.out',
           },
           'start',

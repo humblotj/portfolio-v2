@@ -58,8 +58,8 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          delay: 0.3 + i * 0.25,
+          duration: 0.9,
+          delay: 0.4 + i * 0.25,
           ease: 'power4.out',
         },
         'reveal',
@@ -70,8 +70,8 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
           document.body.querySelector('.scroll-stroke'),
           {
             scale: 1,
-            duration: 1,
-            delay: 0.3 + i * 0.25,
+            duration: 0.9,
+            delay: 0.4 + i * 0.25,
             ease: 'power4.out',
           },
           'reveal',
