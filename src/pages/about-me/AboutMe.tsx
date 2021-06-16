@@ -70,8 +70,9 @@ const AboutMe = () => {
         aboutReveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 1,
-          duration: 0.8 + i * 0.25,
+          duration: 0.8,
           delay: 0.7,
+          ease: 'power3.inOut',
         },
       );
       tl.add('reveal');
@@ -80,47 +81,27 @@ const AboutMe = () => {
         {
           scaleX: 0,
           transformOrigin: '100% 50%',
-          duration: 0.5,
-          delay: 0.2,
+          duration: 0.6,
+          delay: 0.1 + i * 0.25,
+          ease: 'power3.inOut',
         },
         'reveal',
       );
       tl.to(
-        aboutReveal[i].querySelector('.reveal-text'),
+        [aboutReveal[i].querySelector('.reveal-text'),
+          i === 1 ? contentRef.querySelector('.about-description') : undefined],
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
-          delay: 0.2,
+          duration: 0.9,
+          delay: 0.4 + i * 0.25,
+          ease: 'power4.out',
         },
         'reveal',
       );
     }
 
     tl.add('reveal');
-    tl.fromTo(
-      contentRef.querySelector('.about-description'),
-      {
-        opacity: 0,
-        y: '50%',
-      },
-      {
-        opacity: 1,
-        duration: 0.5,
-        delay: 0.7 + 0.25 * 2,
-        y: '0',
-      },
-      'reveal',
-    );
-    tl.from(
-      contentRef.querySelector('h2'),
-      {
-        opacity: 0,
-        duration: 0.5,
-        delay: 0.7 + 0.25 * 2,
-      },
-      'reveal',
-    );
   }, [contentRef]);
 
   return (

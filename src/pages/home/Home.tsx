@@ -67,7 +67,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
 
       if (i === reveal.length - 1) {
         tl.to(
-          document.body.querySelector('.scroll-stroke'),
+          element.querySelector('.scroll-stroke'),
           {
             scale: 1,
             duration: 0.9,

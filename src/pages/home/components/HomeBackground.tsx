@@ -28,13 +28,15 @@ const HomeBackground = () => {
       {
         scaleX: 0,
         transformOrigin: '0 50%',
-        duration: 0.5 + 0.25 * 3,
+        duration: 0.6,
+        delay: 0.1 + 0.25 * 3,
         ease: 'power3.inOut',
       }, 'start');
     tl.to(element.querySelector('.abstract-background'),
       {
         opacity: 1,
-        duration: 0.6,
+        duration: 0.9,
+        delay: 0.1 + 0.25 * 3,
         ease: 'power3.inOut',
       }, 'start');
 
