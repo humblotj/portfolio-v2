@@ -45,7 +45,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         {
           scaleX: 1,
           duration: 0.8,
-          delay: 2,
+          delay: 1.9,
           ease: 'power3.inOut',
         },
       );
@@ -57,7 +57,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           scaleX: 0,
           transformOrigin: '100% 50%',
           duration: 0.6,
-          delay: 0.1 + i * 0.25,
+          delay: i * 0.25,
           ease: 'power3.inOut',
         },
         'reveal',
@@ -68,7 +68,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           y: 0,
           opacity: 1,
           duration: 0.9,
-          delay: 0.4 + i * 0.25,
+          delay: 0.3 + i * 0.25,
           ease: 'power4.out',
         },
         'reveal',
@@ -90,7 +90,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
               opacity: 1,
               y: 0,
               duration: 0.4,
-              delay: 3.2 + j * 0.2,
+              delay: 3.1 + j * 0.2,
               ease: 'power2.out',
             },
           );
