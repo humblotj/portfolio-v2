@@ -48,7 +48,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 1,
-          duration: 0.4,
+          duration: 0.6,
           delay: i * 0.12,
         },
         '+=1.9',
@@ -60,7 +60,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           transformOrigin: '100% 50%',
           duration: 0.4,
         },
-        '+=0.8',
+        '+=0.6',
       );
       tl.to(
         reveal[i].querySelector('.reveal-text'),

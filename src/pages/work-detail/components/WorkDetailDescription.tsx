@@ -43,7 +43,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
             mask,
             {
               scaleX: 1,
-              duration: 0.4,
+              duration: 0.6,
               delay: i * 0.12,
             },
           );
@@ -54,7 +54,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
               transformOrigin: '100% 50%',
               duration: 0.4,
             },
-            '+=0.8',
+            '+=0.6',
           );
         }
 
