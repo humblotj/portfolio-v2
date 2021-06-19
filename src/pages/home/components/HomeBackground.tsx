@@ -16,29 +16,27 @@ const HomeBackground = () => {
       scrollTrigger: {
         trigger: element,
       },
+      defaults: {
+        ease: 'power3.inOut',
+      },
     });
     tl.to(element.querySelector('.overlay'),
       {
         scaleX: 1,
-        duration: 0.8,
-        ease: 'power3.inOut',
+        duration: 0.4 + 0.12 * 4,
       });
-    tl.addLabel('start');
     tl.to(element.querySelector('.overlay'),
       {
         scaleX: 0,
         transformOrigin: '0 50%',
-        duration: 0.6,
-        delay: 0.25 * 3,
-        ease: 'power3.inOut',
-      }, 'start');
+        duration: 0.4,
+      }, '+=0.8');
     tl.to(element.querySelector('.abstract-background'),
       {
         opacity: 1,
-        duration: 0.9,
-        delay: 0.25 * 3,
-        ease: 'power3.inOut',
-      }, 'start');
+        duration: 1,
+        ease: 'power1.out',
+      }, '<0.15');
 
     gsap.to('.abstract-background', {
       backgroundPosition: `90% ${window.innerHeight / 2}px`,

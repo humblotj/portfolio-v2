@@ -80,7 +80,11 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
         </BackArrow>
       </div>
       <div className="work-preview-overlay" ref={overlayRef}>
-        <Strokes style={{ height: `${height}px` }} />
+        <Strokes style={{
+          height: `${height}px`,
+          position: canStartCarAnimation ? 'fixed' : 'static',
+        }}
+        />
       </div>
       <Strokes />
     </div>

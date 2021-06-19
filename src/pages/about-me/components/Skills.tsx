@@ -39,80 +39,68 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({
+        defaults: {
+          ease: 'power3.inOut',
+        },
+      });
       tl.to(
         reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 1,
-          duration: 0.8,
-          delay: 1.9,
-          ease: 'power3.inOut',
+          duration: 0.4,
+          delay: i * 0.12,
         },
+        '+=1.9',
       );
-
-      tl.add('reveal');
       tl.to(
         reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 0,
           transformOrigin: '100% 50%',
-          duration: 0.6,
-          delay: i * 0.25,
-          ease: 'power3.inOut',
+          duration: 0.4,
         },
-        'reveal',
+        '+=0.8',
       );
       tl.to(
         reveal[i].querySelector('.reveal-text'),
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
-          delay: 0.3 + i * 0.25,
+          duration: 1,
           ease: 'power4.out',
         },
-        'reveal',
+        '<0.15',
       );
     }
+
+    const tl = gsap.timeline({
+      defaults: {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+      },
+    });
 
     if (window.innerWidth > 768) {
       const skillsLists = element.querySelectorAll('ul');
       for (let i = 0; i < skillsLists.length; i++) {
         const skills = skillsLists[i].querySelectorAll('li');
         for (let j = 0; j < skills.length; j++) {
-          gsap.fromTo(
-            skills[j],
-            {
-              opacity: 0,
-              y: '50%',
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              delay: 3.1 + j * 0.2,
-              ease: 'power2.out',
-            },
-          );
+          tl.to(skills[j], {
+            delay: j * 0.2,
+          },
+          3.1);
         }
       }
     } else {
       const skills = element.querySelectorAll('li');
       for (let j = 0; j < skills.length; j++) {
-        gsap.fromTo(
-          skills[j],
-          {
-            opacity: 0,
-            y: '50%',
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.25,
-            delay: 3.2 + j * 0.1,
-            ease: 'power2.out',
-          },
-        );
+        tl.to(skills[j], {
+          delay: j * 0.1,
+        },
+        3.2);
       }
     }
   }, []);

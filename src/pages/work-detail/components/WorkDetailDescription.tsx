@@ -21,86 +21,62 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
       return null;
     }
 
-    let timeout: ReturnType<typeof setTimeout>;
+    let timeout: number;
 
     const descParts = element.querySelectorAll('.desc-part');
 
     for (let j = 0; j < descParts.length; j++) {
-      const reveal = descParts[j].querySelectorAll('.reveal:not(.no-mask)');
+      const reveal = descParts[j].querySelectorAll('.reveal');
       for (let i = 0; i < reveal.length; i++) {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: descParts[j],
           },
+          defaults: {
+            ease: 'power3.inOut',
+          },
         });
 
-        tl.addLabel('start');
+        const mask = reveal[i].querySelector('.reveal-mask');
+        if (mask) {
+          tl.to(
+            mask,
+            {
+              scaleX: 1,
+              duration: 0.4,
+              delay: i * 0.12,
+            },
+          );
+          tl.to(
+            mask,
+            {
+              scaleX: 0,
+              transformOrigin: '100% 50%',
+              duration: 0.4,
+            },
+            '+=0.8',
+          );
+        }
 
-        tl.to(
-          reveal[i].querySelector('.reveal-mask'),
-          {
-            scaleX: 1,
-            duration: 0.8,
-            ease: 'power3.inOut',
-          },
-          'start',
-        );
-        tl.add('reveal');
-        tl.to(
-          reveal[i].querySelector('.reveal-mask'),
-          {
-            scaleX: 0,
-            transformOrigin: '100% 50%',
-            duration: 0.6,
-            delay: 0.1 + j * 0.1 + i * 0.05,
-            ease: 'power3.inOut',
-          },
-          'reveal',
-        );
         tl.to(
           reveal[i].querySelector('.reveal-text'),
           {
             y: 0,
             opacity: 1,
-            duration: 0.9,
-            delay: 0.4 + j * 0.1 + i * 0.05,
+            duration: 1,
             ease: 'power4.out',
           },
-          'reveal',
-        );
-      }
-
-      const revealNoMask = descParts[j].querySelectorAll('.reveal.no-mask');
-      for (let i = 0; i < revealNoMask.length; i++) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: descParts[j],
-          },
-        });
-
-        tl.addLabel('start');
-        tl.to(
-          revealNoMask[i].querySelector('.reveal-text'),
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            delay: 1.2 + j * 0.1 + i * 0.05,
-            ease: 'power4.out',
-          },
-          'start',
+          mask ? '<0.15' : 1.2 + i * 0.12,
         );
 
-        if (i === revealNoMask.length - 1 && j === descParts.length - 1) {
+        if (j === descParts.length - 1) {
           tl.to(document.querySelector('.work-links'), {
             opacity: 1,
             duration: 0.5,
-            delay: 1.1 + j * 0.1 + i * 0.05,
             ease: 'power4.in',
-            // eslint-disable-next-line no-loop-func
-            onStart: () => { timeout = setTimeout(() => setCanStartCarAnimation(true), 500); },
-          },
-          'start');
+          }, '<');
+          // eslint-disable-next-line no-loop-func
+          tl.call(() => { timeout = setTimeout(() => setCanStartCarAnimation(true)); }, undefined, '<0.5');
         }
       }
     }

@@ -32,37 +32,36 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
         scrollTrigger: {
           trigger: element,
         },
+        defaults: {
+          ease: 'power3.inOut',
+        },
       });
       tl.to(
         reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 1,
-          duration: 0.8,
-          ease: 'power3.inOut',
+          duration: 0.4,
+          delay: i * 0.12,
         },
       );
-      tl.add('reveal');
       tl.to(
         reveal[i].querySelector('.reveal-mask'),
         {
           scaleX: 0,
           transformOrigin: '100% 50%',
-          duration: 0.6,
-          delay: i * 0.25,
-          ease: 'power3.inOut',
+          duration: 0.4,
         },
-        'reveal',
+        '+=0.8',
       );
       tl.to(
         reveal[i].querySelector('.reveal-text'),
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
-          delay: 0.3 + i * 0.25,
+          duration: 1,
           ease: 'power4.out',
         },
-        'reveal',
+        '<0.15',
       );
 
       if (i === reveal.length - 1) {
@@ -70,11 +69,10 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
           element.querySelector('.scroll-stroke'),
           {
             scale: 1,
-            duration: 0.9,
-            delay: 0.3 + i * 0.25,
+            duration: 1,
             ease: 'power4.out',
           },
-          'reveal',
+          '<',
         );
       }
     }

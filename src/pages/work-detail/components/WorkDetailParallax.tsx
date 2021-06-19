@@ -21,24 +21,25 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
       scrollTrigger: {
         trigger: element,
       },
+      defaults: {
+        duration: 0.6,
+      },
     });
     tl.addLabel('start');
     tl.to(
       element,
       {
         x: 0,
-        duration: 1.1,
-        onComplete: () => setAnimationIsComplete(true),
-      }, 'start',
+      }, 0,
     );
     tl.to(
       element,
       {
         opacity: 1,
-        ease: 'power2.in',
-        duration: 1.1,
-      }, 'start',
+        ease: 'power1.in',
+      }, 0,
     );
+    tl.call(() => setAnimationIsComplete(true), undefined, '+=0.6');
 
     return () => tl.kill();
   }, [preview]);

@@ -41,6 +41,8 @@
                 align-items: center;
                 margin-bottom: 20px;
                 margin-right: 16px;
+                opacity: 0;
+                transform: translateY(50%);
 
                 svg {
                     height: 40px;
