@@ -25,6 +25,7 @@ import { ReactComponent as GraphQL } from '../../../assets/icons/graphql.svg';
 import { ReactComponent as D3js } from '../../../assets/icons/d3js.svg';
 import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
 import { ReactComponent as SocketIO } from '../../../assets/icons/socket-io.svg';
+import { ReactComponent as Pwa } from '../../../assets/icons/pwa.svg';
 import CloseButton from '../../../components/ui/CloseButton';
 import useSize from '../../../hooks/useSize';
 
@@ -204,6 +205,10 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
               <li>
                 <Bounce><SocketIO /></Bounce>
                 <span>Socket.io</span>
+              </li>
+              <li>
+                <Bounce><Pwa /></Bounce>
+                <span>PWA</span>
               </li>
               <li>
                 <Bounce><Java /></Bounce>
