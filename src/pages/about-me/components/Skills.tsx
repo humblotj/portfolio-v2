@@ -26,9 +26,11 @@ import { ReactComponent as D3js } from '../../../assets/icons/d3js.svg';
 import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
 import { ReactComponent as SocketIO } from '../../../assets/icons/socket-io.svg';
 import CloseButton from '../../../components/ui/CloseButton';
+import useSize from '../../../hooks/useSize';
 
 const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [width] = useSize();
 
   useEffect(() => {
     const element = ref.current;
@@ -83,7 +85,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
       },
     });
 
-    if (window.innerWidth > 768) {
+    if (width > 768) {
       const skillsLists = element.querySelectorAll('ul');
       for (let i = 0; i < skillsLists.length; i++) {
         const skills = skillsLists[i].querySelectorAll('li');
@@ -91,7 +93,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           tl.to(skills[j], {
             delay: j * 0.2,
           },
-          3.1);
+          3.35);
         }
       }
     } else {
@@ -100,10 +102,10 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         tl.to(skills[j], {
           delay: j * 0.1,
         },
-        3.2);
+        3.35);
       }
     }
-  }, []);
+  }, [width]);
 
   return (
     <div ref={ref} className="skills">

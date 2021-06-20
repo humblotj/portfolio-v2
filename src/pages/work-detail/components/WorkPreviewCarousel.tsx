@@ -42,7 +42,7 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
       {
         width: 0,
         duration: 1,
-        ease: 'power1.inOut',
+        ease: 'power2.inOut',
       },
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps

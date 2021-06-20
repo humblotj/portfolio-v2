@@ -26,7 +26,7 @@ const WorkItem = ({ index, work, id }: Props) => {
   useEffect(() => {
     const element = ref.current;
     if (!element) {
-      return;
+      return () => {};
     }
 
     const tl = gsap.timeline({
@@ -65,8 +65,10 @@ const WorkItem = ({ index, work, id }: Props) => {
       }, 'start');
     tl.set(element, { pointerEvents: 'auto' });
 
+    return () => tl.kill();
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [width > 768]);
 
   return (
     <li ref={ref} className="work-item">
