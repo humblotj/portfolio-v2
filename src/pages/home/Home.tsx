@@ -51,7 +51,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
           transformOrigin: '100% 50%',
           duration: 0.4,
         },
-        '+=0.6',
+        '+=0.4',
       );
       tl.to(
         reveal[i].querySelector('.reveal-text'),
@@ -94,9 +94,8 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
       {
         autoAlpha: 0.8,
         duration: 0.1,
-        delay: 0.8 + 0.7 + 0.25 * 3,
         pointerEvents: 'none',
-      });
+      }, 1.55 + 0.2 + 0.12 * 3);
     tl.to(blink,
       {
         autoAlpha: 0.1,

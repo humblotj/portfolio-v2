@@ -54,7 +54,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
               transformOrigin: '100% 50%',
               duration: 0.4,
             },
-            '+=0.6',
+            '+=0.4',
           );
         }
 

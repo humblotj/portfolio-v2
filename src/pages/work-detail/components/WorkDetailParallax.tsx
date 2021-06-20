@@ -39,7 +39,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
         ease: 'power1.in',
       }, 0,
     );
-    tl.call(() => setAnimationIsComplete(true), undefined, '+=0.6');
+    tl.call(() => setAnimationIsComplete(true), undefined, '+=0.4');
 
     return () => tl.kill();
   }, [preview]);

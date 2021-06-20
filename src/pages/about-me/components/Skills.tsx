@@ -62,7 +62,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           transformOrigin: '100% 50%',
           duration: 0.4,
         },
-        '+=0.6',
+        '+=0.4',
       );
       tl.to(
         reveal[i].querySelector('.reveal-text'),
