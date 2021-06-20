@@ -14,7 +14,16 @@
     ],
     "headers": [
       {
-        "source": "**/(*.@(eot|otf|ttf|ttc|woff)|(/fonts.css))",
+        "source": "**/*.@(eot|otf|ttf|ttc|woff",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000"
+          }
+        ]
+      },
+      {
+        "source": "**/fonts.css",
         "headers": [
           {
             "key": "Cache-Control",
