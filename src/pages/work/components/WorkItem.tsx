@@ -19,7 +19,7 @@ interface Props {
 const WorkItem = ({ index, work, id }: Props) => {
   const ref = useRef<HTMLLIElement>(null);
   const {
-    isPersonal, name, primaryColor, description, preview, techs,
+    isPersonal, name, description, preview, techs,
   } = work;
   const [width] = useSize();
 
@@ -86,8 +86,7 @@ const WorkItem = ({ index, work, id }: Props) => {
           </div>
           <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
             <ImageWrap
-              src={preview.url}
-              isMobile={preview.type === 'mobile'}
+              preview={preview as any}
               startAnimation
               noAnimation
             />

@@ -15,13 +15,11 @@ interface Props {
 const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect((): any => {
+  useEffect(() => {
     const element = ref.current;
     if (!element || !work) {
-      return null;
+      return;
     }
-
-    let timeout: number;
 
     const descParts = element.querySelectorAll('.desc-part');
 
@@ -76,12 +74,10 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
             ease: 'power4.in',
           }, '<');
           // eslint-disable-next-line no-loop-func
-          tl.call(() => { timeout = setTimeout(() => setCanStartCarAnimation(true)); }, undefined, '<0.5');
+          tl.call(() => setCanStartCarAnimation(true), undefined, '<0.5');
         }
       }
     }
-
-    return () => clearTimeout(timeout);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -90,7 +86,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
   }
 
   const {
-    name, primaryColor, description, year, techs,
+    name, description, year, techs,
   } = work;
 
   return (

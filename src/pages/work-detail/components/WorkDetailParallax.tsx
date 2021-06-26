@@ -3,10 +3,10 @@ import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import ImageWrap from '../../../components/ui/ImageWrap';
-import { ImgProp } from '../../../interface';
+import { ImgSingleProp } from '../../../interface';
 import './WorkDetailParallax.scss';
 
-const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
+const WorkDetailParallax = ({ preview }: {preview: ImgSingleProp}) => {
   const ref = useRef<HTMLDivElement>(null);
   const isMobile = preview.type === 'mobile';
   const [animationIsComplete, setAnimationIsComplete] = useState(false);
@@ -54,10 +54,8 @@ const WorkDetailParallax = ({ preview }: {preview: ImgProp}) => {
       className={cx('preview-container', { 'is-mobile': isMobile })}
     >
       <ImageWrap
-        src={preview.url}
-        isMobile={isMobile}
+        preview={preview}
         startAnimation={animationIsComplete}
-        isParallax={preview.isParallax}
       />
     </div>
   );

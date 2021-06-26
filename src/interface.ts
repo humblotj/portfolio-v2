@@ -2,6 +2,20 @@ export interface ImgProp {
     type: 'web' | 'mobile',
     url: string,
     isParallax?: boolean,
+    isVideo?: boolean,
+    width: number,
+    height: number,
+    urls: { [key: string]: string }[]
+}
+
+export interface ImgSingleProp {
+    type: 'web' | 'mobile',
+    url: string,
+    isParallax?: boolean,
+    isVideo?: boolean,
+    width: number,
+    height: number,
+    urls: { [key: string]: string }
 }
 
 export interface WorkProps {
@@ -18,11 +32,11 @@ export interface WorkProps {
 export interface WorkDetailProps {
     description: string,
     links: { type: 'web' | 'ios' | 'android', url: string }[],
-    mainPreview: ImgProp,
+    mainPreview: ImgSingleProp,
     name: string,
     primaryColor: string,
     nextWork: string,
-    pictures: ImgProp[],
+    previews: ImgProp,
     previousWork: string,
     repoUrl?: string,
     techs: string[],

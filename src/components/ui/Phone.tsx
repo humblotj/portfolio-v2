@@ -4,16 +4,16 @@ import useSize from '../../hooks/useSize';
 import ImageCrop from './ImageCrop';
 import PhoneMockup from '../../assets/phone-mockup.png';
 import './Phone.scss';
+import { ImgSingleProp } from '../../interface';
 
 interface Props {
-    src: string;
+  preview: ImgSingleProp;
     startAnimation: boolean;
     noAnimation?: boolean;
-    isParallax?: boolean;
 }
 
 const Phone = ({
-  src, startAnimation = false, noAnimation = false, isParallax = false,
+  preview, startAnimation = false, noAnimation = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
@@ -43,13 +43,10 @@ const Phone = ({
     <div
       ref={ref}
       className="phone"
-      style={{ height: width * 1.5778 }}
     >
       <img src={PhoneMockup} alt="mockup" className="phone-mockup" width="460" height="720" />
       <ImageCrop
-        src={src}
-        isMobile
-        isParallax={isParallax}
+        preview={preview}
       >
         <div className="phone-overlay" />
       </ImageCrop>

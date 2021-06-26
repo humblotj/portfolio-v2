@@ -7,16 +7,16 @@ import MacbookTop from '../../assets/macbook-top.svg';
 import MacbookBottom from '../../assets/macbook-bottom.svg';
 import ImageCrop from './ImageCrop';
 import useSize from '../../hooks/useSize';
+import { ImgSingleProp } from '../../interface';
 
 interface Props {
-  src: string;
+  preview: ImgSingleProp;
   startAnimation: boolean;
   noAnimation?: boolean;
-  isParallax?: boolean;
 }
 
 const Laptop = ({
-  src, startAnimation, noAnimation = false, isParallax = false,
+  preview, startAnimation, noAnimation = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
@@ -52,17 +52,17 @@ const Laptop = ({
         <img
           style={{ transform: `translate3d(0, 0, -${width / 65}px) rotateX(90deg)` }}
           src={MacbookTop}
-          alt=""
+          alt="top"
           className="top"
           width="694"
           height="12"
         />
-        <img src={MacbookCover} alt="" className="cover" width="694" height="466" />
-        <ImageCrop src={src} isParallax={isParallax} />
+        <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
+        <ImageCrop preview={preview} />
       </div>
       <div className="part bottom">
-        <img src={MacbookCover} alt="" className="cover" width="694" height="466" />
-        <img src={MacbookBottom} alt="" className="bottom" width="694" height="18" />
+        <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
+        <img src={MacbookBottom} alt="bottom" className="bottom" width="694" height="18" />
       </div>
     </div>
   );

@@ -1,34 +1,31 @@
 import Phone from './Phone';
 import Laptop from './Laptop';
+import { ImgSingleProp } from '../../interface';
 
 interface Props {
-  src?: string
-  isMobile?: boolean
-  isParallax?: boolean
+preview: ImgSingleProp;
   startAnimation?: boolean
   noAnimation?: boolean
 }
 
 const ImageWrap = ({
-  src = '', isMobile = false, isParallax = false, startAnimation = false, noAnimation = false,
+  preview, startAnimation = false, noAnimation = false,
 }: Props) => {
-  if (isMobile) {
+  if (preview?.type === 'mobile') {
     return (
       <Phone
-        src={src}
+        preview={preview}
         startAnimation={startAnimation}
         noAnimation={noAnimation}
-        isParallax={isParallax}
       />
     );
   }
 
   return (
     <Laptop
-      src={src}
+      preview={preview}
       startAnimation={startAnimation}
       noAnimation={noAnimation}
-      isParallax={isParallax}
     />
   );
 };

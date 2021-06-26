@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { gsap } from 'gsap';
 
 import './WorkPreviewCarousel.scss';
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
 import Strokes from '../../../components/Strokes';
@@ -15,11 +15,19 @@ interface Props {
   canStartCarAnimation: boolean
 }
 
-const PreviewItem = (pictures: ImgProp[]) => pictures?.map((item, i) => (
-  <div className="wrap" data-value={i + 1} key={item.url}>
-    <img width={item.type === 'web' ? 760 : 300} className={item.type} src={item.url} alt="" draggable={false} />
-  </div>
-));
+const PreviewItem = ({ previews, name }: {previews: ImgProp, name: string}) => (
+  previews.urls?.map((item, i) => {
+    const srcSet = Object.entries(item).map(([key, value]) => (`${value} ${key}w`)).join();
+    const keys = Object.keys(item);
+    const src = item[keys[keys.length - 1]];
+
+    return (
+      <div className="wrap" data-value={i + 1} key={src}>
+        <img width={previews.width} height={previews.height} className={item.type} src={src} srcSet={srcSet} alt={`${name}_${i}`} draggable={false} />
+      </div>
+    );
+  })
+);
 
 const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -52,7 +60,9 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
     return null;
   }
 
-  const { pictures, previousWork, nextWork } = work;
+  const {
+    previews, previousWork, nextWork, name,
+  } = work;
 
   return (
     <div className="work-preview-carousel">
@@ -61,7 +71,7 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
           slidesToShow={1}
           infinite={false}
         >
-          {PreviewItem(pictures)}
+          {PreviewItem({ previews, name })}
         </Slider>
       </div>
       <div className="project-controls">
