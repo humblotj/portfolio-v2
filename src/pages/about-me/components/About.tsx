@@ -88,7 +88,7 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           <strong>scalable</strong>
           {' '}
           projects –
-          but also like experimenting with new backend technologies.
+          but also like experimenting with backend technologies.
           <br />
           I am open to
           {' '}
