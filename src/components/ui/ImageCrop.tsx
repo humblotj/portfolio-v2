@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
 import {
   ReactNode, useEffect, useMemo, useRef,
 } from 'react';
@@ -69,24 +68,19 @@ const ImageCrop = ({
     return Object.entries(urls).map(([key, value]) => (`${value} ${key}w`)).join();
   }, [urls, isVideo]);
 
-  const onLoad = () => {
-    videoRef.current?.play();
-  };
-
   return (
     <div ref={ref} className={cx('image-crop', { 'is-mobile': type === 'mobile' })}>
       {isVideo
         ? (
           <video
             ref={videoRef}
-            autoPlay
-            onLoad={onLoad}
             loop
             muted
             width={preview?.width}
             height={preview?.height}
+            key={src}
           >
-            <source src={src} />
+            <source src={src} type="video/mp4" />
           </video>
         )
         : <img src={src} srcSet={srcSet} alt="" width={preview?.width} height={preview?.height} />}
