@@ -74,6 +74,7 @@ const ImageCrop = ({
         ? (
           <video
             ref={videoRef}
+            autoPlay
             loop
             muted
             width={preview?.width}
