@@ -11,9 +11,9 @@ import './App.scss';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import SideLeft from './components/SideLeft';
-import AboutMe from './pages/about-me/AboutMe';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
+import AboutMeSuspense from './pages/about-me/AboutMeSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
 import useScrollbar from './hooks/useScrollbar';
 
@@ -56,7 +56,7 @@ const App = () => {
           <NotFoundSuspense />
         </Route>
       </Switch>
-      <AboutMe />
+      <AboutMeSuspense />
     </>
   );
 };
