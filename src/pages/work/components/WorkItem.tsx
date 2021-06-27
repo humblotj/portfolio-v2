@@ -89,6 +89,7 @@ const WorkItem = ({ index, work, id }: Props) => {
               preview={preview as any}
               startAnimation
               noAnimation
+              lazyload
             />
           </div>
           <ul>

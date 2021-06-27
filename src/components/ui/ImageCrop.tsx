@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import {
   ReactNode, useEffect, useMemo, useRef,
 } from 'react';
@@ -11,10 +12,11 @@ import useSize from '../../hooks/useSize';
 interface Props {
   preview: ImgSingleProp;
   children?: ReactNode;
+  lazyload?: boolean;
 }
 
 const ImageCrop = ({
-  preview, children = null,
+  preview, children = null, lazyload = false,
 }: Props) => {
   const {
     isParallax, type, isVideo, urls,
@@ -84,7 +86,8 @@ const ImageCrop = ({
             <source src={src} type="video/mp4" />
           </video>
         )
-        : <img src={src} srcSet={srcSet} alt="" width={preview?.width} height={preview?.height} />}
+        : lazyload ? <img data-src={src} data-srcset={srcSet} alt="" width={preview?.width} height={preview?.height} className="lazyload" />
+          : <img src={src} srcSet={srcSet} alt="" width={preview?.width} height={preview?.height} />}
       {children}
     </div>
   );

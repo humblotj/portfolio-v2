@@ -6,6 +6,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/analytics';
+import 'lazysizes';
 
 import './App.scss';
 import Header from './components/Header';

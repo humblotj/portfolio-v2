@@ -10,10 +10,11 @@ interface Props {
   preview: ImgSingleProp;
     startAnimation: boolean;
     noAnimation?: boolean;
+    lazyload?: boolean;
 }
 
 const Phone = ({
-  preview, startAnimation = false, noAnimation = false,
+  preview, startAnimation = false, noAnimation = false, lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
@@ -47,6 +48,7 @@ const Phone = ({
       <img src={PhoneMockup} alt="mockup" className="phone-mockup" width="460" height="720" />
       <ImageCrop
         preview={preview}
+        lazyload={lazyload}
       >
         <div className="phone-overlay" />
       </ImageCrop>

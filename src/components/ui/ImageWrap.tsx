@@ -5,11 +5,12 @@ import { ImgSingleProp } from '../../interface';
 interface Props {
 preview: ImgSingleProp;
   startAnimation?: boolean
-  noAnimation?: boolean
+  noAnimation?: boolean,
+  lazyload?: boolean,
 }
 
 const ImageWrap = ({
-  preview, startAnimation = false, noAnimation = false,
+  preview, startAnimation = false, noAnimation = false, lazyload = false,
 }: Props) => {
   if (preview?.type === 'mobile') {
     return (
@@ -17,6 +18,7 @@ const ImageWrap = ({
         preview={preview}
         startAnimation={startAnimation}
         noAnimation={noAnimation}
+        lazyload={lazyload}
       />
     );
   }
@@ -26,6 +28,7 @@ const ImageWrap = ({
       preview={preview}
       startAnimation={startAnimation}
       noAnimation={noAnimation}
+      lazyload={lazyload}
     />
   );
 };

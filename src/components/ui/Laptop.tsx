@@ -13,10 +13,11 @@ interface Props {
   preview: ImgSingleProp;
   startAnimation: boolean;
   noAnimation?: boolean;
+  lazyload?: boolean;
 }
 
 const Laptop = ({
-  preview, startAnimation, noAnimation = false,
+  preview, startAnimation, noAnimation = false, lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
@@ -58,7 +59,7 @@ const Laptop = ({
           height="12"
         />
         <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
-        <ImageCrop preview={preview} />
+        <ImageCrop preview={preview} lazyload={lazyload} />
       </div>
       <div className="part bottom">
         <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
