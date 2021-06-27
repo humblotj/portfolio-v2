@@ -94,31 +94,27 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
       {
         autoAlpha: 0.8,
         duration: 0.1,
-        pointerEvents: 'none',
+        pointerEvents: 'auto',
       }, 1.55 + 0.2 + 0.12 * 3);
     tl.to(blink,
       {
         autoAlpha: 0.1,
         duration: 0.1,
-        pointerEvents: 'none',
       });
     tl.to(blink,
       {
         autoAlpha: 0.8,
         duration: 0.1,
-        pointerEvents: 'none',
       });
     tl.to(blink,
       {
         autoAlpha: 0.2,
         duration: 0.2,
-        pointerEvents: 'none',
       });
     tl.to(blink,
       {
         autoAlpha: 1,
         duration: 0.4,
-        pointerEvents: 'auto',
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
