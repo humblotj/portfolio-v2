@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { gsap } from 'gsap';
 
 import './WorkPreviewCarousel.scss';
-import { memo, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
 import Strokes from '../../../components/Strokes';

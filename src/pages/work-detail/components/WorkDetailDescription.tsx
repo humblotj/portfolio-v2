@@ -15,10 +15,10 @@ interface Props {
 const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useEffect((): any => {
     const element = ref.current;
     if (!element || !work) {
-      return;
+      return null;
     }
 
     const descParts = element.querySelectorAll('.desc-part');
@@ -78,6 +78,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
         }
       }
     }
+    return () => gsap.killTweensOf('*');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
