@@ -23,7 +23,7 @@ const PreviewItem = ({ previews, name }: {previews: ImgProp, name: string}) => (
 
     return (
       <div className="wrap" data-value={i + 1} key={src}>
-        <img width={previews.width} height={previews.height} className={item.type} src={src} srcSet={srcSet} alt={`${name}_${i}`} draggable={false} />
+        <img width={previews.width} height={previews.height} className={previews.type} src={src} srcSet={srcSet} alt={`${name}_${i}`} draggable={false} />
       </div>
     );
   })
