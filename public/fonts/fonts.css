@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Silka";
     font-weight: 400;
-    src: local("Silka"), url(./silka-regular-webfont.woff) format("woff2"), url(./silka-regular-webfont.woff) format("woff");
+    src: local("Silka"), url(./silka-regular-webfont.woff2) format("woff2"), url(./silka-regular-webfont.woff) format("woff");
     font-display: swap;
 }
 
