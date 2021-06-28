@@ -26,6 +26,7 @@ firebase.initializeApp({
   ...config,
 });
 export const db = firebase.firestore();
+db.enablePersistence();
 
 if (process.env.NODE_ENV !== 'development') {
   firebase.analytics();
