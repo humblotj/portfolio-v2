@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+
+import './Phone.scss';
+import { ImgSingleProp } from '../../interface';
 import useSize from '../../hooks/useSize';
 import ImageCrop from './ImageCrop';
 import PhoneMockup from '../../assets/phone-mockup.png';
-import './Phone.scss';
-import { ImgSingleProp } from '../../interface';
+import PhoneMockup300 from '../../assets/phone-mockup-300.png';
 
 interface Props {
   preview: ImgSingleProp;
@@ -45,7 +47,7 @@ const Phone = ({
       ref={ref}
       className="phone"
     >
-      <img src={PhoneMockup} alt="mockup" className="phone-mockup" width="460" height="720" />
+      <img src={PhoneMockup} srcSet={`${PhoneMockup300} 300w, ${PhoneMockup} 653w`} alt="mockup" className="phone-mockup" width="460" height="720" />
       <ImageCrop
         preview={preview}
         lazyload={lazyload}
