@@ -87,7 +87,16 @@ const ImageCrop = ({
           </video>
         )
         : lazyload ? <img data-src={src} data-srcset={srcSet} alt="" width={preview?.width} height={preview?.height} className="lazyload" />
-          : <img src={src} srcSet={srcSet} alt="" width={preview?.width} height={preview?.height} />}
+          : (
+            <img
+              src={src}
+              srcSet={srcSet}
+              key={src}
+              alt=""
+              width={preview?.width}
+              height={preview?.height}
+            />
+          )}
       {children}
     </div>
   );
