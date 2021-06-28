@@ -25,7 +25,11 @@
         left: 0;
         width: 120%;
         height: 120%;
-        background-image: url("/assets/background.jpg");
+        // background-image: url("/assets/background.jpg");
+        background-image: image-set(
+            url("/assets/background-1200.jpg") 1x,
+            url("/assets/background-2000.jpg") 2x
+        );
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 90% 0;
