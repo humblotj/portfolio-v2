@@ -6,13 +6,11 @@ import {
 import { WorkDetailProps, WorkProps } from '../interface';
 
 const initialState: {
-  bodyScrollBar: any,
   isAboutModalOpen: boolean,
   isInit: boolean,
   works: WorkProps[],
   workDetails: WorkDetailProps | null,
 } = {
-  bodyScrollBar: null,
   isAboutModalOpen: false,
   isInit: false,
   works: [],

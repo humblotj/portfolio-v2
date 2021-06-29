@@ -8,14 +8,12 @@ import WorkPreviewCarousel from './components/WorkPreviewCarousel';
 import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
-import useScrollbar from '../../hooks/useScrollbar';
 import Strokes from '../../components/Strokes';
 
 const WorkDetail = () => {
   const dispatch = useDispatch();
   const isInit = useSelector(selectIsInit);
   const work = useSelector(selectWorkDetails);
-  const { onListenerTrigger } = useScrollbar();
   const [canStartCarAnimation, setCanStartCarAnimation] = useState(false);
 
   useEffect(() => {
@@ -25,7 +23,6 @@ const WorkDetail = () => {
 
     const blink = document.querySelectorAll('.blink');
     gsap.to(blink, { opacity: 1, duration: 0 });
-    onListenerTrigger();
     return () => {
       gsap.to(blink, { opacity: 0, duration: 0 });
     };

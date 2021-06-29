@@ -1,7 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useDispatch } from 'react-redux';
-import Scrollbar from 'smooth-scrollbar';
 
 import './Home.scss';
 import Button from '../../components/ui/Button';
@@ -10,14 +9,11 @@ import HomeBackground from './components/HomeBackground';
 import ScrollTo from '../../components/ui/ScrollTo';
 import TextBounce from '../../components/ui/TextBounce';
 import { onToggleAboutModal } from '../../store/store';
-import useScrollbar from '../../hooks/useScrollbar';
 
 const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   const ref = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
-  const bodyScrollbar = Scrollbar.get(document.body);
-  const { onListenerTrigger } = useScrollbar();
 
   useEffect(() => {
     const element = ref.current;
@@ -77,8 +73,6 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
       }
     }
 
-    onListenerTrigger();
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -120,11 +114,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   }, []);
 
   const scrollToWork = () => {
-    if (bodyScrollbar) {
-      bodyScrollbar.scrollTo(0, workRef.current?.offsetTop, 1000);
-    } else {
-      workRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
+    workRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

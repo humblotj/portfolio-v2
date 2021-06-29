@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
+import 'lazysizes';
 
 import './WorkItem.scss';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.svg';
