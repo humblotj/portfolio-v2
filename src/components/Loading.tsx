@@ -1,7 +1,9 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import {
+  useEffect, useRef, useState,
+} from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import cx from 'classnames';
 
 import './Loading.scss';
 import Strokes from './Strokes';
@@ -16,22 +18,12 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
   const isInit = useSelector(selectIsInit);
   const ref = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
 
   const background = location.pathname === '/' ? '#23282a' : '#fff';
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return;
-    }
-
-    gsap.set(element, { background, zIndex: 1000 });
-    if (!isInit) {
-      gsap.fromTo(element.querySelector('.loader > div'), { opacity: 0 }, { opacity: 1, duration: 0 });
-    }
-    gsap.fromTo(element.querySelector('.before'), { y: '-100%' }, { y: 0, duration: isInit ? 0.3 : 0 });
-    gsap.fromTo(element.querySelector('.after'), { y: '100%' }, { y: 0, duration: isInit ? 0.3 : 0 });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setTimeout(() => setIsLoading(true), 0);
   }, []);
 
   useEffect(() => {
@@ -41,18 +33,14 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
     }
 
     if (hasImportFinished) {
-      gsap.fromTo(element, { zIndex: 1, background }, { zIndex: 0, duration: 0.3, background });
-      if (!isInit) {
-        gsap.fromTo(element.querySelectorAll('.loader > div'), { opacity: 1 }, { opacity: 0, duration: 0.3 });
-      }
-      gsap.fromTo(element.querySelector('.before'), { y: 0 }, { y: '-100%', duration: 0.3 });
-      gsap.fromTo(element.querySelector('.after'), { y: 0 }, { y: '100%', duration: 0.3, onComplete: () => enableComponent() });
+      setIsLoading(false);
+      setTimeout(() => enableComponent(), 300);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasImportFinished]);
 
   return (
-    <div ref={ref} className="loading">
+    <div ref={ref} className={cx('loading', { 'is-loading': isLoading || !isInit })} style={{ background }}>
       <Strokes secondary={location.pathname === '/'} />
       <div className="before" aria-hidden>
         <Strokes />
