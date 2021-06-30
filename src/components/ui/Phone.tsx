@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 
 import './Phone.scss';
 import { ImgSingleProp } from '../../interface';
-import useSize from '../../hooks/useSize';
 import ImageCrop from './ImageCrop';
 import PhoneMockup from '../../assets/phone-mockup.png';
 import PhoneMockup300 from '../../assets/phone-mockup-300.png';
@@ -19,7 +18,6 @@ const Phone = ({
   preview, startAnimation = false, noAnimation = false, lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [width] = useSize(ref);
 
   useEffect(() => {
     const element = ref.current;

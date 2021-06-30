@@ -6,7 +6,7 @@ const ScrollToTop: FunctionComponent<RouteComponentProps> = ({ history }) => {
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });
-    window.onpagehide = (event) => {
+    window.onpagehide = (event: PageTransitionEvent) => {
       if (!event.persisted) {
         window.scrollTo(0, 0);
       }

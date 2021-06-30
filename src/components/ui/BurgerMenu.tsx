@@ -14,7 +14,6 @@ const BurgerMenu = ({ open, toggleNav }: Props) => (
     onClick={toggleNav}
     aria-pressed={open}
     aria-label="burger-menu"
-    data-top="30"
   >
     <div className="line-menu half start" />
     <div className="line-menu" />

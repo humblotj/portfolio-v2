@@ -3,7 +3,7 @@ import Laptop from './Laptop';
 import { ImgSingleProp } from '../../interface';
 
 interface Props {
-preview: ImgSingleProp;
+  preview: ImgSingleProp;
   startAnimation?: boolean
   noAnimation?: boolean,
   lazyload?: boolean,

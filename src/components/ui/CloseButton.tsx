@@ -5,9 +5,9 @@ interface Props {
 }
 
 const CloseButton = ({ onClick = () => {} }: Props) => (
-  <button type="button" className="close-button" onClick={onClick}>
-    <span />
-    <span />
+  <button type="button" className="close-button" onClick={onClick} aria-label="close">
+    <span aria-hidden />
+    <span aria-hidden />
   </button>
 );
 

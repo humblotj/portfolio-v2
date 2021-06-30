@@ -7,9 +7,7 @@ interface TagProps {
 }
 
 const Tag = ({ children = null }: TagProps) => (
-  <li className="tag">
-    {children}
-  </li>
+  <li className="tag">{children}</li>
 );
 
 interface TagListProps {

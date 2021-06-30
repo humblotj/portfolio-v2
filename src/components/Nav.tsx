@@ -106,22 +106,13 @@ const Nav = ({ open, onClose }: Props) => {
       <nav>
         <ul>
           <li>
-            <Link
-              to="/"
-              onClick={onClose}
-            >
+            <Link to="/" onClick={onClose}>
               <span data-content="Home" aria-hidden />
               Home
             </Link>
           </li>
           <li>
-            <Link
-              to={{
-                pathname: '/',
-                state: 'work',
-              }}
-              onClick={onClose}
-            >
+            <Link to={{ pathname: '/', state: 'work' }} onClick={onClose}>
               <span data-content="My work" aria-hidden />
               My work
             </Link>
@@ -133,13 +124,7 @@ const Nav = ({ open, onClose }: Props) => {
             </FakeLink>
           </li>
           <li>
-            <Link
-              to={{
-                pathname: '/',
-                state: 'contact',
-              }}
-              onClick={onClose}
-            >
+            <Link to={{ pathname: '/', state: 'contact' }} onClick={onClose}>
               <span data-content="Contact" aria-hidden />
               Contact
             </Link>
