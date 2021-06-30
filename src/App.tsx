@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/analytics';
 
 import './App.scss';
 import Header from './components/Header';
@@ -17,18 +14,6 @@ import AboutMeSuspense from './pages/about-me/AboutMeSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const config = JSON.parse(process.env.REACT_APP_API_KEY as any);
-
-firebase.initializeApp({
-  ...config,
-});
-export const db = firebase.firestore();
-db.enablePersistence();
-
-if (process.env.NODE_ENV !== 'development') {
-  firebase.analytics();
-}
 
 const App = () => {
   const location = useLocation();

@@ -5,10 +5,11 @@ import Loading from '../../components/Loading';
 import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
 import { onSetWorks } from '../../store/store';
 import { WorkProps } from '../../interface';
-import { db } from '../../App';
+import useFirebase from '../../hooks/useFirebase';
 
 const MainSuspense = () => {
   const dispatch = useDispatch();
+  const { getDB } = useFirebase();
   const {
     DeferredComponent,
     hasImportFinished,
@@ -16,7 +17,7 @@ const MainSuspense = () => {
   } = useSuspenseAnimation(
     import('./Main'),
     {
-      fetchData: db.collection('projects').get(),
+      fetchData: getDB().then((db) => db.collection('projects').get()),
       setData: (query: any) => {
         const works: WorkProps[] = [];
         query.forEach((doc: any) => {
