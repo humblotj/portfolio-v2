@@ -5,26 +5,26 @@ import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
 
 const SideLeft = () => (
   <>
-    <div className="side-left-sns linkedin blink fixed">
+    <div className="side-left-sns linkedin blink">
       <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">
         <LinkedInIcon />
       </a>
     </div>
-    <div className="side-left-sns github blink fixed">
+    <div className="side-left-sns github blink">
       <a href="https://github.com/humblotj" aria-label="Github">
         <GitHubIcon />
       </a>
     </div>
-    <div className="side-left-sns codepen blink fixed">
+    <div className="side-left-sns codepen blink">
       <a href="https://codepen.io/humblotj" aria-label="Codepen">
         <CodepenIcon />
       </a>
     </div>
-    <div className="side-left blink fixed" aria-hidden />
-    <div className="side-right-mail blink fixed">
+    <div className="side-left blink" aria-hidden />
+    <div className="side-right-mail blink">
       <a href="mailto:jeanhumblot.dev@gmail.com">jeanhumblot.dev@gmail.com</a>
     </div>
-    <div className="side-right blink fixed" aria-hidden />
+    <div className="side-right blink" aria-hidden />
   </>
 );
 

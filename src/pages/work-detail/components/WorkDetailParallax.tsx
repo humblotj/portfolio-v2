@@ -13,7 +13,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgSingleProp}) => {
 
   useEffect((): any => {
     const element = ref.current;
-    if (!element || !preview) {
+    if (!element) {
       return null;
     }
 
@@ -25,20 +25,8 @@ const WorkDetailParallax = ({ preview }: {preview: ImgSingleProp}) => {
         duration: 0.6,
       },
     });
-    tl.addLabel('start');
-    tl.to(
-      element,
-      {
-        x: 0,
-      }, 0,
-    );
-    tl.to(
-      element,
-      {
-        opacity: 1,
-        ease: 'power1.in',
-      }, 0,
-    );
+    tl.to(element, { x: 0 }, 0);
+    tl.to(element, { opacity: 1, ease: 'power1.in' }, 0);
     tl.call(() => setAnimationIsComplete(true), undefined, '+=0.4');
 
     return () => tl.kill();

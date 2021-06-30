@@ -101,7 +101,7 @@ const Nav = ({ open, onClose }: Props) => {
   }, [open]);
 
   return (
-    <div ref={ref} className={cx('nav-overlay', 'fixed', { opened: animationEnded })} data-top="0">
+    <div ref={ref} className={cx('nav-overlay', { opened: animationEnded })} data-top="0">
       <Strokes />
       <nav>
         <ul>

@@ -25,36 +25,12 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
       return;
     }
 
-    gsap.to(element,
-      {
-        background,
-        zIndex: 1000,
-        duration: 0,
-      });
-    gsap.fromTo(element.querySelector('.loader > div'),
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: isInit ? 0.3 : 0,
-      });
-    gsap.fromTo(element.querySelector('.before'),
-      {
-        y: '-100%',
-      },
-      {
-        y: 0,
-        duration: isInit ? 0.3 : 0,
-      });
-    gsap.fromTo(element.querySelector('.after'),
-      {
-        y: '100%',
-      },
-      {
-        y: 0,
-        duration: isInit ? 0.3 : 0,
-      });
+    gsap.set(element, { background, zIndex: 1000 });
+    if (!isInit) {
+      gsap.fromTo(element.querySelector('.loader > div'), { opacity: 0 }, { opacity: 1, duration: 0 });
+    }
+    gsap.fromTo(element.querySelector('.before'), { y: '-100%' }, { y: 0, duration: isInit ? 0.3 : 0 });
+    gsap.fromTo(element.querySelector('.after'), { y: '100%' }, { y: 0, duration: isInit ? 0.3 : 0 });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -65,48 +41,18 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
     }
 
     if (hasImportFinished) {
-      gsap.fromTo(element,
-        {
-          zIndex: 1,
-          background,
-        },
-        {
-          zIndex: 0,
-          duration: 0.3,
-          background,
-        });
-      gsap.fromTo(element.querySelectorAll('.loader > div'),
-        {
-          opacity: 1,
-        },
-        {
-          opacity: 0,
-          duration: 0.3,
-        });
-      gsap.fromTo(element.querySelector('.before'),
-        {
-          y: 0,
-        },
-        {
-          y: '-100%',
-          duration: 0.3,
-        });
-      gsap.fromTo(element.querySelector('.after'),
-        {
-          y: 0,
-        },
-        {
-          y: '100%',
-          duration: 0.3,
-          onComplete: () => enableComponent(),
-        });
+      gsap.fromTo(element, { zIndex: 1, background }, { zIndex: 0, duration: 0.3, background });
+      if (!isInit) {
+        gsap.fromTo(element.querySelectorAll('.loader > div'), { opacity: 1 }, { opacity: 0, duration: 0.3 });
+      }
+      gsap.fromTo(element.querySelector('.before'), { y: 0 }, { y: '-100%', duration: 0.3 });
+      gsap.fromTo(element.querySelector('.after'), { y: 0 }, { y: '100%', duration: 0.3, onComplete: () => enableComponent() });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasImportFinished]);
 
   return (
-
-    <div ref={ref} className="loading fixed">
+    <div ref={ref} className="loading">
       <Strokes secondary={location.pathname === '/'} />
       <div className="before" aria-hidden>
         <Strokes />

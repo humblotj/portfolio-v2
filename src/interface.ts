@@ -22,7 +22,6 @@ export interface WorkProps {
     id?: string,
     isPersonal: boolean;
     name: string;
-    primaryColor: string,
     description: string;
     order: number;
     preview: ImgProp,
@@ -34,7 +33,6 @@ export interface WorkDetailProps {
     links: { type: 'web' | 'ios' | 'android', url: string }[],
     mainPreview: ImgSingleProp,
     name: string,
-    primaryColor: string,
     nextWork: string,
     previews: ImgProp,
     previousWork: string,

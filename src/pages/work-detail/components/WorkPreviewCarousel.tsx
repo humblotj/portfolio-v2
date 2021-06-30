@@ -45,14 +45,7 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
         start: '20% bottom',
       },
     });
-    tl.to(
-      element,
-      {
-        width: 0,
-        duration: 1,
-        ease: 'power2.inOut',
-      },
-    );
+    tl.to(element, { width: 0, duration: 1, ease: 'power2.inOut' });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canStartCarAnimation]);
 

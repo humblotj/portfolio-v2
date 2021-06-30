@@ -5,9 +5,9 @@ import cx from 'classnames';
 import 'lazysizes';
 
 import './WorkItem.scss';
+import { WorkProps } from '../../../interface';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.svg';
 import ImageWrap from '../../../components/ui/ImageWrap';
-import { WorkProps } from '../../../interface';
 import TechIcon from '../../../components/ui/TechIcon';
 import useSize from '../../../hooks/useSize';
 

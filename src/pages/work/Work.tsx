@@ -2,10 +2,10 @@ import { forwardRef, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useSelector } from 'react-redux';
 
+import './Work.scss';
 import { WorkProps } from '../../interface';
 import { selectWorksSorted } from '../../store/store';
 import WorkItem from './components/WorkItem';
-import './Work.scss';
 import Strokes from '../../components/Strokes';
 
 const Work = forwardRef<HTMLElement>((props, ref) => {
@@ -25,36 +25,17 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
     });
     tl.addLabel('start');
     tl.fromTo(element.querySelector('h2'),
-      {
-        opacity: 0,
-        x: '300px',
-      },
-      {
-        opacity: 1,
-        x: '0',
-        duration: 0.75,
-      }, 'start');
+      { opacity: 0, x: '300px' },
+      { opacity: 1, x: 0, duration: 0.75 }, 'start');
     tl.fromTo(element.querySelector('.divider'),
+      { opacity: 0, x: '-300px' },
       {
-        opacity: 0,
-        x: '-300px',
-      },
-      {
-        opacity: 1,
-        x: '0',
-        duration: 0.75,
-        delay: 0.25,
+        opacity: 1, x: 0, duration: 0.75, delay: 0.25,
       }, 'start');
     tl.fromTo(element.querySelector('.work-tag'),
+      { opacity: 0, x: '-300px' },
       {
-        opacity: 0,
-        x: '-300px',
-      },
-      {
-        opacity: 1,
-        x: '0',
-        duration: 0.75,
-        delay: 0.5,
+        opacity: 1, x: 0, duration: 0.75, delay: 0.5,
       }, 'start');
   }, []);
 

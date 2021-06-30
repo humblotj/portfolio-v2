@@ -12,12 +12,12 @@ const Footer = () => (
         </a>
       </li>
       <li>
-        <a href="https://github.com/humblotj" aria-label="Github">
+        <a href="https://github.com/humblotj" aria-label="GitHub">
           <GitHubIcon />
         </a>
       </li>
       <li>
-        <a href="https://codepen.io/humblotj" aria-label="Codepen">
+        <a href="https://codepen.io/humblotj" aria-label="CodePen">
           <CodepenIcon />
         </a>
       </li>

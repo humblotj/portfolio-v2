@@ -6,13 +6,8 @@ import BurgerMenu from './ui/BurgerMenu';
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
 
-  const toggleNav = () => {
-    setNavOpen((navOpen) => !navOpen);
-  };
-
-  const closeNav = () => {
-    setNavOpen(false);
-  };
+  const toggleNav = () => setNavOpen((navOpen) => !navOpen);
+  const closeNav = () => setNavOpen(false);
 
   return (
     <header>

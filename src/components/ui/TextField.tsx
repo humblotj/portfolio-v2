@@ -7,12 +7,11 @@ interface Props {
     label?:string,
     className?: string,
     placeholder?: string,
-    error?: boolean,
     name?: string
 }
 
 const TextField = ({
-  textarea = false, label = '', className = '', placeholder = '', error = false, name = '',
+  textarea = false, label = '', className = '', placeholder = '', name = '',
 }: Props) => {
   const InputElement = textarea ? 'textarea' : 'input';
 

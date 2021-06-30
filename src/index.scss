@@ -33,12 +33,10 @@ body,
 h1,
 h2,
 h3,
-h4,
 a,
 p,
 span,
 strong,
-ol,
 ul,
 li,
 dl,
@@ -65,16 +63,9 @@ ol {
   list-style: none;
 }
 
-table {
-  border-spacing: 0;
-}
-
 h1,
 h2,
 h3,
-h4,
-h5,
-h6,
 strong {
   font-weight: 600;
 }
@@ -84,12 +75,10 @@ a {
   text-decoration: none;
 }
 
-article,
 footer,
 header,
 nav,
-section,
-main {
+section {
   display: block;
 }
 

@@ -7,8 +7,14 @@ import WorkDetailDescription from './components/WorkDetailDescription';
 import WorkPreviewCarousel from './components/WorkPreviewCarousel';
 import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
-import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 import Strokes from '../../components/Strokes';
+import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
+
+const types = {
+  ios: 'Apple Store',
+  android: 'Play Store',
+  web: 'Visit site',
+};
 
 const WorkDetail = () => {
   const dispatch = useDispatch();
@@ -33,19 +39,11 @@ const WorkDetail = () => {
     return null;
   }
 
-  const goTo = (url: string) => {
-    window.open(url, '_blank');
-  };
-
-  const types = {
-    ios: 'Apple Store',
-    android: 'Play Store',
-    web: 'Visit site',
-  };
+  const goTo = (url: string) => window.open(url, '_blank');
 
   return (
     <section className="work-detail-sec">
-      <BackArrow className="fixed">
+      <BackArrow>
         Turn Back Home
       </BackArrow>
       <Strokes />
