@@ -45,7 +45,7 @@ const WorkDetail = () => {
 
   return (
     <section className="work-detail-sec">
-      <BackArrow className="fixed" data-top="30">
+      <BackArrow className="fixed">
         Turn Back Home
       </BackArrow>
       <Strokes />
