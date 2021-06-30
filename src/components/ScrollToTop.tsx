@@ -6,12 +6,14 @@ const ScrollToTop: FunctionComponent<RouteComponentProps> = ({ history }) => {
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });
-    window.onbeforeunload = () => {
-      window.scrollTo(0, 0);
+    window.onpagehide = (event) => {
+      if (!event.persisted) {
+        window.scrollTo(0, 0);
+      }
     };
     return () => {
       unlisten();
-      window.onbeforeunload = null;
+      window.onpagehide = null;
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
