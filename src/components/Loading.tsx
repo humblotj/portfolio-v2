@@ -114,6 +114,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
       <div className="after" aria-hidden>
         <Strokes />
       </div>
+      {!isInit && (
       <div className="loader">
         <div aria-hidden />
         <div aria-hidden />
@@ -122,6 +123,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
         <div aria-hidden />
         <div aria-hidden />
       </div>
+      )}
     </div>
   );
 };

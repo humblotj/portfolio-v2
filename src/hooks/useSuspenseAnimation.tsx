@@ -19,7 +19,7 @@ const useSuspenseAnimation = (import_: Promise<any>,
     const DeferredComponent = lazyWithRetry(() => Promise.all([
       Promise.all([import_,
         fetchData,
-        new Promise((resolve) => setTimeout(resolve, 1250)),
+        new Promise((resolve) => setTimeout(resolve, 700)),
       ]).then(([imp, query, _]: any) => {
         if (fetchData) {
           setData(query);
