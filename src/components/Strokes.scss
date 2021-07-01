@@ -15,7 +15,7 @@
 
         @for $i from 1 through 5 {
             &:nth-child(#{$i}) {
-                left: #{$i/6 * 100}#{"%"};
+                left: #{math.div($i, 6) * 100}#{"%"};
             }
         }
     }
