@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './WorkDetail.scss';
@@ -9,6 +10,8 @@ import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
 import Strokes from '../../components/Strokes';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const types = {
   ios: 'Apple Store',

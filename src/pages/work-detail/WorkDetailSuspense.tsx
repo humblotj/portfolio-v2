@@ -1,17 +1,17 @@
 import { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
 
 import Loading from '../../components/Loading';
-import useFirebase from '../../hooks/useFirebase';
 import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
 import { onSetWorkDetails } from '../../store/store';
+import { db } from '../../App';
 
 const WorkDetailSuspense = () => {
   const dispatch = useDispatch();
   const { id }: {id: string} = useParams();
   const history = useHistory();
-  const { getDB } = useFirebase();
   const {
     DeferredComponent,
     hasImportFinished,
@@ -19,7 +19,7 @@ const WorkDetailSuspense = () => {
   } = useSuspenseAnimation(
     import('./WorkDetail'),
     {
-      fetchData: getDB().then((db) => db.collection('project-details').doc(id).get()),
+      fetchData: getDoc(doc(db, 'project-details', id)),
       setData: (query: any) => {
         if (query.exists) {
           dispatch(onSetWorkDetails(query.data()));

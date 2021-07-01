@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { initializeApp } from 'firebase/app';
+
+// import { getAnalytics } from 'firebase/analytics';
+import { getFirestore } from 'firebase/firestore';
 
 import './App.scss';
 import Header from './components/Header';
@@ -13,7 +15,10 @@ import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 import AboutMeSuspense from './pages/about-me/AboutMeSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
 
-gsap.registerPlugin(ScrollTrigger);
+const firebaseConfig = JSON.parse(process.env.REACT_APP_API_KEY as any);
+initializeApp(firebaseConfig);
+
+export const db = getFirestore();
 
 const App = () => {
   const location = useLocation();

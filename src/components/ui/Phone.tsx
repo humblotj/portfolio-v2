@@ -24,19 +24,18 @@ const Phone = ({
     if (!element || !startAnimation) {
       return;
     }
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: element,
-        start: 'bottom bottom',
-      },
-    });
-
-    tl.to(element.querySelector('.phone-overlay'),
-      {
-        opacity: 0,
-        duration: noAnimation ? 0 : 0.9,
+    if (noAnimation) {
+      gsap.set(element.querySelector('.phone-overlay'), { opacity: 0 });
+    } else {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: 'bottom bottom',
+        },
       });
+
+      tl.to(element.querySelector('.phone-overlay'), { opacity: 0, duration: 0.9 });
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
 
