@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 
-// import { getAnalytics } from 'firebase/analytics';
+import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
 
 import './App.scss';
@@ -19,6 +19,7 @@ const firebaseConfig = JSON.parse(process.env.REACT_APP_API_KEY as any);
 initializeApp(firebaseConfig);
 
 export const db = getFirestore();
+getAnalytics();
 
 const App = () => {
   const location = useLocation();
