@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
@@ -8,8 +8,10 @@ import './WorkItem.scss';
 import { WorkProps } from '../../../interface';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.svg';
 import ImageWrap from '../../../components/ui/ImageWrap';
-import TechIcon from '../../../components/ui/TechIcon';
 import useSize from '../../../hooks/useSize';
+import lazyWithRetry from '../../../utils/lazyWithRetry';
+
+const TechIcon = lazyWithRetry(() => import('../../../components/ui/TechIcon'));
 
 interface Props {
   index: number,
@@ -96,7 +98,9 @@ const WorkItem = ({ index, work, id }: Props) => {
           <ul>
             {techs.map((tech) => (
               <li key={tech.name}>
-                <TechIcon name={tech.name} />
+                <Suspense fallback={<span />}>
+                  <TechIcon name={tech.name} />
+                </Suspense>
               </li>
             ))}
           </ul>
