@@ -1,23 +1,18 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import useModalSuspenseAnimation from '../../hooks/useModalSuspenseAnimation';
 import { selectIsAboutModalOpen } from '../../store/store';
+import lazyWithRetry from '../../utils/lazyWithRetry';
 
 const AboutMeSuspense = () => {
   const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
-  const {
-    DeferredComponent,
-    hasImportFinished,
-    enableComponent,
-  } = useModalSuspenseAnimation(import('./AboutMe'), isAboutModalOpen);
-
+  const [DeferredComponent, setDeferredComponent] = useState<any>('div');
   useEffect(() => {
-    if (hasImportFinished) {
-      enableComponent();
+    if (isAboutModalOpen && DeferredComponent === 'div') {
+      setDeferredComponent(lazyWithRetry(() => import('./AboutMe')));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasImportFinished]);
+  }, [isAboutModalOpen]);
 
   return (
     <Suspense fallback={<div />}>
