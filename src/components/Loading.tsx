@@ -18,7 +18,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
   const isInit = useSelector(selectIsInit);
   const ref = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(!isInit);
 
   const background = location.pathname === '/' ? '#23282a' : '#fff';
 
@@ -40,7 +40,7 @@ const Loading = ({ enableComponent, hasImportFinished }: Props) => {
   }, [hasImportFinished]);
 
   return (
-    <div ref={ref} className={cx('loading', { 'is-loading': isLoading || !isInit })} style={{ background }}>
+    <div ref={ref} className={cx('loading', { 'is-loading': isLoading })} style={{ background }}>
       <Strokes secondary={location.pathname === '/'} />
       <div className="before" aria-hidden>
         <Strokes />
