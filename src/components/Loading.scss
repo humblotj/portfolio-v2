@@ -1,5 +1,3 @@
-@import "styles/animations";
-
 .loading {
     position: fixed;
     top: 0;
@@ -81,5 +79,19 @@ body:not(.is-init) .loading,
         > div {
             opacity: 1;
         }
+    }
+}
+
+@keyframes delay {
+    0%,
+    40%,
+    100% {
+        transform: scaleY(0.05);
+        -webkit-transform: scaleY(0.05);
+    }
+
+    20% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
     }
 }
