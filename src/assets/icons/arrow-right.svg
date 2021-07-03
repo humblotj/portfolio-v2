@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group">
-            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
-            <path d="M15.7049,11.2925 L9.70494,5.2925 C9.31494,4.9025 8.68494,4.9025 8.29494,5.2925 C7.90494,5.6825 7.90494,6.3125 8.29494,6.7025 L13.5849,12.0025 L8.29494,17.2925 C7.90494,17.6825 7.90494,18.3125 8.29494,18.7025 C8.48494,18.9025 8.73494,19.0025 8.99494,19.0025 C9.25494,19.0025 9.50494,18.9025 9.70494,18.7125 L15.7049,12.7125 C16.0949,12.3225 16.0949,11.6825 15.7049,11.2925 Z" id="Path" fill="#191a1e"></path>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><path d="M0 0h24v24H0z"/><path d="m15.705 11.293-6-6a.996.996 0 1 0-1.41 1.41l5.29 5.3-5.29 5.29a.996.996 0 0 0 0 1.41c.19.2.44.3.7.3.26 0 .51-.1.71-.29l6-6c.39-.39.39-1.03 0-1.42z" fill="#191a1e"/></g></svg>
