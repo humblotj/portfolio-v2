@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Strokes = ({ secondary = false, style }: Props) => (
-  <div className={cx('strokes', { secondary })} style={style}>
+  <div className={cx('strokes', { secondary })} style={style} aria-hidden>
     <div />
     <div />
     <div />
