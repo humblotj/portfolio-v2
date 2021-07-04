@@ -1,4 +1,7 @@
 .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: hsla(0, 0%, 95%, 0.97);
     color: #1c1d25;
 
@@ -10,16 +13,7 @@
     }
 
     .about-info {
-        position: absolute;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-        top: 17%;
-        text-align: left;
-        width: 70%;
-        margin: 0 auto;
+        padding: 100px 0 60px;
 
         .pic {
             margin-bottom: 30px;
@@ -60,8 +54,9 @@
     }
 
     .about-footer {
+        padding-bottom: 70px;
+
         p {
-            display: inline-flex;
             align-items: flex-end;
 
             svg {

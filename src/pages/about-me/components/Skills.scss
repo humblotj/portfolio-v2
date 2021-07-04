@@ -1,8 +1,6 @@
 .skills {
     background: #1e2324;
     color: #fff;
-    left: auto;
-    right: 0;
 
     h2 {
         bottom: -30px;
@@ -11,16 +9,7 @@
     }
 
     .skills-content {
-        position: absolute;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-        top: 8%;
-        text-align: left;
-        width: 70%;
-        margin: 0 auto;
+        padding: 60px 0;
 
         dt {
             margin-bottom: 20px;
@@ -53,13 +42,6 @@
                     display: inline-block;
                     margin-top: 4px;
                     font-size: 10px;
-                }
-
-                &.vertical {
-                    svg {
-                        width: auto;
-                        max-width: 55px;
-                    }
                 }
 
                 &.medium {
