@@ -27,13 +27,8 @@
         }
     }
 
-    .welcome-buttons {
-        display: flex;
-        margin-bottom: 40px;
-
-        button:first-child {
-            margin-right: 40px;
-        }
+    .btn.reveal-text {
+        transform: none!important;
     }
 }
 

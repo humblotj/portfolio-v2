@@ -17,14 +17,17 @@ const lazyWithRetry = (componentImport: () => Promise<any>) => lazy(async () => 
 
     return component;
   } catch (error) {
-    if (!pageHasAlreadyBeenForceRefreshed) {
+    const chunkFailedMessage = /Loading chunk [\d]+ failed/;
+    if (error?.message && chunkFailedMessage.test(error.message)) {
+      if (!pageHasAlreadyBeenForceRefreshed) {
       // Assuming that the user is not on the latest version of the application.
       // Let's refresh the page immediately.
-      window.localStorage.setItem(
-        'page-has-been-force-refreshed',
-        'true',
-      );
-      return window.location.reload();
+        window.localStorage.setItem(
+          'page-has-been-force-refreshed',
+          'true',
+        );
+        return window.location.reload();
+      }
     }
 
     // The page has already been reloaded

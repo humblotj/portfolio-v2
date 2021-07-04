@@ -36,29 +36,16 @@
 
     .loader {
         position: absolute;
-        width: 60px;
-        height: 50px;
         top: 50%;
         left: 50%;
         transform: translateY(-50%) translateX(-50%);
         margin: 0 auto;
         z-index: 1;
-        transition: 0.3s;
 
-        > div {
-            height: 100%;
-            width: 8px;
-            background: #fff;
-            float: left;
-            margin-left: 2px;
-            animation: delay 0.8s infinite ease-in-out;
+        .counter {
             opacity: 0;
-
-            @for $i from 2 through 6 {
-                &:nth-child(#{$i}) {
-                    animation-delay: #{-0.7 + ($i - 2) * 0.1}s;
-                }
-            }
+            font-weight: bold;
+            font-size: 26vw;
         }
     }
 }
@@ -76,22 +63,8 @@ body:not(.is-init) .loading,
     }
 
     .loader {
-        > div {
+        .counter {
             opacity: 1;
         }
-    }
-}
-
-@keyframes delay {
-    0%,
-    40%,
-    100% {
-        transform: scaleY(0.05);
-        -webkit-transform: scaleY(0.05);
-    }
-
-    20% {
-        transform: scaleY(1);
-        -webkit-transform: scaleY(1);
     }
 }

@@ -6,6 +6,7 @@ import './Button.scss';
 
 interface Props {
     type?: 'button' | 'submit',
+    className?: string,
     onClick?: () => void,
     children?: ReactNode,
     color?: string,
@@ -13,11 +14,12 @@ interface Props {
 }
 
 const Button = ({
-  type = 'button', onClick = () => {}, children = null, color = 'primary', disabled = false,
+  type = 'button', className = '', onClick = () => {},
+  children = null, color = 'primary', disabled = false,
 }: Props) => (
   <button
     type={type}
-    className={cx('btn', color)}
+    className={cx('btn', className, color)}
     onClick={onClick}
     data-text={children}
     disabled={disabled}

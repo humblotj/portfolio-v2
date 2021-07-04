@@ -4,6 +4,36 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+gsap.registerEffect({
+  name: 'counter',
+  extendTimeline: true,
+  defaults: {
+    end: 0,
+    duration: 1,
+    ease: 'power3.out',
+    increment: 1,
+  },
+  effect: (targets: any, config: any) => {
+    const tl = gsap.timeline();
+    const num = targets[0].innerText.replace(/,/g, '');
+    targets[0].innerText = num;
+
+    tl.to(targets, {
+      duration: config.duration,
+      innerText: config.end,
+      // snap:{innerText:config.increment},
+      modifiers: {
+        innerText(innerText) {
+          return gsap.utils.snap(config.increment, innerText).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
+      },
+      ease: config.ease,
+    }, 0);
+
+    return tl;
+  },
+});
+
 const useAnimation = () => {
   const animateReveal = useCallback((el: Element | null,
     { delay, trigger } = { delay: 0, trigger: null }) => {
@@ -32,9 +62,9 @@ const useAnimation = () => {
           {
             scaleX: 0,
             transformOrigin: '100% 50%',
-            duration: 0.4,
+            duration: 0.3,
           },
-          '+=0.4',
+          '+=0.3',
         );
       }
       tl.to(
@@ -60,43 +90,19 @@ const useAnimation = () => {
     });
 
     const blink = document.querySelectorAll('.blink');
-    tl.fromTo(blink,
-      {
-        autoAlpha: 0,
-        pointerEvents: 'none',
-      },
-      {
-        autoAlpha: 0.8,
-        duration: 0.1,
-        pointerEvents: 'auto',
-      }, 1.55 + 0.2 + 0.12 * 3);
-    tl.to(blink,
-      {
-        autoAlpha: 0.1,
-        duration: 0.1,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 0.8,
-        duration: 0.1,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 0.2,
-        duration: 0.2,
-      });
     tl.to(blink,
       {
         autoAlpha: 1,
-        duration: 0.4,
-      });
+        duration: 0.25,
+        ease: 'power2.in',
+      }, 1.75);
   }, []);
 
   const skipBlink = useCallback(() => {
     const blink = document.querySelectorAll('.blink');
-    gsap.to(blink, { opacity: 1, duration: 0 });
+    gsap.to(blink, { autoAlpha: 1, duration: 0 });
     return () => {
-      gsap.to(blink, { opacity: 0, duration: 0 });
+      gsap.to(blink, { autoAlpha: 0, duration: 0 });
     };
   }, []);
 

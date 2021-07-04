@@ -66,7 +66,6 @@ const WorkItem = ({ index, work, id }: Props) => {
         y: '-50%',
         duration: 1,
       }, 'start');
-    tl.set(element, { pointerEvents: 'auto' });
 
     return () => tl.kill();
 

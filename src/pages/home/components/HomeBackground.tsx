@@ -30,8 +30,8 @@ const HomeBackground = () => {
       {
         scaleX: 0,
         transformOrigin: '0 50%',
-        duration: 0.4,
-      }, '+=0.4');
+        duration: 0.3,
+      }, '+=0.3');
     tl.to(element.querySelector('.abstract-background'),
       {
         opacity: 1,

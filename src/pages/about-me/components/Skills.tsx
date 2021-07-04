@@ -60,13 +60,13 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
       for (let i = 0; i < skillsLists.length; i++) {
         const skills = skillsLists[i].querySelectorAll('li');
         for (let j = 0; j < skills.length; j++) {
-          tl.to(skills[j], { delay: j * 0.2 }, 3.35);
+          tl.to(skills[j], { delay: j * 0.2 }, 3.15);
         }
       }
     } else {
       const skills = element.querySelectorAll('li');
       for (let j = 0; j < skills.length; j++) {
-        tl.to(skills[j], { delay: j * 0.1 }, 3.35);
+        tl.to(skills[j], { delay: j * 0.1 }, 3.15);
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps

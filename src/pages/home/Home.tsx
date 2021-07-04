@@ -75,6 +75,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
         </div>
         <div className="welcome-buttons blink">
           <Button onClick={openContactModal}>About me</Button>
+          <div className="reveal-mask" aria-hidden />
         </div>
       </div>
       <ScrollTo onClick={scrollToWork}>

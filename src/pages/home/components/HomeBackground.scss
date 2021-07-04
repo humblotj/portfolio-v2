@@ -38,27 +38,11 @@
 @media only screen and (max-width: 768px) {
     .home-background {
         right: 0;
-
-        .abstract-background {
-            // background-position: -100px;
-        }
     }
 }
 
 @media only screen and (max-width: 576px) {
     .home-background {
         width: 40px;
-
-        .abstract-background {
-            // background-position: -150px;
-        }
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .home-background {
-        .abstract-background {
-            // background-position: -250px;
-        }
     }
 }
