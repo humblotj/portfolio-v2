@@ -15,7 +15,7 @@ const WorkDetailSuspense = () => {
     {
       fetchData: getDoc(doc(db, 'project-details', id)),
       setData: (query: any) => {
-        if (query.exists) {
+        if (query.exists()) {
           dispatch(onSetWorkDetails(query.data()));
         } else {
           history.goBack();
