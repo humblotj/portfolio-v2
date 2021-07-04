@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import cx from 'classnames';
 
 import './Nav.scss';
@@ -11,6 +12,8 @@ import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
 import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
 import Strokes from './Strokes';
 import { onToggleAboutModal } from '../store/store';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   open: boolean,

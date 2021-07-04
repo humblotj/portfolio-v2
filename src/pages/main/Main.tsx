@@ -1,16 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import Footer from '../../components/Footer';
 import { onInit, selectIsInit } from '../../store/store';
 import Contact from '../contact/Contact';
 import Home from '../home/Home';
 import Work from '../work/Work';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
   const dispatch = useDispatch();

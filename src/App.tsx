@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 
@@ -7,13 +7,16 @@ import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
 
 import './App.scss';
-import Header from './components/Header';
-import ScrollToTop from './components/ScrollToTop';
-import SideLeft from './components/SideLeft';
+import Loading from './components/Loading';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 import AboutMeSuspense from './pages/about-me/AboutMeSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
+import lazyWithRetry from './utils/lazyWithRetry';
+
+const SideLeft = lazyWithRetry(() => import('./components/SideLeft'));
+const Header = lazyWithRetry(() => import('./components/Header'));
+const ScrollToTop = lazyWithRetry(() => import('./components/ScrollToTop'));
 
 const firebaseConfig = JSON.parse(process.env.REACT_APP_API_KEY as any);
 initializeApp(firebaseConfig);
@@ -29,9 +32,9 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      <ScrollToTop />
+    <Suspense fallback={<Loading />}>
       <Header />
+      <ScrollToTop />
       <SideLeft />
       <Switch>
         <Route path="/work/:id" key={location.pathname}>
@@ -45,7 +48,7 @@ const App = () => {
         </Route>
       </Switch>
       <AboutMeSuspense />
-    </>
+    </Suspense>
   );
 };
 

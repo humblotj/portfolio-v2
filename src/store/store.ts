@@ -8,11 +8,13 @@ import { WorkDetailProps, WorkProps } from '../interface';
 const initialState: {
   isAboutModalOpen: boolean,
   isInit: boolean,
+  isLoading: boolean,
   works: WorkProps[],
   workDetails: WorkDetailProps | null,
 } = {
   isAboutModalOpen: false,
   isInit: false,
+  isLoading: true,
   works: [],
   workDetails: null,
 };
@@ -30,6 +32,9 @@ const store = createSlice({
     onInit(state) {
       state.isInit = true;
     },
+    onSetLoading(state, action) {
+      state.isLoading = action.payload;
+    },
     onSetWorks(state, action) {
       state.works = action.payload;
     },
@@ -42,6 +47,7 @@ const store = createSlice({
 export const {
   onToggleAboutModal,
   onInit,
+  onSetLoading,
   onSetWorks,
   onSetWorkDetails,
 } = store.actions;
@@ -50,6 +56,7 @@ export const selectIsAboutModalOpen = (
   state: { store: typeof initialState },
 ) => state.store.isAboutModalOpen;
 export const selectIsInit = (state: { store: typeof initialState }) => state.store.isInit;
+export const selectIsLoading = (state: { store: typeof initialState }) => state.store.isLoading;
 export const selectWorks = (state: { store: typeof initialState }) => state.store.works;
 export const selectWorksSorted = createSelector(selectWorks, (works) => works.slice().sort(
   (a, b) => (a.order < b.order ? 1 : -1),

@@ -1,9 +1,7 @@
-import { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 
-import Loading from '../../components/Loading';
 import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
 import { onSetWorkDetails } from '../../store/store';
 import { db } from '../../App';
@@ -12,11 +10,7 @@ const WorkDetailSuspense = () => {
   const dispatch = useDispatch();
   const { id }: {id: string} = useParams();
   const history = useHistory();
-  const {
-    DeferredComponent,
-    hasImportFinished,
-    enableComponent,
-  } = useSuspenseAnimation(
+  const component = useSuspenseAnimation(
     import('./WorkDetail'),
     {
       fetchData: getDoc(doc(db, 'project-details', id)),
@@ -30,17 +24,7 @@ const WorkDetailSuspense = () => {
     },
   );
 
-  return (
-    <Suspense fallback={(
-      <Loading
-        hasImportFinished={hasImportFinished}
-        enableComponent={enableComponent}
-      />
-        )}
-    >
-      <DeferredComponent />
-    </Suspense>
-  );
+  return component;
 };
 
 export default WorkDetailSuspense;

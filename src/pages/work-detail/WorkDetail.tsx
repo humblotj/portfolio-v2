@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './WorkDetail.scss';
@@ -10,8 +9,6 @@ import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
 import Strokes from '../../components/Strokes';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const types = {
   ios: 'Apple Store',
@@ -45,19 +42,20 @@ const WorkDetail = () => {
   const goTo = (url: string) => window.open(url, '_blank');
 
   return (
-    <section className="work-detail-sec">
-      <BackArrow>
-        Turn Back Home
-      </BackArrow>
-      <Strokes />
-      <WorkDetailDescription work={work} setCanStartCarAnimation={setCanStartCarAnimation} />
-      <div className="work-links">
-        {work.links?.length ? work.links.map(({ type, url }) => (
-          <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>
-        ))
-          : <Button disabled>Coming Soon</Button>}
+    <>
+      <section className="work-detail-sec">
+        <BackArrow>
+          Turn Back Home
+        </BackArrow>
+        <Strokes />
+        <WorkDetailDescription work={work} setCanStartCarAnimation={setCanStartCarAnimation} />
+        <div className="work-links">
+          {work.links?.length ? work.links.map(({ type, url }) => (
+            <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>
+          ))
+            : <Button disabled>Coming Soon</Button>}
 
-        {work.repoUrl
+          {work.repoUrl
         && (
         <Button
           color="secondary"
@@ -66,9 +64,10 @@ const WorkDetail = () => {
           View Code
         </Button>
         )}
-      </div>
-      <WorkPreviewCarousel work={work} canStartCarAnimation={canStartCarAnimation} />
-    </section>
+        </div>
+        <WorkPreviewCarousel work={work} canStartCarAnimation={canStartCarAnimation} />
+      </section>
+    </>
   );
 };
 

@@ -1,4 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { onSetLoading } from '../store/store';
 import lazyWithRetry from '../utils/lazyWithRetry';
 
 const deferPromise = () => {
@@ -12,6 +14,8 @@ const deferPromise = () => {
 const useSuspenseAnimation = (import_: Promise<any>,
   { fetchData, setData }: {fetchData: Promise<any>|null, setData: any}
   = { fetchData: null, setData: null }) => {
+  const dispatch = useDispatch();
+
   const [state, setState] = useState(() => {
     const deferred: any = deferPromise();
     // component object reference  is kept stable, since it's stored in state.
@@ -24,32 +28,20 @@ const useSuspenseAnimation = (import_: Promise<any>,
         if (fetchData) {
           setData(query);
         }
-        // triggers re-render, so containing component can react
-        setState((prev) => ({ ...prev, status: 'IMPORT_FINISHED' }));
+        dispatch(onSetLoading(false));
+        setTimeout(() => state.deferred.resolve(), 300);
         return imp;
       }),
       deferred.promise,
     ]).then(([imp]) => imp));
 
     return {
-      status: 'LAZY',
       DeferredComponent,
       deferred,
     };
   });
 
-  const enableComponent = useCallback(() => {
-    if (state.status === 'IMPORT_FINISHED') {
-      setState((prev) => ({ ...prev, status: 'ENABLED' }));
-      state.deferred.resolve();
-    }
-  }, [state]);
-
-  return {
-    hasImportFinished: state.status === 'IMPORT_FINISHED',
-    DeferredComponent: state.DeferredComponent,
-    enableComponent,
-  };
+  return <state.DeferredComponent />;
 };
 
 export default useSuspenseAnimation;
