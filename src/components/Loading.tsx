@@ -20,8 +20,8 @@ const Loading = () => {
     setTimeout(() => dispatch(onSetLoading(true)), 0);
     if (!isInit) {
       const tl = gsap.timeline();
-      tl.from(document.querySelectorAll('.counter'), { y: 100, duration: 1, ease: 'power3.out' }, '-=0.5');
-      tl.counter(document.querySelectorAll('.counter'), { end: 99 }, '-=0.5');
+      tl.to(document.querySelector('.counter'), { y: 0, duration: 1, ease: 'power3.out' }, 0);
+      tl.counter(document.querySelector('.counter'), { end: 99 }, '<');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

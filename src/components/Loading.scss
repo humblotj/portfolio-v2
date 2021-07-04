@@ -43,6 +43,7 @@
         z-index: 1;
 
         .counter {
+            transform: translateY(100px);
             opacity: 0;
             font-weight: bold;
             font-size: 26vw;
