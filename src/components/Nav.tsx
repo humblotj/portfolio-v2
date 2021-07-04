@@ -1,30 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import cx from 'classnames';
 
 import './Nav.scss';
-import FakeLink from './ui/FakeLink';
 import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
 import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
+import FakeLink from './ui/FakeLink';
 import Strokes from './Strokes';
 import { onToggleAboutModal } from '../store/store';
-
-gsap.registerPlugin(ScrollTrigger);
+import useAnimation from '../hooks/useAnimation';
 
 interface Props {
   open: boolean,
   onClose: () => void
 }
 
-const tl = gsap.timeline();
-
 const Nav = ({ open, onClose }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const { gsap } = useAnimation();
+  const tlRef = useRef(gsap.timeline());
   const [animationEnded, setAnimationEnded] = useState(false);
 
   const onOpenContact = () => {
@@ -36,12 +33,14 @@ const Nav = ({ open, onClose }: Props) => {
     if (window.innerWidth < 768) {
       document.body.style.overflow = open ? 'hidden' : '';
     }
-    tl.clear();
 
     const element = ref.current;
     if (!element) {
       return;
     }
+
+    const tl = tlRef.current;
+    tl.clear();
 
     if (open) {
       tl.to(
@@ -55,39 +54,25 @@ const Nav = ({ open, onClose }: Props) => {
 
       const items = element.querySelectorAll('nav li');
       for (let i = 0; i < items.length; i++) {
-        tl.fromTo(
-          items[i],
+        tl.from(items[i],
           {
             opacity: 0,
             x: '100%',
-          },
-          {
-            opacity: 1,
-            x: 0,
             duration: 0.5,
-            delay: i * 0.15,
           },
-          'nav',
-        );
+          0.35 + i * 0.15);
       }
-      tl.addLabel('nav');
 
       const sns = element.querySelectorAll('.sns li');
       for (let i = 0; i < sns.length; i++) {
-        tl.fromTo(
-          sns[i],
+        tl.from(sns[i],
           {
             opacity: 0,
             y: '50%',
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
             delay: i * 0.15,
+            duration: 0.5,
           },
-          'sns',
-        );
+          'sns');
       }
       tl.addLabel('sns');
     } else {
@@ -101,6 +86,7 @@ const Nav = ({ open, onClose }: Props) => {
         },
       );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   return (

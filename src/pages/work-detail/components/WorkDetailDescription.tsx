@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
 import TagList from '../../../components/ui/TagList';
 import './WorkDetailDescription.scss';
 import TextBounce from '../../../components/ui/TextBounce';
 import { WorkDetailProps } from '../../../interface';
 import WorkDetailParallax from './WorkDetailParallax';
+import useAnimation from '../../../hooks/useAnimation';
 
 interface Props {
   work: WorkDetailProps,
@@ -14,6 +14,7 @@ interface Props {
 
 const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { animateReveal } = useAnimation();
 
   useEffect((): any => {
     const element = ref.current;
@@ -26,46 +27,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
     for (let j = 0; j < descParts.length; j++) {
       const reveal = descParts[j].querySelectorAll('.reveal');
       for (let i = 0; i < reveal.length; i++) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: descParts[j],
-          },
-          defaults: {
-            ease: 'power3.inOut',
-          },
-        });
-
-        const mask = reveal[i].querySelector('.reveal-mask');
-        if (mask) {
-          tl.to(
-            mask,
-            {
-              scaleX: 1,
-              duration: 0.6,
-              delay: i * 0.12,
-            },
-          );
-          tl.to(
-            mask,
-            {
-              scaleX: 0,
-              transformOrigin: '100% 50%',
-              duration: 0.4,
-            },
-            '+=0.4',
-          );
-        }
-
-        tl.to(
-          reveal[i].querySelector('.reveal-text'),
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power4.out',
-          },
-          mask ? '<0.15' : 1.2 + i * 0.12,
-        );
+        const tl = animateReveal(reveal[i], { delay: i * 0.12, trigger: descParts[j] });
 
         if (j === descParts.length - 1) {
           tl.to(document.querySelector('.work-links'), {
@@ -78,7 +40,8 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
         }
       }
     }
-    return () => gsap.killTweensOf('*');
+
+    return null;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

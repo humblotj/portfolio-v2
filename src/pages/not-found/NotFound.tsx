@@ -1,13 +1,14 @@
 import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
-import { gsap } from 'gsap';
 
 import './NotFound.scss';
 import notFound from '../../assets/not-found.json';
 import BackArrow from '../../components/ui/BackArrow';
+import useAnimation from '../../hooks/useAnimation';
 
 const NotFound = () => {
   const lottieRef = useRef<HTMLDivElement>(null);
+  const { skipBlink } = useAnimation();
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -18,12 +19,8 @@ const NotFound = () => {
       loop: false,
     });
 
-    const blink = document.querySelectorAll('.blink');
-    gsap.to(blink, { opacity: 1, duration: 0 });
-
-    return () => {
-      gsap.to(blink, { opacity: 0, duration: 0 });
-    };
+    return skipBlink();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

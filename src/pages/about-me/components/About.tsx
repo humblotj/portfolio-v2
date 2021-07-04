@@ -1,13 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
 import './About.scss';
 import photo from '../../../assets/photo.jpg';
 import { ReactComponent as LocationIcon } from '../../../assets/icons/location.svg';
 import CloseButton from '../../../components/ui/CloseButton';
+import useAnimation from '../../../hooks/useAnimation';
 
 const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { animateReveal } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;
@@ -18,41 +19,22 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = gsap.timeline({
-        defaults: {
-          ease: 'power3.inOut',
-        },
-      });
-      tl.to(
-        reveal[i].querySelector('.reveal-mask'),
-        {
-          scaleX: 1,
-          duration: 0.6,
-          delay: i * 0.12,
-        },
-        '+=0.7',
-      );
-      tl.to(
-        reveal[i].querySelector('.reveal-mask'),
-        {
-          scaleX: 0,
-          transformOrigin: '100% 50%',
-          duration: 0.4,
-        },
-        '+=0.4',
-      );
-      tl.to(
-        [reveal[i].querySelector('.reveal-text'),
-          i === 1 ? element.querySelector('.about-description') : undefined],
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power4.out',
-        },
-        '<0.15',
-      );
+      const tl = animateReveal(reveal[i], { delay: 0.7 + i * 0.12 });
+
+      if (i === 1) {
+        tl.to(
+          element.querySelector('.about-description'),
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power4.out',
+          },
+          '<',
+        );
+      }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

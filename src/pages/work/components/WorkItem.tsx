@@ -1,5 +1,4 @@
 import { Suspense, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import 'lazysizes';
@@ -10,6 +9,7 @@ import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.
 import ImageWrap from '../../../components/ui/ImageWrap';
 import useSize from '../../../hooks/useSize';
 import lazyWithRetry from '../../../utils/lazyWithRetry';
+import useAnimation from '../../../hooks/useAnimation';
 
 const TechIcon = lazyWithRetry(() => import('../../../components/ui/TechIcon'));
 
@@ -25,6 +25,7 @@ const WorkItem = ({ index, work, id }: Props) => {
     isPersonal, name, description, preview, techs,
   } = work;
   const [width] = useSize();
+  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;
@@ -40,8 +41,7 @@ const WorkItem = ({ index, work, id }: Props) => {
     });
     const isLargeWidth = width > 768;
     const isOdd = index % 2 === 1;
-    // eslint-disable-next-line no-nested-ternary
-    tl.addLabel('start', isLargeWidth ? isOdd ? 0.25 : 0 : 0);
+    tl.addLabel('start', !isLargeWidth || !isOdd ? 0 : 0.25);
     tl.to(element.querySelector('.work-item-mask'),
       {
         scaleX: 0,

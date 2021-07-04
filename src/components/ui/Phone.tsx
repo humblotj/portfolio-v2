@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
 import './Phone.scss';
 import { ImgSingleProp } from '../../interface';
 import ImageCrop from './ImageCrop';
 import PhoneMockup from '../../assets/phone-mockup.png';
 import PhoneMockup300 from '../../assets/phone-mockup-300.png';
+import useAnimation from '../../hooks/useAnimation';
 
 interface Props {
   preview: ImgSingleProp;
@@ -18,6 +18,7 @@ const Phone = ({
   preview, startAnimation = false, noAnimation = false, lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;

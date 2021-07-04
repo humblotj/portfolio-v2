@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
 import './Skills.scss';
 import Bounce from '../../../components/ui/Bounce';
@@ -28,10 +27,12 @@ import { ReactComponent as SocketIO } from '../../../assets/icons/socket-io.svg'
 import { ReactComponent as Pwa } from '../../../assets/icons/pwa.svg';
 import CloseButton from '../../../components/ui/CloseButton';
 import useSize from '../../../hooks/useSize';
+import useAnimation from '../../../hooks/useAnimation';
 
 const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize();
+  const { animateReveal, gsap } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;
@@ -42,39 +43,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = gsap.timeline({
-        defaults: {
-          ease: 'power3.inOut',
-        },
-      });
-      tl.to(
-        reveal[i].querySelector('.reveal-mask'),
-        {
-          scaleX: 1,
-          duration: 0.6,
-          delay: i * 0.12,
-        },
-        '+=1.9',
-      );
-      tl.to(
-        reveal[i].querySelector('.reveal-mask'),
-        {
-          scaleX: 0,
-          transformOrigin: '100% 50%',
-          duration: 0.4,
-        },
-        '+=0.4',
-      );
-      tl.to(
-        reveal[i].querySelector('.reveal-text'),
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power4.out',
-        },
-        '<0.15',
-      );
+      animateReveal(reveal[i], { delay: 1.9 + i * 0.12 });
     }
 
     const tl = gsap.timeline({
@@ -91,21 +60,16 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
       for (let i = 0; i < skillsLists.length; i++) {
         const skills = skillsLists[i].querySelectorAll('li');
         for (let j = 0; j < skills.length; j++) {
-          tl.to(skills[j], {
-            delay: j * 0.2,
-          },
-          3.35);
+          tl.to(skills[j], { delay: j * 0.2 }, 3.35);
         }
       }
     } else {
       const skills = element.querySelectorAll('li');
       for (let j = 0; j < skills.length; j++) {
-        tl.to(skills[j], {
-          delay: j * 0.1,
-        },
-        3.35);
+        tl.to(skills[j], { delay: j * 0.1 }, 3.35);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
   return (

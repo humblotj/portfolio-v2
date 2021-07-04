@@ -1,5 +1,4 @@
 import { forwardRef, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 import { useSelector } from 'react-redux';
 
 import './Work.scss';
@@ -7,10 +6,12 @@ import { WorkProps } from '../../interface';
 import { selectWorksSorted } from '../../store/store';
 import WorkItem from './components/WorkItem';
 import Strokes from '../../components/Strokes';
+import useAnimation from '../../hooks/useAnimation';
 
 const Work = forwardRef<HTMLElement>((props, ref) => {
   const works = useSelector(selectWorksSorted);
   const workHeaderRef = useRef<HTMLDivElement>(null);
+  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = workHeaderRef.current;
@@ -22,21 +23,18 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
       scrollTrigger: {
         trigger: element,
       },
+      defaults: {
+        opacity: 0,
+        duration: 0.75,
+      },
     });
-    tl.addLabel('start');
-    tl.fromTo(element.querySelector('h2'),
-      { opacity: 0, x: '300px' },
-      { opacity: 1, x: 0, duration: 0.75 }, 'start');
-    tl.fromTo(element.querySelector('.divider'),
-      { opacity: 0, x: '-300px' },
-      {
-        opacity: 1, x: 0, duration: 0.75, delay: 0.25,
-      }, 'start');
-    tl.fromTo(element.querySelector('.work-tag'),
-      { opacity: 0, x: '-300px' },
-      {
-        opacity: 1, x: 0, duration: 0.75, delay: 0.5,
-      }, 'start');
+    tl.from(element.querySelector('h2'),
+      { x: '300px' }, 0);
+    tl.from(element.querySelector('.divider'),
+      { x: '-300px' }, 0.25);
+    tl.from(element.querySelector('.work-tag'),
+      { x: '-300px' }, 0.5);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

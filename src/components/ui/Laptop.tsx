@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
 import './Laptop.scss';
 import MacbookCover from '../../assets/macbook-cover.svg';
@@ -8,6 +7,7 @@ import MacbookBottom from '../../assets/macbook-bottom.svg';
 import ImageCrop from './ImageCrop';
 import useSize from '../../hooks/useSize';
 import { ImgSingleProp } from '../../interface';
+import useAnimation from '../../hooks/useAnimation';
 
 interface Props {
   preview: ImgSingleProp;
@@ -21,6 +21,7 @@ const Laptop = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
+  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './WorkDetail.scss';
@@ -9,6 +8,7 @@ import Button from '../../components/ui/Button';
 import BackArrow from '../../components/ui/BackArrow';
 import Strokes from '../../components/Strokes';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
+import useAnimation from '../../hooks/useAnimation';
 
 const types = {
   ios: 'Apple Store',
@@ -21,17 +21,14 @@ const WorkDetail = () => {
   const isInit = useSelector(selectIsInit);
   const work = useSelector(selectWorkDetails);
   const [canStartCarAnimation, setCanStartCarAnimation] = useState(false);
+  const { skipBlink } = useAnimation();
 
   useEffect(() => {
     if (!isInit) {
       dispatch(onInit());
     }
 
-    const blink = document.querySelectorAll('.blink');
-    gsap.to(blink, { opacity: 1, duration: 0 });
-    return () => {
-      gsap.to(blink, { opacity: 0, duration: 0 });
-    };
+    return skipBlink();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

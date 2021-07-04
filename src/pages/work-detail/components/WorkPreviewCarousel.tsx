@@ -1,7 +1,6 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import { gsap } from 'gsap';
 
 import './WorkPreviewCarousel.scss';
 import { useEffect, useRef } from 'react';
@@ -9,6 +8,7 @@ import BackArrow from '../../../components/ui/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
 import Strokes from '../../../components/Strokes';
 import useSize from '../../../hooks/useSize';
+import useAnimation from '../../../hooks/useAnimation';
 
 interface Props {
   work: WorkDetailProps,
@@ -32,6 +32,7 @@ const PreviewItem = ({ previews, name }: {previews: ImgProp, name: string}) => (
 const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const [width, height] = useSize(overlayRef);
+  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = overlayRef.current;

@@ -1,5 +1,4 @@
 import { RefObject, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 import { useDispatch } from 'react-redux';
 
 import './Home.scss';
@@ -9,11 +8,13 @@ import HomeBackground from './components/HomeBackground';
 import ScrollTo from '../../components/ui/ScrollTo';
 import TextBounce from '../../components/ui/TextBounce';
 import { onToggleAboutModal } from '../../store/store';
+import useAnimation from '../../hooks/useAnimation';
 
 const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   const ref = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
+  const { animateReveal, animateBlink } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;
@@ -22,43 +23,8 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
     }
 
     const reveal = element.querySelectorAll('.reveal');
-
     for (let i = 0; i < reveal.length; i++) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: element,
-        },
-        defaults: {
-          ease: 'power3.inOut',
-        },
-      });
-      tl.to(
-        reveal[i].querySelector('.reveal-mask'),
-        {
-          scaleX: 1,
-          duration: 0.6,
-          delay: i * 0.12,
-        },
-      );
-      tl.to(
-        reveal[i].querySelector('.reveal-mask'),
-        {
-          scaleX: 0,
-          transformOrigin: '100% 50%',
-          duration: 0.4,
-        },
-        '+=0.4',
-      );
-      tl.to(
-        reveal[i].querySelector('.reveal-text'),
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power4.out',
-        },
-        '<0.15',
-      );
+      const tl = animateReveal(reveal[i], { delay: i * 0.12 });
 
       if (i === reveal.length - 1) {
         tl.to(
@@ -73,43 +39,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
       }
     }
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: element,
-      },
-    });
-
-    const blink = document.querySelectorAll('.blink');
-    tl.fromTo(blink,
-      {
-        autoAlpha: 0,
-        pointerEvents: 'none',
-      },
-      {
-        autoAlpha: 0.8,
-        duration: 0.1,
-        pointerEvents: 'auto',
-      }, 1.55 + 0.2 + 0.12 * 3);
-    tl.to(blink,
-      {
-        autoAlpha: 0.1,
-        duration: 0.1,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 0.8,
-        duration: 0.1,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 0.2,
-        duration: 0.2,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 1,
-        duration: 0.4,
-      });
+    animateBlink(element);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

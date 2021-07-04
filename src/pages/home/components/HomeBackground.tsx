@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import useAnimation from '../../../hooks/useAnimation';
 
 import './HomeBackground.scss';
 
 const HomeBackground = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;
@@ -48,6 +49,7 @@ const HomeBackground = () => {
         scrub: true,
       },
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

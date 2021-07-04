@@ -2,12 +2,12 @@
 import {
   ReactNode, useEffect, useMemo, useRef,
 } from 'react';
-import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import './ImageCrop.scss';
 import { ImgSingleProp } from '../../interface';
 import useSize from '../../hooks/useSize';
+import useAnimation from '../../hooks/useAnimation';
 
 interface Props {
   preview: ImgSingleProp;
@@ -24,6 +24,7 @@ const ImageCrop = ({
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [width] = useSize(ref);
+  const { gsap } = useAnimation();
 
   useEffect(() => {
     if (isParallax) {
