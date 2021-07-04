@@ -90,12 +90,36 @@ const useAnimation = () => {
     });
 
     const blink = document.querySelectorAll('.blink');
+    tl.fromTo(blink,
+      {
+        autoAlpha: 0,
+        pointerEvents: 'none',
+      },
+      {
+        autoAlpha: 0.8,
+        duration: 0.1,
+        pointerEvents: 'auto',
+      }, 1.75);
+    tl.to(blink,
+      {
+        autoAlpha: 0.1,
+        duration: 0.1,
+      });
+    tl.to(blink,
+      {
+        autoAlpha: 0.8,
+        duration: 0.1,
+      });
+    tl.to(blink,
+      {
+        autoAlpha: 0.2,
+        duration: 0.2,
+      });
     tl.to(blink,
       {
         autoAlpha: 1,
-        duration: 0.25,
-        ease: 'power2.in',
-      }, 1.75);
+        duration: 0.4,
+      });
   }, []);
 
   const skipBlink = useCallback(() => {
