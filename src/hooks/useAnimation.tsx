@@ -3,10 +3,11 @@ import { gsap } from 'gsap';
 
 const useAnimation = () => {
   const animateReveal = useCallback((el: Element | null,
-    { delay, trigger } = { delay: 0, trigger: null }) => {
+    { delay, trigger, ...rest } = { delay: 0, trigger: null }) => {
     const tl = gsap.timeline({
       scrollTrigger: trigger ? {
         trigger,
+        ...rest,
       } : undefined,
       defaults: {
         ease: 'power3.inOut',

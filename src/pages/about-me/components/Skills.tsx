@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './Skills.scss';
 import Bounce from '../../../components/ui/Bounce';
@@ -32,45 +32,39 @@ import useAnimation from '../../../hooks/useAnimation';
 const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize();
-  const { animateReveal, gsap } = useAnimation();
+  const { animateReveal } = useAnimation();
+  const [isInit, setIsInit] = useState(false);
+
+  useEffect(() => { setTimeout(() => { setIsInit(true); }, 1900); }, []);
 
   useEffect(() => {
     const element = ref.current;
-    if (!element) {
+    if (!element || !isInit) {
       return;
     }
 
     const reveal = element.querySelectorAll('.reveal');
+    const skillsLists = element.querySelectorAll('ul');
 
     for (let i = 0; i < reveal.length; i++) {
-      animateReveal(reveal[i], { delay: 1.9 + i * 0.12 });
-    }
+      const tl = animateReveal(reveal[i], {
+        delay: i * 0.12,
+        trigger: reveal[i],
+        scroller: document.querySelector('.modal-content'),
+      });
 
-    const tl = gsap.timeline({
-      defaults: {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        ease: 'power2.out',
-      },
-    });
-
-    if (width > 768) {
-      const skillsLists = element.querySelectorAll('ul');
-      for (let i = 0; i < skillsLists.length; i++) {
-        const skills = skillsLists[i].querySelectorAll('li');
-        for (let j = 0; j < skills.length; j++) {
-          tl.to(skills[j], { delay: j * 0.2 }, 3.15);
-        }
-      }
-    } else {
-      const skills = element.querySelectorAll('li');
+      const skills = skillsLists[i].querySelectorAll('li');
       for (let j = 0; j < skills.length; j++) {
-        tl.to(skills[j], { delay: j * 0.1 }, 3.15);
+        tl.to(skills[j], {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: 'power2.out',
+        }, j === 0 ? '<' : '<0.2');
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
+  }, [width, isInit]);
 
   return (
     <div ref={ref} className="skills">
