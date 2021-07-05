@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import throttle from 'lodash.throttle';
 
 import './AboutMe.scss';
 import About from './components/About';
@@ -26,28 +25,24 @@ const AboutMe = () => {
       return;
     }
 
-    const startAnimation = throttle(() => {
-      const tl = gsap.timeline({
-        defaults: {
-          ease: 'power1.in',
-          duration: 0.5,
-        },
-      });
+    const tl = gsap.timeline({
+      defaults: {
+        ease: 'power1.in',
+        duration: 0.5,
+      },
+    });
 
-      if (width > 768) {
-        tl.fromTo(contentRef.querySelector('.about'),
-          { y: '-100%', opacity: 0 }, { y: 0, opacity: 1 }, 0);
-        tl.fromTo(contentRef.querySelector('.skills'),
-          { y: '100%', opacity: 0 }, { y: 0, opacity: 1 }, 0.2);
-      } else {
-        tl.fromTo([contentRef.querySelector('.about'), contentRef.querySelector('.skills')],
-          { x: '-100%', opacity: 0 }, { x: 0, opacity: 1 });
-      }
-    }, 100);
-
-    startAnimation();
+    if (width > 768) {
+      tl.from(contentRef.querySelector('.about'),
+        { y: '-100%', opacity: 0 }, 0);
+      tl.from(contentRef.querySelector('.skills'),
+        { y: '100%', opacity: 0 }, 0.2);
+    } else {
+      tl.from([contentRef.querySelector('.about'), contentRef.querySelector('.skills')],
+        { x: '-100%', opacity: 0 });
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contentRef, width]);
+  }, [contentRef]);
 
   return (
     <>
