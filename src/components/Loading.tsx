@@ -1,19 +1,48 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import './Loading.scss';
 import Strokes from './Strokes';
 import { onSetLoading, selectIsInit, selectIsLoading } from '../store/store';
-import useAnimation from '../hooks/useAnimation';
+
+gsap.registerEffect({
+  name: 'counter',
+  extendTimeline: true,
+  defaults: {
+    end: 0,
+    duration: 1,
+    ease: 'power3.out',
+    increment: 1,
+  },
+  effect: (targets: any, config: any) => {
+    const tl = gsap.timeline();
+    const num = targets[0].innerText.replace(/,/g, '');
+    targets[0].innerText = num;
+
+    tl.to(targets, {
+      duration: config.duration,
+      innerText: config.end,
+      // snap:{innerText:config.increment},
+      modifiers: {
+        innerText(innerText) {
+          return gsap.utils.snap(config.increment, innerText).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
+      },
+      ease: config.ease,
+    }, 0);
+
+    return tl;
+  },
+});
 
 const Loading = () => {
   const isInit = useSelector(selectIsInit);
   const isLoading = useSelector(selectIsLoading);
   const location = useLocation();
   const dispatch = useDispatch();
-  const { gsap } = useAnimation();
   const background = location.pathname === '/' ? '#23282a' : '#fff';
 
   useEffect(() => {

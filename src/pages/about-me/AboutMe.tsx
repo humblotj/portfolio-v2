@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
+import { gsap } from 'gsap';
 
 import './AboutMe.scss';
 import About from './components/About';
 import Skills from './components/Skills';
 import { onToggleAboutModal, selectIsAboutModalOpen } from '../../store/store';
-import useAnimation from '../../hooks/useAnimation';
 import useSize from '../../hooks/useSize';
 
 Modal.setAppElement('body');
@@ -15,7 +15,6 @@ const AboutMe = () => {
   const [contentRef, setContentRef] = useState<HTMLDivElement|null>(null);
   const dispatch = useDispatch();
   const [width] = useSize();
-  const { gsap } = useAnimation();
   const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
 
   const closeContactModal = () => dispatch(onToggleAboutModal(false));

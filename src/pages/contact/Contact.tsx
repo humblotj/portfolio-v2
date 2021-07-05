@@ -1,6 +1,7 @@
 import {
   FormEvent, forwardRef, useEffect, useRef,
 } from 'react';
+import { gsap } from 'gsap';
 import emailjs from 'emailjs-com';
 
 import './Contact.scss';
@@ -9,12 +10,10 @@ import TextField from '../../components/ui/TextField';
 import { ReactComponent as ContactMask } from '../../assets/contact-mask.svg';
 import useCombinedRefs from '../../hooks/useCombinedRefs';
 import Strokes from '../../components/Strokes';
-import useAnimation from '../../hooks/useAnimation';
 
 const Contact = forwardRef<HTMLElement>((props, ref) => {
   const innerRef = useCombinedRefs(ref) as any;
   const formRef = useRef<HTMLFormElement>(null);
-  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = innerRef.current;

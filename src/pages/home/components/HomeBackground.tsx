@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react';
-import useAnimation from '../../../hooks/useAnimation';
+import { gsap } from 'gsap';
 
 import './HomeBackground.scss';
 
 const HomeBackground = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = ref.current;

@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import './WorkDetailParallax.scss';
 import { ImgSingleProp } from '../../../interface';
 import ImageWrap from '../../../components/ui/ImageWrap';
-import useAnimation from '../../../hooks/useAnimation';
 
 const WorkDetailParallax = ({ preview }: {preview: ImgSingleProp}) => {
   const ref = useRef<HTMLDivElement>(null);
   const isMobile = preview.type === 'mobile';
   const [animationIsComplete, setAnimationIsComplete] = useState(false);
-  const { gsap } = useAnimation();
 
   useEffect((): any => {
     const element = ref.current;

@@ -1,17 +1,16 @@
 import { forwardRef, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { gsap } from 'gsap';
 
 import './Work.scss';
 import { WorkProps } from '../../interface';
 import { selectWorksSorted } from '../../store/store';
 import WorkItem from './components/WorkItem';
 import Strokes from '../../components/Strokes';
-import useAnimation from '../../hooks/useAnimation';
 
 const Work = forwardRef<HTMLElement>((props, ref) => {
   const works = useSelector(selectWorksSorted);
   const workHeaderRef = useRef<HTMLDivElement>(null);
-  const { gsap } = useAnimation();
 
   useEffect(() => {
     const element = workHeaderRef.current;

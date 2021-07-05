@@ -1,38 +1,5 @@
 import { useCallback } from 'react';
 import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.registerEffect({
-  name: 'counter',
-  extendTimeline: true,
-  defaults: {
-    end: 0,
-    duration: 1,
-    ease: 'power3.out',
-    increment: 1,
-  },
-  effect: (targets: any, config: any) => {
-    const tl = gsap.timeline();
-    const num = targets[0].innerText.replace(/,/g, '');
-    targets[0].innerText = num;
-
-    tl.to(targets, {
-      duration: config.duration,
-      innerText: config.end,
-      // snap:{innerText:config.increment},
-      modifiers: {
-        innerText(innerText) {
-          return gsap.utils.snap(config.increment, innerText).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        },
-      },
-      ease: config.ease,
-    }, 0);
-
-    return tl;
-  },
-});
 
 const useAnimation = () => {
   const animateReveal = useCallback((el: Element | null,

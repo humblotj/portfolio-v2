@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import './Nav.scss';
@@ -10,7 +11,6 @@ import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
 import FakeLink from './ui/FakeLink';
 import Strokes from './Strokes';
 import { onToggleAboutModal } from '../store/store';
-import useAnimation from '../hooks/useAnimation';
 
 interface Props {
   open: boolean,
@@ -20,7 +20,6 @@ interface Props {
 const Nav = ({ open, onClose }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const { gsap } = useAnimation();
   const tlRef = useRef(gsap.timeline());
   const [animationEnded, setAnimationEnded] = useState(false);
 
