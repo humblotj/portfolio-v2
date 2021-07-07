@@ -41,30 +41,30 @@ const WorkItem = ({ index, work, id }: Props) => {
     const isLargeWidth = width > 768;
     const isOdd = index % 2 === 1;
     tl.addLabel('start', !isLargeWidth || !isOdd ? 0 : 0.25);
-    tl.to(element.querySelector('.work-item-mask'),
-      {
-        scaleX: 0,
-        transformOrigin: '100% 50%',
-        duration: 1,
-      }, 'start');
-    tl.to(element.querySelectorAll('.work-item-title > *'),
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-      }, 'start');
-    tl.fromTo(element.querySelector('.work-preview'),
+    tl.from(element,
       {
         opacity: 0,
-        x: '50%',
-        y: '-50%',
-      },
-      {
-        opacity: 1,
-        x: '-50%',
-        y: '-50%',
+        y: 60,
         duration: 1,
       }, 'start');
+    // tl.to(element.querySelectorAll('.work-item-title > *'),
+    //   {
+    //     opacity: 1,
+    //     y: 0,
+    //     duration: 1,
+    //   }, 'start');
+    // tl.fromTo(element.querySelector('.work-preview'),
+    //   {
+    //     opacity: 0,
+    //     x: '50%',
+    //     y: '-50%',
+    //   },
+    //   {
+    //     opacity: 1,
+    //     x: '-50%',
+    //     y: '-50%',
+    //     duration: 1,
+    //   }, 'start');
 
     return () => tl.kill();
 
@@ -73,7 +73,6 @@ const WorkItem = ({ index, work, id }: Props) => {
 
   return (
     <li ref={ref} className="work-item">
-      {/* <span className="counter">{(`${index + 1}`).padStart(2, '0')}</span> */}
       <Link
         to={`work/${id}`}
       >
@@ -85,24 +84,24 @@ const WorkItem = ({ index, work, id }: Props) => {
               {description}
             </p>
           </div>
-          <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
+          {/* <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
             <ImageWrap
               preview={preview as any}
               startAnimation
               noAnimation
               lazyload
             />
-          </div>
+          </div> */}
           <ul>
-            {techs.map((tech) => (
+            {/* {techs.map((tech) => (
               <li key={tech.name}>
                 <Suspense fallback={<span />}>
                   <TechIcon name={tech.name} />
                 </Suspense>
               </li>
-            ))}
+            ))} */}
           </ul>
-          <div className="work-item-mask" aria-hidden />
+          {/* <div className="work-item-mask" aria-hidden /> */}
         </div>
         <div className="learn-more">
           <p>Learn more</p>

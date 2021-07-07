@@ -3,7 +3,9 @@
     width: 50%;
     padding: 0 32px;
     margin-bottom: 64px;
-    transition: all 0.25s ease-in-out;
+    // transition: all 0.25s ease-in-out;
+    transform: translateY(0);
+
 
     > a {
         position: relative;
@@ -116,9 +118,9 @@
             }
         }
 
-        &:hover {
-            transform: translateY(-28px);
-        }
+        // &:hover {
+        //     transform: translateY(-28px);
+        // }
     }
 
     ul {
