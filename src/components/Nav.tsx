@@ -20,7 +20,6 @@ interface Props {
 const Nav = ({ open, onClose }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const tlRef = useRef(gsap.timeline());
   const [animationEnded, setAnimationEnded] = useState(false);
 
   const onOpenContact = () => {
@@ -35,11 +34,11 @@ const Nav = ({ open, onClose }: Props) => {
 
     const element = ref.current;
     if (!element) {
-      return;
+      return () => {};
     }
 
-    const tl = tlRef.current;
-    tl.clear();
+    // tl.clear();
+    const tl = gsap.timeline();
 
     if (open) {
       tl.to(
@@ -53,23 +52,18 @@ const Nav = ({ open, onClose }: Props) => {
 
       const items = element.querySelectorAll('nav li');
       for (let i = 0; i < items.length; i++) {
-        tl.from(items[i],
-          {
-            opacity: 0,
-            x: '100%',
-            duration: 0.5,
-          },
+        tl.fromTo(items[i],
+          { opacity: 0, x: '100%' },
+          { opacity: 1, x: 0, duration: 0.5 },
           0.35 + i * 0.15);
       }
 
       const sns = element.querySelectorAll('.sns li');
       for (let i = 0; i < sns.length; i++) {
-        tl.from(sns[i],
+        tl.fromTo(sns[i],
+          { opacity: 0, y: '50%' },
           {
-            opacity: 0,
-            y: '50%',
-            delay: i * 0.15,
-            duration: 0.5,
+            opacity: 1, y: 0, delay: i * 0.15, duration: 0.5,
           },
           'sns');
       }
@@ -85,6 +79,8 @@ const Nav = ({ open, onClose }: Props) => {
         },
       );
     }
+
+    return () => tl.kill();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 

@@ -21,12 +21,15 @@ const Phone = ({
 
   useEffect(() => {
     const element = ref.current;
-    if (!element || !startAnimation) {
+    if (!element) {
       return;
     }
+
     if (noAnimation) {
       gsap.set(element.querySelector('.phone-overlay'), { opacity: 0 });
-    } else {
+    }
+
+    if (startAnimation) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: element,
@@ -44,7 +47,14 @@ const Phone = ({
       ref={ref}
       className="phone"
     >
-      <img src={PhoneMockup} srcSet={`${PhoneMockup300} 300w, ${PhoneMockup} 653w`} alt="mockup" className="phone-mockup" width="460" height="720" />
+      <img
+        src={PhoneMockup}
+        srcSet={`${PhoneMockup300} 300w, ${PhoneMockup} 653w`}
+        alt="mockup"
+        className="phone-mockup"
+        width="460"
+        height="720"
+      />
       <ImageCrop
         preview={preview}
         lazyload={lazyload}

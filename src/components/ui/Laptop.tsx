@@ -24,7 +24,7 @@ const Laptop = ({
 
   useEffect(() => {
     const element = ref.current;
-    if (!element || !startAnimation) {
+    if (!element) {
       return;
     }
 
@@ -32,14 +32,16 @@ const Laptop = ({
       gsap.set(element.querySelector('.part.top'), { rotationX: 0 });
     }
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: element,
-        start: 'bottom bottom',
-      },
-    });
+    if (startAnimation) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: 'bottom bottom',
+        },
+      });
 
-    tl.to(element.querySelector('.part.top'), { rotationX: 0, duration: 0.9 });
+      tl.to(element.querySelector('.part.top'), { rotationX: 0, duration: 0.9 });
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
 
