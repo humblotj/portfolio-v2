@@ -9,6 +9,9 @@ import BackArrow from '../../components/ui/BackArrow';
 import Strokes from '../../components/Strokes';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 import useAnimation from '../../hooks/useAnimation';
+import { ReactComponent as PlayStoreIcon } from '../../assets/icons/playstore.svg';
+import { ReactComponent as AppStoreIcon } from '../../assets/icons/appstore.svg';
+import FakeLink from '../../components/ui/FakeLink';
 
 const types = {
   ios: 'Apple Store',
@@ -38,6 +41,8 @@ const WorkDetail = () => {
 
   const goTo = (url: string) => window.open(url, '_blank');
 
+  const getUrl = (url: string): any => work.links.find((e) => e.type === url);
+
   return (
     <>
       <section className="work-detail-sec">
@@ -47,20 +52,32 @@ const WorkDetail = () => {
         <Strokes />
         <WorkDetailDescription work={work} setCanStartCarAnimation={setCanStartCarAnimation} />
         <div className="work-links">
-          {work.links?.length ? work.links.map(({ type, url }) => (
-            <Button key={url} onClick={() => goTo(url)}>{types[type]}</Button>
-          ))
+          {work.links?.length
+            ? (
+              <>
+                {(getUrl('android') || getUrl('ios'))
+                   && (
+                   <div>
+                     {getUrl('android') && <FakeLink onClick={() => goTo(getUrl('android').url)}><PlayStoreIcon /></FakeLink>}
+                     {getUrl('ios') && <FakeLink onClick={() => goTo(getUrl('ios').url)}><AppStoreIcon /></FakeLink>}
+                   </div>
+                   )}
+                {getUrl('web') && (
+                  <div>
+                    <Button key={getUrl('web')?.url} onClick={() => goTo(getUrl('web')?.url)}>{types.web}</Button>
+                  </div>
+                )}
+              </>
+            )
             : <Button disabled>Coming Soon</Button>}
-
-          {work.repoUrl
-        && (
-        <Button
-          color="secondary"
-          onClick={() => goTo(work.repoUrl || '')}
-        >
-          View Code
-        </Button>
-        )}
+          {work.repoUrl && (
+            <Button
+              color="secondary"
+              onClick={() => goTo(work.repoUrl || '')}
+            >
+              View Code
+            </Button>
+          )}
         </div>
         <WorkPreviewCarousel work={work} canStartCarAnimation={canStartCarAnimation} />
       </section>
