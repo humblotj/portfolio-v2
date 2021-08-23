@@ -13,10 +13,11 @@ interface Props {
   preview: ImgSingleProp;
   children?: ReactNode;
   lazyload?: boolean;
+  animationDone?: boolean;
 }
 
 const ImageCrop = ({
-  preview, children = null, lazyload = false,
+  preview, children = null, lazyload = false, animationDone = false,
 }: Props) => {
   const {
     isParallax, type, isVideo, urls,
@@ -39,6 +40,12 @@ const ImageCrop = ({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (animationDone && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [animationDone]);
 
   const src = useMemo(() => {
     if (!urls || (!width && isVideo)) {
@@ -76,7 +83,6 @@ const ImageCrop = ({
         ? (
           <video
             ref={videoRef}
-            autoPlay
             loop
             muted
             width={preview?.width}
@@ -86,7 +92,16 @@ const ImageCrop = ({
             <source src={src} type="video/mp4" />
           </video>
         )
-        : lazyload ? <img data-src={src} data-srcset={srcSet} alt="" width={preview?.width} height={preview?.height} className="lazyload" />
+        : lazyload ? (
+          <img
+            data-src={src}
+            data-srcset={srcSet}
+            alt=""
+            width={preview?.width}
+            height={preview?.height}
+            className="lazyload"
+          />
+        )
           : (
             <img
               src={src}

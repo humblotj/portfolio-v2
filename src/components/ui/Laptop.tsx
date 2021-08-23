@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 import './Laptop.scss';
@@ -21,6 +21,7 @@ const Laptop = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
+  const [animationDone, setAnimationDone] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -41,6 +42,7 @@ const Laptop = ({
       });
 
       tl.to(element.querySelector('.part.top'), { rotationX: 0, duration: 0.9 });
+      tl.call(() => setAnimationDone(true));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
@@ -61,7 +63,7 @@ const Laptop = ({
           height="12"
         />
         <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
-        <ImageCrop preview={preview} lazyload={lazyload} />
+        <ImageCrop preview={preview} lazyload={lazyload} animationDone={animationDone} />
       </div>
       <div className="part bottom">
         <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />

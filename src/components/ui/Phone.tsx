@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 import './Phone.scss';
@@ -18,6 +18,7 @@ const Phone = ({
   preview, startAnimation = false, noAnimation = false, lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [animationDone, setAnimationDone] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -38,6 +39,7 @@ const Phone = ({
       });
 
       tl.to(element.querySelector('.phone-overlay'), { opacity: 0, duration: 0.9 });
+      tl.call(() => setAnimationDone(true));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
@@ -58,10 +60,10 @@ const Phone = ({
       <ImageCrop
         preview={preview}
         lazyload={lazyload}
+        animationDone={animationDone}
       >
         <div className="phone-overlay" />
       </ImageCrop>
-
     </div>
   );
 };
