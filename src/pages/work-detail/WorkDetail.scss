@@ -43,6 +43,10 @@
         .btn.primary {
             color: #0c9;
 
+            &:not(:last-child) {
+                margin-right: 40px;
+            }
+
             &:hover:not(:disabled) {
                 color: #fff;
             }

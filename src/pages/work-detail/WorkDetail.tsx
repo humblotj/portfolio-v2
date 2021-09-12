@@ -65,12 +65,20 @@ const WorkDetail = () => {
                 {getUrl('web') && (
                   <div>
                     <Button key={getUrl('web')?.url} onClick={() => goTo(getUrl('web')?.url)}>{types.web}</Button>
+                    {work.repoUrl && (
+                    <Button
+                      color="secondary"
+                      onClick={() => goTo(work.repoUrl || '')}
+                    >
+                      View Code
+                    </Button>
+                    )}
                   </div>
                 )}
               </>
             )
             : <Button disabled>Coming Soon</Button>}
-          {work.repoUrl && (
+          {work.repoUrl && !getUrl('web') && (
             <Button
               color="secondary"
               onClick={() => goTo(work.repoUrl || '')}
