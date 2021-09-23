@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  useEffect, useRef, useState, memo,
+} from 'react';
 import { gsap } from 'gsap';
 
 import './Phone.scss';
@@ -68,4 +70,4 @@ const Phone = ({
   );
 };
 
-export default Phone;
+export default memo(Phone);

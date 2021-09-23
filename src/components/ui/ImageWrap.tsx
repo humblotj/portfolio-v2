@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import Phone from './Phone';
 import Laptop from './Laptop';
 import { ImgSingleProp } from '../../interface';
@@ -33,4 +35,4 @@ const ImageWrap = ({
   );
 };
 
-export default ImageWrap;
+export default memo(ImageWrap);

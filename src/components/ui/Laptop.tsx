@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import {
+  useEffect, useRef, useState, memo,
+} from 'react';
 import { gsap } from 'gsap';
 
 import './Laptop.scss';
@@ -73,4 +75,4 @@ const Laptop = ({
   );
 };
 
-export default Laptop;
+export default memo(Laptop);

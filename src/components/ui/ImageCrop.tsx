@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import {
-  ReactNode, useEffect, useMemo, useRef,
+  ReactNode, useEffect, useMemo, useRef, memo,
 } from 'react';
 import { gsap } from 'gsap';
 import cx from 'classnames';
@@ -117,4 +117,4 @@ const ImageCrop = ({
   );
 };
 
-export default ImageCrop;
+export default memo(ImageCrop);
