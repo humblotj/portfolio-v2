@@ -16,7 +16,7 @@ const lazyWithRetry = (componentImport: () => Promise<any>) => lazy(async () => 
     );
 
     return component;
-  } catch (error) {
+  } catch (error: any) {
     const chunkFailedMessage = /Loading chunk [\d]+ failed/;
     if (error?.message && chunkFailedMessage.test(error.message)) {
       if (!pageHasAlreadyBeenForceRefreshed) {
