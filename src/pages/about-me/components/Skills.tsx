@@ -25,6 +25,8 @@ import { ReactComponent as D3js } from '../../../assets/icons/d3js.svg';
 import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
 import { ReactComponent as SocketIO } from '../../../assets/icons/socket-io.svg';
 import { ReactComponent as Pwa } from '../../../assets/icons/pwa.svg';
+import { ReactComponent as NextJS } from '../../../assets/icons/nextjs.svg';
+import { ReactComponent as Webpack } from '../../../assets/icons/webpack.svg';
 import CloseButton from '../../../components/ui/CloseButton';
 import useSize from '../../../hooks/useSize';
 import useAnimation from '../../../hooks/useAnimation';
@@ -140,6 +142,10 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
                 <Bounce><VueJs /></Bounce>
                 <span>VueJs</span>
               </li>
+              <li className="medium">
+                <Bounce><NextJS /></Bounce>
+                <span>Next.js</span>
+              </li>
               <li>
                 <Bounce><Gsap /></Bounce>
                 <span>Gsap</span>
@@ -197,6 +203,10 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
               <li className="medium">
                 <Bounce><D3js /></Bounce>
                 <span>D3.js</span>
+              </li>
+              <li>
+                <Bounce><Webpack /></Bounce>
+                <span>Webpack</span>
               </li>
               <li>
                 <Bounce><WebGL /></Bounce>
