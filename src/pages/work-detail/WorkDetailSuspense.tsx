@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore/lite';
 
 import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
 import { onSetWorkDetails } from '../../store/store';

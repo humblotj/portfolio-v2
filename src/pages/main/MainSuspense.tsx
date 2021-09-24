@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore/lite';
 
 import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
 import { onSetWorks } from '../../store/store';
