@@ -47,12 +47,16 @@ const WorkItem = ({ index, work, id }: Props) => {
         transformOrigin: '100% 50%',
         duration: 1,
       }, 'start');
-    tl.to(element.querySelectorAll('.work-item-title > *'),
+    tl.to(
+      element.querySelectorAll('.work-item-title > * > .reveal-text'),
       {
-        opacity: 1,
         y: 0,
+        opacity: 1,
         duration: 1,
-      }, 'start');
+        ease: 'power4.out',
+        stagger: 0.1,
+      }, '<0.1',
+    );
     tl.fromTo(element.querySelector('.work-preview'),
       {
         opacity: 0,
@@ -64,7 +68,7 @@ const WorkItem = ({ index, work, id }: Props) => {
         x: '-50%',
         y: '-50%',
         duration: 0.5,
-      }, '<0.5');
+      }, '<0.6');
 
     return () => tl.kill();
 
@@ -79,10 +83,14 @@ const WorkItem = ({ index, work, id }: Props) => {
         <div className="work-item-content">
           <span className="work-tag">{isPersonal ? 'Personal Work' : 'Company Work'}</span>
           <div className="work-item-title">
-            <h3>{name}</h3>
-            <p>
-              {description}
-            </p>
+            <div className="reveal no-mask">
+              <h3 className="reveal-text">{name}</h3>
+            </div>
+            <div className="reveal no-mask">
+              <p className="reveal-text">
+                {description}
+              </p>
+            </div>
           </div>
           <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
             <ImageWrap

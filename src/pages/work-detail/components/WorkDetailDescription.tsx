@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 
-import TagList from '../../../components/ui/TagList';
 import './WorkDetailDescription.scss';
-import TextBounce from '../../../components/ui/TextBounce';
 import { WorkDetailProps } from '../../../interface';
+import TagList from '../../../components/ui/TagList';
+import TextBounce from '../../../components/ui/TextBounce';
 import WorkDetailParallax from './WorkDetailParallax';
 import useAnimation from '../../../hooks/useAnimation';
 
@@ -57,9 +57,7 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
     <div ref={ref} className="work-detail-description">
       <div className="desc-part">
         <div className="reveal desc-heading secondary">
-          <h3
-            className="reveal-text"
-          >
+          <h3 className="reveal-text">
             Project
           </h3>
           <div className="reveal-mask" aria-hidden />
