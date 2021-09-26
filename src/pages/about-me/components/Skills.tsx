@@ -140,7 +140,7 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
             <ul>
               <li className="medium">
                 <Bounce><VueJs /></Bounce>
-                <span>VueJs</span>
+                <span>Vue.js</span>
               </li>
               <li className="medium">
                 <Bounce><NextJS /></Bounce>
