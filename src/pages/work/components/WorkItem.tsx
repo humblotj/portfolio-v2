@@ -54,7 +54,6 @@ const WorkItem = ({ index, work, id }: Props) => {
         opacity: 1,
         duration: 1,
         ease: 'power4.out',
-        stagger: 0.1,
       }, '<0.1',
     );
     tl.fromTo(element.querySelector('.work-preview'),
