@@ -17,9 +17,11 @@ import { ReactComponent as VueJs } from '../../../assets/icons/vuejs.svg';
 import { ReactComponent as NextJS } from '../../../assets/icons/nextjs.svg';
 import { ReactComponent as Gsap } from '../../../assets/icons/gsap.svg';
 import { ReactComponent as Lottie } from '../../../assets/icons/lottie.svg';
-import { ReactComponent as Jest } from '../../../assets/icons/jest.svg';
 import { ReactComponent as NodeJs } from '../../../assets/icons/nodejs.svg';
 import { ReactComponent as MongoDB } from '../../../assets/icons/mongodb.svg';
+import { ReactComponent as Jest } from '../../../assets/icons/jest.svg';
+import { ReactComponent as TestingLibrary } from '../../../assets/icons/testing-library.svg';
+import { ReactComponent as Babel } from '../../../assets/icons/babel.svg';
 import { ReactComponent as SocketIO } from '../../../assets/icons/socket-io.svg';
 import { ReactComponent as Pwa } from '../../../assets/icons/pwa.svg';
 import { ReactComponent as Java } from '../../../assets/icons/java.svg';
@@ -55,9 +57,11 @@ const familiarSkills = [{ name: 'Vue.js', component: VueJs, size: 'medium' },
   { name: 'Next.js', component: NextJS, size: 'medium' },
   { name: 'Gsap', component: Gsap },
   { name: 'Lottie', component: Lottie, size: 'medium' },
-  { name: 'Jest', component: Jest, size: 'medium' },
   { name: 'Node.js', component: NodeJs },
   { name: 'MongoDB', component: MongoDB },
+  { name: 'Jest', component: Jest, size: 'medium' },
+  { name: 'Testing Library', component: TestingLibrary },
+  { name: 'Babel', component: Babel },
   { name: 'Socket.io', component: SocketIO },
   { name: 'PWA', component: Pwa },
   { name: 'Java', component: Java },
