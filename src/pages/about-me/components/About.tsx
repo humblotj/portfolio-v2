@@ -23,14 +23,14 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
 
       if (i === 1) {
         tl.to(
-          element.querySelector('.about-description'),
+          element.querySelector('.about-description > p'),
           {
             y: 0,
             opacity: 1,
             duration: 1,
             ease: 'power4.out',
           },
-          '<',
+          '<+=0.2',
         );
       }
     }
@@ -54,33 +54,35 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
           <div className="reveal-mask" aria-hidden />
         </div>
         <br />
-        <p className="about-description">
-          Hi! I&apos;m Jean, a
-          French software developer
-          based in Seoul.
-          <br />
-          I specialize in front-end development – building
-          {' '}
-          <strong>
-            efficient, interactive,
-            modern, performant
-          </strong>
-          , and
-          {' '}
-          <strong>scalable</strong>
-          {' '}
-          projects –
-          but also like experimenting with backend technologies.
-          <br />
-          I am open to
-          {' '}
-          <strong>new technologies</strong>
-          {' '}
-          and
-          {' '}
-          <strong>development opportunities</strong>
-          .
-        </p>
+        <div className="about-description">
+          <p>
+            Hi! I&apos;m Jean, a
+            French software developer
+            based in Seoul.
+            <br />
+            I specialize in front-end development – building
+            {' '}
+            <strong>
+              efficient, interactive,
+              modern, performant
+            </strong>
+            , and
+            {' '}
+            <strong>scalable</strong>
+            {' '}
+            projects –
+            but also like experimenting with backend technologies.
+            <br />
+            I am open to
+            {' '}
+            <strong>new technologies</strong>
+            {' '}
+            and
+            {' '}
+            <strong>development opportunities</strong>
+            .
+          </p>
+        </div>
       </div>
       <div className="about-footer">
         <div className="reveal secondary">

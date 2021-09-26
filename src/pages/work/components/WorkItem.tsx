@@ -60,7 +60,7 @@ const WorkItem = ({ index, work, id }: Props) => {
     tl.fromTo(element.querySelector('.work-preview'),
       {
         opacity: 0,
-        x: 0,
+        x: '-25%',
         y: '-50%',
       },
       {

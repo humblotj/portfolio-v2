@@ -74,20 +74,20 @@
         }
     }
 
-    .work-preview-overlay {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: #fff;
-        top: 0;
-        right: 0;
-        clip: rect(auto, auto, auto, auto);
-        z-index: 1;
+    // .work-preview-overlay {
+    //     position: absolute;
+    //     height: 100%;
+    //     width: 100%;
+    //     background: #fff;
+    //     top: 0;
+    //     right: 0;
+    //     clip: rect(auto, auto, auto, auto);
+    //     z-index: 1;
 
-        .strokes {
-            top: initial;
-        }
-    }
+    //     .strokes {
+    //         top: initial;
+    //     }
+    // }
 }
 
 @media only screen and (min-width: 1440px) {

@@ -33,21 +33,21 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const [width, height] = useSize(overlayRef);
 
-  useEffect(() => {
-    const element = overlayRef.current;
-    if (!element || !work || !canStartCarAnimation) {
-      return;
-    }
+  // useEffect(() => {
+  //   const element = overlayRef.current;
+  //   if (!element || !work || !canStartCarAnimation) {
+  //     return;
+  //   }
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: element,
-        start: '20% bottom',
-      },
-    });
-    tl.to(element, { width: 0, duration: 1, ease: 'power2.inOut' });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [canStartCarAnimation]);
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: element,
+  //       start: '20% bottom',
+  //     },
+  //   });
+  //   tl.to(element, { width: 0, duration: 1, ease: 'power2.inOut' });
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [canStartCarAnimation]);
 
   if (!work) {
     return null;
@@ -82,13 +82,13 @@ const WorkPreviewCarousel = ({ work, canStartCarAnimation }: Props) => {
           Next Work
         </BackArrow>
       </div>
-      <div className="work-preview-overlay" ref={overlayRef}>
+      {/* <div className="work-preview-overlay" ref={overlayRef}>
         <Strokes style={{
           height: `${height}px`,
           position: canStartCarAnimation ? 'fixed' : 'static',
         }}
         />
-      </div>
+      </div> */}
       <Strokes />
     </div>
 
