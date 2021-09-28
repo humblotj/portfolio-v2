@@ -89,7 +89,7 @@ const Skill = memo(({ title, skills }: {title: string, skills: skillType}) => (
         {skills.map(({ name, component, size }) => {
           const Logo = component;
           return (
-            <li className={size}>
+            <li className={size} key={name}>
               <Bounce><Logo /></Bounce>
               <span>{name}</span>
             </li>
