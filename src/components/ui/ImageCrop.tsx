@@ -71,7 +71,7 @@ const ImageCrop = ({
   }, [urls, isVideo]);
 
   return (
-    <div ref={ref} className={cx('image-crop', { 'is-mobile': type === 'mobile' })}>
+    <div ref={ref} className={cx('image-crop', { 'is-mobile': type === 'mobile' }, { 'is-parallax': isParallax })}>
       {isVideo
         ? (
           <video
