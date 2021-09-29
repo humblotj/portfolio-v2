@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useRef, useState, memo,
+  useEffect, useRef, memo,
 } from 'react';
 
 import './Skills.scss';
@@ -32,7 +32,6 @@ import { ReactComponent as Webpack } from '../../../assets/icons/webpack.svg';
 import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
 import Bounce from '../../../components/ui/Bounce';
 import CloseButton from '../../../components/ui/CloseButton';
-import useSize from '../../../hooks/useSize';
 import useAnimation from '../../../hooks/useAnimation';
 
 type skillType = ({

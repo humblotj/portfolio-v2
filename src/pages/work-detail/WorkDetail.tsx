@@ -41,7 +41,7 @@ const WorkDetail = () => {
 
   const goTo = (url: string) => window.open(url, '_blank');
 
-  const getUrl = (url: string): any => work.links.find((e) => e.type === url);
+  const getUrl = (url: string) => work.links.find((e) => e.type === url) || { url: '' };
 
   return (
     <>

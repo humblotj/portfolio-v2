@@ -31,6 +31,7 @@ const useSize = (
   );
 
   useLayoutEffect(() => {
+    console.log('usesize');
     if (!ref?.current) {
       window.addEventListener('resize', handleResize as any);
       return () => window.removeEventListener('resize', handleResize as any);
