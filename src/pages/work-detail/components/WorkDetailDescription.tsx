@@ -9,10 +9,9 @@ import useAnimation from '../../../hooks/useAnimation';
 
 interface Props {
   work: WorkDetailProps,
-  setCanStartCarAnimation: (b: boolean) => void
 }
 
-const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
+const WorkDetailDescription = ({ work }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const { animateReveal } = useAnimation();
 
@@ -35,8 +34,6 @@ const WorkDetailDescription = ({ work, setCanStartCarAnimation }: Props) => {
             duration: 0.5,
             ease: 'power4.in',
           }, '<');
-          // eslint-disable-next-line no-loop-func
-          tl.call(() => setCanStartCarAnimation(true), undefined, '<0.5');
         }
       }
     }

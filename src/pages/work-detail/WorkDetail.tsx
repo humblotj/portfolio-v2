@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './WorkDetail.scss';
@@ -23,7 +23,6 @@ const WorkDetail = () => {
   const dispatch = useDispatch();
   const isInit = useSelector(selectIsInit);
   const work = useSelector(selectWorkDetails);
-  const [canStartCarAnimation, setCanStartCarAnimation] = useState(false);
   const { skipBlink } = useAnimation();
 
   useEffect(() => {
@@ -50,7 +49,7 @@ const WorkDetail = () => {
           Turn Back Home
         </BackArrow>
         <Strokes />
-        <WorkDetailDescription work={work} setCanStartCarAnimation={setCanStartCarAnimation} />
+        <WorkDetailDescription work={work} />
         <div className="work-links">
           {work.links?.length
             ? (
@@ -87,7 +86,7 @@ const WorkDetail = () => {
             </Button>
           )}
         </div>
-        <WorkPreviewCarousel work={work} canStartCarAnimation={canStartCarAnimation} />
+        <WorkPreviewCarousel work={work} />
       </section>
     </>
   );

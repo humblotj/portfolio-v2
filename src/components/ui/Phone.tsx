@@ -7,11 +7,10 @@ import './Phone.scss';
 import { ImgSingleProp } from '../../interface';
 import ImageCrop from './ImageCrop';
 import PhoneMockup from '../../assets/phone-mockup.png';
-import PhoneMockup300 from '../../assets/phone-mockup-300.png';
 
 interface Props {
   preview: ImgSingleProp;
-  startAnimation: boolean;
+  startAnimation?: boolean;
   noAnimation?: boolean;
   lazyload?: boolean;
 }
@@ -49,11 +48,10 @@ const Phone = ({
     >
       <img
         src={PhoneMockup}
-        srcSet={`${PhoneMockup300} 300w, ${PhoneMockup} 653w`}
         alt="mockup"
         className="phone-mockup"
-        width="460"
-        height="720"
+        width="365"
+        height="731"
       />
       <ImageCrop preview={preview} lazyload={lazyload}>
         <div className="phone-overlay" />
