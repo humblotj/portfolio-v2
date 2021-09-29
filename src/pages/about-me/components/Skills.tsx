@@ -23,13 +23,14 @@ import { ReactComponent as Jest } from '../../../assets/icons/jest.svg';
 import { ReactComponent as TestingLibrary } from '../../../assets/icons/testing-library.svg';
 import { ReactComponent as Babel } from '../../../assets/icons/babel.svg';
 import { ReactComponent as SocketIO } from '../../../assets/icons/socket-io.svg';
-import { ReactComponent as Pwa } from '../../../assets/icons/pwa.svg';
 import { ReactComponent as Java } from '../../../assets/icons/java.svg';
 import { ReactComponent as Flutter } from '../../../assets/icons/flutter.svg';
 import { ReactComponent as GraphQL } from '../../../assets/icons/graphql.svg';
 import { ReactComponent as D3js } from '../../../assets/icons/d3js.svg';
 import { ReactComponent as Webpack } from '../../../assets/icons/webpack.svg';
 import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
+import { ReactComponent as Swift } from '../../../assets/icons/swift.svg';
+import { ReactComponent as Kotlin } from '../../../assets/icons/kotlin.svg';
 import Bounce from '../../../components/ui/Bounce';
 import CloseButton from '../../../components/ui/CloseButton';
 import useAnimation from '../../../hooks/useAnimation';
@@ -62,7 +63,6 @@ const familiarSkills = [{ name: 'Vue.js', component: VueJs, size: 'medium' },
   { name: 'Testing Library', component: TestingLibrary },
   { name: 'Babel', component: Babel },
   { name: 'Socket.io', component: SocketIO },
-  { name: 'PWA', component: Pwa },
   { name: 'Java', component: Java },
 ];
 
@@ -71,6 +71,9 @@ const wantToLearnSkills = [{ name: 'Flutter', component: Flutter },
   { name: 'D3.js', component: D3js, size: 'medium' },
   { name: 'Webpack', component: Webpack },
   { name: 'WebGL', component: WebGL },
+  { name: 'Swift', component: Swift },
+  { name: 'Kotlin', component: Kotlin, size: 'medium' },
+
 ];
 
 const Skill = memo(({ title, skills }: {title: string, skills: skillType}) => (
