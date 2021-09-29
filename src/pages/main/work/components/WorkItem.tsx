@@ -7,13 +7,13 @@ import cx from 'classnames';
 import 'lazysizes';
 
 import './WorkItem.scss';
-import { WorkProps } from '../../../interface';
-import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.svg';
-import ImageWrap from '../../../components/ui/ImageWrap';
-import useSize from '../../../hooks/useSize';
-import lazyWithRetry from '../../../utils/lazyWithRetry';
+import { WorkProps } from '../../../../interface';
+import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-right.svg';
+import ImageWrap from '../../../../components/ui/ImageWrap';
+import useSize from '../../../../hooks/useSize';
+import lazyWithRetry from '../../../../utils/lazyWithRetry';
 
-const TechIcon = lazyWithRetry(() => import('../../../components/ui/TechIcon'));
+const TechIcon = lazyWithRetry(() => import('../../../../components/ui/TechIcon'));
 
 interface Props {
   index: number,

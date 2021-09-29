@@ -4,9 +4,9 @@ import { useLocation } from 'react-router-dom';
 
 import Footer from '../../components/Footer';
 import { onInit, selectIsInit } from '../../store/store';
-import Contact from '../contact/Contact';
-import Home from '../home/Home';
-import Work from '../work/Work';
+import Contact from './contact/Contact';
+import Home from './home/Home';
+import Work from './work/Work';
 
 const Main = () => {
   const dispatch = useDispatch();

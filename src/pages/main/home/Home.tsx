@@ -2,13 +2,13 @@ import { RefObject, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './Home.scss';
-import Button from '../../components/ui/Button';
-import Strokes from '../../components/Strokes';
+import Button from '../../../components/ui/Button';
+import Strokes from '../../../components/Strokes';
 import HomeBackground from './components/HomeBackground';
-import ScrollTo from '../../components/ui/ScrollTo';
-import TextBounce from '../../components/ui/TextBounce';
-import { onToggleAboutModal } from '../../store/store';
-import useAnimation from '../../hooks/useAnimation';
+import ScrollTo from '../../../components/ui/ScrollTo';
+import TextBounce from '../../../components/ui/TextBounce';
+import { onToggleAboutModal } from '../../../store/store';
+import useAnimation from '../../../hooks/useAnimation';
 
 const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
   const ref = useRef<HTMLElement>(null);
