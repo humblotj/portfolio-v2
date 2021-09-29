@@ -3,6 +3,16 @@
     z-index: 0;
     overflow: hidden;
 
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        overflow: hidden;
+        object-fit: fill;
+        min-height: 100%;
+    }
+
     &:not(.is-mobile) {
         width: 92%;
         top: 8%;
@@ -16,16 +26,10 @@
         top: 2%;
         bottom: 2%;
         width: 90%;
-    }
 
-    img {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
-        overflow: hidden;
-        object-fit: fill;
-        height: 100%;
+        img {
+            height: 100%;
+        }
     }
 
     &.is-parallax {
