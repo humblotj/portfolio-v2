@@ -57,8 +57,8 @@ const WorkDetail = () => {
                 {(getUrl('android') || getUrl('ios'))
                    && (
                    <div>
-                     {getUrl('android') && <FakeLink onClick={() => goTo(getUrl('android').url)}><PlayStoreIcon /></FakeLink>}
                      {getUrl('ios') && <FakeLink onClick={() => goTo(getUrl('ios').url)}><AppStoreIcon /></FakeLink>}
+                     {getUrl('android') && <FakeLink onClick={() => goTo(getUrl('android').url)}><PlayStoreIcon /></FakeLink>}
                    </div>
                    )}
                 {getUrl('web') && (
