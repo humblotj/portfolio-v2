@@ -31,9 +31,10 @@ const WorkDetailDescription = ({ work }: Props) => {
         if (j === descParts.length - 1) {
           tl.to(document.querySelector('.work-links'), {
             opacity: 1,
-            duration: 0.5,
-            ease: 'power4.in',
-          }, '<');
+            y: 0,
+            duration: 1,
+            ease: 'power4.out',
+          }, '<0.3');
         }
       }
     }
