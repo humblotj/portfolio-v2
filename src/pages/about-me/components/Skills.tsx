@@ -102,40 +102,37 @@ const Skill = memo(({ title, skills }: {title: string, skills: skillType}) => (
 
 const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [width] = useSize();
   const { animateReveal } = useAnimation();
-  const [isInit, setIsInit] = useState(false);
-
-  useEffect(() => { setTimeout(() => { setIsInit(true); }, 1900); }, []);
 
   useEffect(() => {
     const element = ref.current;
-    if (!element || !isInit) {
+    if (!element) {
       return;
     }
+    setTimeout(() => {
+      const reveal = element.querySelectorAll('.reveal');
+      const skillsLists = element.querySelectorAll('ul');
 
-    const reveal = element.querySelectorAll('.reveal');
-    const skillsLists = element.querySelectorAll('ul');
+      for (let i = 0; i < reveal.length; i++) {
+        const tl = animateReveal(reveal[i], {
+          delay: i * 0.12,
+          trigger: reveal[i],
+          scroller: document.querySelector('.modal-content'),
+        });
 
-    for (let i = 0; i < reveal.length; i++) {
-      const tl = animateReveal(reveal[i], {
-        delay: i * 0.12,
-        trigger: reveal[i],
-        scroller: document.querySelector('.modal-content'),
-      });
-
-      const skills = skillsLists[i].querySelectorAll('li');
-      for (let j = 0; j < skills.length; j++) {
-        tl.to(skills[j], {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: 'power2.out',
-        }, j === 0 ? '<0.4' : '<0.2');
+        const skills = skillsLists[i].querySelectorAll('li');
+        for (let j = 0; j < skills.length; j++) {
+          tl.to(skills[j], {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+          }, j === 0 ? '<0.4' : '<0.2');
+        }
       }
-    }
+    }, 1900);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width, isInit]);
+  }, []);
 
   return (
     <div ref={ref} className="skills">

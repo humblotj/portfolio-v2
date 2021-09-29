@@ -1,5 +1,5 @@
 import {
-  useEffect, useRef, useState, memo,
+  useEffect, useRef, memo,
 } from 'react';
 import { gsap } from 'gsap';
 
@@ -11,16 +11,15 @@ import PhoneMockup300 from '../../assets/phone-mockup-300.png';
 
 interface Props {
   preview: ImgSingleProp;
-    startAnimation: boolean;
-    noAnimation?: boolean;
-    lazyload?: boolean;
+  startAnimation: boolean;
+  noAnimation?: boolean;
+  lazyload?: boolean;
 }
 
 const Phone = ({
   preview, startAnimation = false, noAnimation = false, lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [animationDone, setAnimationDone] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -30,9 +29,7 @@ const Phone = ({
 
     if (noAnimation) {
       gsap.set(element.querySelector('.phone-overlay'), { opacity: 0 });
-    }
-
-    if (startAnimation) {
+    } else if (startAnimation) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: element,
@@ -41,7 +38,6 @@ const Phone = ({
       });
 
       tl.to(element.querySelector('.phone-overlay'), { opacity: 0, duration: 0.9 });
-      tl.call(() => setAnimationDone(true));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
@@ -59,15 +55,18 @@ const Phone = ({
         width="460"
         height="720"
       />
-      <ImageCrop
-        preview={preview}
-        lazyload={lazyload}
-        animationDone={animationDone}
-      >
+      <ImageCrop preview={preview} lazyload={lazyload}>
         <div className="phone-overlay" />
       </ImageCrop>
     </div>
   );
 };
 
-export default memo(Phone);
+const areEquals = (
+  prevProps: Props, nextProps: Props,
+) => prevProps.preview.url === nextProps.preview.url
+ && prevProps.startAnimation === nextProps.startAnimation
+ && prevProps.noAnimation === nextProps.noAnimation
+ && prevProps.lazyload === nextProps.lazyload;
+
+export default memo(Phone, areEquals);

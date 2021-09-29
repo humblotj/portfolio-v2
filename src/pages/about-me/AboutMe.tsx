@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { gsap } from 'gsap';
@@ -17,7 +17,7 @@ const AboutMe = () => {
   const [width] = useSize();
   const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
 
-  const closeContactModal = () => dispatch(onToggleAboutModal(false));
+  const closeContactModal = useCallback(() => dispatch(onToggleAboutModal(false)), [dispatch]);
 
   useEffect(() => {
     if (!contentRef) {

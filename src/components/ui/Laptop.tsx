@@ -1,5 +1,5 @@
 import {
-  useEffect, useRef, useState, memo,
+  useEffect, useRef, memo,
 } from 'react';
 import { gsap } from 'gsap';
 
@@ -13,17 +13,16 @@ import { ImgSingleProp } from '../../interface';
 
 interface Props {
   preview: ImgSingleProp;
-  startAnimation: boolean;
+  startAnimation?: boolean;
   noAnimation?: boolean;
   lazyload?: boolean;
 }
 
 const Laptop = ({
-  preview, startAnimation, noAnimation = false, lazyload = false,
+  preview, startAnimation = false, noAnimation = false, lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
-  const [animationDone, setAnimationDone] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -33,9 +32,7 @@ const Laptop = ({
 
     if (noAnimation) {
       gsap.set(element.querySelector('.part.top'), { rotationX: 0 });
-    }
-
-    if (startAnimation) {
+    } else if (startAnimation) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: element,
@@ -44,7 +41,6 @@ const Laptop = ({
       });
 
       tl.to(element.querySelector('.part.top'), { rotationX: 0, duration: 0.9 });
-      tl.call(() => setAnimationDone(true));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
@@ -65,7 +61,7 @@ const Laptop = ({
           height="12"
         />
         <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
-        <ImageCrop preview={preview} lazyload={lazyload} animationDone={animationDone} />
+        <ImageCrop preview={preview} lazyload={lazyload} />
       </div>
       <div className="part bottom">
         <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
@@ -75,4 +71,11 @@ const Laptop = ({
   );
 };
 
-export default memo(Laptop);
+const areEquals = (
+  prevProps: Props, nextProps: Props,
+) => prevProps.preview.url === nextProps.preview.url
+ && prevProps.startAnimation === nextProps.startAnimation
+ && prevProps.noAnimation === nextProps.noAnimation
+ && prevProps.lazyload === nextProps.lazyload;
+
+export default memo(Laptop, areEquals);

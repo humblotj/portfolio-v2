@@ -42,5 +42,6 @@ module.exports = {
         some: ['nesting', 'id'],
       },
     }],
+    'no-unused-expressions': [2, { allowShortCircuit: true, allowTernary: true }],
   },
 };

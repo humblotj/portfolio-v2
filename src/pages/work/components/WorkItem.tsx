@@ -1,4 +1,6 @@
-import { Suspense, useEffect, useRef } from 'react';
+import {
+  Suspense, useEffect, useRef, memo,
+} from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import cx from 'classnames';
@@ -43,8 +45,8 @@ const WorkItem = ({ index, work, id }: Props) => {
     tl.addLabel('start', !isLargeWidth || !isOdd ? 0 : 0.25);
     tl.to(element.querySelector('.work-item-mask'),
       {
-        scaleX: 0,
-        transformOrigin: '100% 50%',
+        x: '100%',
+        // transformOrigin: '100% 50%',
         duration: 1,
       }, 'start');
     tl.to(
@@ -94,7 +96,6 @@ const WorkItem = ({ index, work, id }: Props) => {
           <div className={cx('work-preview', { 'is-mobile': preview.type === 'mobile' })}>
             <ImageWrap
               preview={preview as any}
-              startAnimation
               noAnimation
               lazyload
             />
@@ -119,4 +120,8 @@ const WorkItem = ({ index, work, id }: Props) => {
   );
 };
 
-export default WorkItem;
+const areEquals = (
+  prevProps: Props, nextProps: Props,
+) => prevProps.id === nextProps.id;
+
+export default memo(WorkItem, areEquals);

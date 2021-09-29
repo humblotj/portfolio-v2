@@ -11,6 +11,7 @@ import Strokes from '../../components/Strokes';
 const Work = forwardRef<HTMLElement>((props, ref) => {
   const works = useSelector(selectWorksSorted);
   const workHeaderRef = useRef<HTMLDivElement>(null);
+  console.log('woork');
 
   useEffect(() => {
     const element = workHeaderRef.current;

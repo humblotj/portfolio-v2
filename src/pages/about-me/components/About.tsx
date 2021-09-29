@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 import './About.scss';
 import photo from '../../../assets/photo.jpg';
@@ -98,4 +98,4 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
   );
 };
 
-export default About;
+export default memo(About);

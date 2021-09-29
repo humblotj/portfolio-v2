@@ -1,17 +1,15 @@
 import { FunctionComponent, useEffect } from 'react';
 import {
-  withRouter, RouteComponentProps, useLocation, useHistory,
+  withRouter, RouteComponentProps, useLocation,
 } from 'react-router-dom';
 
 const ScrollToTop: FunctionComponent<RouteComponentProps> = () => {
   const { pathname } = useLocation();
-  const history = useHistory();
 
   useEffect(() => {
     window.onpagehide = (event: PageTransitionEvent) => {
       if (!event.persisted) {
         window.scrollTo(0, 0);
-        history.replace('work/jrello');
       }
     };
     return () => {
