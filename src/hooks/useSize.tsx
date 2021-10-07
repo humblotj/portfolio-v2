@@ -1,14 +1,14 @@
 /* eslint-disable consistent-return */
-import {
-  useLayoutEffect, useState, useCallback, RefObject,
-} from 'react';
+import { useLayoutEffect, useState, useCallback, RefObject } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const useSize = (
   ref?: RefObject<HTMLElement>,
   callback?: (entry: DOMRectReadOnly) => void,
 ) => {
-  const [size, setSize] = useState(ref ? [0, 0] : [window.innerWidth, window.innerHeight]);
+  const [size, setSize] = useState(
+    ref ? [0, 0] : [window.innerWidth, window.innerHeight],
+  );
 
   const handleResize = useCallback(
     (entries?: ResizeObserverEntry[]) => {
@@ -37,7 +37,7 @@ const useSize = (
       return () => window.removeEventListener('resize', handleResize as any);
     }
 
-    let RO: ResizeObserver|null = new ResizeObserver(
+    let RO: ResizeObserver | null = new ResizeObserver(
       (entries: ResizeObserverEntry[]) => handleResize(entries),
     );
     RO.observe(ref.current);

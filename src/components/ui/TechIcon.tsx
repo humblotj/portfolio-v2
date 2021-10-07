@@ -9,7 +9,11 @@ import { ReactComponent as Gsap } from '../../assets/icons/gsap.svg';
 import { ReactComponent as NodeJs } from '../../assets/icons/nodejs.svg';
 import { ReactComponent as Spring } from '../../assets/icons/spring.svg';
 
-const TechIcon = ({ name }: {name: string}) => {
+interface Props {
+  name: string;
+}
+
+const TechIcon: React.FC<Props> = ({ name }) => {
   switch (name) {
     case 'React':
       return <ReactJS />;

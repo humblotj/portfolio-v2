@@ -1,16 +1,16 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { ReactNode, MouseEvent } from 'react';
 
 import './FakeLink.scss';
-
 interface Props {
-  className?: string,
-  onClick?:()=> void,
-  children: ReactNode
+  className?: string;
+  onClick?: () => void;
+  children: ReactNode;
 }
 
-const FakeLink = ({
-  className = '', onClick = () => {}, children,
+const FakeLink: React.FC<Props> = ({
+  className = '',
+  onClick = () => {},
+  children,
 }: Props) => {
   const onFakeLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -18,7 +18,9 @@ const FakeLink = ({
   };
 
   return (
-    <a href="" className={className} onClick={onFakeLinkClick}>{children}</a>
+    <a href="" className={className} onClick={onFakeLinkClick}>
+      {children}
+    </a>
   );
 };
 

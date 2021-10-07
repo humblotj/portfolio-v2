@@ -1,42 +1,42 @@
 export interface ImgProp {
-    type: 'web' | 'mobile',
-    url: string,
-    isParallax?: boolean,
-    isVideo?: boolean,
-    width: number,
-    height: number,
-    urls: { [key: string]: string }[]
+  type: 'web' | 'mobile';
+  url: string;
+  isParallax?: boolean;
+  isVideo?: boolean;
+  width: number;
+  height: number;
+  urls: { [key: string]: string }[];
 }
 
 export interface ImgSingleProp {
-    type: 'web' | 'mobile',
-    url: string,
-    isParallax?: boolean,
-    isVideo?: boolean,
-    width: number,
-    height: number,
-    urls: { [key: string]: string }
+  type: 'web' | 'mobile';
+  url: string;
+  isParallax?: boolean;
+  isVideo?: boolean;
+  width: number;
+  height: number;
+  urls: { [key: string]: string };
 }
 
 export interface WorkProps {
-    id?: string,
-    isPersonal: boolean;
-    name: string;
-    description: string;
-    order: number;
-    preview: ImgProp,
-    techs: { color: string, name: string }[]
+  id?: string;
+  isPersonal: boolean;
+  name: string;
+  description: string;
+  order: number;
+  preview: ImgProp;
+  techs: { color: string; name: string }[];
 }
 
 export interface WorkDetailProps {
-    description: string,
-    links: { type: 'web' | 'ios' | 'android', url: string }[],
-    mainPreview: ImgSingleProp,
-    name: string,
-    nextWork: string,
-    previews: ImgProp,
-    previousWork: string,
-    repoUrl?: string,
-    techs: string[],
-    year: number
+  description: string;
+  links: { type: 'web' | 'ios' | 'android'; url: string }[];
+  mainPreview: ImgSingleProp;
+  name: string;
+  nextWork: string;
+  previews: ImgProp;
+  previousWork: string;
+  repoUrl?: string;
+  techs: string[];
+  year: number;
 }

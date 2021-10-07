@@ -6,7 +6,11 @@ import { ReactComponent as LocationIcon } from '../../../assets/icons/location.s
 import CloseButton from '../../../components/ui/CloseButton';
 import useAnimation from '../../../hooks/useAnimation';
 
-const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
+interface Props {
+  closeContactModal: () => void;
+}
+
+const About: React.FC<Props> = ({ closeContactModal }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { animateReveal } = useAnimation();
 
@@ -34,7 +38,7 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         );
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -44,7 +48,13 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
       <div className="about-info">
         <div className="pic reveal">
           <div className="pic-crop">
-            <img className="reveal-text" src={photo} alt="profile-pic" width="150" height="150" />
+            <img
+              className="reveal-text"
+              src={photo}
+              alt="profile-pic"
+              width="150"
+              height="150"
+            />
           </div>
           <div className="reveal-mask" aria-hidden />
         </div>
@@ -56,31 +66,13 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         <br />
         <div className="about-description">
           <p>
-            Hi! I&apos;m Jean, a
-            French software developer
-            based in Seoul.
-            <br />
-            I specialize in front-end development – building
-            {' '}
-            <strong>
-              efficient, interactive,
-              modern, performant
-            </strong>
-            , and
-            {' '}
-            <strong>scalable</strong>
-            {' '}
-            projects –
-            but also like experimenting with backend technologies.
-            <br />
-            I am open to
-            {' '}
-            <strong>new technologies</strong>
-            {' '}
-            and
-            {' '}
-            <strong>development opportunities</strong>
-            .
+            Hi! I&apos;m Jean, a French software developer based in Seoul.
+            <br />I specialize in front-end development – building{' '}
+            <strong>efficient, interactive, modern, performant</strong>, and{' '}
+            <strong>scalable</strong> projects – but also like experimenting
+            with backend technologies.
+            <br />I am open to <strong>new technologies</strong> and{' '}
+            <strong>development opportunities</strong>.
           </p>
         </div>
       </div>
@@ -88,8 +80,7 @@ const About = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
         <div className="reveal secondary">
           <p className="reveal-text">
             <LocationIcon />
-            &nbsp;
-            Seoul, South Korea
+            &nbsp; Seoul, South Korea
           </p>
           <div className="reveal-mask" aria-hidden />
         </div>

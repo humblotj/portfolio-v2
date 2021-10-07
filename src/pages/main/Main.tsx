@@ -8,7 +8,7 @@ import Contact from './contact/Contact';
 import Home from './home/Home';
 import Work from './work/Work';
 
-const Main = () => {
+const Main: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const isInit = useSelector(selectIsInit);
   const location = useLocation();
@@ -35,7 +35,7 @@ const Main = () => {
     if (!isInit) {
       dispatch(onInit());
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

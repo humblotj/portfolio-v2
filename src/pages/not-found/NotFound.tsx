@@ -20,14 +20,12 @@ const NotFound = () => {
     });
 
     return skipBlink();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <section className="not-found-sec">
-      <BackArrow>
-        Turn Back Home
-      </BackArrow>
+      <BackArrow>Turn Back Home</BackArrow>
       <div ref={lottieRef} className="not-found-animation" />
     </section>
   );

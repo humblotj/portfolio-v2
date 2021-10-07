@@ -1,11 +1,11 @@
-import {
-  ReactNode, useEffect, useRef, useState,
-} from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 
 import './Bounce.scss';
-
-const Bounce = ({ children }: {children: ReactNode}) => {
+interface Props {
+  children: ReactNode;
+}
+const Bounce: React.FC<Props> = ({ children }) => {
   const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -14,12 +14,15 @@ const Bounce = ({ children }: {children: ReactNode}) => {
     timeoutRef.current = setTimeout(() => setIsHovered(false), 1000);
   };
 
-  useEffect(() => () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-  }, []);
+  useEffect(
+    () => () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    },
+    [],
+  );
 
   return (
     <span

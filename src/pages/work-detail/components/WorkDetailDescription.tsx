@@ -8,17 +8,17 @@ import WorkDetailParallax from './WorkDetailParallax';
 import useAnimation from '../../../hooks/useAnimation';
 
 interface Props {
-  work: WorkDetailProps,
+  work: WorkDetailProps;
 }
 
 const WorkDetailDescription = ({ work }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const { animateReveal } = useAnimation();
 
-  useEffect((): any => {
+  useEffect((): void => {
     const element = ref.current;
     if (!element || !work) {
-      return null;
+      return;
     }
 
     const descParts = element.querySelectorAll('.desc-part');
@@ -26,38 +26,39 @@ const WorkDetailDescription = ({ work }: Props) => {
     for (let j = 0; j < descParts.length; j++) {
       const reveal = descParts[j].querySelectorAll('.reveal');
       for (let i = 0; i < reveal.length; i++) {
-        const tl = animateReveal(reveal[i], { delay: i * 0.12, trigger: descParts[j] });
+        const tl = animateReveal(reveal[i], {
+          delay: i * 0.12,
+          trigger: descParts[j],
+        });
 
         if (j === descParts.length - 1) {
-          tl.to(document.querySelector('.work-links'), {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: 'power4.out',
-          }, '<0.3');
+          tl.to(
+            document.querySelector('.work-links'),
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: 'power4.out',
+            },
+            '<0.3',
+          );
         }
       }
     }
-
-    return null;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!work) {
     return null;
   }
 
-  const {
-    name, description, year, techs,
-  } = work;
+  const { name, description, year, techs } = work;
 
   return (
     <div ref={ref} className="work-detail-description">
       <div className="desc-part">
         <div className="reveal desc-heading secondary">
-          <h3 className="reveal-text">
-            Project
-          </h3>
+          <h3 className="reveal-text">Project</h3>
           <div className="reveal-mask" aria-hidden />
         </div>
         <br />
@@ -76,9 +77,7 @@ const WorkDetailDescription = ({ work }: Props) => {
         </div>
         <br />
         <div className="reveal no-mask">
-          <p className="reveal-text">
-            {description}
-          </p>
+          <p className="reveal-text">{description}</p>
         </div>
       </div>
       <div className="desc-part">

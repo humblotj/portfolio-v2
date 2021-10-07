@@ -2,53 +2,71 @@ import { useCallback } from 'react';
 import { gsap } from 'gsap';
 
 const useAnimation = () => {
-  const animateReveal = useCallback((el: Element | null,
-    { delay, trigger, ...rest } = { delay: 0, trigger: null }) => {
-    const tl = gsap.timeline({
-      scrollTrigger: trigger ? {
+  const animateReveal = useCallback(
+    (
+      el: Element | null,
+      {
+        delay,
         trigger,
-        ...rest,
-      } : undefined,
-      defaults: {
-        ease: 'power3.inOut',
+        scroller,
+        ...rest
+      }: {
+        delay?: number;
+        scroller?: gsap.DOMTarget;
+        trigger?: gsap.DOMTarget;
+      } = {
+        delay: 0,
+        scroller: null,
+        trigger: null,
       },
-    });
+    ) => {
+      const tl = gsap.timeline({
+        scrollTrigger: trigger
+          ? {
+              trigger,
+              scroller,
+              ...rest,
+            }
+          : undefined,
+        defaults: {
+          ease: 'power3.inOut',
+        },
+      });
 
-    if (el) {
-      const mask = el.querySelector('.reveal-mask');
-      if (mask) {
-        tl.to(
-          mask,
-          {
+      if (el) {
+        const mask = el.querySelector('.reveal-mask');
+        if (mask) {
+          tl.to(mask, {
             scaleX: 1,
             duration: 0.6,
             delay,
-          },
-        );
+          });
+          tl.to(
+            mask,
+            {
+              scaleX: 0,
+              transformOrigin: '100% 50%',
+              duration: 0.3,
+            },
+            '+=0.3',
+          );
+        }
         tl.to(
-          mask,
+          el.querySelector('.reveal-text'),
           {
-            scaleX: 0,
-            transformOrigin: '100% 50%',
-            duration: 0.3,
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power4.out',
           },
-          '+=0.3',
+          mask ? '<0.15' : 1.2 + (delay || 0),
         );
       }
-      tl.to(
-        el.querySelector('.reveal-text'),
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power4.out',
-        },
-        mask ? '<0.15' : 1.2 + delay,
-      );
-    }
 
-    return tl;
-  }, []);
+      return tl;
+    },
+    [],
+  );
 
   const animateBlink = useCallback((trigger: Element) => {
     const tl = gsap.timeline({
@@ -58,7 +76,8 @@ const useAnimation = () => {
     });
 
     const blink = document.querySelectorAll('.blink');
-    tl.fromTo(blink,
+    tl.fromTo(
+      blink,
       {
         autoAlpha: 0,
         pointerEvents: 'none',
@@ -67,27 +86,25 @@ const useAnimation = () => {
         autoAlpha: 0.8,
         duration: 0.1,
         pointerEvents: 'auto',
-      }, 1.75);
-    tl.to(blink,
-      {
-        autoAlpha: 0.1,
-        duration: 0.1,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 0.8,
-        duration: 0.1,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 0.2,
-        duration: 0.2,
-      });
-    tl.to(blink,
-      {
-        autoAlpha: 1,
-        duration: 0.4,
-      });
+      },
+      1.75,
+    );
+    tl.to(blink, {
+      autoAlpha: 0.1,
+      duration: 0.1,
+    });
+    tl.to(blink, {
+      autoAlpha: 0.8,
+      duration: 0.1,
+    });
+    tl.to(blink, {
+      autoAlpha: 0.2,
+      duration: 0.2,
+    });
+    tl.to(blink, {
+      autoAlpha: 1,
+      duration: 0.4,
+    });
   }, []);
 
   const skipBlink = useCallback(() => {
@@ -99,7 +116,10 @@ const useAnimation = () => {
   }, []);
 
   return {
-    animateReveal, animateBlink, skipBlink, gsap,
+    animateReveal,
+    animateBlink,
+    skipBlink,
+    gsap,
   };
 };
 

@@ -1,6 +1,4 @@
-import {
-  useEffect, useRef, memo,
-} from 'react';
+import { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 
 import './Laptop.scss';
@@ -18,9 +16,12 @@ interface Props {
   lazyload?: boolean;
 }
 
-const Laptop = ({
-  preview, startAnimation = false, noAnimation = false, lazyload = false,
-}: Props) => {
+const Laptop: React.FC<Props> = ({
+  preview,
+  startAnimation = false,
+  noAnimation = false,
+  lazyload = false,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
 
@@ -40,42 +41,60 @@ const Laptop = ({
         },
       });
 
-      tl.to(element.querySelector('.part.top'), { rotationX: 0, duration: 0.9 });
+      tl.to(element.querySelector('.part.top'), {
+        rotationX: 0,
+        duration: 0.9,
+      });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
 
   return (
-    <div
-      ref={ref}
-      className="mockup"
-      style={{ perspective: width * 5 }}
-    >
+    <div ref={ref} className="mockup" style={{ perspective: width * 5 }}>
       <div className="part top">
         <img
-          style={{ transform: `translate3d(0, 0, -${width / 65}px) rotateX(90deg)` }}
+          style={{
+            transform: `translate3d(0, 0, -${width / 65}px) rotateX(90deg)`,
+          }}
           src={MacbookTop}
           alt="top"
           className="top"
           width="694"
           height="12"
         />
-        <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
+        <img
+          src={MacbookCover}
+          alt="cover"
+          className="cover"
+          width="694"
+          height="466"
+        />
         <ImageCrop preview={preview} lazyload={lazyload} />
       </div>
       <div className="part bottom">
-        <img src={MacbookCover} alt="cover" className="cover" width="694" height="466" />
-        <img src={MacbookBottom} alt="bottom" className="bottom" width="694" height="18" />
+        <img
+          src={MacbookCover}
+          alt="cover"
+          className="cover"
+          width="694"
+          height="466"
+        />
+        <img
+          src={MacbookBottom}
+          alt="bottom"
+          className="bottom"
+          width="694"
+          height="18"
+        />
       </div>
     </div>
   );
 };
 
-const areEquals = (
-  prevProps: Props, nextProps: Props,
-) => prevProps.preview.url === nextProps.preview.url
- && prevProps.startAnimation === nextProps.startAnimation
- && prevProps.noAnimation === nextProps.noAnimation
- && prevProps.lazyload === nextProps.lazyload;
+const areEquals = (prevProps: Props, nextProps: Props) =>
+  prevProps.preview.url === nextProps.preview.url &&
+  prevProps.startAnimation === nextProps.startAnimation &&
+  prevProps.noAnimation === nextProps.noAnimation &&
+  prevProps.lazyload === nextProps.lazyload;
 
 export default memo(Laptop, areEquals);

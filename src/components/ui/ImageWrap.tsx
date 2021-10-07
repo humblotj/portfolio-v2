@@ -6,14 +6,17 @@ import { ImgSingleProp } from '../../interface';
 
 interface Props {
   preview: ImgSingleProp;
-  startAnimation?: boolean
-  noAnimation?: boolean,
-  lazyload?: boolean,
+  startAnimation?: boolean;
+  noAnimation?: boolean;
+  lazyload?: boolean;
 }
 
-const ImageWrap = ({
-  preview, startAnimation = false, noAnimation = false, lazyload = false,
-}: Props) => {
+const ImageWrap: React.FC<Props> = ({
+  preview,
+  startAnimation = false,
+  noAnimation = false,
+  lazyload = false,
+}) => {
   if (preview?.type === 'mobile') {
     return (
       <Phone

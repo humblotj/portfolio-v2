@@ -22,17 +22,24 @@ gsap.registerEffect({
     const num = targets[0].innerText.replace(/,/g, '');
     targets[0].innerText = num;
 
-    tl.to(targets, {
-      duration: config.duration,
-      innerText: config.end,
-      // snap:{innerText:config.increment},
-      modifiers: {
-        innerText(innerText) {
-          return gsap.utils.snap(config.increment, innerText).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    tl.to(
+      targets,
+      {
+        duration: config.duration,
+        innerText: config.end,
+        // snap:{innerText:config.increment},
+        modifiers: {
+          innerText(innerText) {
+            return gsap.utils
+              .snap(config.increment, innerText)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          },
         },
+        ease: config.ease,
       },
-      ease: config.ease,
-    }, 0);
+      0,
+    );
 
     return tl;
   },
@@ -49,14 +56,21 @@ const Loading = () => {
     setTimeout(() => dispatch(onSetLoading(true)), 0);
     if (!isInit) {
       const tl = gsap.timeline();
-      tl.to(document.querySelector('.counter'), { y: 0, duration: 1, ease: 'power3.out' }, 0);
+      tl.to(
+        document.querySelector('.counter'),
+        { y: 0, duration: 1, ease: 'power3.out' },
+        0,
+      );
       tl.counter(document.querySelector('.counter'), { end: 99 }, '<');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className={cx('loading', { 'is-loading': isLoading })} style={{ background }}>
+    <div
+      className={cx('loading', { 'is-loading': isLoading })}
+      style={{ background }}
+    >
       <Strokes secondary={location.pathname === '/'} />
       <div className="before" aria-hidden>
         <Strokes />
@@ -65,11 +79,9 @@ const Loading = () => {
         <Strokes />
       </div>
       {!isInit && (
-      <div className="loader">
-        <div className="counter">
-          0
+        <div className="loader">
+          <div className="counter">0</div>
         </div>
-      </div>
       )}
     </div>
   );

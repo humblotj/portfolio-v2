@@ -4,11 +4,11 @@ import FakeLink from './FakeLink';
 import './ScrollTo.scss';
 
 interface Props {
-  onClick: () => void,
-  children?: ReactNode
+  onClick: () => void;
+  children?: ReactNode;
 }
 
-const ScrollTo = ({ onClick, children = null }: Props) => (
+const ScrollTo: React.FC<Props> = ({ onClick, children = null }) => (
   <div className="scroll-to">
     <FakeLink onClick={onClick}>
       {children}

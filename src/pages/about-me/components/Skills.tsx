@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useRef, memo,
-} from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 import './Skills.scss';
 import { ReactComponent as ReactJS } from '../../../assets/icons/react.svg';
@@ -35,13 +33,14 @@ import Bounce from '../../../components/ui/Bounce';
 import CloseButton from '../../../components/ui/CloseButton';
 import useAnimation from '../../../hooks/useAnimation';
 
-type skillType = ({
+type SkillType = {
   name: string;
-  component: React.FunctionComponent<any>;
+  component: React.FC<React.SVGProps<SVGSVGElement>>;
   size?: string;
-})[];
+}[];
 
-const proficientSkills = [{ name: 'React', component: ReactJS },
+const proficientSkills = [
+  { name: 'React', component: ReactJS },
   { name: 'React Native', component: ReactNative },
   { name: 'Redux', component: Redux },
   { name: 'Angular', component: Angular },
@@ -53,7 +52,8 @@ const proficientSkills = [{ name: 'React', component: ReactJS },
   { name: 'Firebase', component: Firebase },
 ];
 
-const familiarSkills = [{ name: 'Vue.js', component: VueJs, size: 'medium' },
+const familiarSkills = [
+  { name: 'Vue.js', component: VueJs, size: 'medium' },
   { name: 'Next.js', component: NextJS, size: 'medium' },
   { name: 'Gsap', component: Gsap },
   { name: 'Lottie', component: Lottie, size: 'medium' },
@@ -66,23 +66,27 @@ const familiarSkills = [{ name: 'Vue.js', component: VueJs, size: 'medium' },
   { name: 'Java', component: Java },
 ];
 
-const wantToLearnSkills = [{ name: 'Flutter', component: Flutter },
+const wantToLearnSkills = [
+  { name: 'Flutter', component: Flutter },
   { name: 'GraphQL', component: GraphQL },
   { name: 'D3.js', component: D3js, size: 'medium' },
   { name: 'Webpack', component: Webpack },
   { name: 'WebGL', component: WebGL },
   { name: 'Swift', component: Swift },
   { name: 'Kotlin', component: Kotlin, size: 'medium' },
-
 ];
 
-const Skill = memo(({ title, skills }: {title: string, skills: skillType}) => (
+interface SkillProp {
+  title: string;
+  skills: SkillType;
+}
+
+// eslint-disable-next-line react/display-name
+const Skill: React.FC<SkillProp> = memo(({ title, skills }) => (
   <dl>
     <dt>
       <div className="reveal">
-        <h3 className="reveal-text">
-          {title}
-        </h3>
+        <h3 className="reveal-text">{title}</h3>
         <div className="reveal-mask" aria-hidden />
       </div>
     </dt>
@@ -92,7 +96,9 @@ const Skill = memo(({ title, skills }: {title: string, skills: skillType}) => (
           const Logo = component;
           return (
             <li className={size} key={name}>
-              <Bounce><Logo /></Bounce>
+              <Bounce>
+                <Logo />
+              </Bounce>
               <span>{name}</span>
             </li>
           );
@@ -102,7 +108,10 @@ const Skill = memo(({ title, skills }: {title: string, skills: skillType}) => (
   </dl>
 ));
 
-const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
+interface SkillsProp {
+  closeContactModal: () => void;
+}
+const Skills: React.FC<SkillsProp> = ({ closeContactModal }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { animateReveal } = useAnimation();
 
@@ -124,16 +133,20 @@ const Skills = ({ closeContactModal }: {closeContactModal: ()=> void}) => {
 
         const skills = skillsLists[i].querySelectorAll('li');
         for (let j = 0; j < skills.length; j++) {
-          tl.to(skills[j], {
-            opacity: 1,
-            y: 0,
-            duration: 0.4,
-            ease: 'power2.out',
-          }, j === 0 ? '<0.4' : '<0.2');
+          tl.to(
+            skills[j],
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              ease: 'power2.out',
+            },
+            j === 0 ? '<0.4' : '<0.2',
+          );
         }
       }
     }, 1900);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

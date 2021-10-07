@@ -11,13 +11,16 @@ import useSize from '../../hooks/useSize';
 
 Modal.setAppElement('body');
 
-const AboutMe = () => {
-  const [contentRef, setContentRef] = useState<HTMLDivElement|null>(null);
+const AboutMe: React.FC<{}> = () => {
+  const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
   const [width] = useSize();
   const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
 
-  const closeContactModal = useCallback(() => dispatch(onToggleAboutModal(false)), [dispatch]);
+  const closeContactModal = useCallback(
+    () => dispatch(onToggleAboutModal(false)),
+    [dispatch],
+  );
 
   useEffect(() => {
     if (!contentRef) {
@@ -32,29 +35,42 @@ const AboutMe = () => {
     });
 
     if (width > 768) {
-      tl.from(contentRef.querySelector('.about'),
-        { y: '-100%', opacity: 0 }, 0);
-      tl.from(contentRef.querySelector('.skills'),
-        { y: '100%', opacity: 0 }, 0.2);
+      tl.from(
+        contentRef.querySelector('.about'),
+        { y: '-100%', opacity: 0 },
+        0,
+      );
+      tl.from(
+        contentRef.querySelector('.skills'),
+        { y: '100%', opacity: 0 },
+        0.2,
+      );
     } else {
-      tl.from([contentRef.querySelector('.about'), contentRef.querySelector('.skills')],
-        { x: '-100%', opacity: 0 });
+      tl.from(
+        [
+          contentRef.querySelector('.about'),
+          contentRef.querySelector('.skills'),
+        ],
+        { x: '-100%', opacity: 0 },
+      );
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contentRef]);
 
   return (
     <>
       {isAboutModalOpen && (
-      <Modal
-        overlayClassName="modal-overlay"
-        className="modal-content"
-        isOpen={isAboutModalOpen}
-        contentRef={(node) => { setContentRef(node); }}
-      >
-        <About closeContactModal={closeContactModal} />
-        <Skills closeContactModal={closeContactModal} />
-      </Modal>
+        <Modal
+          overlayClassName="modal-overlay"
+          className="modal-content"
+          isOpen={isAboutModalOpen}
+          contentRef={(node) => {
+            setContentRef(node);
+          }}
+        >
+          <About closeContactModal={closeContactModal} />
+          <Skills closeContactModal={closeContactModal} />
+        </Modal>
       )}
     </>
   );

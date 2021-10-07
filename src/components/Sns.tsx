@@ -2,7 +2,7 @@ import './Sns.scss';
 import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
 
-const Sns = () => (
+const Sns: React.FC<{}> = () => (
   <ul className="sns">
     <li>
       <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">

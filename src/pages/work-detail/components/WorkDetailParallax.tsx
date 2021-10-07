@@ -6,7 +6,7 @@ import './WorkDetailParallax.scss';
 import { ImgSingleProp } from '../../../interface';
 import ImageWrap from '../../../components/ui/ImageWrap';
 
-const WorkDetailParallax = ({ preview }: {preview: ImgSingleProp}) => {
+const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isMobile = preview.type === 'mobile';
   const [animationIsComplete, setAnimationIsComplete] = useState(false);
@@ -30,7 +30,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgSingleProp}) => {
     tl.call(() => setAnimationIsComplete(true), undefined, '+=0.4');
 
     return () => tl.kill();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preview]);
 
   if (!preview) {
@@ -42,10 +42,7 @@ const WorkDetailParallax = ({ preview }: {preview: ImgSingleProp}) => {
       ref={ref}
       className={cx('preview-container', { 'is-mobile': isMobile })}
     >
-      <ImageWrap
-        preview={preview}
-        startAnimation={animationIsComplete}
-      />
+      <ImageWrap preview={preview} startAnimation={animationIsComplete} />
     </div>
   );
 };

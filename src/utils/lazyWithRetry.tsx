@@ -1,40 +1,33 @@
 import { lazy } from 'react';
 
-const lazyWithRetry = (componentImport: () => Promise<any>) => lazy(async () => {
-  const pageHasAlreadyBeenForceRefreshed = JSON.parse(
-    window.localStorage.getItem(
-      'page-has-been-force-refreshed',
-    ) || 'false',
-  );
-
-  try {
-    const component = await componentImport();
-
-    window.localStorage.setItem(
-      'page-has-been-force-refreshed',
-      'false',
+const lazyWithRetry = (componentImport: () => Promise<any>) =>
+  lazy(async () => {
+    const pageHasAlreadyBeenForceRefreshed = JSON.parse(
+      window.localStorage.getItem('page-has-been-force-refreshed') || 'false',
     );
 
-    return component;
-  } catch (error: any) {
-    const chunkFailedMessage = /Loading chunk [\d]+ failed/;
-    if (error?.message && chunkFailedMessage.test(error.message)) {
-      if (!pageHasAlreadyBeenForceRefreshed) {
-      // Assuming that the user is not on the latest version of the application.
-      // Let's refresh the page immediately.
-        window.localStorage.setItem(
-          'page-has-been-force-refreshed',
-          'true',
-        );
-        return window.location.reload();
-      }
-    }
+    try {
+      const component = await componentImport();
 
-    // The page has already been reloaded
-    // Assuming that user is already using the latest version of the application.
-    // Let's let the application crash and raise the error.
-    throw error;
-  }
-});
+      window.localStorage.setItem('page-has-been-force-refreshed', 'false');
+
+      return component;
+    } catch (error: any) {
+      const chunkFailedMessage = /Loading chunk [\d]+ failed/;
+      if (error?.message && chunkFailedMessage.test(error.message)) {
+        if (!pageHasAlreadyBeenForceRefreshed) {
+          // Assuming that the user is not on the latest version of the application.
+          // Let's refresh the page immediately.
+          window.localStorage.setItem('page-has-been-force-refreshed', 'true');
+          return window.location.reload();
+        }
+      }
+
+      // The page has already been reloaded
+      // Assuming that user is already using the latest version of the application.
+      // Let's let the application crash and raise the error.
+      throw error;
+    }
+  });
 
 export default lazyWithRetry;

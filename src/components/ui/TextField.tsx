@@ -1,18 +1,21 @@
 import cx from 'classnames';
 
 import './TextField.scss';
-
 interface Props {
-    textarea?: boolean,
-    label?:string,
-    className?: string,
-    placeholder?: string,
-    name?: string
+  textarea?: boolean;
+  label?: string;
+  className?: string;
+  placeholder?: string;
+  name?: string;
 }
 
-const TextField = ({
-  textarea = false, label = '', className = '', placeholder = '', name = '',
-}: Props) => {
+const TextField: React.FC<Props> = ({
+  textarea = false,
+  label = '',
+  className = '',
+  placeholder = '',
+  name = '',
+}) => {
   const InputElement = textarea ? 'textarea' : 'input';
 
   return (

@@ -1,7 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import {
-  ReactNode, useEffect, useMemo, useRef, memo,
-} from 'react';
+import { ReactNode, useEffect, useMemo, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import cx from 'classnames';
 
@@ -15,12 +13,12 @@ interface Props {
   lazyload?: boolean;
 }
 
-const ImageCrop = ({
-  preview, children = null, lazyload = false,
+const ImageCrop: React.FC<Props> = ({
+  preview,
+  children = null,
+  lazyload = false,
 }: Props) => {
-  const {
-    isParallax, type, isVideo, urls,
-  } = preview;
+  const { isParallax, type, isVideo, urls } = preview;
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [width] = useSize(ref);
@@ -37,7 +35,7 @@ const ImageCrop = ({
         });
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const src = useMemo(() => {
@@ -67,53 +65,58 @@ const ImageCrop = ({
     if (!urls || isVideo) {
       return '';
     }
-    return Object.entries(urls).map(([key, value]) => (`${value} ${key}w`)).join();
+    return Object.entries(urls)
+      .map(([key, value]) => `${value} ${key}w`)
+      .join();
   }, [urls, isVideo]);
 
   return (
-    <div ref={ref} className={cx('image-crop', { 'is-mobile': type === 'mobile' }, { 'is-parallax': isParallax })}>
-      {isVideo
-        ? (
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            width={preview?.width}
-            height={preview?.height}
-            key={src}
-          >
-            <source src={src} type="video/mp4" />
-          </video>
-        )
-        : lazyload ? (
-          <img
-            data-src={src}
-            data-srcset={srcSet}
-            alt=""
-            width={preview?.width}
-            height={preview?.height}
-            className="lazyload"
-          />
-        )
-          : (
-            <img
-              src={src}
-              srcSet={srcSet}
-              key={src}
-              alt=""
-              width={preview?.width}
-              height={preview?.height}
-            />
-          )}
+    <div
+      ref={ref}
+      className={cx(
+        'image-crop',
+        { 'is-mobile': type === 'mobile' },
+        { 'is-parallax': isParallax },
+      )}
+    >
+      {isVideo ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          width={preview?.width}
+          height={preview?.height}
+          key={src}
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+      ) : lazyload ? (
+        <img
+          data-src={src}
+          data-srcset={srcSet}
+          alt=""
+          width={preview?.width}
+          height={preview?.height}
+          className="lazyload"
+        />
+      ) : (
+        <img
+          src={src}
+          srcSet={srcSet}
+          key={src}
+          alt=""
+          width={preview?.width}
+          height={preview?.height}
+        />
+      )}
       {children}
     </div>
   );
 };
 
-const areEquals = (
-  prevProps: Props, nextProps: Props,
-) => prevProps.preview.url === nextProps.preview.url
-&& prevProps.lazyload === nextProps.lazyload;
+const areEquals = (prevProps: Props, nextProps: Props) =>
+  prevProps.preview.url === nextProps.preview.url &&
+  prevProps.lazyload === nextProps.lazyload;
 
 export default memo(ImageCrop, areEquals);

@@ -3,7 +3,7 @@ import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
 import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
 import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
 
-const SideLeft = () => (
+const SideLeft: React.FC<{}> = () => (
   <>
     <div className="side-left-sns linkedin blink">
       <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">

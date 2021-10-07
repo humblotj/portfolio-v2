@@ -1,13 +1,12 @@
 import cx from 'classnames';
 
 import './BurgerMenu.scss';
-
 interface Props {
-  open: boolean,
-  toggleNav: () => void
+  open: boolean;
+  toggleNav: () => void;
 }
 
-const BurgerMenu = ({ open, toggleNav }: Props) => (
+const BurgerMenu: React.FC<Props> = ({ open, toggleNav }) => (
   <button
     type="button"
     className={cx('wrapper-menu', 'blink', { open })}

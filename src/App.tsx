@@ -2,7 +2,7 @@
 import { Suspense, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 
-import { initializeApp } from 'firebase/app';
+import { initializeApp, FirebaseOptions } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore/lite';
 
@@ -19,7 +19,9 @@ import lazyWithRetry from './utils/lazyWithRetry';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const firebaseConfig = JSON.parse(process.env.REACT_APP_API_KEY as string);
+const firebaseConfig: FirebaseOptions = JSON.parse(
+  process.env.REACT_APP_API_KEY,
+);
 initializeApp(firebaseConfig);
 export const db = getFirestore();
 getAnalytics();
@@ -28,7 +30,7 @@ const SideLeft = lazyWithRetry(() => import('./components/SideLeft'));
 const Header = lazyWithRetry(() => import('./components/Header'));
 const ScrollToTop = lazyWithRetry(() => import('./components/ScrollToTop'));
 
-const App = () => {
+const App: React.FC<{}> = () => {
   const location = useLocation();
 
   useEffect(() => {

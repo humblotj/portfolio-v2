@@ -5,20 +5,35 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
+    'airbnb-typescript',
     'airbnb/hooks',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:prettier/recommended',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
+    project: ['./tsconfig.json'],
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+    }
+  ],
+  parser: '@typescript-eslint/parser',
   plugins: [
     'react',
     '@typescript-eslint',
+    'prettier',
+    'react-hooks',
+    'import',
   ],
   settings: {
     'import/resolver': {
@@ -36,12 +51,24 @@ module.exports = {
     'no-param-reassign': 1,
     'no-plusplus': 0,
     'no-shadow': 0,
+    '@typescript-eslint/no-shadow': 0,
     'react/require-default-props': 0,
-    'jsx-a11y/label-has-associated-control': ['error', {
-      required: {
-        some: ['nesting', 'id'],
-      },
-    }],
     'no-unused-expressions': [2, { allowShortCircuit: true, allowTernary: true }],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ],
+    '@typescript-eslint/no-unsafe-assignment': 1,
+    'react/prop-types': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-unsafe-return': 1,
+    '@typescript-eslint/no-unsafe-member-access':1,
+    '@typescript-eslint/no-unsafe-call':1,
   },
+  ignorePatterns: ["/*.*"],
 };

@@ -1,6 +1,4 @@
-import {
-  useEffect, useRef, memo,
-} from 'react';
+import { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 
 import './Phone.scss';
@@ -15,8 +13,11 @@ interface Props {
   lazyload?: boolean;
 }
 
-const Phone = ({
-  preview, startAnimation = false, noAnimation = false, lazyload = false,
+const Phone: React.FC<Props> = ({
+  preview,
+  startAnimation = false,
+  noAnimation = false,
+  lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -36,16 +37,16 @@ const Phone = ({
         },
       });
 
-      tl.to(element.querySelector('.phone-overlay'), { opacity: 0, duration: 0.9 });
+      tl.to(element.querySelector('.phone-overlay'), {
+        opacity: 0,
+        duration: 0.9,
+      });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
 
   return (
-    <div
-      ref={ref}
-      className="phone"
-    >
+    <div ref={ref} className="phone">
       <img
         src={PhoneMockup}
         alt="mockup"
@@ -60,11 +61,10 @@ const Phone = ({
   );
 };
 
-const areEquals = (
-  prevProps: Props, nextProps: Props,
-) => prevProps.preview.url === nextProps.preview.url
- && prevProps.startAnimation === nextProps.startAnimation
- && prevProps.noAnimation === nextProps.noAnimation
- && prevProps.lazyload === nextProps.lazyload;
+const areEquals = (prevProps: Props, nextProps: Props) =>
+  prevProps.preview.url === nextProps.preview.url &&
+  prevProps.startAnimation === nextProps.startAnimation &&
+  prevProps.noAnimation === nextProps.noAnimation &&
+  prevProps.lazyload === nextProps.lazyload;
 
 export default memo(Phone, areEquals);

@@ -3,22 +3,22 @@ import { ReactNode } from 'react';
 import './TagList.scss';
 
 interface TagProps {
-    children?: ReactNode
+  children?: ReactNode;
 }
 
-const Tag = ({ children = null }: TagProps) => (
+const Tag: React.FC<TagProps> = ({ children = null }) => (
   <li className="tag">{children}</li>
 );
 
 interface TagListProps {
-    tags: string[]
+  tags: string[];
 }
 
-const TagList = ({ tags }: TagListProps) => (
+const TagList: React.FC<TagListProps> = ({ tags }) => (
   <ul className="tag-list">
-    {tags.map(
-      (tag) => <Tag key={tag}>{tag}</Tag>,
-    )}
+    {tags.map((tag) => (
+      <Tag key={tag}>{tag}</Tag>
+    ))}
   </ul>
 );
 

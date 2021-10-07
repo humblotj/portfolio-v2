@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 
 import './HomeBackground.scss';
 
-const HomeBackground = () => {
+const HomeBackground: React.FC<{}> = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,23 +20,28 @@ const HomeBackground = () => {
         ease: 'power3.inOut',
       },
     });
-    tl.to(element.querySelector('.overlay'),
-      {
-        scaleX: 1,
-        duration: 0.4 + 0.12 * 4,
-      });
-    tl.to(element.querySelector('.overlay'),
+    tl.to(element.querySelector('.overlay'), {
+      scaleX: 1,
+      duration: 0.4 + 0.12 * 4,
+    });
+    tl.to(
+      element.querySelector('.overlay'),
       {
         scaleX: 0,
         transformOrigin: '0 50%',
         duration: 0.3,
-      }, '+=0.3');
-    tl.to(element.querySelector('.abstract-background'),
+      },
+      '+=0.3',
+    );
+    tl.to(
+      element.querySelector('.abstract-background'),
       {
         opacity: 1,
         duration: 1,
         ease: 'power1.out',
-      }, '<0.15');
+      },
+      '<0.15',
+    );
 
     gsap.to('.abstract-background', {
       backgroundPosition: `90% ${window.innerHeight / 2}px`,
@@ -48,7 +53,7 @@ const HomeBackground = () => {
         scrub: true,
       },
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

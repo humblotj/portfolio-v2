@@ -43,7 +43,7 @@ registerRoute(
 
     // If this looks like a URL for a resource, because it contains
     // a file extension, skip.
-    if (url.pathname.match(fileExtensionRegexp)) {
+    if (fileExtensionRegexp.exec(url.pathname)) {
       return false;
     }
 
@@ -57,7 +57,8 @@ registerRoute(
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'),
+  ({ url }) =>
+    url.origin === self.location.origin && url.pathname.endsWith('.png'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: 'images',
@@ -79,7 +80,9 @@ self.addEventListener('message', (event) => {
 
 // Any other custom service worker logic can go here.
 self.addEventListener('fetch', (event) => {
-  event.respondWith(caches.match(event.request).then(
-    (response) => response || fetch(event.request),
-  ));
+  event.respondWith(
+    caches
+      .match(event.request)
+      .then((response) => response || fetch(event.request)),
+  );
 });

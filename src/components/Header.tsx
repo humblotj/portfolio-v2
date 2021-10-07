@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Nav from './Nav';
 import BurgerMenu from './ui/BurgerMenu';
 
-const Header = () => {
+const Header: React.FC<{}> = () => {
   const [navOpen, setNavOpen] = useState(false);
 
   const toggleNav = () => setNavOpen((navOpen) => !navOpen);

@@ -31,7 +31,7 @@ const WorkDetail = () => {
     }
 
     return skipBlink();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!work) {
@@ -40,48 +40,56 @@ const WorkDetail = () => {
 
   const goTo = (url: string) => window.open(url, '_blank');
 
-  const getUrl = (url: string) => work.links.find((e) => e.type === url) || { url: '' };
+  const getUrl = (url: string) =>
+    work.links.find((e) => e.type === url) || { url: '' };
 
   return (
     <>
       <section className="work-detail-sec">
-        <BackArrow>
-          Turn Back Home
-        </BackArrow>
+        <BackArrow>Turn Back Home</BackArrow>
         <Strokes />
         <WorkDetailDescription work={work} />
         <div className="work-links">
-          {work.links?.length
-            ? (
-              <>
-                {(getUrl('android') || getUrl('ios'))
-                   && (
-                   <div>
-                     {getUrl('ios') && <FakeLink onClick={() => goTo(getUrl('ios').url)}><AppStoreIcon /></FakeLink>}
-                     {getUrl('android') && <FakeLink onClick={() => goTo(getUrl('android').url)}><PlayStoreIcon /></FakeLink>}
-                   </div>
-                   )}
-                {getUrl('web') && (
-                  <div>
-                    <Button key={getUrl('web')?.url} onClick={() => goTo(getUrl('web')?.url)}>{types.web}</Button>
-                    {work.repoUrl && (
+          {work.links?.length ? (
+            <>
+              {(getUrl('android') || getUrl('ios')) && (
+                <div>
+                  {getUrl('ios') && (
+                    <FakeLink onClick={() => goTo(getUrl('ios').url)}>
+                      <AppStoreIcon />
+                    </FakeLink>
+                  )}
+                  {getUrl('android') && (
+                    <FakeLink onClick={() => goTo(getUrl('android').url)}>
+                      <PlayStoreIcon />
+                    </FakeLink>
+                  )}
+                </div>
+              )}
+              {getUrl('web') && (
+                <div>
+                  <Button
+                    key={getUrl('web')?.url}
+                    onClick={() => goTo(getUrl('web')?.url)}
+                  >
+                    {types.web}
+                  </Button>
+                  {work.repoUrl && (
                     <Button
                       color="secondary"
                       onClick={() => goTo(work.repoUrl || '')}
                     >
                       View Code
                     </Button>
-                    )}
-                  </div>
-                )}
-              </>
-            )
-            : <Button disabled>Coming Soon</Button>}
+                  )}
+                </div>
+              )}
+            </>
+          ) : (
+            <Button disabled>Coming Soon</Button>
+          )}
           {work.repoUrl && !getUrl('web') && (
-            <Button
-              color="secondary"
-              onClick={() => goTo(work.repoUrl || '')}
-            >
+            <Button color="secondary" onClick={() => goTo(work.repoUrl || '')}>
               View Code
             </Button>
           )}

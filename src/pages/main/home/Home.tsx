@@ -10,7 +10,11 @@ import TextBounce from '../../../components/ui/TextBounce';
 import { onToggleAboutModal } from '../../../store/store';
 import useAnimation from '../../../hooks/useAnimation';
 
-const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
+interface Props {
+  workRef: RefObject<HTMLElement>;
+}
+
+const Home: React.FC<Props> = ({ workRef }) => {
   const ref = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
@@ -40,7 +44,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
     }
 
     animateBlink(element);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollToWork = () => {
@@ -80,9 +84,7 @@ const Home = ({ workRef }: {workRef: RefObject<HTMLElement>}) => {
       </div>
       <ScrollTo onClick={scrollToWork}>
         <div className="reveal">
-          <span className="reveal-text">
-            Selected works
-          </span>
+          <span className="reveal-text">Selected works</span>
           <div className="reveal-mask" aria-hidden />
         </div>
       </ScrollTo>

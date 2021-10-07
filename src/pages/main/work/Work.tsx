@@ -28,13 +28,10 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
         duration: 0.75,
       },
     });
-    tl.from(element.querySelector('h2'),
-      { x: '300px' }, 0);
-    tl.from(element.querySelector('.divider'),
-      { x: '-300px' }, 0.25);
-    tl.from(element.querySelector('.work-tag'),
-      { x: '-100px' }, 0.5);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    tl.from(element.querySelector('h2'), { x: '300px' }, 0);
+    tl.from(element.querySelector('.divider'), { x: '-300px' }, 0.25);
+    tl.from(element.querySelector('.work-tag'), { x: '-100px' }, 0.5);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -49,14 +46,13 @@ const Work = forwardRef<HTMLElement>((props, ref) => {
           <div className="divider" aria-hidden />
         </div>
         <ul>
-          {works.map((work: WorkProps,
-            index: number) => (
-              <WorkItem
-                key={work.name}
-                id={work.id as string}
-                work={work}
-                index={index}
-              />
+          {works.map((work: WorkProps, index: number) => (
+            <WorkItem
+              key={work.name}
+              id={work.id || ''}
+              work={work}
+              index={index}
+            />
           ))}
         </ul>
       </div>
