@@ -49,7 +49,7 @@ const WorkDetail = () => {
         <Strokes />
         <WorkDetailDescription work={work} />
         <div className="work-links">
-          {work.links?.length && (
+          {!!work.links?.length && (
             <>
               {(getUrl('android') || getUrl('ios')) && (
                 <div>
