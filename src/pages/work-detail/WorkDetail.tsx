@@ -40,8 +40,7 @@ const WorkDetail = () => {
 
   const goTo = (url: string) => window.open(url, '_blank');
 
-  const getUrl = (url: string) =>
-    work.links.find((e) => e.type === url) || { url: '' };
+  const getUrl = (url: string) => work.links.find((e) => e.type === url);
 
   return (
     <>
@@ -50,17 +49,21 @@ const WorkDetail = () => {
         <Strokes />
         <WorkDetailDescription work={work} />
         <div className="work-links">
-          {work.links?.length ? (
+          {work.links?.length && (
             <>
               {(getUrl('android') || getUrl('ios')) && (
                 <div>
                   {getUrl('ios') && (
-                    <FakeLink onClick={() => goTo(getUrl('ios').url)}>
+                    <FakeLink
+                      onClick={() => goTo(getUrl('ios')?.url as string)}
+                    >
                       <AppStoreIcon />
                     </FakeLink>
                   )}
                   {getUrl('android') && (
-                    <FakeLink onClick={() => goTo(getUrl('android').url)}>
+                    <FakeLink
+                      onClick={() => goTo(getUrl('android')?.url as string)}
+                    >
                       <PlayStoreIcon />
                     </FakeLink>
                   )}
@@ -70,7 +73,7 @@ const WorkDetail = () => {
                 <div>
                   <Button
                     key={getUrl('web')?.url}
-                    onClick={() => goTo(getUrl('web')?.url)}
+                    onClick={() => goTo(getUrl('web')?.url as string)}
                   >
                     {types.web}
                   </Button>
@@ -85,8 +88,6 @@ const WorkDetail = () => {
                 </div>
               )}
             </>
-          ) : (
-            <Button disabled>Coming Soon</Button>
           )}
           {work.repoUrl && !getUrl('web') && (
             <Button color="secondary" onClick={() => goTo(work.repoUrl || '')}>
