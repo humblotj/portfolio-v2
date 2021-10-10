@@ -40,8 +40,6 @@ const WorkDetail = () => {
 
   const goTo = (url: string) => window.open(url, '_blank');
 
-  const getUrl = (url: string) => work.links.find((e) => e.type === url);
-
   return (
     <>
       <section className="work-detail-sec">
@@ -49,31 +47,29 @@ const WorkDetail = () => {
         <Strokes />
         <WorkDetailDescription work={work} />
         <div className="work-links">
-          {!!work.links?.length && (
+          {!!Object.keys(work.links || {}).length && (
             <>
-              {(getUrl('android') || getUrl('ios')) && (
+              {(work.links.android || work.links.ios) && (
                 <div>
-                  {getUrl('ios') && (
-                    <FakeLink
-                      onClick={() => goTo(getUrl('ios')?.url as string)}
-                    >
+                  {work.links.ios && (
+                    <FakeLink onClick={() => goTo(work.links.ios as string)}>
                       <AppStoreIcon />
                     </FakeLink>
                   )}
-                  {getUrl('android') && (
+                  {work.links.android && (
                     <FakeLink
-                      onClick={() => goTo(getUrl('android')?.url as string)}
+                      onClick={() => goTo(work.links.android as string)}
                     >
                       <PlayStoreIcon />
                     </FakeLink>
                   )}
                 </div>
               )}
-              {getUrl('web') && (
+              {work.links.web && (
                 <div>
                   <Button
-                    key={getUrl('web')?.url}
-                    onClick={() => goTo(getUrl('web')?.url as string)}
+                    key={work.links.web}
+                    onClick={() => goTo(work.links.web as string)}
                   >
                     {types.web}
                   </Button>
@@ -89,7 +85,7 @@ const WorkDetail = () => {
               )}
             </>
           )}
-          {work.repoUrl && !getUrl('web') && (
+          {work.repoUrl && !work.links?.web && (
             <Button color="secondary" onClick={() => goTo(work.repoUrl || '')}>
               View Code
             </Button>

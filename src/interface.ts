@@ -25,12 +25,12 @@ export interface WorkProps {
   description: string;
   order: number;
   preview: ImgProp;
-  techs: { color: string; name: string }[];
+  techs: string[];
 }
 
 export interface WorkDetailProps {
   description: string;
-  links: { type: 'web' | 'ios' | 'android'; url: string }[];
+  links: { android?: string; ios?: string; web?: string };
   mainPreview: ImgSingleProp;
   name: string;
   nextWork: string;

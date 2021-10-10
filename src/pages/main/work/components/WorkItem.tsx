@@ -101,9 +101,9 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
           </div>
           <ul>
             {techs.map((tech) => (
-              <li key={tech.name}>
+              <li key={tech}>
                 <Suspense fallback={<span />}>
-                  <TechIcon name={tech.name} />
+                  <TechIcon name={tech} />
                 </Suspense>
               </li>
             ))}
