@@ -2,10 +2,7 @@
 import { useLayoutEffect, useState, useCallback, RefObject } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const useSize = (
-  ref?: RefObject<HTMLElement>,
-  callback?: (entry: DOMRectReadOnly) => void,
-) => {
+const useSize = (ref?: RefObject<HTMLElement>) => {
   const [size, setSize] = useState(
     ref ? [0, 0] : [window.innerWidth, window.innerHeight],
   );
@@ -22,16 +19,11 @@ const useSize = (
 
       const entry = entries[0];
       setSize([entry.contentRect.width, entry.contentRect.height]);
-
-      if (callback) {
-        callback(entry.contentRect);
-      }
     },
-    [callback, ref],
+    [ref],
   );
 
   useLayoutEffect(() => {
-    console.log('usesize');
     if (!ref?.current) {
       window.addEventListener('resize', handleResize as any);
       return () => window.removeEventListener('resize', handleResize as any);

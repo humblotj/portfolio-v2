@@ -29,7 +29,7 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
   useEffect(() => {
     const element = ref.current;
     if (!element) {
-      return () => {};
+      return;
     }
 
     const tl = gsap.timeline({
@@ -45,7 +45,6 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       element.querySelector('.work-item-mask'),
       {
         x: '100%',
-        // transformOrigin: '100% 50%',
         duration: 1,
       },
       'start',
@@ -75,11 +74,8 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       },
       '<0.6',
     );
-
-    return () => tl.kill();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width > 768]);
+  }, [width > 768, index]);
 
   return (
     <li ref={ref} className="work-item">
