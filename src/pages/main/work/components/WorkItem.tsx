@@ -7,12 +7,12 @@ import 'lazysizes';
 import './WorkItem.scss';
 import { WorkProps } from '../../../../interface';
 import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-right.svg';
-import ImageWrap from '../../../../components/ui/ImageWrap';
+import ImageWrap from '../../../../components/molecules/ImageWrap';
 import useSize from '../../../../hooks/useSize';
 import lazyWithRetry from '../../../../utils/lazyWithRetry';
 
 const TechIcon = lazyWithRetry(
-  () => import('../../../../components/ui/TechIcon'),
+  () => import('../../../../components/atoms/TechIcon'),
 );
 
 interface Props {

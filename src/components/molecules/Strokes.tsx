@@ -1,6 +1,7 @@
 import cx from 'classnames';
 
 import './Strokes.scss';
+
 interface Props {
   secondary?: boolean;
   style?: React.CSSProperties;

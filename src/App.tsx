@@ -10,7 +10,7 @@ import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import './App.scss';
-import Loading from './components/Loading';
+import Loading from './components/organisms/Loading';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 import AboutMeSuspense from './pages/about-me/AboutMeSuspense';
@@ -26,9 +26,11 @@ initializeApp(firebaseConfig);
 export const db = getFirestore();
 getAnalytics();
 
-const SideLeft = lazyWithRetry(() => import('./components/SideLeft'));
-const Header = lazyWithRetry(() => import('./components/Header'));
-const ScrollToTop = lazyWithRetry(() => import('./components/ScrollToTop'));
+const SideLeft = lazyWithRetry(() => import('./components/organisms/SideLeft'));
+const Header = lazyWithRetry(() => import('./components/organisms/Header'));
+const ScrollToTop = lazyWithRetry(
+  () => import('./components/organisms/ScrollToTop'),
+);
 
 const App: React.FC<{}> = () => {
   const location = useLocation();

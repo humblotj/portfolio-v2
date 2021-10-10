@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import './WorkDetail.scss';
 import WorkDetailDescription from './components/WorkDetailDescription';
 import WorkPreviewCarousel from './components/WorkPreviewCarousel';
-import Button from '../../components/ui/Button';
-import BackArrow from '../../components/ui/BackArrow';
-import Strokes from '../../components/Strokes';
+import Button from '../../components/atoms/Button';
+import BackArrow from '../../components/atoms/BackArrow';
+import Strokes from '../../components/molecules/Strokes';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 import useAnimation from '../../hooks/useAnimation';
 import { ReactComponent as PlayStoreIcon } from '../../assets/icons/playstore.svg';
 import { ReactComponent as AppStoreIcon } from '../../assets/icons/appstore.svg';
-import FakeLink from '../../components/ui/FakeLink';
+import FakeLink from '../../components/atoms/FakeLink';
 
 const types = {
   ios: 'Apple Store',

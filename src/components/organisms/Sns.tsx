@@ -1,6 +1,6 @@
 import './Sns.scss';
-import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
-import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
+import { ReactComponent as GitHubIcon } from '../../assets/icons/github.svg';
+import { ReactComponent as LinkedInIcon } from '../../assets/icons/linkedin.svg';
 
 const Sns: React.FC<{}> = () => (
   <ul className="sns">

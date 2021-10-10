@@ -3,7 +3,7 @@ import lottie from 'lottie-web';
 
 import './NotFound.scss';
 import notFound from '../../assets/not-found.json';
-import BackArrow from '../../components/ui/BackArrow';
+import BackArrow from '../../components/atoms/BackArrow';
 import useAnimation from '../../hooks/useAnimation';
 
 const NotFound = () => {

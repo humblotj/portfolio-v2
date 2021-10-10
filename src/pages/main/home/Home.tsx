@@ -2,11 +2,11 @@ import { RefObject, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './Home.scss';
-import Button from '../../../components/ui/Button';
-import Strokes from '../../../components/Strokes';
+import Button from '../../../components/atoms/Button';
+import Strokes from '../../../components/molecules/Strokes';
 import HomeBackground from './components/HomeBackground';
-import ScrollTo from '../../../components/ui/ScrollTo';
-import TextBounce from '../../../components/ui/TextBounce';
+import ScrollTo from '../../../components/molecules/ScrollTo';
+import TextBounce from '../../../components/atoms/TextBounce';
 import { onToggleAboutModal } from '../../../store/store';
 import useAnimation from '../../../hooks/useAnimation';
 

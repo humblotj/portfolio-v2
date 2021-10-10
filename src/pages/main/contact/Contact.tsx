@@ -4,10 +4,10 @@ import emailjs from 'emailjs-com';
 import mergeRefs from 'react-merge-refs';
 
 import './Contact.scss';
-import Button from '../../../components/ui/Button';
-import TextField from '../../../components/ui/TextField';
+import Button from '../../../components/atoms/Button';
+import TextField from '../../../components/atoms/TextField';
 import { ReactComponent as ContactMask } from '../../../assets/contact-mask.svg';
-import Strokes from '../../../components/Strokes';
+import Strokes from '../../../components/molecules/Strokes';
 
 const Contact = forwardRef<HTMLElement>((props, ref) => {
   const innerRef = useRef<HTMLElement>(null);

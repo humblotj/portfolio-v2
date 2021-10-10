@@ -1,7 +1,7 @@
 import './Footer.scss';
-import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
-import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin.svg';
-import { ReactComponent as CodepenIcon } from '../assets/icons/codepen.svg';
+import { ReactComponent as GitHubIcon } from '../../assets/icons/github.svg';
+import { ReactComponent as LinkedInIcon } from '../../assets/icons/linkedin.svg';
+import { ReactComponent as CodepenIcon } from '../../assets/icons/codepen.svg';
 
 const Footer: React.FC<{}> = () => (
   <footer>

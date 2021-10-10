@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Nav from './Nav';
-import BurgerMenu from './ui/BurgerMenu';
+import BurgerMenu from '../atoms/BurgerMenu';
 
 const Header: React.FC<{}> = () => {
   const [navOpen, setNavOpen] = useState(false);

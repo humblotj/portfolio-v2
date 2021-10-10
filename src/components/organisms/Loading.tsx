@@ -5,8 +5,8 @@ import { gsap } from 'gsap';
 import cx from 'classnames';
 
 import './Loading.scss';
-import Strokes from './Strokes';
-import { onSetLoading, selectIsInit, selectIsLoading } from '../store/store';
+import Strokes from '../molecules/Strokes';
+import { onSetLoading, selectIsInit, selectIsLoading } from '../../store/store';
 
 gsap.registerEffect({
   name: 'counter',

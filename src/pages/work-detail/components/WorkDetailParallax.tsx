@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import './WorkDetailParallax.scss';
 import { ImgSingleProp } from '../../../interface';
-import ImageWrap from '../../../components/ui/ImageWrap';
+import ImageWrap from '../../../components/molecules/ImageWrap';
 
 const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
   const ref = useRef<HTMLDivElement>(null);

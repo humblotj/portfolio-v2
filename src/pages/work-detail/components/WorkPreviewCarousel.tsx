@@ -4,10 +4,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import './WorkPreviewCarousel.scss';
-import BackArrow from '../../../components/ui/BackArrow';
+import BackArrow from '../../../components/atoms/BackArrow';
 import { ImgProp, WorkDetailProps } from '../../../interface';
-import Strokes from '../../../components/Strokes';
-import Phone from '../../../components/ui/Phone';
+import Strokes from '../../../components/molecules/Strokes';
+import Phone from '../../../components/molecules/Phone';
 import useSize from '../../../hooks/useSize';
 
 interface Props {

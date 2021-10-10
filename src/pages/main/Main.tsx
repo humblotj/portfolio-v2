@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import Footer from '../../components/Footer';
+import Footer from '../../components/organisms/Footer';
 import { onInit, selectIsInit } from '../../store/store';
 import Contact from './contact/Contact';
 import Home from './home/Home';

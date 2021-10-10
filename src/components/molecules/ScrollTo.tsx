@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import FakeLink from './FakeLink';
+import FakeLink from '../atoms/FakeLink';
 
 import './ScrollTo.scss';
 

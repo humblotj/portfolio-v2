@@ -29,8 +29,8 @@ import { ReactComponent as Webpack } from '../../../assets/icons/webpack.svg';
 import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
 import { ReactComponent as Swift } from '../../../assets/icons/swift.svg';
 import { ReactComponent as Kotlin } from '../../../assets/icons/kotlin.svg';
-import Bounce from '../../../components/ui/Bounce';
-import CloseButton from '../../../components/ui/CloseButton';
+import Bounce from '../../../components/atoms/Bounce';
+import CloseButton from '../../../components/atoms/CloseButton';
 import useAnimation from '../../../hooks/useAnimation';
 
 type SkillType = {
