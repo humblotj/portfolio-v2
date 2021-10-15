@@ -30,7 +30,6 @@ const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
     tl.call(() => setAnimationIsComplete(true), undefined, '+=0.4');
 
     return () => tl.kill();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preview]);
 
   if (!preview) {

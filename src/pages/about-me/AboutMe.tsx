@@ -46,15 +46,11 @@ const AboutMe: React.FC<{}> = () => {
         0.2,
       );
     } else {
-      tl.from(
-        [
-          contentRef.querySelector('.about'),
-          contentRef.querySelector('.skills'),
-        ],
-        { x: '-100%', opacity: 0 },
-      );
+      tl.from(contentRef.querySelectorAll('.about, .skills'), {
+        x: '-100%',
+        opacity: 0,
+      });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contentRef, width]);
 
   return (

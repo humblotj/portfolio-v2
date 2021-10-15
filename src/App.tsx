@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { Suspense, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 

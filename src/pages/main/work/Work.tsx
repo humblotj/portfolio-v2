@@ -30,7 +30,6 @@ const Work = forwardRef<HTMLElement>((_, ref) => {
     tl.from(element.querySelector('h2'), { x: '300px' }, 0);
     tl.from(element.querySelector('.divider'), { x: '-300px' }, 0.25);
     tl.from(element.querySelector('.work-tag'), { x: '-100px' }, 0.5);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

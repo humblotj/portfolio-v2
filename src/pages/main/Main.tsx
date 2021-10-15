@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import Footer from '../../components/organisms/Footer';
 import { onInit, selectIsInit } from '../../store/store';
+import Footer from '../../components/organisms/Footer';
 import Contact from './contact/Contact';
 import Home from './home/Home';
 import Work from './work/Work';

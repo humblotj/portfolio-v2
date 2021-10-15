@@ -6,8 +6,8 @@ import mergeRefs from 'react-merge-refs';
 import './Contact.scss';
 import Button from '../../../components/atoms/Button';
 import TextField from '../../../components/atoms/TextField';
-import { ReactComponent as ContactMask } from '../../../assets/contact-mask.svg';
 import Strokes from '../../../components/molecules/Strokes';
+import { ReactComponent as ContactMask } from '../../../assets/contact-mask.svg';
 
 const Contact = forwardRef<HTMLElement>((props, ref) => {
   const innerRef = useRef<HTMLElement>(null);
@@ -63,8 +63,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
       { opacity: 0, x: '300px' },
       0.5,
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref]);
+  }, []);
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

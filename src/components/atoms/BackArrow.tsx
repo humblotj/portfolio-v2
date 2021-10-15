@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';

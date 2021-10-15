@@ -53,7 +53,6 @@ const HomeBackground: React.FC<{}> = () => {
         scrub: true,
       },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

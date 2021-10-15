@@ -13,7 +13,6 @@ const ScrollToTop: React.FC<RouteComponentProps> = () => {
     return () => {
       window.onpagehide = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   useEffect(() => {

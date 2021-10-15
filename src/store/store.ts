@@ -1,9 +1,9 @@
-/* eslint-disable no-param-reassign */
 import {
   combineReducers,
   configureStore,
   createSelector,
   createSlice,
+  PayloadAction,
 } from '@reduxjs/toolkit';
 
 import { WorkDetailProps, WorkProps } from '../interface';
@@ -26,7 +26,7 @@ const store = createSlice({
   name: 'store',
   initialState,
   reducers: {
-    onToggleAboutModal(state, action) {
+    onToggleAboutModal(state, action: PayloadAction<boolean>) {
       if (window.innerWidth < 768) {
         document.body.style.overflow = action.payload ? 'hidden' : '';
       }
@@ -35,13 +35,13 @@ const store = createSlice({
     onInit(state) {
       state.isInit = true;
     },
-    onSetLoading(state, action) {
+    onSetLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
-    onSetWorks(state, action) {
+    onSetWorks(state, action: PayloadAction<WorkProps[]>) {
       state.works = action.payload;
     },
-    onSetWorkDetails(state, action) {
+    onSetWorkDetails(state, action: PayloadAction<WorkDetailProps | null>) {
       state.workDetails = action.payload;
     },
   },

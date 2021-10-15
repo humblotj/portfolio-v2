@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { ReactNode, useEffect, useMemo, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import cx from 'classnames';

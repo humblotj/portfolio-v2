@@ -19,6 +19,7 @@ interface Props {
 
 const Nav: React.FC<Props> = ({ open, onClose }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const q = gsap.utils.selector(ref);
   const dispatch = useDispatch();
   const [animationEnded, setAnimationEnded] = useState(false);
 
@@ -37,44 +38,35 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
       return () => {};
     }
 
-    // tl.clear();
     const tl = gsap.timeline();
 
     if (open) {
-      tl.to([element, ...element.querySelectorAll('.strokes')], {
+      tl.to([element, ...q('.strokes')], {
         opacity: 1,
         height: '100%',
         duration: 0.35,
       });
 
-      const items = element.querySelectorAll('nav li');
-      for (let i = 0; i < items.length; i++) {
-        tl.fromTo(
-          items[i],
-          { opacity: 0, x: '100%' },
-          { opacity: 1, x: 0, duration: 0.5 },
-          0.35 + i * 0.15,
-        );
-      }
+      tl.fromTo(
+        q('nav li'),
+        { opacity: 0, x: '100%' },
+        { opacity: 1, x: 0, duration: 0.5, stagger: 0.15 },
+        '>=0.15',
+      );
 
-      const sns = element.querySelectorAll('.sns li');
-      for (let i = 0; i < sns.length; i++) {
-        tl.fromTo(
-          sns[i],
-          { opacity: 0, y: '50%' },
-          {
-            opacity: 1,
-            y: 0,
-            delay: i * 0.15,
-            duration: 0.5,
-          },
-          'sns',
-        );
-      }
-      tl.addLabel('sns');
+      tl.fromTo(
+        q('.sns li'),
+        { opacity: 0, y: '50%' },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.15,
+        },
+      );
     } else {
       setAnimationEnded(false);
-      tl.to([element, ...element.querySelectorAll('.strokes')], {
+      tl.to([element, ...q('.strokes')], {
         opacity: 0,
         height: 0,
         duration: 0.35,

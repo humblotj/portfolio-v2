@@ -119,7 +119,6 @@ const useAnimation = () => {
     animateReveal,
     animateBlink,
     skipBlink,
-    gsap,
   };
 };
 
