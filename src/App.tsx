@@ -22,8 +22,10 @@ const firebaseConfig: FirebaseOptions = JSON.parse(
   process.env.REACT_APP_API_KEY || '',
 );
 initializeApp(firebaseConfig);
+if (process.env.NODE_ENV !== 'development') {
+  getAnalytics();
+}
 export const db = getFirestore();
-getAnalytics();
 
 const SideLeft = lazyWithRetry(() => import('./components/organisms/SideLeft'));
 const Header = lazyWithRetry(() => import('./components/organisms/Header'));
