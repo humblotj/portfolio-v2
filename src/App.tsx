@@ -19,7 +19,7 @@ import lazyWithRetry from './utils/lazyWithRetry';
 gsap.registerPlugin(ScrollTrigger);
 
 const firebaseConfig: FirebaseOptions = JSON.parse(
-  process.env.REACT_APP_API_KEY,
+  process.env.REACT_APP_API_KEY || '',
 );
 initializeApp(firebaseConfig);
 export const db = getFirestore();
