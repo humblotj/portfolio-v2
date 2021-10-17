@@ -156,18 +156,6 @@
 
 @media only screen and (max-width: 1200px) {
     .work-item {
-        .work-item-content {
-            .work-item-title {
-                h3 {
-                    font-size: 28px;
-                }
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 1024px) {
-    .work-item {
         padding: 0 20px;
         margin-bottom: 40px;
         transform: translateY(-28px);
@@ -180,6 +168,10 @@
 
             .work-item-title {
                 left: 40px;
+
+                h3 {
+                    font-size: 28px;
+                }
             }
         }
 
