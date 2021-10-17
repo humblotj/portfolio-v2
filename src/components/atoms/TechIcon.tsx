@@ -8,6 +8,7 @@ import { ReactComponent as VueJs } from '../../assets/icons/vuejs.svg';
 import { ReactComponent as Gsap } from '../../assets/icons/gsap.svg';
 import { ReactComponent as NodeJs } from '../../assets/icons/nodejs.svg';
 import { ReactComponent as Spring } from '../../assets/icons/spring.svg';
+import { ReactComponent as NextJs } from '../../assets/icons/nextjs.svg';
 
 interface Props {
   name: string;
@@ -35,6 +36,8 @@ const TechIcon: React.FC<Props> = ({ name }) => {
       return <NodeJs />;
     case 'Spring':
       return <Spring />;
+    case 'Next.js':
+      return <NextJs />;
     default:
       return null;
   }
