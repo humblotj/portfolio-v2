@@ -86,7 +86,6 @@ const ImageCrop: React.FC<Props> = ({
           muted
           width={preview?.width}
           height={preview?.height}
-          key={src}
         >
           <source src={src} type="video/mp4" />
         </video>
@@ -103,7 +102,6 @@ const ImageCrop: React.FC<Props> = ({
         <img
           src={src}
           srcSet={srcSet}
-          key={src}
           alt=""
           width={preview?.width}
           height={preview?.height}
