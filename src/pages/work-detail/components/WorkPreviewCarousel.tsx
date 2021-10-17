@@ -50,11 +50,15 @@ const WorkPreviewCarousel = ({ work }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.to(ref.current!.querySelector('[data-value="1"]'), {
-      opacity: 1,
-      duration: 0.5,
-      scrollTrigger: { trigger: ref.current, start: '20% bottom' },
-    });
+    gsap.fromTo(
+      ref.current!.querySelector('.slick-track'),
+      { opacity: 0, immediateRender: false },
+      {
+        opacity: 1,
+        duration: 0.5,
+        scrollTrigger: { trigger: ref.current, start: '20% bottom' },
+      },
+    );
   }, []);
 
   const slidesToShow = useMemo(() => {
