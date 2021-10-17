@@ -6,7 +6,7 @@ import Button from '../../../components/atoms/Button';
 import Strokes from '../../../components/molecules/Strokes';
 import HomeBackground from './components/HomeBackground';
 import ScrollTo from '../../../components/molecules/ScrollTo';
-import TextBounce from '../../../components/atoms/TextBounce';
+import TextBounce from '../../../components/molecules/TextBounce';
 import { onToggleAboutModal } from '../../../store/store';
 import useAnimation from '../../../hooks/useAnimation';
 

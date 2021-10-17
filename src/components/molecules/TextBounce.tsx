@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import Bounce from './Bounce';
+import Bounce from '../atoms/Bounce';
 
 interface Props {
   text: string;

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import './WorkDetailDescription.scss';
 import { WorkDetailProps } from '../../../interface';
 import TagList from '../../../components/molecules/TagList';
-import TextBounce from '../../../components/atoms/TextBounce';
+import TextBounce from '../../../components/molecules/TextBounce';
 import WorkDetailParallax from './WorkDetailParallax';
 import useAnimation from '../../../hooks/useAnimation';
 

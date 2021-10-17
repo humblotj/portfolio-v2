@@ -10,8 +10,15 @@ const Bounce: React.FC<Props> = ({ children }) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const onHover = () => {
+    if (timeoutRef.current) {
+      return;
+    }
+
     setIsHovered(true);
-    timeoutRef.current = setTimeout(() => setIsHovered(false), 1000);
+    timeoutRef.current = setTimeout(() => {
+      setIsHovered(false);
+      timeoutRef.current = null;
+    }, 1000);
   };
 
   useEffect(
