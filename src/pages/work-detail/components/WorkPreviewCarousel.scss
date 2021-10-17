@@ -42,6 +42,10 @@
         }
     }
 
+    [data-value="1"] {
+        opacity: 0;
+    }
+
     .slick-slider {
         position: initial;
     }

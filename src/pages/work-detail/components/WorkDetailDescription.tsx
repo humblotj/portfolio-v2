@@ -36,9 +36,7 @@ const WorkDetailDescription = ({ work }: Props) => {
             document.querySelector('.work-links'),
             {
               opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: 'power4.out',
+              duration: 0.5,
             },
             '<0.3',
           );

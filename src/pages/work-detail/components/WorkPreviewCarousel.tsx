@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -46,6 +47,15 @@ const PreviewItem = ({ previews, name }: { previews: ImgProp; name: string }) =>
 
 const WorkPreviewCarousel = ({ work }: Props) => {
   const [width] = useSize();
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.to(ref.current!.querySelector('[data-value="1"]'), {
+      opacity: 1,
+      duration: 0.5,
+      scrollTrigger: { trigger: ref.current, start: '20% bottom' },
+    });
+  }, []);
 
   const slidesToShow = useMemo(() => {
     if (work?.previews?.type === 'web') {
@@ -61,7 +71,7 @@ const WorkPreviewCarousel = ({ work }: Props) => {
   const { previews, previousWork, nextWork, name } = work;
 
   return (
-    <div className="work-preview-carousel">
+    <div ref={ref} className="work-preview-carousel">
       <div className="work-preview-carousel-inner">
         <Slider slidesToShow={slidesToShow} infinite={false}>
           {PreviewItem({ previews, name })}
