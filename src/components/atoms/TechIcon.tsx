@@ -37,7 +37,7 @@ const TechIcon: React.FC<Props> = ({ name }) => {
     case 'Spring':
       return <Spring />;
     case 'Next.js':
-      return <NextJs />;
+      return <NextJs color="#000" />;
     default:
       return null;
   }
