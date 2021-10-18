@@ -17,7 +17,6 @@ const AboutMeSuspense: React.FC<{}> = () => {
   >('div');
 
   useEffect(() => {
-    console.log('render');
     if (isAboutModalOpen && DeferredComponent === 'div') {
       setDeferredComponent(lazyWithRetry(() => import('./AboutMe')));
     }
