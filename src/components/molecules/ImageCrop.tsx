@@ -43,11 +43,7 @@ const ImageCrop: React.FC<Props> = ({
     if (canPlay && videoRef.current) {
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-        playPromise
-          .then((_) => {
-            // Automatic playback started!
-          })
-          .catch((error) => {});
+        playPromise.then((_) => {}).catch((error) => {});
       }
     }
   }, [canPlay]);
@@ -100,9 +96,8 @@ const ImageCrop: React.FC<Props> = ({
           muted
           width={preview?.width}
           height={preview?.height}
-        >
-          <source src={src} type="video/mp4" />
-        </video>
+          src={src}
+        ></video>
       ) : lazyload ? (
         <img
           data-src={src}
