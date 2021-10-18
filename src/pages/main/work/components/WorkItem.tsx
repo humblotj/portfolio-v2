@@ -45,32 +45,22 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       element.querySelector('.work-item-mask'),
       {
         x: '100%',
-        duration: 1,
+        duration: 0.7,
       },
       'start',
-    );
-    tl.to(
-      element.querySelectorAll('.work-item-title > * > .reveal-text'),
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-      },
-      '<0.1',
     );
     tl.fromTo(
       element.querySelector('.work-preview'),
       {
         opacity: 0,
-        x: '-25%',
+        x: '-30%',
         y: '-50%',
       },
       {
         opacity: 1,
         x: '-50%',
         y: '-50%',
-        duration: 0.5,
+        duration: 0.4,
       },
       '<0.6',
     );
@@ -85,12 +75,8 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
             {isPersonal ? 'Personal Work' : 'Company Work'}
           </span>
           <div className="work-item-title">
-            <div className="reveal no-mask">
-              <h3 className="reveal-text">{name}</h3>
-            </div>
-            <div className="reveal no-mask">
-              <p className="reveal-text">{description}</p>
-            </div>
+            <h3>{name}</h3>
+            <p>{description}</p>
           </div>
           <div
             className={cx('work-preview', {

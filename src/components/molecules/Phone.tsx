@@ -1,4 +1,4 @@
-import { useEffect, useRef, memo } from 'react';
+import { useEffect, useRef, memo, useState } from 'react';
 import { gsap } from 'gsap';
 
 import './Phone.scss';
@@ -20,6 +20,7 @@ const Phone: React.FC<Props> = ({
   lazyload = false,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [canPlay, setCanPlay] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -29,6 +30,16 @@ const Phone: React.FC<Props> = ({
 
     if (noAnimation) {
       gsap.set(element.querySelector('.phone-overlay'), { opacity: 0 });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: 'bottom bottom',
+        },
+      });
+
+      if (preview.isVideo) {
+        tl.call(() => setCanPlay(true), undefined, 1);
+      }
     } else if (startAnimation) {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -41,6 +52,10 @@ const Phone: React.FC<Props> = ({
         opacity: 0,
         duration: 0.9,
       });
+
+      if (preview.isVideo) {
+        tl.call(() => setCanPlay(true));
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
@@ -54,7 +69,7 @@ const Phone: React.FC<Props> = ({
         width="365"
         height="731"
       />
-      <ImageCrop preview={preview} lazyload={lazyload}>
+      <ImageCrop preview={preview} lazyload={lazyload} canPlay={canPlay}>
         <div className="phone-overlay" />
       </ImageCrop>
     </div>

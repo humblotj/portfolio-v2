@@ -1,4 +1,4 @@
-import { useEffect, useRef, memo } from 'react';
+import { useEffect, useRef, memo, useState } from 'react';
 import { gsap } from 'gsap';
 
 import './Laptop.scss';
@@ -24,6 +24,7 @@ const Laptop: React.FC<Props> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [width] = useSize(ref);
+  const [canPlay, setCanPlay] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -32,7 +33,19 @@ const Laptop: React.FC<Props> = ({
     }
 
     if (noAnimation) {
-      gsap.set(element.querySelector('.part.top'), { rotationX: 0 });
+      gsap.set(element.querySelector('.part.top'), {
+        rotationX: 0,
+      });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: 'bottom bottom',
+        },
+      });
+
+      if (preview.isVideo) {
+        tl.call(() => setCanPlay(true), undefined, 1);
+      }
     } else if (startAnimation) {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -45,6 +58,10 @@ const Laptop: React.FC<Props> = ({
         rotationX: 0,
         duration: 0.9,
       });
+
+      if (preview.isVideo) {
+        tl.call(() => setCanPlay(true));
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
@@ -69,7 +86,7 @@ const Laptop: React.FC<Props> = ({
           width="694"
           height="466"
         />
-        <ImageCrop preview={preview} lazyload={lazyload} />
+        <ImageCrop preview={preview} lazyload={lazyload} canPlay={canPlay} />
       </div>
       <div className="part bottom">
         <img

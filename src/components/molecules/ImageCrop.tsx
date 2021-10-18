@@ -10,12 +10,14 @@ interface Props {
   preview: ImgSingleProp;
   children?: ReactNode;
   lazyload?: boolean;
+  canPlay?: boolean;
 }
 
 const ImageCrop: React.FC<Props> = ({
   preview,
   children = null,
   lazyload = false,
+  canPlay = false,
 }: Props) => {
   const { isParallax, type, isVideo, urls } = preview;
   const ref = useRef<HTMLDivElement>(null);
@@ -36,6 +38,12 @@ const ImageCrop: React.FC<Props> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (canPlay && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [canPlay]);
 
   const src = useMemo(() => {
     if (!urls || (!width && isVideo)) {
@@ -81,7 +89,6 @@ const ImageCrop: React.FC<Props> = ({
       {isVideo ? (
         <video
           ref={videoRef}
-          autoPlay
           loop
           muted
           width={preview?.width}
@@ -114,6 +121,7 @@ const ImageCrop: React.FC<Props> = ({
 
 const areEquals = (prevProps: Props, nextProps: Props) =>
   prevProps.preview.url === nextProps.preview.url &&
-  prevProps.lazyload === nextProps.lazyload;
+  prevProps.lazyload === nextProps.lazyload &&
+  prevProps.canPlay === nextProps.canPlay;
 
 export default memo(ImageCrop, areEquals);
