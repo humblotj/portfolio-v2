@@ -41,7 +41,14 @@ const ImageCrop: React.FC<Props> = ({
 
   useEffect(() => {
     if (canPlay && videoRef.current) {
-      videoRef.current.play();
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then((_) => {
+            // Automatic playback started!
+          })
+          .catch((error) => {});
+      }
     }
   }, [canPlay]);
 
