@@ -50,15 +50,11 @@ const WorkPreviewCarousel = ({ work }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      ref.current!.querySelector('.slick-track'),
-      { opacity: 0, immediateRender: false },
-      {
-        opacity: 1,
-        duration: 0.5,
-        scrollTrigger: { trigger: ref.current, start: '20% bottom' },
-      },
-    );
+    gsap.to(ref.current!.querySelector('.carousel-wrap'), {
+      opacity: 1,
+      duration: 0.5,
+      scrollTrigger: { trigger: ref.current, start: '20% bottom' },
+    });
   }, []);
 
   const slidesToShow = useMemo(() => {
@@ -77,9 +73,11 @@ const WorkPreviewCarousel = ({ work }: Props) => {
   return (
     <div ref={ref} className="work-preview-carousel">
       <div className="work-preview-carousel-inner">
-        <Slider slidesToShow={slidesToShow} infinite={false}>
-          {PreviewItem({ previews, name })}
-        </Slider>
+        <div className="carousel-wrap">
+          <Slider slidesToShow={slidesToShow} infinite={false}>
+            {PreviewItem({ previews, name })}
+          </Slider>
+        </div>
       </div>
       <div className="project-controls">
         <BackArrow to={nextWork} disabled={!nextWork}>
