@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { gsap } from 'gsap';
-import cx from 'classnames';
 
 import './Nav.scss';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/github.svg';
@@ -21,7 +20,6 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
   const ref = useRef<HTMLDivElement>(null);
   const q = gsap.utils.selector(ref);
   const dispatch = useDispatch();
-  const [animationEnded, setAnimationEnded] = useState(false);
 
   const onOpenContact = () => {
     onClose();
@@ -65,7 +63,6 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
         },
       );
     } else {
-      setAnimationEnded(false);
       tl.to([element, ...q('.strokes')], {
         opacity: 0,
         height: 0,
@@ -78,11 +75,7 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
   }, [open]);
 
   return (
-    <div
-      ref={ref}
-      className={cx('nav-overlay', { opened: animationEnded })}
-      data-top="0"
-    >
+    <div ref={ref} className="nav-overlay">
       <Strokes />
       <nav>
         <ul>
