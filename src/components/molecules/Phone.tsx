@@ -25,7 +25,7 @@ const Phone: React.FC<Props> = ({
   useEffect(() => {
     const element = ref.current;
     if (!element) {
-      return;
+      return () => {};
     }
 
     if (noAnimation) {
@@ -40,6 +40,7 @@ const Phone: React.FC<Props> = ({
       if (preview.isVideo) {
         tl.call(() => setCanPlay(true), undefined, 1);
       }
+      return () => tl.kill();
     } else if (startAnimation) {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -56,6 +57,7 @@ const Phone: React.FC<Props> = ({
       if (preview.isVideo) {
         tl.call(() => setCanPlay(true));
       }
+      return () => tl.kill();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);

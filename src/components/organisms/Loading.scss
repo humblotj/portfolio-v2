@@ -1,71 +1,70 @@
 .loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 0;
+
+  .before,
+  .after {
+    height: 50vh;
+    width: 100%;
     position: fixed;
-    top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
-    height: 100%;
-    z-index: 0;
+    background: #1e2324;
     transition: 0.3s;
 
-    .before,
-    .after {
-        height: 50vh;
-        width: 100%;
-        position: fixed;
-        left: 0;
-        background: #1e2324;
-        transition: 0.3s;
-
-        .strokes {
-            div {
-                background: #23282a;
-            }
-        }
+    .strokes {
+      div {
+        background: #23282a;
+      }
     }
+  }
 
-    .before {
-        top: 0;
-        transform: translateY(-100%);
+  .before {
+    top: 0;
+    transform: translateY(-100%);
+  }
+
+  .after {
+    top: 50vh;
+    transform: translateY(100%);
+  }
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    margin: 0 auto;
+    z-index: 1;
+
+    .counter {
+      transform: translateY(100px);
+      opacity: 0;
+      font-weight: bold;
+      font-size: 26vw;
     }
-
-    .after {
-        top: 50vh;
-        transform: translateY(100%);
-    }
-
-    .loader {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateY(-50%) translateX(-50%);
-        margin: 0 auto;
-        z-index: 1;
-
-        .counter {
-            transform: translateY(100px);
-            opacity: 0;
-            font-weight: bold;
-            font-size: 26vw;
-        }
-    }
+  }
 }
 
 body:not(.is-init) .loading,
 .loading.is-loading {
-    z-index: 1000;
+  z-index: 1000;
 
-    .before {
-        transform: translateY(0);
-    }
+  .before {
+    transform: translateY(0);
+  }
 
-    .after {
-        transform: translateY(0);
-    }
+  .after {
+    transform: translateY(0);
+  }
 
-    .loader {
-        .counter {
-            opacity: 1;
-        }
+  .loader {
+    .counter {
+      opacity: 1;
     }
+  }
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 import Nav from './Nav';
 import BurgerMenu from '../atoms/BurgerMenu';
@@ -17,4 +17,4 @@ const Header: React.FC<{}> = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

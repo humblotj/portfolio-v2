@@ -4,11 +4,9 @@ import { useDispatch } from 'react-redux';
 import { gsap } from 'gsap';
 
 import './Nav.scss';
-import { ReactComponent as GitHubIcon } from '../../assets/icons/github.svg';
-import { ReactComponent as LinkedInIcon } from '../../assets/icons/linkedin.svg';
-import { ReactComponent as CodepenIcon } from '../../assets/icons/codepen.svg';
 import FakeLink from '../atoms/FakeLink';
 import Strokes from '../molecules/Strokes';
+import Sns from './Sns';
 import { onToggleAboutModal } from '../../store/store';
 
 interface Props {
@@ -105,23 +103,7 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
           </li>
         </ul>
       </nav>
-      <ul className="sns">
-        <li>
-          <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">
-            <LinkedInIcon />
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/humblotj" aria-label="Github">
-            <GitHubIcon />
-          </a>
-        </li>
-        <li>
-          <a href="https://codepen.io/humblotj" aria-label="Codepen">
-            <CodepenIcon />
-          </a>
-        </li>
-      </ul>
+      <Sns />
     </div>
   );
 };

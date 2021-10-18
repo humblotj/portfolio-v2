@@ -17,11 +17,11 @@ const AboutMeSuspense: React.FC<{}> = () => {
   >('div');
 
   useEffect(() => {
+    console.log('render');
     if (isAboutModalOpen && DeferredComponent === 'div') {
       setDeferredComponent(lazyWithRetry(() => import('./AboutMe')));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAboutModalOpen]);
+  }, [isAboutModalOpen, DeferredComponent]);
 
   return (
     <Suspense fallback={<div />}>

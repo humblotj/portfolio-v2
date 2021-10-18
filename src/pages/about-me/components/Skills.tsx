@@ -156,7 +156,7 @@ const Skills: React.FC<SkillsProp> = ({ closeContactModal }) => {
       <div className="skills-content">
         <Skill title="Proficient in:" skills={proficientSkills} />
         <Skill title="Familiar with:" skills={familiarSkills} />
-        <Skill title="Want to learn:" skills={wantToLearnSkills} />
+        <Skill title="Learning:" skills={wantToLearnSkills} />
       </div>
     </div>
   );

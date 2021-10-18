@@ -6,17 +6,32 @@ import { ReactComponent as CodepenIcon } from '../../assets/icons/codepen.svg';
 const SideLeft: React.FC<{}> = () => (
   <>
     <div className="side-left-sns linkedin blink">
-      <a href="https://www.linkedin.com/in/humblotj/" aria-label="LinkedIn">
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://www.linkedin.com/in/humblotj/"
+        aria-label="LinkedIn"
+      >
         <LinkedInIcon />
       </a>
     </div>
     <div className="side-left-sns github blink">
-      <a href="https://github.com/humblotj" aria-label="Github">
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://github.com/humblotj"
+        aria-label="Github"
+      >
         <GitHubIcon />
       </a>
     </div>
     <div className="side-left-sns codepen blink">
-      <a href="https://codepen.io/humblotj" aria-label="Codepen">
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://codepen.io/humblotj"
+        aria-label="Codepen"
+      >
         <CodepenIcon />
       </a>
     </div>
