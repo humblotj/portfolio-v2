@@ -73,38 +73,36 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
   }, [open]);
 
   return (
-    <div ref={ref} className="nav-overlay">
+    <nav ref={ref} className="nav-overlay">
       <Strokes />
-      <nav>
-        <ul>
-          <li>
-            <Link to="/" onClick={onClose}>
-              <span data-content="Home" aria-hidden />
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to={{ pathname: '/', state: 'work' }} onClick={onClose}>
-              <span data-content="My work" aria-hidden />
-              My work
-            </Link>
-          </li>
-          <li>
-            <FakeLink onClick={onOpenContact}>
-              <span data-content="About me" aria-hidden />
-              About me
-            </FakeLink>
-          </li>
-          <li>
-            <Link to={{ pathname: '/', state: 'contact' }} onClick={onClose}>
-              <span data-content="Contact" aria-hidden />
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <ul className="links">
+        <li>
+          <Link to="/" onClick={onClose}>
+            <span data-content="Home" aria-hidden />
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to={{ pathname: '/', state: 'work' }} onClick={onClose}>
+            <span data-content="My work" aria-hidden />
+            My work
+          </Link>
+        </li>
+        <li>
+          <FakeLink onClick={onOpenContact}>
+            <span data-content="About me" aria-hidden />
+            About me
+          </FakeLink>
+        </li>
+        <li>
+          <Link to={{ pathname: '/', state: 'contact' }} onClick={onClose}>
+            <span data-content="Contact" aria-hidden />
+            Contact
+          </Link>
+        </li>
+      </ul>
       <Sns />
-    </div>
+    </nav>
   );
 };
 

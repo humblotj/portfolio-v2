@@ -8,13 +8,15 @@ import {
 
 import { WorkDetailProps, WorkProps } from '../interface';
 
-const initialState: {
+export interface RootState {
   isAboutModalOpen: boolean;
   isInit: boolean;
   isLoading: boolean;
   works: WorkProps[];
   workDetails: WorkDetailProps | null;
-} = {
+}
+
+const initialState: RootState = {
   isAboutModalOpen: false,
   isInit: false,
   isLoading: true,
@@ -69,6 +71,7 @@ export const selectWorksSorted = createSelector(selectWorks, (works) =>
 export const selectWorkDetails = (state: { store: typeof initialState }) =>
   state.store.workDetails;
 
+export const storeReducer = store.reducer;
 const reducer = combineReducers({ store: store.reducer });
 
 export default configureStore({ reducer });
