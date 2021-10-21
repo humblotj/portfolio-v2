@@ -14,7 +14,7 @@ test('is open', async () => {
   );
 });
 
-test('is close', async () => {
+test('is close', () => {
   render(
     <Router>
       <Nav open={false} onClose={() => {}} />

@@ -1,4 +1,3 @@
-import { AnyAction } from 'redux';
 import {
   onToggleAboutModal,
   storeReducer as reducer,
@@ -16,7 +15,7 @@ const initialState: RootState = {
 };
 
 it('should return the initial state', () => {
-  expect(reducer(undefined, {} as AnyAction)).toEqual(initialState);
+  expect(reducer(undefined, {} as any)).toEqual(initialState);
 });
 
 it('toggles about modal', () => {

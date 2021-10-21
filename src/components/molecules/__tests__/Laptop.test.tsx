@@ -15,7 +15,7 @@ const preview: ImgSingleProp = {
   urls: {},
 };
 
-it('is opened', async () => {
+it('is opened', () => {
   render(<Laptop preview={preview} noAnimation />);
   expect(screen.getByTestId('top')).toHaveStyle('transform: translate(0, 0)');
 });
