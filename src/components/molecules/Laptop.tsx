@@ -71,7 +71,7 @@ const Laptop: React.FC<Props> = ({
 
   return (
     <div ref={ref} className="mockup" style={{ perspective: width * 5 }}>
-      <div className="part top">
+      <div className="part top" data-testid="top">
         <img
           style={{
             transform: `translate3d(0, 0, -${width / 65}px) rotateX(90deg)`,

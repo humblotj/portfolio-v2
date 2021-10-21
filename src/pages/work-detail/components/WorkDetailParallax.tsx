@@ -40,6 +40,7 @@ const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
     <div
       ref={ref}
       className={cx('preview-container', { 'is-mobile': isMobile })}
+      data-testid="parallax"
     >
       <ImageWrap preview={preview} startAnimation={animationIsComplete} />
     </div>
