@@ -17,7 +17,7 @@ gsap.registerEffect({
     ease: 'power3.out',
     increment: 1,
   },
-  effect: (targets: any, config: any) => {
+  effect: (targets: HTMLElement[], config: gsap.TweenVars) => {
     const tl = gsap.timeline();
     const num = targets[0].innerText.replace(/,/g, '');
     targets[0].innerText = num;
@@ -26,7 +26,7 @@ gsap.registerEffect({
       targets,
       {
         duration: config.duration,
-        innerText: config.end,
+        innerText: config.end as number,
         // snap:{innerText:config.increment},
         modifiers: {
           innerText(innerText) {

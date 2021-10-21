@@ -1,7 +1,7 @@
 import { render as rtlRender } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
-import { storeReducer, RootState } from '../store/store';
+import { reducer, RootState } from '../store/store';
 import { ReactElement } from 'react-router/node_modules/@types/react';
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
 
@@ -16,8 +16,8 @@ function render(
       workDetails: null,
     },
     store = configureStore({
-      reducer: storeReducer,
-      preloadedState: initialState,
+      reducer,
+      preloadedState: { store: initialState },
     }),
     ...renderOptions
   }: {
