@@ -72,7 +72,7 @@ const Phone: React.FC<Props> = ({
         height="731"
       />
       <ImageCrop preview={preview} lazyload={lazyload} canPlay={canPlay}>
-        <div className="phone-overlay" />
+        <div className="phone-overlay" data-testid="overlay" />
       </ImageCrop>
     </div>
   );

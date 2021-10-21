@@ -8,7 +8,12 @@ interface Props {
 }
 
 const Strokes: React.FC<Props> = ({ secondary = false, style }) => (
-  <div className={cx('strokes', { secondary })} style={style} aria-hidden>
+  <div
+    className={cx('strokes', { secondary })}
+    style={style}
+    aria-hidden
+    data-testid="strokes"
+  >
     <div />
     <div />
     <div />
