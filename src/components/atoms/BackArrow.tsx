@@ -8,7 +8,7 @@ interface Props {
   className?: string;
   children?: ReactNode;
   to?: string;
-  direction?: string;
+  direction?: 'right' | 'left';
   disabled?: boolean;
 }
 

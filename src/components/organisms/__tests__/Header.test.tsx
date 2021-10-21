@@ -12,7 +12,8 @@ test('nav open', async () => {
   );
   const navButton = screen.getByRole('button');
   userEvent.click(navButton);
-  await waitFor(() =>
-    expect(screen.getByRole('navigation')).toHaveStyle('opacity:1'),
+  await waitFor(
+    () => expect(screen.getByRole('navigation')).toHaveStyle('opacity:1'),
+    { timeout: 1500 },
   );
 });
