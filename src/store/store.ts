@@ -71,6 +71,7 @@ export const selectWorksSorted = createSelector(selectWorks, (works) =>
 export const selectWorkDetails = (state: { store: typeof initialState }) =>
   state.store.workDetails;
 
+export const storeReducer = store.reducer;
 export const reducer = combineReducers({ store: store.reducer });
 
 export default configureStore({ reducer });
