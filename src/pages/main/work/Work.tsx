@@ -13,11 +13,7 @@ const Work = forwardRef<HTMLElement>((_, ref) => {
   const workHeaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const element = workHeaderRef.current;
-    if (!element) {
-      return;
-    }
-
+    const element = workHeaderRef.current!;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,

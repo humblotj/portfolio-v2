@@ -15,11 +15,7 @@ const About: React.FC<Props> = ({ closeContactModal }) => {
   const { animateReveal } = useAnimation();
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return;
-    }
-
+    const element = ref.current!;
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {

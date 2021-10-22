@@ -11,11 +11,8 @@ const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
   const isMobile = preview.type === 'mobile';
   const [animationIsComplete, setAnimationIsComplete] = useState(false);
 
-  useEffect((): any => {
-    const element = ref.current;
-    if (!element) {
-      return null;
-    }
+  useEffect(() => {
+    const element = ref.current!;
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -29,7 +26,9 @@ const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
     tl.to(element, { opacity: 1, ease: 'power1.in' }, 0);
     tl.call(() => setAnimationIsComplete(true), undefined, '+=0.4');
 
-    return () => tl.kill();
+    return () => {
+      tl.kill();
+    };
   }, [preview]);
 
   if (!preview) {

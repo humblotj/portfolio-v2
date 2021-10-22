@@ -14,10 +14,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    const element = innerRef.current;
-    if (!element) {
-      return;
-    }
+    const element = innerRef.current!;
 
     const tl = gsap.timeline({
       scrollTrigger: {

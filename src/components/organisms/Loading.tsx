@@ -52,6 +52,7 @@ const Loading = () => {
   const dispatch = useDispatch();
 
   const background = location.pathname === '/' ? '#23282a' : '#fff';
+
   useEffect(() => {
     setTimeout(() => dispatch(onSetLoading(true)), 0);
     if (!isInit) {

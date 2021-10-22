@@ -21,12 +21,9 @@ const Home: React.FC<Props> = ({ workRef }) => {
   const { animateReveal, animateBlink } = useAnimation();
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return;
-    }
-
+    const element = ref.current!;
     const reveal = element.querySelectorAll('.reveal');
+
     for (let i = 0; i < reveal.length; i++) {
       const tl = animateReveal(reveal[i], { delay: i * 0.12 });
 

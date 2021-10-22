@@ -7,10 +7,7 @@ const HomeBackground: React.FC<{}> = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return;
-    }
+    const element = ref.current!;
 
     const tl = gsap.timeline({
       scrollTrigger: {

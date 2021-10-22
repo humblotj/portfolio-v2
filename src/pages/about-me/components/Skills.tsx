@@ -116,10 +116,8 @@ const Skills: React.FC<SkillsProp> = ({ closeContactModal }) => {
   const { animateReveal } = useAnimation();
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return;
-    }
+    const element = ref.current!;
+
     setTimeout(() => {
       const reveal = element.querySelectorAll('.reveal');
       const skillsLists = element.querySelectorAll('ul');

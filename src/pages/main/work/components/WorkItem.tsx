@@ -27,11 +27,7 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
   const [width] = useSize();
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return;
-    }
-
+    const element = ref.current!;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
@@ -40,14 +36,14 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
     });
     const isLargeWidth = width > 768;
     const isOdd = index % 2 === 1;
-    tl.addLabel('start', !isLargeWidth || !isOdd ? 0 : 0.25);
+
     tl.to(
       element.querySelector('.work-item-mask'),
       {
         x: '100%',
         duration: 0.7,
       },
-      'start',
+      !isLargeWidth || !isOdd ? 0 : 0.25,
     );
     tl.fromTo(
       element.querySelector('.work-preview'),

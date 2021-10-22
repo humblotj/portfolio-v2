@@ -23,10 +23,7 @@ const Phone: React.FC<Props> = ({
   const [canPlay, setCanPlay] = useState(false);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return () => {};
-    }
+    const element = ref.current!;
 
     if (noAnimation) {
       gsap.set(element.querySelector('.phone-overlay'), { opacity: 0 });
@@ -57,7 +54,9 @@ const Phone: React.FC<Props> = ({
       if (preview.isVideo) {
         tl.call(() => setCanPlay(true));
       }
-      return () => tl.kill();
+      return () => {
+        tl.kill();
+      };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);

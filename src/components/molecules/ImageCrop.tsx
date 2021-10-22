@@ -26,15 +26,13 @@ const ImageCrop: React.FC<Props> = ({
 
   useEffect(() => {
     if (isParallax) {
-      if (ref.current) {
-        gsap.to(ref.current.querySelector('img'), {
-          yPercent: -10,
-          ease: 'none',
-          scrollTrigger: {
-            scrub: true,
-          },
-        });
-      }
+      gsap.to(ref.current!.querySelector('img'), {
+        yPercent: -10,
+        ease: 'none',
+        scrollTrigger: {
+          scrub: true,
+        },
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

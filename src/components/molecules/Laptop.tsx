@@ -27,10 +27,7 @@ const Laptop: React.FC<Props> = ({
   const [canPlay, setCanPlay] = useState(false);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
-      return () => {};
-    }
+    const element = ref.current!;
 
     if (noAnimation) {
       gsap.set(element.querySelector('.part.top'), {
@@ -64,7 +61,9 @@ const Laptop: React.FC<Props> = ({
         tl.call(() => setCanPlay(true));
       }
 
-      return () => tl.kill();
+      return () => {
+        tl.kill();
+      };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
