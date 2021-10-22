@@ -30,10 +30,6 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
     }
 
     const element = ref.current;
-    if (!element) {
-      return () => {};
-    }
-
     const tl = gsap.timeline();
 
     if (open) {
@@ -68,7 +64,9 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
       });
     }
 
-    return () => tl.kill();
+    return () => {
+      tl.kill();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 

@@ -1,18 +1,10 @@
 import {
   onToggleAboutModal,
   storeReducer as reducer,
-  RootState,
   onInit,
   onSetLoading,
+  initialState,
 } from './../store';
-
-const initialState: RootState = {
-  isAboutModalOpen: false,
-  isInit: false,
-  isLoading: true,
-  works: [],
-  workDetails: null,
-};
 
 it('should return the initial state', () => {
   expect(reducer(undefined, {} as any)).toEqual(initialState);

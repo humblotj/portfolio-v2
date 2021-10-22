@@ -1,8 +1,8 @@
 import { render as rtlRender } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { ReactElement } from 'react';
 
 import { reducer, RootState } from '../store/store';
-import { ReactElement } from 'react-router/node_modules/@types/react';
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
 
 function render(

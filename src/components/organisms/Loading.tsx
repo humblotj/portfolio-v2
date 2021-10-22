@@ -50,8 +50,8 @@ const Loading = () => {
   const isLoading = useSelector(selectIsLoading);
   const location = useLocation();
   const dispatch = useDispatch();
-  const background = location.pathname === '/' ? '#23282a' : '#fff';
 
+  const background = location.pathname === '/' ? '#23282a' : '#fff';
   useEffect(() => {
     setTimeout(() => dispatch(onSetLoading(true)), 0);
     if (!isInit) {
@@ -70,6 +70,7 @@ const Loading = () => {
     <div
       className={cx('loading', { 'is-loading': isLoading })}
       style={{ background }}
+      data-testid="loading"
     >
       <Strokes secondary={location.pathname === '/'} />
       <div className="before" aria-hidden>

@@ -16,7 +16,7 @@ export interface RootState {
   workDetails: WorkDetailProps | null;
 }
 
-const initialState: RootState = {
+export const initialState: RootState = {
   isAboutModalOpen: false,
   isInit: false,
   isLoading: true,

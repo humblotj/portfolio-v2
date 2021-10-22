@@ -1,13 +1,15 @@
 import { waitFor } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
+import AboutMe from '../../../pages/about-me/AboutMe';
 import { render, screen } from '../../../utils/test-utils';
 import Nav from '../Nav';
 
 test('is open', async () => {
   render(
-    <Router>
+    <MemoryRouter>
       <Nav open onClose={() => {}} />
-    </Router>,
+    </MemoryRouter>,
   );
   await waitFor(() =>
     expect(screen.getByRole('navigation')).toHaveStyle('opacity:1'),
@@ -16,9 +18,53 @@ test('is open', async () => {
 
 test('is close', () => {
   render(
-    <Router>
+    <MemoryRouter>
       <Nav open={false} onClose={() => {}} />
-    </Router>,
+    </MemoryRouter>,
   );
   expect(screen.getByRole('navigation')).not.toHaveStyle('opacity:1');
+});
+
+it('opens modal', async () => {
+  render(
+    <MemoryRouter>
+      <Nav open={false} onClose={() => {}} />
+      <AboutMe />
+    </MemoryRouter>,
+  );
+  expect(screen.queryByText('Skills')).not.toBeInTheDocument();
+  userEvent.click(screen.getByText('About me'));
+  await screen.findByText('Skills');
+});
+
+test('small width', async () => {
+  Object.defineProperty(window, 'innerWidth', {
+    writable: true,
+    configurable: true,
+    value: 500,
+  });
+
+  render(
+    <MemoryRouter>
+      <Nav open onClose={() => {}} />
+    </MemoryRouter>,
+  );
+  await waitFor(() => expect(document.body).toHaveStyle('overflow: hidden'));
+});
+
+test('small width', async () => {
+  Object.defineProperty(window, 'innerWidth', {
+    writable: true,
+    configurable: true,
+    value: 500,
+  });
+
+  render(
+    <MemoryRouter>
+      <Nav open={false} onClose={() => {}} />
+    </MemoryRouter>,
+  );
+  await waitFor(() =>
+    expect(document.body).not.toHaveStyle('overflow: hidden'),
+  );
 });
