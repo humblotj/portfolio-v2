@@ -37,6 +37,7 @@ const Phone: React.FC<Props> = ({
       if (preview.isVideo) {
         tl.call(() => setCanPlay(true), undefined, 1);
       }
+
       return () => tl.kill();
     } else if (startAnimation) {
       const tl = gsap.timeline({
@@ -54,6 +55,7 @@ const Phone: React.FC<Props> = ({
       if (preview.isVideo) {
         tl.call(() => setCanPlay(true));
       }
+
       return () => {
         tl.kill();
       };

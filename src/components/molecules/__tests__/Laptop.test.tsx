@@ -21,8 +21,12 @@ it('is opened', () => {
 });
 
 it('starts animation', async () => {
-  render(<Laptop preview={preview} startAnimation />);
-  await waitFor(() =>
-    expect(screen.getByTestId('top')).toHaveStyle('transform: translate(0, 0)'),
+  render(<Laptop preview={preview} />);
+  await waitFor(
+    () =>
+      expect(screen.getByTestId('top')).not.toHaveStyle(
+        'transform: translate(0, 0)',
+      ),
+    { timeout: 1200 },
   );
 });

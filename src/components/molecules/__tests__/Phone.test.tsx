@@ -15,7 +15,7 @@ const preview: ImgSingleProp = {
   urls: {},
 };
 
-it('is opened', async () => {
+it('is opened', () => {
   render(<Phone preview={preview} noAnimation />);
   expect(screen.getByTestId('overlay')).not.toBeVisible();
 });
@@ -25,3 +25,14 @@ it('starts animation', async () => {
   expect(screen.getByTestId('overlay')).toBeVisible();
   await waitFor(() => expect(screen.getByTestId('overlay')).not.toBeVisible());
 });
+
+// it('is video', () => {
+//   render(<Phone preview={{ ...preview, isVideo: true }} noAnimation />);
+//   expect(screen.getByTestId('overlay')).not.toBeVisible();
+// });
+
+// it('is video', async () => {
+//   render(<Phone preview={{ ...preview, isVideo: true }} startAnimation />);
+//   expect(screen.getByTestId('overlay')).toBeVisible();
+//   await waitFor(() => expect(screen.getByTestId('overlay')).not.toBeVisible());
+// });
