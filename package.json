@@ -56,7 +56,8 @@
     "coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prettier": "prettier --write \"./**/*.scss\""
   },
   "eslintConfig": {
     "extends": [

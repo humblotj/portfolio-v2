@@ -1,53 +1,53 @@
 .mockup {
+  position: relative;
+  display: inline-flex;
+  z-index: 3;
+  text-align: center;
+  perspective-origin: 50% 100%;
+  transform-style: preserve-3d;
+
+  > div > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    backface-visibility: hidden;
+  }
+
+  .image-crop {
+    transform: translate3d(0, 0, 1px);
+  }
+
+  .part {
+    display: inline-block;
     position: relative;
-    display: inline-flex;
-    z-index: 3;
-    text-align: center;
-    perspective-origin: 50% 100%;
     transform-style: preserve-3d;
+    transform-origin: 50% 100%;
 
-    > div > img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        backface-visibility: hidden;
+    .top,
+    .bottom {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 50% 0;
     }
 
-    .image-crop {
-        transform: translate3d(0, 0, 1px);
+    .cover {
+      position: relative;
     }
 
-    .part {
-        display: inline-block;
-        position: relative;
-        transform-style: preserve-3d;
-        transform-origin: 50% 100%;
-
-        .top,
-        .bottom {
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform-origin: 50% 0;
-        }
-
-        .cover {
-            position: relative;
-        }
-
-        .bottom {
-            transform: rotateX(90deg);
-        }
-
-        &.top {
-            transform: translate3d(0, 0, 0) rotateX(-90deg);
-        }
-
-        &.bottom {
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: rotateX(-90deg);
-        }
+    .bottom {
+      transform: rotateX(90deg);
     }
+
+    &.top {
+      transform: translate3d(0, 0, 0) rotateX(-90deg);
+    }
+
+    &.bottom {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotateX(-90deg);
+    }
+  }
 }

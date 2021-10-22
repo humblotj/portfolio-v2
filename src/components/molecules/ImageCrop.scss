@@ -1,58 +1,58 @@
 .image-crop {
-    position: absolute;
-    z-index: 0;
+  position: absolute;
+  z-index: 0;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
     overflow: hidden;
+    object-fit: fill;
+    min-height: 100%;
+  }
+
+  &:not(.is-mobile) {
+    width: 92%;
+    top: 8%;
+    left: 4%;
+    bottom: 6%;
+  }
+
+  &.is-mobile {
+    border-radius: 6%;
+    margin: 0 5%;
+    top: 2%;
+    bottom: 2%;
+    bottom: max(5px, 2%);
+    width: 90%;
+    background: #000;
 
     img {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
-        overflow: hidden;
-        object-fit: fill;
-        min-height: 100%;
-    }
-
-    &:not(.is-mobile) {
-        width: 92%;
-        top: 8%;
-        left: 4%;
-        bottom: 6%;
-    }
-
-    &.is-mobile {
-        border-radius: 6%;
-        margin: 0 5%;
-        top: 2%;
-        bottom: 2%;
-        bottom: max(5px, 2%);
-        width: 90%;
-        background: #000;
-
-        img {
-            height: 100%;
-        }
-
-        video {
-            width: 100%;
-            object-fit: fill;
-        }
-    }
-
-    &.is-parallax {
-        img {
-            height: auto;
-        }
+      height: 100%;
     }
 
     video {
-        position: absolute;
-        top: -9999px;
-        bottom: -9999px;
-        left: -9999px;
-        right: -9999px;
-        height: 100%;
-        width: auto;
-        margin: auto;
+      width: 100%;
+      object-fit: fill;
     }
+  }
+
+  &.is-parallax {
+    img {
+      height: auto;
+    }
+  }
+
+  video {
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    height: 100%;
+    width: auto;
+    margin: auto;
+  }
 }

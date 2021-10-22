@@ -1,82 +1,82 @@
 .about {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: hsla(0, 0%, 95%, 0.97);
-    color: #1c1d25;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: hsla(0, 0%, 95%, 0.97);
+  color: #1c1d25;
 
-    h2 {
-        top: -10px;
-        left: 100px;
-        color: #4a4a4a;
-        opacity: 0.07;
+  h2 {
+    top: -10px;
+    left: 100px;
+    color: #4a4a4a;
+    opacity: 0.07;
+  }
+
+  .about-info {
+    padding: 100px 0 60px;
+
+    .pic {
+      margin-bottom: 30px;
+
+      .pic-crop {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
     }
 
-    .about-info {
-        padding: 100px 0 60px;
-
-        .pic {
-            margin-bottom: 30px;
-
-            .pic-crop {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                overflow: hidden;
-            }
-        }
-
-        img {
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translateY(50%);
-        }
-
-        .about-title {
-            margin-bottom: 20px;
-
-            h3 {
-                font-size: 23px;
-            }
-        }
-
-        .about-description {
-            overflow: hidden;
-            p {
-                transform: translateY(50px);
-                opacity: 0;
-                text-align: justify;
-                line-height: 1.3;
-                strong {
-                    color: #0c9;
-                }
-            }
-        }
+    img {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translateY(50%);
     }
 
-    .about-footer {
-        padding-bottom: 70px;
+    .about-title {
+      margin-bottom: 20px;
 
-        p {
-            align-items: flex-end;
-
-            svg {
-                fill: #f25757;
-            }
-        }
+      h3 {
+        font-size: 23px;
+      }
     }
+
+    .about-description {
+      overflow: hidden;
+      p {
+        transform: translateY(50px);
+        opacity: 0;
+        text-align: justify;
+        line-height: 1.3;
+        strong {
+          color: #0c9;
+        }
+      }
+    }
+  }
+
+  .about-footer {
+    padding-bottom: 70px;
+
+    p {
+      align-items: flex-end;
+
+      svg {
+        fill: #f25757;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .about {
-        .about-info {
-            padding: 50px 0;
-        }
-
-        .about-footer {
-            padding-bottom: 50px;
-        }
+  .about {
+    .about-info {
+      padding: 50px 0;
     }
+
+    .about-footer {
+      padding-bottom: 50px;
+    }
+  }
 }

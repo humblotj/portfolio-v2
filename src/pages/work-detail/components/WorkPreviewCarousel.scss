@@ -1,125 +1,125 @@
 .work-preview-carousel {
+  position: relative;
+  background: #eff0f1;
+  margin-top: 80px;
+
+  .work-preview-carousel-inner {
     position: relative;
-    background: #eff0f1;
-    margin-top: 80px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 80px;
+    z-index: 1;
+  }
 
-    .work-preview-carousel-inner {
-        position: relative;
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 80px;
-        z-index: 1;
+  .project-controls {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 80px 80px;
+
+    a:first-child {
+      margin-left: 20px;
     }
 
-    .project-controls {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 0 80px 80px;
+    a:last-child {
+      margin-right: 40px;
+    }
+  }
 
-        a:first-child {
-            margin-left: 20px;
-        }
+  .carousel-wrap {
+    opacity: 0;
+  }
 
-        a:last-child {
-            margin-right: 40px;
-        }
+  .wrap {
+    position: relative;
+    display: inline-block;
+
+    .phone-wrap {
+      margin: 0 5%;
     }
 
-    .carousel-wrap {
-        opacity: 0;
+    > img {
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  .slick-slider {
+    position: initial;
+  }
+
+  .slick-arrow {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    background: #fff url('/assets/icons/arrow.svg') center center no-repeat;
+    background-size: 24px 24px;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 11%);
+    transition: 0.3s;
+    z-index: 1;
+
+    &::before {
+      content: none;
     }
 
-    .wrap {
-        position: relative;
-        display: inline-block;
-
-        .phone-wrap {
-            margin: 0 5%;
-        }
-
-        > img {
-            width: 100%;
-            height: auto;
-            margin: 0 auto;
-        }
+    &.slick-prev {
+      left: 0;
+      transform: translate(0, -50%) rotate(180deg);
     }
 
-    .slick-slider {
-        position: initial;
+    &.slick-next {
+      right: 0;
     }
 
-    .slick-arrow {
-        width: 80px;
-        height: 80px;
-        cursor: pointer;
-        background: #fff url("/assets/icons/arrow.svg") center center no-repeat;
-        background-size: 24px 24px;
-        box-shadow: 0 12px 20px 0 rgb(0 0 0 / 11%);
-        transition: 0.3s;
-        z-index: 1;
-
-        &::before {
-            content: none;
-        }
-
-        &.slick-prev {
-            left: 0;
-            transform: translate(0, -50%) rotate(180deg);
-        }
-
-        &.slick-next {
-            right: 0;
-        }
-
-        &.slick-disabled {
-            opacity: 0;
-        }
+    &.slick-disabled {
+      opacity: 0;
     }
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .work-preview-carousel {
-        .work-preview-carousel-inner {
-            padding: 80px 180px;
-        }
+  .work-preview-carousel {
+    .work-preview-carousel-inner {
+      padding: 80px 180px;
     }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .work-preview-carousel {
-        .work-preview-carousel-inner {
-            padding: 60px;
-        }
-
-        .project-controls {
-            padding: 60px;
-        }
-
-        .slick-arrow {
-            width: 60px;
-            height: 60px;
-        }
+  .work-preview-carousel {
+    .work-preview-carousel-inner {
+      padding: 60px;
     }
+
+    .project-controls {
+      padding: 60px;
+    }
+
+    .slick-arrow {
+      width: 60px;
+      height: 60px;
+    }
+  }
 }
 
 @media only screen and (max-width: 576px) {
-    .work-preview-carousel {
-        .work-preview-carousel-inner {
-            padding: 40px;
-        }
-
-        .project-controls {
-            padding: 40px;
-
-            a:first-child {
-                margin-left: -30px;
-            }
-
-            a:last-child {
-                margin-right: 90px;
-            }
-        }
+  .work-preview-carousel {
+    .work-preview-carousel-inner {
+      padding: 40px;
     }
+
+    .project-controls {
+      padding: 40px;
+
+      a:first-child {
+        margin-left: -30px;
+      }
+
+      a:last-child {
+        margin-right: 90px;
+      }
+    }
+  }
 }

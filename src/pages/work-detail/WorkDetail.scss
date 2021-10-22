@@ -1,70 +1,70 @@
 .work-detail-sec {
-    position: relative;
-    padding-top: 60px;
-    overflow: hidden;
-    background: #fff;
+  position: relative;
+  padding-top: 60px;
+  overflow: hidden;
+  background: #fff;
 
-    > .back-arrow {
-        position: fixed;
-        top: 30px;
-        left: 60px;
-        z-index: 99;
+  > .back-arrow {
+    position: fixed;
+    top: 30px;
+    left: 60px;
+    z-index: 99;
+  }
+
+  .strokes {
+    position: initial;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+  }
+
+  .work-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    opacity: 0;
+
+    a {
+      display: inline-block;
+
+      &:first-child {
+        margin-right: 40px;
+      }
     }
 
-    .strokes {
-        position: initial;
+    div:not(:last-child) {
+      margin-bottom: 20px;
     }
 
-    .close-button {
-        position: absolute;
-        top: 30px;
-        right: 40px;
+    .btn.primary {
+      color: #0c9;
+
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+
+      &:hover:not(:disabled) {
+        color: #fff;
+      }
     }
+  }
 
-    .work-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0 20px;
-        opacity: 0;
-
-        a {
-            display: inline-block;
-
-            &:first-child {
-                margin-right: 40px;
-            }
-        }
-
-        div:not(:last-child) {
-            margin-bottom: 20px;
-        }
-
-        .btn.primary {
-            color: #0c9;
-
-            &:not(:last-child) {
-                margin-right: 40px;
-            }
-
-            &:hover:not(:disabled) {
-                color: #fff;
-            }
-        }
+  > div {
+    &:not(.work-preview-carousel) {
+      max-width: 1120px;
+      margin: 0 auto;
     }
-
-    > div {
-        &:not(.work-preview-carousel) {
-            max-width: 1120px;
-            margin: 0 auto;
-        }
-    }
+  }
 }
 
 @media only screen and (max-width: 576px) {
-    .work-detail-sec {
-        .back-arrow {
-            left: 50px;
-        }
+  .work-detail-sec {
+    .back-arrow {
+      left: 50px;
     }
+  }
 }

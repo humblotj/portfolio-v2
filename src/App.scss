@@ -1,34 +1,33 @@
 .reveal {
-    position: relative;
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+
+  .reveal-text {
     display: inline-flex;
-    overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+  }
 
-    .reveal-text {
-        display: inline-flex;
-        opacity: 0;
-        transform: translateY(50px);
-    }
+  .reveal-mask {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: #0c9;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    z-index: 2;
+  }
 
+  &.secondary {
     .reveal-mask {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-        background-color: #0c9;
-        transform-origin: 0 50%;
-        transform: scaleX(0);
-        z-index: 2;
+      background-color: #191a1e;
     }
-
-    &.secondary {
-        .reveal-mask {
-            background-color: #191a1e;
-        }
-    }
+  }
 }
 
 .blink {
-    opacity: 0;
+  opacity: 0;
 }
-

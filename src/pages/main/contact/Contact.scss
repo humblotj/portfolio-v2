@@ -1,71 +1,71 @@
 .contact-sec {
-    position: relative;
-    background-color: #23282a;
-    color: #fff;
-    text-align: center;
-    overflow: hidden;
+  position: relative;
+  background-color: #23282a;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
 
-    .strokes {
-        position: initial;
+  .strokes {
+    position: initial;
+  }
+
+  .contact-inner {
+    max-width: 500px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 60px 0;
+
+    h2 {
+      font-size: 48px;
     }
 
-    .contact-inner {
-        max-width: 500px;
-        width: 95%;
-        margin: 0 auto;
-        padding: 60px 0;
-
-        h2 {
-            font-size: 48px;
-        }
-
-        .divider {
-            width: 110px;
-            height: 4px;
-            margin: 15px auto;
-            background: #fff;
-        }
-
-        .send-message {
-            p {
-                margin: 25px 0 40px 0;
-                color: #0c9;
-            }
-
-            form {
-                .submit-wrap {
-                    display: flex;
-                    justify-content: flex-end;
-                }
-            }
-        }
+    .divider {
+      width: 110px;
+      height: 4px;
+      margin: 15px auto;
+      background: #fff;
     }
+
+    .send-message {
+      p {
+        margin: 25px 0 40px 0;
+        color: #0c9;
+      }
+
+      form {
+        .submit-wrap {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .contact-sec {
-        .contact-inner {
-            h2 {
-                font-size: 38px;
-            }
-        }
+  .contact-sec {
+    .contact-inner {
+      h2 {
+        font-size: 38px;
+      }
     }
+  }
 }
 
 @media only screen and (max-width: 576px) {
-    .contact-sec {
-        .contact-inner {
-            padding: 60px 30px;
+  .contact-sec {
+    .contact-inner {
+      padding: 60px 30px;
 
-            h2 {
-                font-size: 32px;
-            }
+      h2 {
+        font-size: 32px;
+      }
 
-            .send-message {
-                p {
-                    font-size: 14px;
-                }
-            }
+      .send-message {
+        p {
+          font-size: 14px;
         }
+      }
     }
+  }
 }
