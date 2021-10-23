@@ -6,6 +6,8 @@ gsap.registerPlugin(ScrollTrigger);
 import { ImgSingleProp } from '../../../interface';
 import Laptop from '../Laptop';
 import picture from '../../../assets/background.jpg';
+import videoTest from '../../../assets/video-test.mp4';
+import { renderIgnoringUnstableFlushDiscreteUpdates } from '../../../utils/test-utils';
 
 const preview: ImgSingleProp = {
   type: 'web',
@@ -13,6 +15,15 @@ const preview: ImgSingleProp = {
   height: 2416,
   width: 2416,
   urls: {},
+};
+
+const previewVideo: ImgSingleProp = {
+  type: 'web',
+  isVideo: true,
+  url: videoTest,
+  height: 2416,
+  width: 2416,
+  urls: { 2416: videoTest, 2400: videoTest },
 };
 
 it('is opened', () => {
@@ -29,4 +40,42 @@ it('starts animation', async () => {
       ),
     { timeout: 1200 },
   );
+});
+
+it('plays video', async () => {
+  const play = jest
+    .spyOn(window.HTMLMediaElement.prototype, 'play')
+    .mockImplementation(() => new Promise((resolve) => resolve()));
+
+  renderIgnoringUnstableFlushDiscreteUpdates(
+    <Laptop preview={previewVideo} noAnimation />,
+  );
+  await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 2000 });
+  play.mockRestore();
+});
+
+it('plays video', async () => {
+  const play = jest
+    .spyOn(window.HTMLMediaElement.prototype, 'play')
+    .mockImplementation(() => new Promise((resolve) => resolve()));
+
+  const { rerender } = renderIgnoringUnstableFlushDiscreteUpdates(
+    <Laptop preview={previewVideo} startAnimation={false} />,
+  );
+  rerender(<Laptop preview={previewVideo} startAnimation />);
+  await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 2000 });
+  play.mockRestore();
+});
+
+test('picture', () => {
+  const play = jest
+    .spyOn(window.HTMLMediaElement.prototype, 'play')
+    .mockImplementation(() => new Promise((resolve) => resolve()));
+
+  const { rerender } = render(
+    <Laptop preview={preview} startAnimation={false} />,
+  );
+  rerender(<Laptop preview={preview} startAnimation />);
+  expect(play).not.toHaveBeenCalled();
+  play.mockRestore();
 });

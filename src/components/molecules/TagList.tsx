@@ -1,10 +1,10 @@
 import './TagList.scss';
 
 interface TagProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-const Tag: React.FC<TagProps> = ({ children = null }) => (
+const Tag: React.FC<TagProps> = ({ children }) => (
   <li className="tag">{children}</li>
 );
 

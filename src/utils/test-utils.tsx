@@ -38,3 +38,19 @@ function render(
 export * from '@testing-library/react';
 // override render method
 export { render };
+
+export const renderIgnoringUnstableFlushDiscreteUpdates = (
+  component: React.ReactElement,
+) => {
+  const originalError = console.error;
+  const error = jest.fn();
+  console.error = error;
+  const view = render(component);
+  expect(error).toHaveBeenCalledTimes(1);
+  expect(error).toHaveBeenCalledWith(
+    'Warning: unstable_flushDiscreteUpdates: Cannot flush updates when React is already rendering.%s',
+    expect.any(String),
+  );
+  console.error = originalError;
+  return view;
+};
