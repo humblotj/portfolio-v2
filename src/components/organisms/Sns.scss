@@ -1,8 +1,12 @@
 .sns {
+  display: flex;
+  justify-content: center;
+
   li {
     a {
       display: inline-block;
       transition: 275ms;
+      padding: 10px;
 
       svg {
         fill: #fff;
@@ -16,7 +20,7 @@
       }
     }
 
-    &:last-child {
+    &.codepen {
       a {
         svg {
           fill: transparent;

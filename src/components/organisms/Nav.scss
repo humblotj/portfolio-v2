@@ -54,16 +54,14 @@
 
   .sns {
     position: absolute;
-    display: flex;
-    justify-content: space-between;
     bottom: 60px;
-    width: 200px;
     left: 0;
     right: 0;
     margin: 0 auto;
 
     li {
       a {
+        padding: 15px;
         svg {
           width: 34px;
           height: 34px;
@@ -84,10 +82,9 @@
     }
 
     .sns {
-      width: 144px;
-
       li {
         a {
+          padding: 10px;
           svg {
             width: 28px;
             height: 28px;
