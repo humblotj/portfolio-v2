@@ -51,7 +51,7 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.3,
           stagger: 0.15,
         },
       );

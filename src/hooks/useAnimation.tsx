@@ -56,7 +56,7 @@ const useAnimation = () => {
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.4,
             ease: 'power4.out',
           },
           mask ? '<0.15' : 1.2 + (delay || 0),

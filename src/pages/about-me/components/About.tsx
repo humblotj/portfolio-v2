@@ -19,7 +19,9 @@ const About: React.FC<Props> = ({ closeContactModal }) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = animateReveal(reveal[i], { delay: 0.7 + i * 0.12 });
+      const tl = animateReveal(reveal[i], {
+        delay: 0.7 + (i > 1 ? i + 1 : i) * 0.12,
+      });
 
       if (i === 1) {
         tl.to(
@@ -27,10 +29,10 @@ const About: React.FC<Props> = ({ closeContactModal }) => {
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.4,
             ease: 'power4.out',
           },
-          '<+=0.2',
+          '<0.12',
         );
       }
     }

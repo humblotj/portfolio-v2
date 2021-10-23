@@ -129,21 +129,19 @@ const Skills: React.FC<SkillsProp> = ({ closeContactModal }) => {
           scroller: document.querySelector('.modal-content'),
         });
 
-        const skills = skillsLists[i].querySelectorAll('li');
-        for (let j = 0; j < skills.length; j++) {
-          tl.to(
-            skills[j],
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              ease: 'power2.out',
-            },
-            j === 0 ? '<0.4' : '<0.2',
-          );
-        }
+        tl.to(
+          skillsLists[i].querySelectorAll('li'),
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            ease: 'power2.out',
+            stagger: 0.2,
+          },
+          '<0.2',
+        );
       }
-    }, 1900);
+    }, 2000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
