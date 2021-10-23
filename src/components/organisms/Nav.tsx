@@ -34,7 +34,6 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
 
     if (open) {
       tl.to([element, ...q('.strokes')], {
-        opacity: 1,
         height: '100%',
         duration: 0.35,
       });
@@ -58,7 +57,6 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
       );
     } else {
       tl.to([element, ...q('.strokes')], {
-        opacity: 0,
         height: 0,
         duration: 0.35,
       });
