@@ -1,0 +1,176 @@
+.project-controls {
+  position: fixed;
+  margin: 0 auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 960px;
+  width: 100%;
+  height: 150px;
+
+  .project-controls-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    div {
+      flex: 0.5;
+    }
+
+    p {
+      margin: 90px;
+      font-size: 12px;
+
+      &:after {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        border: 1px solid;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
+    }
+
+    a {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      flex: 0.5;
+      color: #000;
+
+      &:after {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        border-right: 2px solid #000;
+        border-bottom: 2px solid #000;
+        width: 40px;
+        height: 40px;
+        transform: rotate(-45deg);
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        strong {
+          background-position: 0 100%;
+        }
+
+        &:after {
+          right: -20px;
+        }
+
+        &.previous-work {
+          strong {
+            background-position: 0%;
+          }
+
+          &:after {
+            left: -20px;
+          }
+        }
+      }
+
+      strong {
+        display: inline-block;
+        position: relative;
+        font-size: 38px;
+        font-weight: 600;
+        overflow: hidden;
+        text-transform: uppercase;
+        background: linear-gradient(to right, #0c9, #0c9 50%, #000 50%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%;
+        background-position: 100%;
+        transition: 275ms linear;
+      }
+
+      &.previous-work {
+        text-align: right;
+
+        &:after {
+          right: auto;
+          left: 0;
+          transform: rotate(135deg);
+        }
+
+        strong {
+          background-position: -100%;
+        }
+      }
+
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .project-controls {
+    padding: 0 70px;
+
+    .project-controls-inner {
+      a {
+        strong {
+          font-size: 30px;
+        }
+
+        &:after {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      p {
+        margin: 60px;
+
+        &:after {
+          width: 55px;
+          height: 55px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .project-controls {
+    padding: 0;
+    height: 300px;
+
+    .project-controls-inner {
+      flex-direction: column;
+      padding: 50px 0;
+
+      a {
+        text-align: center !important;
+        flex: 1;
+
+        &:after {
+          content: none;
+        }
+      }
+
+      p {
+        margin: 40px;
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 576px) {
+//   .project-controls {
+//     padding: 40px;
+//   }
+// }

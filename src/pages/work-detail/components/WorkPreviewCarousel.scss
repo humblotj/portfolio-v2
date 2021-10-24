@@ -11,22 +11,6 @@
     z-index: 1;
   }
 
-  .project-controls {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 80px 80px;
-
-    a:first-child {
-      margin-left: 20px;
-    }
-
-    a:last-child {
-      margin-right: 40px;
-    }
-  }
-
   .carousel-wrap {
     opacity: 0;
   }
@@ -93,10 +77,6 @@
       padding: 60px;
     }
 
-    .project-controls {
-      padding: 60px;
-    }
-
     .slick-arrow {
       width: 60px;
       height: 60px;
@@ -108,18 +88,6 @@
   .work-preview-carousel {
     .work-preview-carousel-inner {
       padding: 40px;
-    }
-
-    .project-controls {
-      padding: 40px;
-
-      a:first-child {
-        margin-left: -30px;
-      }
-
-      a:last-child {
-        margin-right: 90px;
-      }
     }
   }
 }

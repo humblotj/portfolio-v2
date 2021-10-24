@@ -69,7 +69,7 @@ const WorkPreviewCarousel = ({ work }: Props) => {
     return null;
   }
 
-  const { previews, previousWork, nextWork, name } = work;
+  const { previews, name } = work;
 
   return (
     <div ref={ref} className="work-preview-carousel">
@@ -79,14 +79,6 @@ const WorkPreviewCarousel = ({ work }: Props) => {
             {PreviewItem({ previews, name })}
           </Slider>
         </div>
-      </div>
-      <div className="project-controls">
-        <BackArrow to={nextWork} disabled={!nextWork}>
-          Previous Work
-        </BackArrow>
-        <BackArrow direction="right" to={previousWork} disabled={!previousWork}>
-          Next Work
-        </BackArrow>
       </div>
       <Strokes />
     </div>

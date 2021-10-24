@@ -12,6 +12,7 @@ import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 import useAnimation from '../../hooks/useAnimation';
 import { ReactComponent as PlayStoreIcon } from '../../assets/icons/playstore.svg';
 import { ReactComponent as AppStoreIcon } from '../../assets/icons/appstore.svg';
+import WorkDetailFooter from './components/WorkDetailFooter';
 
 const types = {
   ios: 'Apple Store',
@@ -43,8 +44,8 @@ const WorkDetail = () => {
   return (
     <>
       <section className="work-detail-sec">
-        <BackArrow>Turn Back Home</BackArrow>
         <Strokes />
+        <BackArrow>Turn Back Home</BackArrow>
         <WorkDetailDescription work={work} />
         <div className="work-links">
           {!!Object.keys(work.links || {}).length && (
@@ -93,6 +94,7 @@ const WorkDetail = () => {
         </div>
         <WorkPreviewCarousel work={work} />
       </section>
+      <WorkDetailFooter work={work} />
     </>
   );
 };

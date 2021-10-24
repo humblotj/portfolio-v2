@@ -39,4 +39,5 @@ export interface WorkDetailProps {
   repoUrl?: string;
   techs: string[];
   year: number;
+  index: number;
 }
