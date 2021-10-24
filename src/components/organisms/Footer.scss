@@ -4,9 +4,8 @@ footer {
   padding-bottom: 20px;
   text-align: center;
 
-  ul {
+  .sns {
     display: none;
-    justify-content: center;
 
     li {
       a {
@@ -21,7 +20,7 @@ footer {
 
 @media only screen and (max-width: 768px) {
   footer {
-    ul {
+    .sns {
       display: flex;
     }
   }

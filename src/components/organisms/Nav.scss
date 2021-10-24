@@ -38,6 +38,8 @@
 
         background: linear-gradient(to right, #0c9, #0c9 50%, #fff 50%);
         background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         background-size: 200% 100%;
         background-position: 100%;
         transition: background-position 275ms ease;

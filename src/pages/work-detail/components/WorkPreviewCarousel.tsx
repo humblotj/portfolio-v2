@@ -52,7 +52,8 @@ const WorkPreviewCarousel = ({ work }: Props) => {
   useEffect(() => {
     gsap.to(ref.current!.querySelector('.carousel-wrap'), {
       opacity: 1,
-      duration: 0.5,
+      duration: 0.3,
+      ease: 'power.out3',
       scrollTrigger: { trigger: ref.current, start: '30% bottom' },
     });
   }, []);

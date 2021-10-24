@@ -19,7 +19,7 @@ const HomeBackground: React.FC<{}> = () => {
     });
     tl.to(element.querySelector('.overlay'), {
       scaleX: 1,
-      duration: 0.4 + 0.12 * 4,
+      duration: 0.4 + 0.2 * 4,
     });
     tl.to(
       element.querySelector('.overlay'),
@@ -35,7 +35,7 @@ const HomeBackground: React.FC<{}> = () => {
       {
         opacity: 1,
         duration: 1,
-        ease: 'power1.out',
+        ease: 'power4.out',
       },
       '<0.15',
     );

@@ -27,7 +27,7 @@ const WorkDetailDescription = ({ work }: Props) => {
       const reveal = descParts[j].querySelectorAll('.reveal');
       for (let i = 0; i < reveal.length; i++) {
         const tl = animateReveal(reveal[i], {
-          delay: i * 0.12,
+          delay: j * 0.2,
           trigger: descParts[j],
         });
 
@@ -36,7 +36,8 @@ const WorkDetailDescription = ({ work }: Props) => {
             document.querySelector('.work-links'),
             {
               opacity: 1,
-              duration: 0.5,
+              ease: 'power.out3',
+              duration: 0.3,
             },
             '<0.3',
           );

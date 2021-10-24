@@ -25,12 +25,8 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
         duration: 0.75,
       },
     });
-    tl.fromTo(
+    tl.to(
       element.querySelector('form'),
-      {
-        opacity: 0,
-        scale: 0,
-      },
       {
         opacity: 1,
         scale: 1.05,

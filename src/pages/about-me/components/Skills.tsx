@@ -26,7 +26,6 @@ import { ReactComponent as Flutter } from '../../../assets/icons/flutter.svg';
 import { ReactComponent as GraphQL } from '../../../assets/icons/graphql.svg';
 import { ReactComponent as D3js } from '../../../assets/icons/d3js.svg';
 import { ReactComponent as Webpack } from '../../../assets/icons/webpack.svg';
-import { ReactComponent as WebGL } from '../../../assets/icons/webgl.svg';
 import { ReactComponent as Swift } from '../../../assets/icons/swift.svg';
 import { ReactComponent as Kotlin } from '../../../assets/icons/kotlin.svg';
 import Bounce from '../../../components/atoms/Bounce';
@@ -71,7 +70,6 @@ const wantToLearnSkills = [
   { name: 'GraphQL', component: GraphQL },
   { name: 'D3.js', component: D3js, size: 'medium' },
   { name: 'Webpack', component: Webpack },
-  { name: 'WebGL', component: WebGL },
   { name: 'Swift', component: Swift },
   { name: 'Kotlin', component: Kotlin, size: 'medium' },
 ];
@@ -141,7 +139,7 @@ const Skills: React.FC<SkillsProp> = ({ closeContactModal }) => {
           '<0.2',
         );
       }
-    }, 2000);
+    }, 2200);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

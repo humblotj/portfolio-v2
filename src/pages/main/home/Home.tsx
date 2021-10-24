@@ -25,22 +25,21 @@ const Home: React.FC<Props> = ({ workRef }) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = animateReveal(reveal[i], { delay: i * 0.12 });
+      const tl = animateReveal(reveal[i], { delay: i * 0.2 });
 
       if (i === reveal.length - 1) {
         tl.to(
           element.querySelector('.scroll-stroke'),
           {
             scale: 1,
-            duration: 1,
+            duration: 0.9,
             ease: 'power4.out',
           },
           '<',
         );
+        tl.call(() => animateBlink(element), undefined, '<0.4');
       }
     }
-
-    animateBlink(element);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

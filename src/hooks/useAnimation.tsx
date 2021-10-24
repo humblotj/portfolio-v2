@@ -56,10 +56,10 @@ const useAnimation = () => {
           {
             y: 0,
             opacity: 1,
-            duration: 0.4,
+            duration: 0.3,
             ease: 'power4.out',
           },
-          mask ? '<0.15' : 1.2 + (delay || 0),
+          mask ? '>' : 1.2 + (delay || 0),
         );
       }
 
@@ -79,39 +79,38 @@ const useAnimation = () => {
     tl.fromTo(
       blink,
       {
-        autoAlpha: 0,
+        opacity: 0,
         pointerEvents: 'none',
       },
       {
-        autoAlpha: 0.8,
+        opacity: 0.8,
         duration: 0.1,
         pointerEvents: 'auto',
       },
-      1.75,
     );
     tl.to(blink, {
-      autoAlpha: 0.1,
+      opacity: 0.1,
       duration: 0.1,
     });
     tl.to(blink, {
-      autoAlpha: 0.8,
+      opacity: 0.8,
       duration: 0.1,
     });
     tl.to(blink, {
-      autoAlpha: 0.2,
+      opacity: 0.2,
       duration: 0.2,
     });
     tl.to(blink, {
-      autoAlpha: 1,
+      opacity: 1,
       duration: 0.4,
     });
   }, []);
 
   const skipBlink = useCallback(() => {
     const blink = document.querySelectorAll('.blink');
-    gsap.to(blink, { autoAlpha: 1, duration: 0 });
+    gsap.to(blink, { opacity: 1, duration: 0 });
     return () => {
-      gsap.to(blink, { autoAlpha: 0, duration: 0 });
+      gsap.to(blink, { opacity: 0, duration: 0 });
     };
   }, []);
 

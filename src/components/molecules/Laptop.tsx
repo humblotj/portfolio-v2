@@ -41,7 +41,7 @@ const Laptop: React.FC<Props> = ({
       });
 
       if (preview.isVideo) {
-        tl.call(() => setCanPlay(true), undefined, 1.4);
+        tl.call(() => setCanPlay(true), undefined, 2);
       }
       return () => tl.kill();
     } else if (startAnimation) {

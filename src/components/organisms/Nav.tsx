@@ -41,7 +41,7 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
       tl.fromTo(
         q('.links li'),
         { opacity: 0, x: '100%' },
-        { opacity: 1, x: 0, duration: 0.5, stagger: 0.15 },
+        { opacity: 1, x: 0, duration: 0.3, stagger: 0.15 },
         '>=0.15',
       );
 

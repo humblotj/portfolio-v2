@@ -33,6 +33,9 @@
       }
 
       form {
+        opacity: 0;
+        transform: scale(0);
+
         .submit-wrap {
           display: flex;
           justify-content: flex-end;

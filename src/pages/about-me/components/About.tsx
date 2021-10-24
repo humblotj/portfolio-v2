@@ -19,22 +19,9 @@ const About: React.FC<Props> = ({ closeContactModal }) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = animateReveal(reveal[i], {
-        delay: 0.7 + (i > 1 ? i + 1 : i) * 0.12,
+      animateReveal(reveal[i], {
+        delay: 0.7 + i * 0.2,
       });
-
-      if (i === 1) {
-        tl.to(
-          element.querySelector('.about-description > p'),
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.4,
-            ease: 'power4.out',
-          },
-          '<0.12',
-        );
-      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -62,8 +49,8 @@ const About: React.FC<Props> = ({ closeContactModal }) => {
           <div className="reveal-mask" aria-hidden />
         </div>
         <br />
-        <div className="about-description">
-          <p>
+        <div className="about-description reveal">
+          <p className="reveal-text">
             Hi! I&apos;m Jean, a French software developer based in Seoul.
             <br />I specialize in front-end development – building{' '}
             <strong>efficient, interactive, modern, performant</strong>, and{' '}

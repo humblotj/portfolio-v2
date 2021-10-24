@@ -41,37 +41,29 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       element.querySelector('.work-item-mask'),
       {
         x: '100%',
-        duration: 0.7,
+        duration: 0.5,
       },
-      !isLargeWidth || !isOdd ? 0 : 0.25,
+      !isLargeWidth || !isOdd ? 0 : 0.3,
+    );
+    tl.to(
+      element.querySelectorAll('.work-item-title > *, .work-tag, ul'),
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        stagger: 0.2,
+        ease: 'power3.out',
+      },
+      '<0.6',
     );
     tl.to(
       element.querySelector('.work-preview'),
       {
         opacity: 1,
         x: '-50%',
-        duration: 0.4,
+        duration: 0.6,
       },
       '<0.6',
-    );
-    tl.fromTo(
-      element.querySelectorAll('.work-tag, ul'),
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 0.4,
-      },
-      '<',
-    );
-    tl.to(
-      element.querySelectorAll('.work-item-title > *'),
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        stagger: 0.25,
-      },
-      '<0.2',
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width > 768, index]);
