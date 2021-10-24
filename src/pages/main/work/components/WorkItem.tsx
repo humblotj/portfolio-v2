@@ -54,17 +54,20 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
         stagger: 0.2,
         ease: 'power3.out',
       },
-      '<0.6',
+      '<0.3',
     );
     tl.to(
       element.querySelector('.work-preview'),
       {
         opacity: 1,
         x: '-50%',
-        duration: 0.6,
+        duration: 0.3,
       },
       '<0.6',
     );
+    tl.set(element, {
+      pointerEvents: 'auto',
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width > 768, index]);
 
