@@ -31,10 +31,6 @@ const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
     };
   }, [preview]);
 
-  if (!preview) {
-    return null;
-  }
-
   return (
     <div
       ref={ref}

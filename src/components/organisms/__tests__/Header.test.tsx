@@ -14,13 +14,13 @@ test('nav open', async () => {
 
   userEvent.click(navButton);
   await waitFor(
-    () => expect(screen.getByRole('navigation')).toHaveStyle('opacity:1'),
+    () => expect(screen.getByRole('navigation')).toHaveStyle('height: 100%;'),
     { timeout: 1200 },
   );
 
   userEvent.click(screen.getByText('Home'));
   await waitFor(
-    () => expect(screen.getByRole('navigation')).not.toBeVisible(),
+    () => expect(screen.getByRole('navigation')).toHaveStyle('height: 0px;'),
     { timeout: 1200 },
   );
 });

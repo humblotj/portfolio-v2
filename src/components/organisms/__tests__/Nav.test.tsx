@@ -11,8 +11,9 @@ test('is open', async () => {
       <Nav open onClose={() => {}} />
     </MemoryRouter>,
   );
-  await waitFor(() =>
-    expect(screen.getByRole('navigation')).toHaveStyle('opacity:1'),
+  await waitFor(
+    () => expect(screen.getByRole('navigation')).toHaveStyle('height: 100%;'),
+    { timeout: 2000 },
   );
 });
 
@@ -22,7 +23,7 @@ test('is close', () => {
       <Nav open={false} onClose={() => {}} />
     </MemoryRouter>,
   );
-  expect(screen.getByRole('navigation')).not.toHaveStyle('opacity:1');
+  expect(screen.getByRole('navigation')).not.toHaveStyle('height: 100%;');
 });
 
 it('opens modal', async () => {

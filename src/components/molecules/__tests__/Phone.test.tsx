@@ -45,7 +45,7 @@ it('plays video', async () => {
   renderIgnoringUnstableFlushDiscreteUpdates(
     <Phone preview={previewVideo} noAnimation />,
   );
-  await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 2000 });
+  await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 3000 });
   play.mockRestore();
 });
 
@@ -58,6 +58,6 @@ it('plays video', async () => {
     <Phone preview={previewVideo} startAnimation={false} />,
   );
   rerender(<Phone preview={previewVideo} startAnimation />);
-  await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 2000 });
+  await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 3000 });
   play.mockRestore();
 });
