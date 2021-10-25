@@ -1,7 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
-import WorkDetailFooter from '../WorkDetailFooter';
+import WorkDetailFooter from '../components/WorkDetailFooter';
 
 test('work details footer', () => {
   render(

@@ -1,7 +1,7 @@
-import { screen, render, waitFor } from '../../../../utils/test-utils';
-import { ImgSingleProp } from '../../../../interface';
-import picture from '../../../../assets/background.jpg';
-import WorkDetailParallax from '../WorkDetailParallax';
+import { screen, render, waitFor } from '../../../utils/test-utils';
+import { ImgSingleProp } from '../../../interface';
+import picture from '../../../assets/background.jpg';
+import WorkDetailParallax from '../components/WorkDetailParallax';
 
 const preview: ImgSingleProp = {
   type: 'mobile',

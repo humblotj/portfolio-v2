@@ -2,10 +2,10 @@ import {
   render,
   renderIgnoringGsapWarning,
   screen,
-} from '../../../../utils/test-utils';
-import { ImgSingleProp } from '../../../../interface';
-import picture from '../../../../assets/background.jpg';
-import WorkDetailDescription from '../WorkDetailDescription';
+} from '../../../utils/test-utils';
+import { ImgSingleProp } from '../../../interface';
+import picture from '../../../assets/background.jpg';
+import WorkDetailDescription from '../components/WorkDetailDescription';
 
 const preview: ImgSingleProp = {
   type: 'mobile',

@@ -1,7 +1,7 @@
-import { screen, render } from '../../../../utils/test-utils';
-import { ImgProp } from '../../../../interface';
-import picture from '../../../../assets/background.jpg';
-import WorkPreviewCarousel from '../WorkPreviewCarousel';
+import { screen, render } from '../../../utils/test-utils';
+import { ImgProp } from '../../../interface';
+import picture from '../../../assets/background.jpg';
+import WorkPreviewCarousel from '../components/WorkPreviewCarousel';
 
 const previews: ImgProp = {
   type: 'web',

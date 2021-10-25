@@ -1,5 +1,5 @@
-import { render, screen, waitFor } from '../../../../utils/test-utils';
-import Skills from '../Skills';
+import { render, screen, waitFor } from '../../../utils/test-utils';
+import Skills from '../components/Skills';
 
 it('reveals animation', async () => {
   render(<Skills closeContactModal={() => {}} aboutAnimationDone />);
