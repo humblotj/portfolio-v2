@@ -64,10 +64,6 @@ const WorkPreviewCarousel = ({ work }: Props) => {
     return width > 768 ? 3 : 2;
   }, [work?.previews?.type, width]);
 
-  if (!work) {
-    return null;
-  }
-
   const { previews, name } = work;
 
   return (

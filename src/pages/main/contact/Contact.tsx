@@ -1,6 +1,6 @@
 import { FormEvent, forwardRef, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import emailjs from 'emailjs-com';
+import { sendForm } from 'emailjs-com';
 import mergeRefs from 'react-merge-refs';
 
 import './Contact.scss';
@@ -60,23 +60,20 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_SERVICE_ID || '',
-        process.env.REACT_APP_TEMPLATE_ID || '',
-        e.target as any,
-        process.env.REACT_APP_USER_ID || '',
-      )
-      .then(
-        () => {
-          formRef.current?.reset();
-          alert('Email Sent');
-        },
-        (error: { text: string }) => {
-          alert(error.text);
-        },
-      );
+    sendForm(
+      process.env.REACT_APP_SERVICE_ID || '',
+      process.env.REACT_APP_TEMPLATE_ID || '',
+      e.target as any,
+      process.env.REACT_APP_USER_ID || '',
+    ).then(
+      () => {
+        formRef.current?.reset();
+        alert('Email Sent');
+      },
+      (error: { text: string }) => {
+        alert(error.text);
+      },
+    );
   };
 
   return (

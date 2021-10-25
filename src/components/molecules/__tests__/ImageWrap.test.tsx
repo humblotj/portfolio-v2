@@ -1,12 +1,10 @@
-import { screen } from '@testing-library/react';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
+import {
+  renderIgnoringUnstableFlushDiscreteUpdates,
+  screen,
+} from '../../../utils/test-utils';
 import { ImgSingleProp } from '../../../interface';
 import ImageWrap from '../ImageWrap';
 import videoTest from '../../../assets/video-test.mp4';
-import { renderIgnoringUnstableFlushDiscreteUpdates } from '../../../utils/test-utils';
 
 const preview: ImgSingleProp = {
   type: 'web',

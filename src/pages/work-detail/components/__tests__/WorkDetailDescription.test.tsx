@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-
-import WorkDetailDescription from '../WorkDetailDescription';
-import picture from '../../../../assets/background.jpg';
+import {
+  render,
+  renderIgnoringGsapWarning,
+  screen,
+} from '../../../../utils/test-utils';
 import { ImgSingleProp } from '../../../../interface';
+import picture from '../../../../assets/background.jpg';
+import WorkDetailDescription from '../WorkDetailDescription';
 
 const preview: ImgSingleProp = {
   type: 'mobile',
@@ -18,7 +21,7 @@ it('returns null', () => {
 });
 
 test('work detail description', () => {
-  render(
+  renderIgnoringGsapWarning(
     <WorkDetailDescription
       work={
         {

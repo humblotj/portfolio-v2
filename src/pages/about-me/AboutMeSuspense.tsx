@@ -24,7 +24,7 @@ const AboutMeSuspense: React.FC<{}> = () => {
 
   return (
     <Suspense fallback={<div />}>
-      <DeferredComponent />
+      {isAboutModalOpen && <DeferredComponent />}
     </Suspense>
   );
 };

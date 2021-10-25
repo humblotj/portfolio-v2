@@ -1,6 +1,9 @@
 import { render as rtlRender } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { ReactElement } from 'react';
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 import { reducer, RootState } from '../store/store';
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
@@ -52,5 +55,15 @@ export const renderIgnoringUnstableFlushDiscreteUpdates = (
     expect.any(String),
   );
   console.error = originalError;
+  return view;
+};
+
+export const renderIgnoringGsapWarning = (component: React.ReactElement) => {
+  const originalWarn = console.warn;
+  const error = jest.fn();
+  console.warn = error;
+  const view = render(component);
+  expect(error).toHaveBeenCalled();
+  console.warn = originalWarn;
   return view;
 };

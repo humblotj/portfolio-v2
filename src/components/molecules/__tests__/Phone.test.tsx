@@ -1,13 +1,13 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
+import {
+  render,
+  screen,
+  waitFor,
+  renderIgnoringUnstableFlushDiscreteUpdates,
+} from '../../../utils/test-utils';
 import { ImgSingleProp } from '../../../interface';
 import Phone from '../Phone';
 import picture from '../../../assets/background.jpg';
 import videoTest from '../../../assets/video-test.mp4';
-import { renderIgnoringUnstableFlushDiscreteUpdates } from '../../../utils/test-utils';
 
 const preview: ImgSingleProp = {
   type: 'mobile',

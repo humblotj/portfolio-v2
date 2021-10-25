@@ -108,15 +108,19 @@ const Skill: React.FC<SkillProp> = memo(({ title, skills }) => (
 
 interface SkillsProp {
   closeContactModal: () => void;
+  aboutAnimationDone: boolean;
 }
-const Skills: React.FC<SkillsProp> = ({ closeContactModal }) => {
+const Skills: React.FC<SkillsProp> = ({
+  closeContactModal,
+  aboutAnimationDone,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const { animateReveal } = useAnimation();
 
   useEffect(() => {
-    const element = ref.current!;
+    if (aboutAnimationDone) {
+      const element = ref.current!;
 
-    setTimeout(() => {
       const reveal = element.querySelectorAll('.reveal');
       const skillsLists = element.querySelectorAll('ul');
 
@@ -139,12 +143,12 @@ const Skills: React.FC<SkillsProp> = ({ closeContactModal }) => {
           '<0.2',
         );
       }
-    }, 2200);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [aboutAnimationDone]);
 
   return (
-    <div ref={ref} className="skills">
+    <div ref={ref} className="skills" data-testid="skills">
       <CloseButton onClick={closeContactModal} />
       <h2>Skills</h2>
       <div className="skills-content">

@@ -1,7 +1,6 @@
-import { screen, render } from '@testing-library/react';
-
-import picture from '../../../../assets/background.jpg';
+import { screen, render } from '../../../../utils/test-utils';
 import { ImgProp } from '../../../../interface';
+import picture from '../../../../assets/background.jpg';
 import WorkPreviewCarousel from '../WorkPreviewCarousel';
 
 const previews: ImgProp = {
@@ -9,7 +8,12 @@ const previews: ImgProp = {
   url: picture,
   height: 2416,
   width: 2416,
-  urls: [{ 2416: picture }],
+  urls: [
+    { 2416: picture },
+    { 2416: picture },
+    { 2416: picture },
+    { 2416: picture },
+  ],
 };
 
 test('web carousel', () => {
@@ -27,7 +31,7 @@ test('web carousel', () => {
   expect(screen.getByRole('img')).toBeInTheDocument();
 });
 
-test('web carousel', () => {
+test('phone carousel', () => {
   render(
     <WorkPreviewCarousel
       work={
@@ -39,5 +43,26 @@ test('web carousel', () => {
     />,
   );
 
-  expect(screen.getByAltText('mockup')).toBeInTheDocument();
+  expect(screen.queryAllByAltText('mockup')).toHaveLength(4);
+});
+
+test('phone carousel', () => {
+  Object.defineProperty(window, 'innerWidth', {
+    writable: true,
+    configurable: true,
+    value: 500,
+  });
+
+  render(
+    <WorkPreviewCarousel
+      work={
+        {
+          name: 'jrello',
+          previews: { ...previews, type: 'mobile' },
+        } as any
+      }
+    />,
+  );
+
+  expect(screen.queryAllByAltText('mockup')).toHaveLength(4);
 });

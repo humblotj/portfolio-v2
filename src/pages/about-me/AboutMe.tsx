@@ -16,6 +16,7 @@ const AboutMe: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const [width] = useSize();
   const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
+  const [aboutAnimationDone, setAboutAnimationDone] = useState(false);
 
   const closeContactModal = useCallback(
     () => dispatch(onToggleAboutModal(false)),
@@ -54,21 +55,23 @@ const AboutMe: React.FC<{}> = () => {
   }, [contentRef, width]);
 
   return (
-    <>
-      {isAboutModalOpen && (
-        <Modal
-          overlayClassName="modal-overlay"
-          className="modal-content"
-          isOpen={isAboutModalOpen}
-          contentRef={(node) => {
-            setContentRef(node);
-          }}
-        >
-          <About closeContactModal={closeContactModal} />
-          <Skills closeContactModal={closeContactModal} />
-        </Modal>
-      )}
-    </>
+    <Modal
+      overlayClassName="modal-overlay"
+      className="modal-content"
+      isOpen={isAboutModalOpen}
+      contentRef={(node) => {
+        setContentRef(node);
+      }}
+    >
+      <About
+        closeContactModal={closeContactModal}
+        setAboutAnimationDone={setAboutAnimationDone}
+      />
+      <Skills
+        closeContactModal={closeContactModal}
+        aboutAnimationDone={aboutAnimationDone}
+      />
+    </Modal>
   );
 };
 

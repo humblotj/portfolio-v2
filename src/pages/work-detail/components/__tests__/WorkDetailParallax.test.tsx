@@ -1,11 +1,7 @@
-import { screen, render, waitFor } from '@testing-library/react';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-import WorkDetailParallax from '../WorkDetailParallax';
-import picture from '../../../../assets/background.jpg';
+import { screen, render, waitFor } from '../../../../utils/test-utils';
 import { ImgSingleProp } from '../../../../interface';
+import picture from '../../../../assets/background.jpg';
+import WorkDetailParallax from '../WorkDetailParallax';
 
 const preview: ImgSingleProp = {
   type: 'mobile',

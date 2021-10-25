@@ -8,9 +8,13 @@ import useAnimation from '../../../hooks/useAnimation';
 
 interface Props {
   closeContactModal: () => void;
+  setAboutAnimationDone: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const About: React.FC<Props> = ({ closeContactModal }) => {
+const About: React.FC<Props> = ({
+  closeContactModal,
+  setAboutAnimationDone,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const { animateReveal } = useAnimation();
 
@@ -19,15 +23,18 @@ const About: React.FC<Props> = ({ closeContactModal }) => {
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      animateReveal(reveal[i], {
+      const tl = animateReveal(reveal[i], {
         delay: 0.7 + i * 0.2,
       });
+      if (i === reveal.length - 1) {
+        tl.call(() => setAboutAnimationDone(true), undefined, '<');
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div ref={ref} className="about">
+    <div ref={ref} className="about" data-testid="about">
       <CloseButton onClick={closeContactModal} />
       <h2>About</h2>
       <div className="about-info">

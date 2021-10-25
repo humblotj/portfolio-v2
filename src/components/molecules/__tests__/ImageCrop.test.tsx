@@ -1,9 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-import { renderIgnoringUnstableFlushDiscreteUpdates } from '../../../utils/test-utils';
+import {
+  render,
+  screen,
+  renderIgnoringUnstableFlushDiscreteUpdates,
+} from '../../../utils/test-utils';
 import { ImgSingleProp } from '../../../interface';
 import ImageCrop from '../ImageCrop';
 import picture from '../../../assets/background.jpg';

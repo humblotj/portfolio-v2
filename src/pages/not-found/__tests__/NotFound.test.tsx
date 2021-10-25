@@ -1,9 +1,11 @@
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+
+import { renderIgnoringGsapWarning } from '../../../utils/test-utils';
 import NotFound from '../NotFound';
 
 test('Not Found', () => {
-  render(
+  renderIgnoringGsapWarning(
     <MemoryRouter>
       <NotFound />
     </MemoryRouter>,
