@@ -62,7 +62,8 @@ it('plays video', async () => {
   const { rerender } = renderIgnoringUnstableFlushDiscreteUpdates(
     <Laptop preview={previewVideo} startAnimation={false} />,
   );
-  rerender(<Laptop preview={previewVideo} startAnimation />);
+  rerender(<Laptop preview={previewVideo} startAnimation={true} />);
+  rerender(<Laptop preview={previewVideo} startAnimation={true} />);
   await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 3000 });
   play.mockRestore();
 });

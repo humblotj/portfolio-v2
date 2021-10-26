@@ -31,10 +31,18 @@ function render(
     store: undefined,
   },
 ) {
+  const originalWarn = console.warn;
+  const warn = jest.fn();
+  console.warn = warn;
+
   function Wrapper({ children }: { children: ReactElement }) {
     return <Provider store={store}>{children}</Provider>;
   }
-  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
+
+  const view = rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
+  console.warn = originalWarn;
+
+  return view;
 }
 
 // re-export everything
@@ -48,7 +56,7 @@ export const renderIgnoringUnstableFlushDiscreteUpdates = (
   const originalError = console.error;
   const error = jest.fn();
   console.error = error;
-  const view = render(component);
+  const view = rtlRender(component);
   expect(error).toHaveBeenCalledTimes(1);
   expect(error).toHaveBeenCalledWith(
     'Warning: unstable_flushDiscreteUpdates: Cannot flush updates when React is already rendering.%s',
@@ -60,10 +68,10 @@ export const renderIgnoringUnstableFlushDiscreteUpdates = (
 
 export const renderIgnoringGsapWarning = (component: React.ReactElement) => {
   const originalWarn = console.warn;
-  const error = jest.fn();
-  console.warn = error;
-  const view = render(component);
-  expect(error).toHaveBeenCalled();
+  const warn = jest.fn();
+  console.warn = warn;
+  const view = rtlRender(component);
+  expect(warn).toHaveBeenCalled();
   console.warn = originalWarn;
   return view;
 };

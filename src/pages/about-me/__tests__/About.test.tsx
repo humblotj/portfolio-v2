@@ -12,6 +12,6 @@ it('reveals animation', async () => {
   await waitFor(
     () =>
       expect(screen.getByText('Seoul, South Korea')).toHaveStyle('opacity:1'),
-    { timeout: 2000 },
+    { timeout: 3000 },
   );
 });

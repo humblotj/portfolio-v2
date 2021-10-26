@@ -4,21 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import './WorkDetail.scss';
 import WorkDetailDescription from './components/WorkDetailDescription';
 import WorkPreviewCarousel from './components/WorkPreviewCarousel';
-import Button from '../../components/atoms/Button';
 import BackArrow from '../../components/atoms/BackArrow';
 import Strokes from '../../components/molecules/Strokes';
-import FakeLink from '../../components/atoms/FakeLink';
+import WorkDetailFooter from './components/WorkDetailFooter';
 import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
 import useAnimation from '../../hooks/useAnimation';
-import { ReactComponent as PlayStoreIcon } from '../../assets/icons/playstore.svg';
-import { ReactComponent as AppStoreIcon } from '../../assets/icons/appstore.svg';
-import WorkDetailFooter from './components/WorkDetailFooter';
-
-const types = {
-  ios: 'Apple Store',
-  android: 'Play Store',
-  web: 'Visit site',
-};
+import WorkDetailLinks from './components/WorkDetailLinks';
 
 const WorkDetail = () => {
   const dispatch = useDispatch();
@@ -39,59 +30,13 @@ const WorkDetail = () => {
     return null;
   }
 
-  const goTo = (url: string) => window.open(url, '_blank');
-
   return (
     <>
       <section className="work-detail-sec">
         <Strokes />
         <BackArrow>Turn Back Home</BackArrow>
         <WorkDetailDescription work={work} />
-        <div className="work-links">
-          {!!Object.keys(work.links || {}).length && (
-            <>
-              {(work.links.android || work.links.ios) && (
-                <div>
-                  {work.links.ios && (
-                    <FakeLink onClick={() => goTo(work.links.ios as string)}>
-                      <AppStoreIcon />
-                    </FakeLink>
-                  )}
-                  {work.links.android && (
-                    <FakeLink
-                      onClick={() => goTo(work.links.android as string)}
-                    >
-                      <PlayStoreIcon />
-                    </FakeLink>
-                  )}
-                </div>
-              )}
-              {work.links.web && (
-                <div>
-                  <Button
-                    key={work.links.web}
-                    onClick={() => goTo(work.links.web as string)}
-                  >
-                    {types.web}
-                  </Button>
-                  {work.repoUrl && (
-                    <Button
-                      color="secondary"
-                      onClick={() => goTo(work.repoUrl || '')}
-                    >
-                      View Code
-                    </Button>
-                  )}
-                </div>
-              )}
-            </>
-          )}
-          {work.repoUrl && !work.links?.web && (
-            <Button color="secondary" onClick={() => goTo(work.repoUrl || '')}>
-              View Code
-            </Button>
-          )}
-        </div>
+        <WorkDetailLinks work={work} />
         <WorkPreviewCarousel work={work} />
       </section>
       <WorkDetailFooter work={work} />

@@ -54,7 +54,7 @@ const HomeBackground: React.FC<{}> = () => {
 
   return (
     <div ref={ref} className="home-background">
-      <div className="abstract-background" />
+      <div className="abstract-background" data-testid="abstract-background" />
       <div className="overlay" />
     </div>
   );

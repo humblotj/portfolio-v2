@@ -58,6 +58,7 @@ it('plays video', async () => {
     <Phone preview={previewVideo} startAnimation={false} />,
   );
   rerender(<Phone preview={previewVideo} startAnimation />);
+  rerender(<Phone preview={previewVideo} startAnimation />);
   await waitFor(() => expect(play).toHaveBeenCalled(), { timeout: 3000 });
   play.mockRestore();
 });
