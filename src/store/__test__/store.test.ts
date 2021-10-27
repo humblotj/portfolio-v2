@@ -78,7 +78,7 @@ it('sets work details', () => {
 const works: WorkProps[] = [
   {
     isPersonal: true,
-    name: 'name',
+    name: 'name1',
     description: 'description',
     techs: ['React', 'Angular'],
     preview: {
@@ -92,7 +92,7 @@ const works: WorkProps[] = [
   },
   {
     isPersonal: true,
-    name: 'name',
+    name: 'name2',
     description: 'description',
     techs: ['React', 'Angular'],
     preview: {

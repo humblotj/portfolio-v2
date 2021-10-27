@@ -1,8 +1,9 @@
+import userEvent from '@testing-library/user-event';
+
 import { render, screen } from '../../../utils/test-utils';
 import { initialState } from '../../../store/store';
 import WorkDetail from '../WorkDetail';
 import WorkDetailLinks from '../components/WorkDetailLinks';
-import userEvent from '@testing-library/user-event';
 
 const work = {
   repoUrl: 'https://github.com',
@@ -12,6 +13,8 @@ const work = {
     android: 'https://github.com',
   },
 };
+
+window.open = jest.fn();
 
 it('renders null', () => {
   const { container } = render(<WorkDetail />, {
@@ -34,7 +37,6 @@ test('renders links', () => {
 });
 
 test('renders links', () => {
-  window.open = jest.fn();
   render(<WorkDetailLinks work={{ ...work, links: {} } as any} />);
 
   expect(screen.queryByTestId('ios')).not.toBeInTheDocument();

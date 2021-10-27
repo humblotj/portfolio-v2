@@ -18,6 +18,7 @@ import lazyWithRetry from './utils/lazyWithRetry';
 
 gsap.registerPlugin(ScrollTrigger);
 
+console.log(process.env.REACT_APP_API_KEY);
 if (!process.env.REACT_APP_API_KEY) {
   alert('Firebase key missing');
 }
@@ -25,10 +26,11 @@ const firebaseConfig: FirebaseOptions = JSON.parse(
   process.env.REACT_APP_API_KEY || '',
 );
 initializeApp(firebaseConfig);
+// console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV !== 'development') {
   getAnalytics();
 }
-export const db = getFirestore();
+getFirestore();
 
 const SideLeft = lazyWithRetry(() => import('./components/organisms/SideLeft'));
 const Header = lazyWithRetry(() => import('./components/organisms/Header'));
