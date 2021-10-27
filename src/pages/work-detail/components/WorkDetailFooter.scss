@@ -19,22 +19,15 @@
     }
 
     p {
-      margin: 90px;
+      position: relative;
       font-size: 12px;
-
-      &:after {
-        position: absolute;
-        content: '';
-        width: 60px;
-        height: 60px;
-        border-radius: 100%;
-        border: 1px solid;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-      }
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      border: 1px solid;
+      margin: 40px;
+      text-align: center;
+      line-height: 60px;
     }
 
     a {
@@ -132,13 +125,12 @@
           height: 30px;
         }
       }
-      p {
-        margin: 60px;
 
-        &:after {
-          width: 55px;
-          height: 55px;
-        }
+      p {
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        margin: 30px;
       }
     }
   }
@@ -153,24 +145,18 @@
       flex-direction: column;
       padding: 50px 0;
 
+      div {
+        flex: initial;
+      }
+
       a {
         text-align: center !important;
-        flex: 1;
+        flex: initial;
 
         &:after {
           content: none;
         }
       }
-
-      p {
-        margin: 40px;
-      }
     }
   }
 }
-
-// @media only screen and (max-width: 576px) {
-//   .project-controls {
-//     padding: 40px;
-//   }
-// }
