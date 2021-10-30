@@ -59,7 +59,7 @@ const useAnimation = () => {
             duration: 0.3,
             ease: 'power4.out',
           },
-          mask ? '>' : 1.2 + (delay || 0),
+          mask ? '>' : 1.2 + delay!,
         );
       }
 

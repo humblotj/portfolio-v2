@@ -46,7 +46,7 @@ const useSuspenseAnimation = (
           new Promise((resolve) => setTimeout(resolve, isInit ? 700 : 1000)),
         ]).then(([imp, query, _]) => {
           if (fetchData) {
-            setData(query);
+            setData(query as any);
           }
           dispatch(onSetLoading(false));
           setTimeout(() => state.deferred.resolve(), 300);

@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { MemoryRouter } from 'react-router-dom';
 import { getDocs } from 'firebase/firestore/lite';
 import { getAnalytics } from 'firebase/analytics';
 
-import { render, screen } from './utils/test-utils';
+import { render, screen, waitFor } from './utils/test-utils';
 import { WorkProps } from './interface';
-import App from './App';
+import userEvent from '@testing-library/user-event';
 
 const works: WorkProps[] = [
   {
@@ -69,6 +72,8 @@ describe('app test', () => {
       },
     });
 
+    window.scrollTo = jest.fn();
+
     mockedGetDocs.mockImplementation(() => [
       {
         id: 1,
@@ -81,12 +86,104 @@ describe('app test', () => {
     ]);
   });
 
-  it('renders contact', async () => {
+  const OLD_ENV = process.env;
+
+  beforeEach(() => {
+    process.env = { ...OLD_ENV };
+  });
+
+  afterAll(() => {
+    process.env = OLD_ENV;
+  });
+
+  it('alerts', () => {
+    jest.isolateModules(() => {
+      jest.spyOn(window, 'alert').mockImplementation(() => {});
+      Object.assign(process.env, {
+        REACT_APP_API_KEY: '',
+      });
+      const App = require('./App').default;
+      render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(window.alert).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it('doesnt alert', () => {
+    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    jest.isolateModules(() => {
+      const App = require('./App').default;
+      render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(window.alert).not.toHaveBeenCalled();
+      expect(getAnalytics).toHaveBeenCalled();
+    });
+  });
+
+  it('doesnt call getanalytics', () => {
+    jest.isolateModules(() => {
+      Object.assign(process.env, {
+        NODE_ENV: 'development',
+      });
+      const App = require('./App').default;
+      render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(getAnalytics).not.toHaveBeenCalled();
+    });
+  });
+
+  it('blinks', async () => {
+    let App: any;
+    Object.assign(process.env, {
+      NODE_ENV: 'development',
+    });
+    jest.isolateModules(() => {
+      App = require('./App').default;
+    });
     render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
-    await screen.findByText('Contact', undefined, { timeout: 3000 });
+    await waitFor(
+      () =>
+        expect(screen.getByLabelText('burger-menu')).toHaveStyle('opacity: 1'),
+      { timeout: 10000 },
+    );
+  });
+
+  it('opens about modal', async () => {
+    let App: any;
+    Object.defineProperty(window, 'innerWidth', {
+      writable: true,
+      configurable: true,
+      value: 500,
+    });
+    Object.assign(process.env, {
+      NODE_ENV: 'development',
+    });
+    jest.isolateModules(() => {
+      App = require('./App').default;
+    });
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    const aboutMeButton = await screen.findByText('About me', undefined, {
+      timeout: 10000,
+    });
+    userEvent.click(aboutMeButton);
+    expect(document.body).toHaveStyle('overflow: hidden;');
+    await screen.findByText('Proficient in:', undefined, { timeout: 2000 });
   });
 });

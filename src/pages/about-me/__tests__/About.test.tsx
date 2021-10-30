@@ -7,7 +7,7 @@ it('reveals animation', async () => {
   );
   await waitFor(
     () => expect(screen.getByRole('img')).toHaveStyle('opacity:1'),
-    { timeout: 2000 },
+    { timeout: 3000 },
   );
   await waitFor(
     () =>

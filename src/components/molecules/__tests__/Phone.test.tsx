@@ -34,7 +34,9 @@ it('is opened', () => {
 it('starts animation', async () => {
   render(<Phone preview={preview} startAnimation />);
   expect(screen.getByTestId('overlay')).toBeVisible();
-  await waitFor(() => expect(screen.getByTestId('overlay')).not.toBeVisible());
+  await waitFor(() => expect(screen.getByTestId('overlay')).not.toBeVisible(), {
+    timeout: 3000,
+  });
 });
 
 it('plays video', async () => {

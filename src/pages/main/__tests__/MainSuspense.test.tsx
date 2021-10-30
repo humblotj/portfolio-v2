@@ -5,6 +5,7 @@ import { getDocs } from 'firebase/firestore/lite';
 import { render, screen } from '../../../utils/test-utils';
 import { WorkProps } from '../../../interface';
 import MainSuspense from '../MainSuspense';
+import { initialState } from '../../../store/store';
 
 const works: WorkProps[] = [
   {
@@ -65,6 +66,7 @@ it('renders links', async () => {
         <MainSuspense />
       </Suspense>
     </MemoryRouter>,
+    { initialState: { ...initialState, isInit: true } },
   );
   await screen.findByText('name1', undefined, { timeout: 3000 });
   await screen.findByText('name2', undefined, { timeout: 3000 });

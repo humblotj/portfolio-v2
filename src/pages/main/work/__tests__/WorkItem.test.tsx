@@ -25,11 +25,13 @@ test('is visible', async () => {
       <WorkItem index={1} work={work} id="test" />
     </MemoryRouter>,
   );
-  await waitFor(() =>
-    expect(screen.getByText('name')).toHaveStyle('opacity:1'),
+  await waitFor(
+    () => expect(screen.getByText('name')).toHaveStyle('opacity:1'),
+    { timeout: 2000 },
   );
-  await waitFor(() =>
-    expect(screen.getByText('description')).toHaveStyle('opacity:1'),
+  await waitFor(
+    () => expect(screen.getByText('description')).toHaveStyle('opacity:1'),
+    { timeout: 2000 },
   );
 });
 

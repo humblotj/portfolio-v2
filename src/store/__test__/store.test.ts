@@ -138,6 +138,13 @@ it('should select works', () => {
   expect(JSON.stringify(result)).toBe(JSON.stringify([works[1], works[0]]));
 });
 
+it('should select works', () => {
+  const result = selectWorksSorted({
+    store: { ...initialState, works: [works[1], works[0]] },
+  });
+  expect(JSON.stringify(result)).toBe(JSON.stringify([works[1], works[0]]));
+});
+
 it('should select worksDetails', () => {
   const result = selectWorkDetails(mockStore());
   expect(result).toBe(workDetails);

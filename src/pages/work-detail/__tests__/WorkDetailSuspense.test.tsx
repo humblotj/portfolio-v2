@@ -54,10 +54,10 @@ it('renders links', async () => {
       </Suspense>
     </MemoryRouter>,
   );
-  await screen.findByTestId('ios', undefined, { timeout: 3000 });
-  await screen.findByTestId('android', undefined, { timeout: 3000 });
-  await screen.findByText('Visit Site', undefined, { timeout: 3000 });
-  await screen.findByText('View Code', undefined, { timeout: 3000 });
+  await screen.findByTestId('ios', undefined, { timeout: 4000 });
+  await screen.findByTestId('android', undefined, { timeout: 4000 });
+  await screen.findByText('Visit Site', undefined, { timeout: 4000 });
+  await screen.findByText('View Code', undefined, { timeout: 4000 });
 });
 
 test('data doesnt exist', async () => {

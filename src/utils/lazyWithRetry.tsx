@@ -8,7 +8,6 @@ const lazyWithRetry = (componentImport: () => Promise<any>) =>
 
     try {
       const component = await componentImport();
-
       window.localStorage.setItem('page-has-been-force-refreshed', 'false');
 
       return component;

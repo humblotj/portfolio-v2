@@ -65,13 +65,3 @@ export const renderIgnoringUnstableFlushDiscreteUpdates = (
   console.error = originalError;
   return view;
 };
-
-export const renderIgnoringGsapWarning = (component: React.ReactElement) => {
-  const originalWarn = console.warn;
-  const warn = jest.fn();
-  console.warn = warn;
-  const view = rtlRender(component);
-  expect(warn).toHaveBeenCalled();
-  console.warn = originalWarn;
-  return view;
-};

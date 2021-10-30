@@ -1,8 +1,4 @@
-import {
-  render,
-  renderIgnoringGsapWarning,
-  screen,
-} from '../../../utils/test-utils';
+import { render, screen } from '../../../utils/test-utils';
 import { ImgSingleProp } from '../../../interface';
 import picture from '../../../assets/background.jpg';
 import WorkDetailDescription from '../components/WorkDetailDescription';
@@ -21,7 +17,7 @@ it('returns null', () => {
 });
 
 test('work detail description', () => {
-  renderIgnoringGsapWarning(
+  render(
     <WorkDetailDescription
       work={
         {

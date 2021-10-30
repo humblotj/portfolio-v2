@@ -7,12 +7,9 @@ const useSize = (ref?: RefObject<HTMLElement>) => {
   );
 
   const handleResize = useCallback(
-    (entries?: ResizeObserverEntry[]) => {
+    (entries: ResizeObserverEntry[]) => {
       if (!ref?.current) {
         setSize([window.innerWidth, window.innerHeight]);
-      }
-
-      if (!Array.isArray(entries)) {
         return;
       }
 
