@@ -73,37 +73,31 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
 
   return (
     <li ref={ref} className="work-item">
-      <Link to={`work/${id}`}>
-        <div className="work-item-content">
-          <span className="work-tag">
-            {isPersonal ? 'Personal Work' : 'Company Work'}
-          </span>
-          <div className="work-item-title">
-            <h3>{name}</h3>
-            <p>{description}</p>
-          </div>
-          <div
-            className={cx('work-preview', {
-              'is-mobile': preview.type === 'mobile',
-            })}
-          >
-            <ImageWrap preview={preview as any} noAnimation lazyload />
-          </div>
-          <ul>
-            {techs.map((tech) => (
-              <li key={tech}>
-                <Suspense fallback={<span />}>
-                  <TechIcon name={tech} />
-                </Suspense>
-              </li>
-            ))}
-          </ul>
-          <div className="work-item-mask" aria-hidden />
+      <Link to={`work/${id}`} className="work-item-content">
+        <span className="work-tag">
+          {isPersonal ? 'Personal Work' : 'Company Work'}
+        </span>
+        <div className="work-item-title">
+          <h3>{name}</h3>
+          <p>{description}</p>
         </div>
-        <div className="learn-more">
-          <p>Learn more</p>
-          <ArrowRight />
+        <div
+          className={cx('work-preview', {
+            'is-mobile': preview.type === 'mobile',
+          })}
+        >
+          <ImageWrap preview={preview as any} noAnimation lazyload />
         </div>
+        <ul>
+          {techs.map((tech) => (
+            <li key={tech}>
+              <Suspense fallback={<span />}>
+                <TechIcon name={tech} />
+              </Suspense>
+            </li>
+          ))}
+        </ul>
+        <div className="work-item-mask" aria-hidden />
       </Link>
     </li>
   );

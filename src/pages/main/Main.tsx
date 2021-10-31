@@ -7,6 +7,7 @@ import Footer from '../../components/organisms/Footer';
 import Contact from './contact/Contact';
 import Home from './home/Home';
 import Work from './work/Work';
+// import AboutWork from './about-work/AboutWork';
 
 const Main: React.FC<{}> = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const Main: React.FC<{}> = () => {
   return (
     <>
       <Home workRef={workRef} />
+      {/* <AboutWork /> */}
       <Work ref={workRef} />
       <Contact ref={contactRef} />
       <Footer />
