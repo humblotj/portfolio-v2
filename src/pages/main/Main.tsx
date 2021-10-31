@@ -8,6 +8,7 @@ import Contact from './contact/Contact';
 import Home from './home/Home';
 import Work from './work/Work';
 // import AboutWork from './about-work/AboutWork';
+import Strokes from '../../components/molecules/Strokes';
 
 const Main: React.FC<{}> = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const Main: React.FC<{}> = () => {
 
   return (
     <>
+      <Strokes />
       <Home workRef={workRef} />
       {/* <AboutWork /> */}
       <Work ref={workRef} />

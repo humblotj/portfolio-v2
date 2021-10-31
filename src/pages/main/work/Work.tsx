@@ -30,7 +30,6 @@ const Work = forwardRef<HTMLElement>((_, ref) => {
 
   return (
     <section className="work-sec" ref={ref}>
-      <Strokes />
       <div className="work-content">
         <div ref={workHeaderRef} className="work-header">
           <span className="work-tag">Portfolio</span>

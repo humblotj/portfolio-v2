@@ -45,6 +45,9 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       },
       !isLargeWidth || !isOdd ? 0 : 0.3,
     );
+    tl.set(element.querySelector('.work-item-mask'), {
+      opacity: 0,
+    });
     tl.to(
       element.querySelectorAll('.work-item-title > *, .work-tag, ul'),
       {
