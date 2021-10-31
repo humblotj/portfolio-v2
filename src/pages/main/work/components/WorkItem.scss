@@ -3,16 +3,16 @@
   width: 50%;
   padding: 0 24px;
   margin-bottom: 48px;
-  transition: all 0.25s ease-in-out;
   pointer-events: none;
 
   .work-item-content {
     position: relative;
     display: inline-block;
-    width: 100%;
     background: #eff0f1;
     color: #191a1e;
     overflow: hidden;
+    width: 100%;
+    transition: all 0.25s ease-in-out;
 
     &:before {
       content: '';
@@ -87,6 +87,10 @@
         }
       }
     }
+
+    &:hover {
+      transform: translateY(-10px);
+    }
   }
 
   .work-item-mask {
@@ -96,10 +100,6 @@
     background: #0c9;
     top: 0;
     right: 0;
-  }
-
-  &:hover {
-    transform: translateY(-10px);
   }
 }
 
