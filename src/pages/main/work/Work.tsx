@@ -6,7 +6,6 @@ import './Work.scss';
 import { WorkProps } from '../../../interface';
 import { selectWorksSorted } from '../../../store/store';
 import WorkItem from './components/WorkItem';
-import Strokes from '../../../components/molecules/Strokes';
 
 const Work = forwardRef<HTMLElement>((_, ref) => {
   const works = useSelector(selectWorksSorted);

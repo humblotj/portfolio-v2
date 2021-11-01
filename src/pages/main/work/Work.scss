@@ -36,13 +36,9 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1150px) and (min-width: 1025px) {
   .work-sec {
-    .work-content {
-      .work-header {
-        padding: 0 50px 80px;
-      }
-    }
+    padding: 100px 170px 50px;
   }
 }
 
@@ -57,7 +53,7 @@
       }
 
       .work-header {
-        padding: 0 50px 90px 50px;
+        padding: 0 50px 30px 50px;
 
         h2 {
           font-size: 38px;
@@ -77,8 +73,6 @@
 
     .work-content {
       .work-header {
-        padding: 0 50px 90px 50px;
-
         h2 {
           font-size: 32px;
         }
