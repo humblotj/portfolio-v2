@@ -40,15 +40,21 @@ const Main: React.FC<{}> = () => {
     }
 
     const element = workRef.current!;
-    gsap.to(document.body.querySelectorAll('.line-menu'), {
-      backgroundColor: '#000',
-      scrollTrigger: {
-        trigger: element,
-        scrub: true,
-        start: `${window.innerHeight - 50} bottom`,
-        end: `+=50`,
+    gsap.fromTo(
+      document.body.querySelectorAll('.line-menu'),
+      {
+        backgroundColor: '#fff',
       },
-    });
+      {
+        backgroundColor: '#000',
+        scrollTrigger: {
+          trigger: element,
+          scrub: true,
+          start: `${window.innerHeight - 50} bottom`,
+          end: `+=50`,
+        },
+      },
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
