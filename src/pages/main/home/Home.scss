@@ -4,6 +4,26 @@
   color: #fff;
   z-index: 1;
 
+  > .sns {
+    position: absolute;
+    flex-direction: column;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+
+    a {
+      &:hover {
+        transform: translateY(-3px);
+      }
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
   .strokes {
     background-color: #23282a;
   }
@@ -34,6 +54,10 @@
 
 @media only screen and (max-width: 768px) {
   .home-sec {
+    > .sns {
+      display: none;
+    }
+
     .welcome {
       width: 315px;
       > h1 {

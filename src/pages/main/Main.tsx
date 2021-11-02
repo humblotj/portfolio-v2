@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { gsap } from 'gsap';
 
 import { onInit, selectIsInit } from '../../store/store';
 import Footer from '../../components/organisms/Footer';
@@ -37,6 +38,17 @@ const Main: React.FC<{}> = () => {
     if (!isInit) {
       dispatch(onInit());
     }
+
+    const element = workRef.current!;
+    gsap.to(document.body.querySelectorAll('.line-menu'), {
+      backgroundColor: '#000',
+      scrollTrigger: {
+        trigger: element,
+        scrub: true,
+        start: `${window.innerHeight - 50} bottom`,
+        end: `+=50`,
+      },
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

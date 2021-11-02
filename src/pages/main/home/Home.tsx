@@ -7,6 +7,7 @@ import Strokes from '../../../components/molecules/Strokes';
 import HomeBackground from './components/HomeBackground';
 import ScrollTo from '../../../components/molecules/ScrollTo';
 import TextBounce from '../../../components/molecules/TextBounce';
+import Sns from '../../../components/organisms/Sns';
 import { onToggleAboutModal } from '../../../store/store';
 import useAnimation from '../../../hooks/useAnimation';
 
@@ -49,6 +50,7 @@ const Home: React.FC<Props> = ({ workRef }) => {
 
   return (
     <section className="home-sec" ref={ref}>
+      <Sns blink />
       <Strokes secondary />
       <HomeBackground />
       <div className="welcome">

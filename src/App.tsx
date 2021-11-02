@@ -30,7 +30,6 @@ if (process.env.NODE_ENV !== 'development') {
 }
 getFirestore();
 
-const SideLeft = lazyWithRetry(() => import('./components/organisms/SideLeft'));
 const Header = lazyWithRetry(() => import('./components/organisms/Header'));
 const ScrollToTop = lazyWithRetry(
   () => import('./components/organisms/ScrollToTop'),
@@ -47,7 +46,6 @@ const App: React.FC<{}> = () => {
     <Suspense fallback={<Loading />}>
       <Header />
       <ScrollToTop />
-      <SideLeft />
       <Switch>
         <Route path="/work/:id" key={location.pathname}>
           <WorkDetailSuspense />

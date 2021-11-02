@@ -12,7 +12,13 @@
   transition: transform 350ms ease-out;
   border-radius: 50%;
   z-index: 101;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
+
+  &.work {
+    .line-menu {
+      background-color: #000 !important;
+    }
+  }
 
   &.open {
     transform: rotate(-45deg);
