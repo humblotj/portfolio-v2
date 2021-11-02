@@ -41,13 +41,10 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       element.querySelector('.work-item-mask'),
       {
         x: '100%',
-        duration: 0.5,
+        duration: 0.4,
       },
       !isLargeWidth || !isOdd ? 0 : 0.3,
     );
-    tl.set(element.querySelector('.work-item-mask'), {
-      opacity: 0,
-    });
     tl.to(
       element.querySelectorAll('.work-item-title > *, .work-tag, ul'),
       {
@@ -57,7 +54,7 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
         stagger: 0.2,
         ease: 'power3.out',
       },
-      '<0.3',
+      '<0.2',
     );
     tl.to(
       element.querySelector('.work-preview'),

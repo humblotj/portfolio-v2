@@ -46,7 +46,7 @@ const useAnimation = () => {
             {
               scaleX: 0,
               transformOrigin: '100% 50%',
-              duration: 0.3,
+              duration: 0.2,
             },
             '+=0.3',
           );

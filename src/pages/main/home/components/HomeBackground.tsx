@@ -19,14 +19,14 @@ const HomeBackground: React.FC<{}> = () => {
     });
     tl.to(element.querySelector('.overlay'), {
       scaleX: 1,
-      duration: 0.4 + 0.2 * 4,
+      duration: 0.4 + 0.2 * 3,
     });
     tl.to(
       element.querySelector('.overlay'),
       {
         scaleX: 0,
         transformOrigin: '0 50%',
-        duration: 0.3,
+        duration: 0.2,
       },
       '+=0.3',
     );
@@ -39,17 +39,6 @@ const HomeBackground: React.FC<{}> = () => {
       },
       '<0.15',
     );
-
-    gsap.to('.abstract-background', {
-      backgroundPosition: `90% ${window.innerHeight / 2}px`,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: element,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
   }, []);
 
   return (
