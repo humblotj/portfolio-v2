@@ -1,12 +1,11 @@
 .work-sec {
-  padding: 100px 120px 50px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 140px 20px;
   background-color: #fff;
   overflow: hidden;
 
   .work-content {
-    max-width: 1280px;
-    margin: 0 auto;
-
     .work-tag {
       display: inline-block;
       font-weight: bold;
@@ -17,7 +16,8 @@
     }
 
     .work-header {
-      padding: 0 50px 60px 50px;
+      padding: 0 24px;
+      margin-bottom: 60px;
 
       h2 {
         display: inline-block;
@@ -36,15 +36,9 @@
   }
 }
 
-@media only screen and (max-width: 1150px) and (min-width: 1025px) {
+@media only screen and (max-width: 900px) {
   .work-sec {
-    padding: 100px 170px 50px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .work-sec {
-    padding: 60px 40px 30px;
+    padding: 90px 50px;
 
     .work-content {
       .work-tag {
@@ -53,7 +47,7 @@
       }
 
       .work-header {
-        padding: 0 50px 30px 50px;
+        margin-bottom: 30px;
 
         h2 {
           font-size: 38px;
@@ -69,10 +63,12 @@
 
 @media only screen and (max-width: 576px) {
   .work-sec {
-    padding: 60px 25px 0;
+    padding: 90px 25px;
 
     .work-content {
       .work-header {
+        padding: 0 12px;
+
         h2 {
           font-size: 32px;
         }

@@ -8,7 +8,7 @@ import Footer from '../../components/organisms/Footer';
 import Contact from './contact/Contact';
 import Home from './home/Home';
 import Work from './work/Work';
-// import AboutWork from './about-work/AboutWork';
+// import Experience from './experience/Experience';
 import Strokes from '../../components/molecules/Strokes';
 
 const Main: React.FC<{}> = () => {
@@ -62,8 +62,8 @@ const Main: React.FC<{}> = () => {
     <>
       <Strokes />
       <Home workRef={workRef} />
-      {/* <AboutWork /> */}
       <Work ref={workRef} />
+      {/* <Experience /> */}
       <Contact ref={contactRef} />
       <Footer />
     </>

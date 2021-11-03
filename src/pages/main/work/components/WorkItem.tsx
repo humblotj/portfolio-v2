@@ -65,6 +65,9 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       },
       '<0.6',
     );
+    tl.set(element.querySelector('.work-item-mask'), {
+      opacity: 0,
+    });
     tl.set(element, {
       pointerEvents: 'auto',
     });

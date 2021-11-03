@@ -2,8 +2,11 @@
   display: inline-block;
   width: 50%;
   padding: 0 24px;
-  margin-bottom: 48px;
   pointer-events: none;
+
+  &:not(:last-child) {
+    margin-bottom: 48px;
+  }
 
   .work-item-content {
     position: relative;
@@ -99,7 +102,7 @@
   }
 }
 
-@media only screen and (max-width: 1200px) and (min-width: 1151px) {
+@media only screen and (max-width: 1024px) and (min-width: 900px) {
   .work-item {
     .work-item-content {
       .work-tag {
@@ -123,7 +126,7 @@
   }
 }
 
-@media only screen and (min-width: 1151px) {
+@media only screen and (min-width: 901px) {
   .work-item {
     .work-item-content {
       &:hover {
@@ -133,7 +136,7 @@
   }
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 900px) {
   .work-item {
     width: 100%;
   }
@@ -142,7 +145,10 @@
 @media only screen and (max-width: 576px) {
   .work-item {
     padding: 0 12px;
-    margin-bottom: 24px;
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
 
     .work-item-content {
       .work-tag {

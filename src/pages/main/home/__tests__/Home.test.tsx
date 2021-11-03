@@ -16,7 +16,7 @@ it('called scrollintoview', async () => {
       ).toHaveStyle('opacity:1'),
     { timeout: 3000 },
   );
-  const link = screen.getByRole('link');
-  userEvent.click(link);
+  const link = screen.getAllByRole('link');
+  userEvent.click(link[4]);
   expect(scrollIntoViewMock).toHaveBeenCalled();
 });
