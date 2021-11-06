@@ -13,43 +13,39 @@ const Work = forwardRef<HTMLElement>((_, ref) => {
 
   useEffect(() => {
     const element = workHeaderRef.current!;
-    const tl = gsap.timeline({
+
+    gsap.to(element, {
+      opacity: 1,
+      y: 0,
+      duration: 0.3,
       scrollTrigger: {
         trigger: element,
-      },
-      defaults: {
-        opacity: 0,
-        duration: 0.75,
+        start: `${(element.offsetHeight + window.innerHeight) * 0.1} bottom`,
       },
     });
-    tl.from(element.querySelector('h2'), { x: '300px' }, 0);
-    tl.from(element.querySelector('.divider'), { x: '-300px' }, 0.25);
-    tl.from(element.querySelector('.work-tag'), { x: '-100px' }, 0.5);
   }, []);
 
   return (
     <section className="work-sec" ref={ref}>
-      <div className="work-content">
-        <div ref={workHeaderRef} className="work-header">
-          <span className="work-tag">Portfolio</span>
-          <br />
-          <h2>My work:</h2>
-          <br />
-          <div className="divider" aria-hidden />
-        </div>
-        <ul>
-          {works.map((work: WorkProps, index: number) => (
-            <WorkItem
-              key={work.name}
-              id={work.id || ''}
-              work={work}
-              index={index}
-            />
-          ))}
-        </ul>
-      </div>
+      <h2 ref={workHeaderRef} className="heading">
+        A selection of
+        <br />
+        my projects
+      </h2>
+      <ul>
+        {works.map((work: WorkProps, index: number) => (
+          <WorkItem
+            key={work.name}
+            id={work.id || ''}
+            work={work}
+            index={index}
+          />
+        ))}
+      </ul>
     </section>
   );
 });
+
+Work.displayName = 'Work';
 
 export default Work;

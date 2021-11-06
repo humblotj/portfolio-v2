@@ -1,0 +1,17 @@
+h2.heading {
+  font-size: 48px;
+  color: #191a1e;
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  h2.heading {
+    font-size: 38px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  h2.heading {
+    font-size: 32px;
+  }
+}

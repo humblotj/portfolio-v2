@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 
+import './Main.scss';
 import { onInit, selectIsInit } from '../../store/store';
 import Footer from '../../components/organisms/Footer';
 import Contact from './contact/Contact';
@@ -10,6 +11,7 @@ import Home from './home/Home';
 import Work from './work/Work';
 import Experience from './experience/Experience';
 import Strokes from '../../components/molecules/Strokes';
+import Decks from './decks/Decks';
 
 const Main: React.FC<{}> = () => {
   const dispatch = useDispatch();
@@ -62,7 +64,8 @@ const Main: React.FC<{}> = () => {
     <>
       <Strokes />
       <Home workRef={workRef} />
-      <Work ref={workRef} />
+      <Decks ref={workRef} />
+      <Work />
       <Experience />
       <Contact ref={contactRef} />
       <Footer />

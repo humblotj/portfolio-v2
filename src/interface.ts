@@ -50,3 +50,8 @@ export interface IJob {
   order: number;
   logo: string;
 }
+
+export interface IDeck {
+  pictures: string[];
+  type: string;
+}

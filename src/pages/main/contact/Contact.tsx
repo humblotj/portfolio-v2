@@ -82,7 +82,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
       <ContactMask />
       <Strokes />
       <div className="contact-inner">
-        <h2>Contact</h2>
+        <h2 className="heading">Contact</h2>
         <div className="divider" aria-hidden />
         <div className="send-message">
           <p>Have a question or want to work together?</p>
