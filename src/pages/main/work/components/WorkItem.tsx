@@ -34,7 +34,7 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
         start: '35% bottom',
       },
     });
-    const isLargeWidth = width > 768;
+    const isLargeWidth = width > 900;
     const isOdd = index % 2 === 1;
 
     tl.to(
