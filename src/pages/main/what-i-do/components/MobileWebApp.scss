@@ -1,0 +1,18 @@
+.mobile-web-app {
+  display: inline-flex !important;
+  padding: 64px;
+  align-items: center;
+
+  > * {
+    width: 50%;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

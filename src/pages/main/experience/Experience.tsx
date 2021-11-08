@@ -19,22 +19,14 @@ const Experience = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [jobs, setJobs] = useState<IJob[]>([]);
 
-  const getStart = (start: number) => {
-    return `${start}% ${start}%`;
-  };
-
-  const getEnd = (end: number) => {
-    return `+=${end}`;
-  };
-
   const initAnimation = () => {
     const element = ref.current!;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: element,
         scrub: true,
-        start: getStart(0),
-        end: getEnd(380 * 3),
+        start: '0% 0%',
+        end: `+=${380 * 3}`,
       },
       defaults: {
         ease: 'linear',
@@ -71,17 +63,19 @@ const Experience = () => {
   };
 
   const fetchJobs = async () => {
+    const querySnapshot = await getDocs(
+      query(collection(getFirestore(), 'jobs'), orderBy('order', 'asc')),
+    );
+    const jobs: IJob[] = [];
+    querySnapshot.forEach((doc) => {
+      jobs.push({ ...(doc as QueryDocumentSnapshot<IJob>).data() });
+    });
+    setJobs(jobs);
+  };
+
+  const onInit = async () => {
     try {
-      const querySnapshot = await getDocs(
-        query(collection(getFirestore(), 'jobs'), orderBy('order', 'asc')),
-      );
-      const jobs: IJob[] = [];
-      querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-        jobs.push({ ...(doc as QueryDocumentSnapshot<IJob>).data() });
-      });
-      setJobs(jobs);
-      console.log(jobs);
+      await fetchJobs();
       initAnimation();
     } catch (error) {
       console.error(error);
@@ -89,7 +83,7 @@ const Experience = () => {
   };
 
   useEffect(() => {
-    fetchJobs();
+    onInit();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

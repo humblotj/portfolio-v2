@@ -12,6 +12,7 @@ import Work from './work/Work';
 import Experience from './experience/Experience';
 import Strokes from '../../components/molecules/Strokes';
 import Decks from './decks/Decks';
+import WhatIdo from './what-i-do/WhatIDo';
 
 const Main: React.FC<{}> = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const Main: React.FC<{}> = () => {
     <>
       <Strokes />
       <Home workRef={workRef} />
+      <WhatIdo />
       <Decks ref={workRef} />
       <Work />
       <Experience />
