@@ -28,7 +28,6 @@ const WorkDetailDescription = ({ work }: Props) => {
       for (let i = 0; i < reveal.length; i++) {
         const tl = animateReveal(reveal[i], {
           delay: j * 0.2,
-          trigger: descParts[j],
         });
 
         if (j === descParts.length - 1) {

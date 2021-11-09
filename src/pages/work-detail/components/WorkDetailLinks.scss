@@ -29,3 +29,13 @@
     }
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .work-links {
+    .btn.primary {
+      &:not(:last-child) {
+        margin-right: 12px;
+      }
+    }
+  }
+}
