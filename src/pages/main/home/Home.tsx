@@ -12,10 +12,10 @@ import { onToggleAboutModal } from '../../../store/store';
 import useAnimation from '../../../hooks/useAnimation';
 
 interface Props {
-  workRef: RefObject<HTMLElement>;
+  whatIDoRef: RefObject<HTMLElement>;
 }
 
-const Home: React.FC<Props> = ({ workRef }) => {
+const Home: React.FC<Props> = ({ whatIDoRef }) => {
   const ref = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
@@ -44,8 +44,8 @@ const Home: React.FC<Props> = ({ workRef }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const scrollToWork = () => {
-    workRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollDown = () => {
+    whatIDoRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -80,7 +80,7 @@ const Home: React.FC<Props> = ({ workRef }) => {
           <div className="reveal-mask" aria-hidden />
         </div>
       </div>
-      <ScrollTo onClick={scrollToWork}>
+      <ScrollTo onClick={scrollDown}>
         <div className="reveal">
           <span className="reveal-text">Selected works</span>
           <div className="reveal-mask" aria-hidden />

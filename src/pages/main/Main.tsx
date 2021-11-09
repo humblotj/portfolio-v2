@@ -68,7 +68,7 @@ const Main: React.FC<{}> = () => {
   return (
     <>
       <Strokes />
-      <Home workRef={workRef} />
+      <Home whatIDoRef={whatIDoRef} />
       <WhatIDo ref={whatIDoRef} />
       <Decks ref={workRef} />
       <Work />

@@ -97,7 +97,7 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
           </Link>
         </li>
         <li>
-          <Link to="/" state="contatc" onClick={onClose}>
+          <Link to="/" state="contact" onClick={onClose}>
             <span data-content="Contact" aria-hidden />
             Contact
           </Link>
