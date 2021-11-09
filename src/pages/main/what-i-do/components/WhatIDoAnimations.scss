@@ -1,0 +1,37 @@
+.what-i-do-animations {
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 45%;
+  flex: 1;
+  margin-bottom: 24px;
+  padding: 0 0 100px !important;
+
+  h3 {
+    padding: 64px;
+  }
+
+  .mockup {
+    width: 75%;
+    transform: translateX(40%);
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .what-i-do-animations {
+    padding: 0 0 56px !important;
+
+    h3 {
+      padding: 56px 38px 38px;
+    }
+  }
+}
+
+@media only screen and (max-width: 359px) {
+  .what-i-do-animations {
+    padding: 0 0 28px !important;
+
+    h3 {
+      padding: 28px 30px;
+    }
+  }
+}

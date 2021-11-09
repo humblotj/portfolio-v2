@@ -24,7 +24,7 @@
     p {
       color: #545465;
       font-size: 18px;
-      line-height: 36px;
+      line-height: 2;
     }
   }
 
@@ -68,6 +68,10 @@
     padding-top: 90px;
     .decks-text {
       width: 80%;
+
+      p {
+        font-size: 16px;
+      }
     }
   }
 }
@@ -76,6 +80,14 @@
   .decks-sec {
     .decks-text {
       width: 90%;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .decks-sec {
+    p {
+      font-size: 14px;
     }
   }
 }
@@ -109,6 +121,14 @@
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 359px) {
+  .decks-sec {
+    p {
+      font-size: 12px;
     }
   }
 }

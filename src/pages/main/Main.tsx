@@ -12,18 +12,22 @@ import Work from './work/Work';
 import Experience from './experience/Experience';
 import Strokes from '../../components/molecules/Strokes';
 import Decks from './decks/Decks';
-import WhatIdo from './what-i-do/WhatIDo';
+import WhatIDo from './what-i-do/WhatIDo';
 
 const Main: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const isInit = useSelector(selectIsInit);
   const location = useLocation();
+  const whatIDoRef = useRef<HTMLElement>(null);
   const workRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const scrollTo = () => {
       if (location.state && isInit) {
+        if (location.state === 'what-i-do') {
+          whatIDoRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
         if (location.state === 'work') {
           workRef.current?.scrollIntoView({ behavior: 'smooth' });
         }
@@ -42,7 +46,7 @@ const Main: React.FC<{}> = () => {
       dispatch(onInit());
     }
 
-    const element = workRef.current!;
+    const element = whatIDoRef.current!;
     gsap.fromTo(
       document.body.querySelectorAll('.line-menu'),
       {
@@ -65,7 +69,7 @@ const Main: React.FC<{}> = () => {
     <>
       <Strokes />
       <Home workRef={workRef} />
-      <WhatIdo />
+      <WhatIDo ref={whatIDoRef} />
       <Decks ref={workRef} />
       <Work />
       <Experience />
