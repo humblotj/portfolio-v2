@@ -82,7 +82,7 @@ const Home: React.FC<Props> = ({ whatIDoRef }) => {
       </div>
       <ScrollTo onClick={scrollDown}>
         <div className="reveal">
-          <span className="reveal-text">Selected works</span>
+          <span className="reveal-text">Scroll down</span>
           <div className="reveal-mask" aria-hidden />
         </div>
       </ScrollTo>
