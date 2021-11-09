@@ -1,0 +1,100 @@
+.what-i-do-sec {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 140px 20px;
+
+  h2 {
+    margin-bottom: 90px;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    display: inline-flex;
+    background-color: #eff0f1;
+    color: #191a1e;
+    overflow: hidden;
+    padding: 64px;
+
+    &:nth-child(2n) {
+      margin-right: 12px;
+    }
+
+    &:nth-child(2n + 1) {
+      margin-left: 12px;
+    }
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #545465;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .what-i-do-sec {
+    padding: 90px 50px;
+
+    h2 {
+      margin-bottom: 70px;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .what-i-do-sec {
+    padding: 90px 25px;
+
+    li {
+      padding: 56px 38px;
+    }
+
+    h3 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media only screen and (max-width: 359px) {
+  .what-i-do-sec {
+    li {
+      padding: 28px 30px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .what-i-do-sec {
+    li {
+      flex: auto;
+      width: 100%;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+}

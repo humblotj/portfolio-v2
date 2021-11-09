@@ -1,0 +1,59 @@
+.what-i-do-intro {
+  width: 100%;
+  align-items: center;
+  margin: 0 0 24px !important;
+  background-color: #eeeee5 !important;
+
+  > * {
+    width: 50%;
+  }
+
+  h3,
+  p {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  p {
+    max-width: 390px;
+    margin-top: 24px;
+    padding-right: 40px;
+  }
+
+  img {
+    height: auto;
+    opacity: 0;
+    transform: translateX(20%);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .what-i-do-intro {
+    flex-direction: column;
+
+    > * {
+      width: 100%;
+    }
+
+    p {
+      max-width: none;
+      padding-right: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .what-i-do-intro {
+    padding: 56px 38px;
+
+    p {
+      margin-top: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 359px) {
+  .what-i-do-intro {
+    padding: 28px 30px;
+  }
+}

@@ -1,0 +1,39 @@
+.what-i-do-performance {
+  flex-direction: column;
+  min-width: 45%;
+  flex: 1;
+  padding: 0 0 32px !important;
+  margin-bottom: 24px;
+  background-color: #ececec !important;
+
+  h3 {
+    padding: 64px 64px 32px;
+  }
+
+  img {
+    width: 80%;
+    transform: translateX(-10%);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .what-i-do-performance {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .what-i-do-performance {
+    h3 {
+      padding: 56px 38px 28px;
+    }
+  }
+}
+
+@media only screen and (max-width: 359px) {
+  .what-i-do-performance {
+    h3 {
+      padding: 28px 30px 24px;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { getDocs } from 'firebase/firestore/lite';
 import { getAnalytics } from 'firebase/analytics';
 
-import { render, screen, waitFor } from './utils/test-utils';
+import { render, screen, setWindowWidth, waitFor } from './utils/test-utils';
 import { WorkProps } from './interface';
 import userEvent from '@testing-library/user-event';
 
@@ -141,46 +141,26 @@ describe('app test', () => {
     });
   });
 
-  it('blinks', async () => {
-    let App: any;
-    Object.assign(process.env, {
-      NODE_ENV: 'development',
-    });
-    jest.isolateModules(() => {
-      App = require('./App').default;
-    });
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-    await waitFor(
-      () =>
-        expect(screen.getByLabelText('burger-menu')).toHaveStyle('opacity: 1'),
-      { timeout: 10000 },
-    );
-  });
-
   it('opens about modal', async () => {
     let App: any;
-    Object.defineProperty(window, 'innerWidth', {
-      writable: true,
-      configurable: true,
-      value: 500,
-    });
+
+    setWindowWidth(500);
+
     Object.assign(process.env, {
       NODE_ENV: 'development',
     });
+
     jest.isolateModules(() => {
       App = require('./App').default;
     });
+
     render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
     const aboutMeButton = await screen.findByText('About me', undefined, {
-      timeout: 10000,
+      timeout: 5000,
     });
     userEvent.click(aboutMeButton);
     expect(document.body).toHaveStyle('overflow: hidden;');

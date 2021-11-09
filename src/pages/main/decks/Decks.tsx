@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect, useRef, forwardRef, useState } from 'react';
 import { gsap } from 'gsap';
 import {
@@ -11,8 +9,10 @@ import {
 import cx from 'classnames';
 
 import './Decks.scss';
+import useSize from '../../../hooks/useSize';
 
 const Decks = forwardRef<HTMLElement>((_, ref) => {
+  const [width] = useSize();
   const decksTextRef = useRef<HTMLDivElement>(null);
   const decksWrapperRef = useRef<HTMLDivElement>(null);
   const [decks, setDecks] = useState<{ mobile: string[]; web: string[] }>({
@@ -89,25 +89,18 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
   };
 
   const fetchDecks = async () => {
-    try {
-      const querySnapshot = await getDocs(
-        collection(getFirestore(), 'decks-2'),
-      );
-      const decks: any = {};
-      querySnapshot.forEach((doc) => {
-        decks[doc.id] = [
-          ...(doc as QueryDocumentSnapshot<{ pictures: string[] }>).data()
-            .pictures,
-        ];
-      });
-      setDecks(decks);
-      initAnimation();
-    } catch (error) {
-      console.error(error);
-    }
+    const querySnapshot = await getDocs(collection(getFirestore(), 'decks-2'));
+    const decks: any = {};
+    querySnapshot.forEach((doc) => {
+      decks[doc.id] = [
+        ...(doc as QueryDocumentSnapshot<{ pictures: string[] }>).data()
+          .pictures,
+      ];
+    });
+    setDecks(decks);
   };
 
-  useEffect(() => {
+  const onInit = async () => {
     const decksTextElement = decksTextRef.current!;
 
     gsap.to(decksTextElement.querySelectorAll('p , h2'), {
@@ -121,11 +114,21 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
           (decksTextElement.offsetHeight + window.innerHeight) * 0.1
         } bottom`,
       },
+      delay: 0.3,
     });
 
-    fetchDecks();
+    try {
+      await fetchDecks();
+      initAnimation();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    onInit();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [width]);
 
   return (
     <section className="decks-sec" ref={ref}>
@@ -137,7 +140,7 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
         </p>
       </div>
       <div ref={decksWrapperRef} className="decks-wrapper">
-        {[...Array(11).keys()].map((i) => (
+        {[...Array(width > 479 ? 10 : 6).keys()].map((i) => (
           <div
             className={cx('decks-grid', { 'is-mobile': i % 2 === 0 })}
             key={i}
@@ -146,8 +149,8 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
               <img
                 className={
                   i % 2 === 0
-                    ? ((i * 3 + j) % decks.mobile.length) + ''
-                    : ((i * 5 + j) % decks.web.length) + ''
+                    ? `${(i * 3 + j) % decks.mobile.length}`
+                    : `${(i * 5 + j) % decks.web.length}`
                 }
                 key={j}
                 src={
