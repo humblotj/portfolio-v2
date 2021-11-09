@@ -1,6 +1,11 @@
 import userEvent from '@testing-library/user-event';
 import { initialState } from '../../../store/store';
-import { render, screen, waitFor } from '../../../utils/test-utils';
+import {
+  render,
+  screen,
+  setWindowWidth,
+  waitFor,
+} from '../../../utils/test-utils';
 import AboutMe from '../AboutMe';
 
 test('about me animation', async () => {
@@ -13,11 +18,7 @@ test('about me animation', async () => {
 });
 
 test('small width', async () => {
-  Object.defineProperty(window, 'innerWidth', {
-    writable: true,
-    configurable: true,
-    value: 500,
-  });
+  setWindowWidth(500);
 
   render(<AboutMe />, {
     initialState: { ...initialState, isAboutModalOpen: true },

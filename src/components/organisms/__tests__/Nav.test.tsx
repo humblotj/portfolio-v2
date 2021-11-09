@@ -2,7 +2,7 @@ import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import AboutMe from '../../../pages/about-me/AboutMe';
-import { render, screen } from '../../../utils/test-utils';
+import { render, screen, setWindowWidth } from '../../../utils/test-utils';
 import Nav from '../Nav';
 
 test('is open', async () => {
@@ -39,11 +39,7 @@ it('opens modal', async () => {
 });
 
 test('small width', async () => {
-  Object.defineProperty(window, 'innerWidth', {
-    writable: true,
-    configurable: true,
-    value: 500,
-  });
+  setWindowWidth(500);
 
   render(
     <MemoryRouter>
@@ -54,11 +50,7 @@ test('small width', async () => {
 });
 
 test('small width', async () => {
-  Object.defineProperty(window, 'innerWidth', {
-    writable: true,
-    configurable: true,
-    value: 500,
-  });
+  setWindowWidth(500);
 
   render(
     <MemoryRouter>

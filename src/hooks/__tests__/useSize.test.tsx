@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
+import { setWindowWidth } from '../../utils/test-utils';
 
 import useSize from '../useSize';
 
@@ -10,11 +11,7 @@ test('resize empty element', () => {
   const { result } = renderHook(() => useSize());
   expect(result.current).toStrictEqual([window.innerWidth, window.innerHeight]);
 
-  Object.defineProperty(window, 'innerWidth', {
-    writable: true,
-    configurable: true,
-    value: 500,
-  });
+  setWindowWidth(500);
   window.dispatchEvent(new Event('resize'));
 
   expect(result.current).toStrictEqual([500, window.innerHeight]);

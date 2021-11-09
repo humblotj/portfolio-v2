@@ -65,3 +65,11 @@ export const renderIgnoringUnstableFlushDiscreteUpdates = (
   console.error = originalError;
   return view;
 };
+
+export const setWindowWidth = (width: number) => {
+  Object.defineProperty(window, 'innerWidth', {
+    writable: true,
+    configurable: true,
+    value: width,
+  });
+};

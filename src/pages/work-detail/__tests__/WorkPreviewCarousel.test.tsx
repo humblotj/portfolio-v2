@@ -1,4 +1,4 @@
-import { screen, render } from '../../../utils/test-utils';
+import { screen, render, setWindowWidth } from '../../../utils/test-utils';
 import { ImgProp } from '../../../interface';
 import picture from '../../../assets/background.jpg';
 import WorkPreviewCarousel from '../components/WorkPreviewCarousel';
@@ -47,11 +47,7 @@ test('phone carousel', () => {
 });
 
 test('phone carousel', () => {
-  Object.defineProperty(window, 'innerWidth', {
-    writable: true,
-    configurable: true,
-    value: 500,
-  });
+  setWindowWidth(500);
 
   render(
     <WorkPreviewCarousel

@@ -1,9 +1,9 @@
-import React from 'react';
+import { gsap } from 'gsap';
+
 import { screen, render, waitFor } from '../../../utils/test-utils';
 import { ImgSingleProp } from '../../../interface';
 import picture from '../../../assets/background.jpg';
 import WorkDetailParallax from '../components/WorkDetailParallax';
-import { gsap } from 'gsap';
 
 const preview: ImgSingleProp = {
   type: 'mobile',

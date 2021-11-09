@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useEffect, useRef, forwardRef, useState } from 'react';
 import { gsap } from 'gsap';
 import {
@@ -116,6 +114,7 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
           (decksTextElement.offsetHeight + window.innerHeight) * 0.1
         } bottom`,
       },
+      delay: 0.3,
     });
 
     try {
@@ -150,8 +149,8 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
               <img
                 className={
                   i % 2 === 0
-                    ? ((i * 3 + j) % decks.mobile.length) + ''
-                    : ((i * 5 + j) % decks.web.length) + ''
+                    ? `${(i * 3 + j) % decks.mobile.length}`
+                    : `${(i * 5 + j) % decks.web.length}`
                 }
                 key={j}
                 src={
