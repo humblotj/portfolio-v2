@@ -16,7 +16,7 @@
     padding: 60px 0;
 
     h2 {
-      font-size: 48px;
+      color: #fff;
     }
 
     .divider {
@@ -45,24 +45,10 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .contact-sec {
-    .contact-inner {
-      h2 {
-        font-size: 38px;
-      }
-    }
-  }
-}
-
 @media only screen and (max-width: 576px) {
   .contact-sec {
     .contact-inner {
       padding: 60px 30px;
-
-      h2 {
-        font-size: 32px;
-      }
 
       .send-message {
         p {

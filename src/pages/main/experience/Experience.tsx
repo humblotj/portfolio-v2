@@ -98,7 +98,7 @@ const Experience = () => {
       <div className="sticky-wrap">
         <section className="experience-sec">
           <div className="experience-container">
-            <h2>My Work Experience:</h2>
+            <h2 className="heading">My Work Experience</h2>
             <ol>
               {jobs.map((job) => (
                 <Job {...job} key={job.companyName} />
