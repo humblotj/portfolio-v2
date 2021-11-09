@@ -85,19 +85,19 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
           </FakeLink>
         </li>
         <li>
-          <Link to={{ pathname: '/', state: 'what-i-do' }} onClick={onClose}>
+          <Link to="/" state="what-i-do" onClick={onClose}>
             <span data-content="What I do" aria-hidden />
             What I do
           </Link>
         </li>
         <li>
-          <Link to={{ pathname: '/', state: 'work' }} onClick={onClose}>
+          <Link to="/" state="work" onClick={onClose}>
             <span data-content="My work" aria-hidden />
             My work
           </Link>
         </li>
         <li>
-          <Link to={{ pathname: '/', state: 'contact' }} onClick={onClose}>
+          <Link to="/" state="contatc" onClick={onClose}>
             <span data-content="Contact" aria-hidden />
             Contact
           </Link>

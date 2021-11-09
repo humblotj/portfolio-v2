@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   doc,
   getDoc,
@@ -13,15 +13,15 @@ import { WorkDetailProps } from '../../interface';
 
 const WorkDetailSuspense = () => {
   const dispatch = useDispatch();
-  const { id }: { id: string } = useParams();
-  const history = useHistory();
+  const { id } = useParams();
+  const navigate = useNavigate();
   const component = useSuspenseAnimation(import('./WorkDetail'), {
-    fetchData: getDoc(doc(getFirestore(), 'project-details', id)),
+    fetchData: getDoc(doc(getFirestore(), 'project-details', id as string)),
     setData: (query: DocumentSnapshot<WorkDetailProps>) => {
       if (query.exists()) {
         dispatch(onSetWorkDetails(query.data()));
       } else {
-        history.goBack();
+        navigate(-1);
       }
     },
   });

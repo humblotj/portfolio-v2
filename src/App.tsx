@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import { initializeApp, FirebaseOptions } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
@@ -46,17 +46,15 @@ const App: React.FC<{}> = () => {
     <Suspense fallback={<Loading />}>
       <Header />
       <ScrollToTop />
-      <Switch>
-        <Route path="/work/:id" key={location.pathname}>
-          <WorkDetailSuspense />
-        </Route>
-        <Route path="/" exact>
-          <MainSuspense />
-        </Route>
-        <Route>
-          <NotFoundSuspense />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route
+          path="/work/:id"
+          key={location.pathname}
+          element={<WorkDetailSuspense />}
+        />
+        <Route path="/" element={<MainSuspense />} />
+        <Route element={<NotFoundSuspense />} />
+      </Routes>
       <AboutMeSuspense />
     </Suspense>
   );
