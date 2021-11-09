@@ -18,11 +18,6 @@ const AboutMe: React.FC<{}> = () => {
   const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
   const [aboutAnimationDone, setAboutAnimationDone] = useState(false);
 
-  const closeContactModal = useCallback(
-    () => dispatch(onToggleAboutModal(false)),
-    [dispatch],
-  );
-
   useEffect(() => {
     if (!contentRef) {
       return;
@@ -54,6 +49,27 @@ const AboutMe: React.FC<{}> = () => {
     }
   }, [contentRef, width]);
 
+  const onClose = useCallback(() => {
+    if (!contentRef) {
+      return;
+    }
+
+    const tl = gsap.timeline({
+      defaults: {
+        ease: 'power1.in',
+        duration: 0.3,
+      },
+    });
+
+    if (width > 768) {
+      tl.to(contentRef.querySelector('.about'), { y: '-100%', opacity: 0 }, 0);
+      tl.to(contentRef.querySelector('.skills'), { y: '100%', opacity: 0 }, 0);
+    }
+    tl.call(() => {
+      dispatch(onToggleAboutModal(false));
+    });
+  }, [dispatch, contentRef, width]);
+
   return (
     <Modal
       overlayClassName="modal-overlay"
@@ -64,11 +80,11 @@ const AboutMe: React.FC<{}> = () => {
       }}
     >
       <About
-        closeContactModal={closeContactModal}
+        closeContactModal={onClose}
         setAboutAnimationDone={setAboutAnimationDone}
       />
       <Skills
-        closeContactModal={closeContactModal}
+        closeContactModal={onClose}
         aboutAnimationDone={aboutAnimationDone}
       />
     </Modal>
