@@ -47,6 +47,8 @@ const WhatIDoFast = () => {
         data-srcSet={`${FastClock100} 100w, ${FastClock200} 200w, ${FastClock300} 300w`}
         alt="fast-clock"
         className={cx('lazyload', { bounce: isActive })}
+        width={300}
+        height={318}
       />
     </li>
   );

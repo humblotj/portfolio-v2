@@ -15,6 +15,8 @@ const WhatIDoTests = () => {
         data-srcSet={`${Coverage300} 300w, ${Coverage550} 550w, ${Coverage800} 800w`}
         alt="coverage"
         className="lazyload"
+        height={290}
+        width={800}
       />
     </li>
   );
