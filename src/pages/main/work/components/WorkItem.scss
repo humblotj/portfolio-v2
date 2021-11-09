@@ -52,9 +52,7 @@
       max-width: 52%;
 
       h3 {
-        font-size: 32px;
         margin-bottom: 5px;
-        color: #191a1e;
       }
 
       p {
@@ -116,10 +114,6 @@
 
       .work-item-title {
         left: 40px;
-
-        h3 {
-          font-size: 28px;
-        }
       }
 
       ul {
@@ -143,6 +137,8 @@
 @media only screen and (max-width: 900px) {
   .work-item {
     width: 100%;
+    padding: 0;
+
     .work-item-content {
       .work-tag {
         font-size: 11px;
@@ -153,8 +149,6 @@
 
 @media only screen and (max-width: 576px) {
   .work-item {
-    padding: 0 12px;
-
     &:not(:last-child) {
       margin-bottom: 24px;
     }
@@ -167,11 +161,6 @@
 
       .work-item-title {
         left: 30px;
-
-        h3 {
-          font-size: 20px;
-          margin-bottom: 2px;
-        }
 
         p {
           font-size: 14px;
@@ -204,11 +193,6 @@
 
       .work-item-title {
         left: 20px;
-
-        h3 {
-          font-size: 18px;
-          margin-bottom: 2px;
-        }
 
         p {
           font-size: 12px;

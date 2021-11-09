@@ -38,7 +38,7 @@ const WhatIDoIntro = () => {
   return (
     <li ref={ref} className="what-i-do-intro">
       <div>
-        <h3>
+        <h3 className="heading">
           I developped
           <br />
           mobile and web applications

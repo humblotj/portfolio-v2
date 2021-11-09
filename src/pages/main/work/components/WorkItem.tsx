@@ -80,7 +80,7 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
           {isPersonal ? 'Personal Work' : 'Company Work'}
         </span>
         <div className="work-item-title">
-          <h3>{name}</h3>
+          <h3 className="heading">{name}</h3>
           <p>{description}</p>
         </div>
         <div

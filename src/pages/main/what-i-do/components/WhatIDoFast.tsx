@@ -38,7 +38,7 @@ const WhatIDoFast = () => {
 
   return (
     <li ref={ref} className="what-i-do-fast">
-      <h3>In a short time</h3>
+      <h3 className="heading">In a short time</h3>
       <p>MVP in weeks not in months!</p>
       <img
         src={FastClock}

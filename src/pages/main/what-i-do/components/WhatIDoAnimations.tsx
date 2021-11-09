@@ -31,7 +31,7 @@ const WhatIDoAnimations = () => {
 
   return (
     <li ref={ref} className="what-i-do-animations">
-      <h3>
+      <h3 className="heading">
         With
         <br />
         Awesome Animations
