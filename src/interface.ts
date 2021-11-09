@@ -41,3 +41,12 @@ export interface WorkDetailProps {
   year: number;
   index: number;
 }
+
+export interface IJob {
+  companyName: string;
+  position: string;
+  period: string;
+  bullets: string[];
+  order: number;
+  logo: string;
+}

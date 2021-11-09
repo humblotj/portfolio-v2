@@ -20,6 +20,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
       scrollTrigger: {
         trigger: innerRef.current,
         start: 'top 70%',
+        toggleActions: 'play none none reset',
       },
       defaults: {
         duration: 0.75,
