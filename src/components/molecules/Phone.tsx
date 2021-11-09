@@ -35,7 +35,7 @@ const Phone: React.FC<Props> = ({
       });
 
       if (preview.isVideo) {
-        tl.call(() => setCanPlay(true), undefined, 2);
+        tl.call(() => setCanPlay(true), undefined, 1);
       }
 
       return () => tl.kill();
