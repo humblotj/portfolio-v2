@@ -3,7 +3,9 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import cx from 'classnames';
 
 import './WhatIDoFast.scss';
-import FastClock from '../../../../assets/fast-clock.png';
+import FastClock100 from '../../../../assets/fast-clock-100.png';
+import FastClock200 from '../../../../assets/fast-clock-200.png';
+import FastClock300 from '../../../../assets/fast-clock-300.png';
 
 const WhatIDoFast = () => {
   const ref = useRef<HTMLLIElement>(null);
@@ -41,7 +43,8 @@ const WhatIDoFast = () => {
       <h3 className="heading">In a short time</h3>
       <p>MVP in weeks not in months!</p>
       <img
-        data-src={FastClock}
+        data-src={FastClock300}
+        data-srcSet={`${FastClock100} 100w, ${FastClock200} 200w, ${FastClock300} 300w`}
         alt="fast-clock"
         className={cx('lazyload', { bounce: isActive })}
       />
