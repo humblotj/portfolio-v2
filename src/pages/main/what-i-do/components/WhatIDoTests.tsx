@@ -8,7 +8,7 @@ const WhatIDoTests = () => {
         <h3 className="heading">Reliable</h3>
         <p>Use of automated tests to ensure high-quality code</p>
       </div>
-      <img src={Coverage} alt="coverage" />
+      <img data-src={Coverage} alt="coverage" className="lazyload" />
     </li>
   );
 };

@@ -147,13 +147,14 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
           >
             {[...Array(i % 2 === 0 ? 3 : 5).keys()].map((j) => (
               <img
-                className={
+                className={cx(
+                  'lazyload',
                   i % 2 === 0
                     ? `${(i * 3 + j) % decks.mobile.length}`
-                    : `${(i * 5 + j) % decks.web.length}`
-                }
+                    : `${(i * 5 + j) % decks.web.length}`,
+                )}
                 key={j}
-                src={
+                data-src={
                   i % 2 === 0
                     ? decks.mobile[
                         ((Math.floor(i / 2) + 1) * 3 + j) % decks.mobile.length

@@ -4,7 +4,7 @@ import { IJob } from '../../../../interface';
 const Job = ({ logo, companyName, position, period, bullets }: IJob) => {
   return (
     <li className="job">
-      <img src={logo} alt={companyName} />
+      <img data-src={logo} alt={companyName} className="lazyload" />
       <div>
         <h3>{position}</h3>
         <p>{companyName}</p>

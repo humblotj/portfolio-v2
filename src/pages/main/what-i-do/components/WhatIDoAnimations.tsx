@@ -48,6 +48,7 @@ const WhatIDoAnimations = () => {
           height: 450,
         }}
         noAnimation
+        lazyload
       />
     </li>
   );

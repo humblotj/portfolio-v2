@@ -9,7 +9,7 @@ const WhatIDoPerformance = () => {
         <br />
         Performant
       </h3>
-      <img src={Lighthouse} alt="lighthouse" />
+      <img data-src={Lighthouse} alt="lighthouse" className="lazyload" />
     </li>
   );
 };

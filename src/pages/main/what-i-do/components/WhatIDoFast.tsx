@@ -41,9 +41,9 @@ const WhatIDoFast = () => {
       <h3 className="heading">In a short time</h3>
       <p>MVP in weeks not in months!</p>
       <img
-        src={FastClock}
+        data-src={FastClock}
         alt="fast-clock"
-        className={cx({ bounce: isActive })}
+        className={cx('lazyload', { bounce: isActive })}
       />
     </li>
   );

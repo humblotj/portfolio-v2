@@ -47,7 +47,7 @@ const WhatIDoIntro = () => {
           From front-end to release, including back-end for middle-size project
         </p>
       </div>
-      <img src={mockup} alt="" />
+      <img data-src={mockup} alt="" className="lazyload" />
     </li>
   );
 };
