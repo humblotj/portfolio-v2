@@ -73,7 +73,7 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
       <Strokes />
       <ul className="links">
         <li>
-          <Link to="/" onClick={onClose}>
+          <Link to="/" state="home" onClick={onClose}>
             <span data-content="Home" aria-hidden />
             Home
           </Link>

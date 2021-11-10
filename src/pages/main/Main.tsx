@@ -25,6 +25,13 @@ const Main: React.FC<{}> = () => {
   useEffect(() => {
     const scrollTo = () => {
       if (location.state && isInit) {
+        if (location.state === 'home') {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          });
+        }
         if (location.state === 'what-i-do') {
           whatIDoRef.current?.scrollIntoView({ behavior: 'smooth' });
         }
