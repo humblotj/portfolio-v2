@@ -68,11 +68,9 @@ const Experience = () => {
     );
     const jobs: IJob[] = [];
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
       jobs.push({ ...(doc as QueryDocumentSnapshot<IJob>).data() });
     });
     setJobs(jobs);
-    console.log(jobs);
   };
 
   const onInit = async () => {
