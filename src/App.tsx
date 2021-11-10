@@ -49,8 +49,7 @@ const App: React.FC<{}> = () => {
       <Routes>
         <Route
           path="/work/:id"
-          key={location.pathname}
-          element={<WorkDetailSuspense />}
+          element={<WorkDetailSuspense key={location.pathname} />}
         />
         <Route path="/" element={<MainSuspense />} />
         <Route element={<NotFoundSuspense />} />
