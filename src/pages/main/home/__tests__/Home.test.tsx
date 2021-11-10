@@ -6,7 +6,7 @@ it('called scrollintoview', async () => {
   const scrollIntoViewMock = jest.fn();
   render(
     <Home
-      workRef={{ current: { scrollIntoView: scrollIntoViewMock } } as any}
+      whatIDoRef={{ current: { scrollIntoView: scrollIntoViewMock } } as any}
     />,
   );
   await waitFor(

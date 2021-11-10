@@ -60,26 +60,27 @@ it('renders links', async () => {
   await screen.findByText('View Code', undefined, { timeout: 4000 });
 });
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 test('data doesnt exist', async () => {
   mockedGetDoc.mockImplementation(() => ({
     exists: () => false,
     data: () => null,
   }));
-  const historyMock = {
-    goBack: jest.fn(),
-    location: {},
-    listen: jest.fn(),
-  } as any;
 
   render(
-    <Router history={historyMock}>
+    <MemoryRouter>
       <Suspense fallback={<div />}>
         <WorkDetailSuspense />
       </Suspense>
-    </Router>,
+    </MemoryRouter>,
   );
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  await waitFor(() => expect(historyMock.goBack).toBeCalled(), {
+  await waitFor(() => expect(mockedUsedNavigate).toBeCalled(), {
     timeout: 3000,
   });
 });

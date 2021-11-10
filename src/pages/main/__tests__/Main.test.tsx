@@ -5,6 +5,10 @@ import { initialState } from '../../../store/store';
 import { render, screen } from '../../../utils/test-utils';
 import Main from '../Main';
 
+jest.mock('gsap/ScrollTrigger', () =>
+  jest.requireActual('gsap/dist/ScrollTrigger'),
+);
+
 test('renders 2 work items', () => {
   render(
     <MemoryRouter>
@@ -23,7 +27,7 @@ it('scrolls to work', () => {
   history.push('/', state);
 
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <Main />
     </Router>,
     { initialState: { ...initialState, isInit: true } },
@@ -37,7 +41,7 @@ it('scrolls to contact', () => {
   history.push('/', state);
 
   render(
-    <Router history={history}>
+    <Router location={history.location} navigator={history}>
       <Main />
     </Router>,
     { initialState: { ...initialState, isInit: true } },

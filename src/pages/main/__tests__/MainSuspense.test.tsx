@@ -48,6 +48,10 @@ jest.mock('firebase/firestore/lite', () => {
   };
 });
 
+jest.mock('gsap/ScrollTrigger', () =>
+  jest.requireActual('gsap/dist/ScrollTrigger'),
+);
+
 it('renders links', async () => {
   mockedGetDocs.mockImplementation(() => [
     {

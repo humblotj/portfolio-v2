@@ -15,6 +15,7 @@ const WorkDetailSuspense = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
+
   const component = useSuspenseAnimation(import('./WorkDetail'), {
     fetchData: getDoc(doc(getFirestore(), 'project-details', id as string)),
     setData: (query: DocumentSnapshot<WorkDetailProps>) => {
