@@ -162,8 +162,8 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
                     : decks.web[(Math.floor(i / 2) * 5 + j) % decks.web.length]
                 }
                 alt=""
-                height="925"
-                width="1600"
+                height={i % 2 === 0 ? 600 : 318}
+                width={i % 2 === 0 ? 300 : 550}
               />
             ))}
           </div>

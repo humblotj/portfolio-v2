@@ -24,7 +24,7 @@ const WhatIDoAnimations = () => {
           start: '40% bottom',
           toggleActions: 'play none none reset',
         },
-        delay: '>0.7',
+        delay: 0.5,
       },
     );
   }, []);
