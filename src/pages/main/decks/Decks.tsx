@@ -117,9 +117,10 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
       delay: 0.3,
     });
 
+    initAnimation();
+
     try {
       await fetchDecks();
-      initAnimation();
     } catch (error) {
       console.error(error);
     }
