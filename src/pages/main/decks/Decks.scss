@@ -9,7 +9,6 @@
 
   .decks-text {
     width: 526px;
-    margin-bottom: 80px;
     text-align: center;
 
     > * {
@@ -78,6 +77,7 @@
 @media screen and (max-width: 767px) {
   .decks-sec {
     .decks-text {
+      margin-bottom: 80px;
       width: 90%;
     }
   }
