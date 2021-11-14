@@ -13,7 +13,7 @@ import './Experience.scss';
 import Job from './components/Job';
 import { IJob } from '../../../interface';
 
-const gap = 7.5;
+const gap = 5;
 
 const Experience = () => {
   const ref = useRef<HTMLDivElement>(null);
