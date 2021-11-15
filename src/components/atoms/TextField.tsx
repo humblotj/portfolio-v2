@@ -23,7 +23,7 @@ const TextField: React.FC<Props> = ({
     <label className="form-group">
       <InputElement
         type="text"
-        className={cx('form-control required', className)}
+        className={cx('form-control', 'required', className)}
         placeholder={placeholder}
         required
         name={name}

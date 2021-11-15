@@ -8,7 +8,7 @@ interface Props {
 }
 
 const FakeLink: React.FC<Props> = ({
-  className = '',
+  className,
   onClick = () => {},
   children,
 }: Props) => {
