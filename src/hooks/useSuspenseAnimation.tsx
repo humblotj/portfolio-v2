@@ -43,7 +43,7 @@ const useSuspenseAnimation = (
         Promise.all([
           import_,
           fetchData,
-          new Promise((resolve) => setTimeout(resolve, isInit ? 700 : 900)),
+          new Promise((resolve) => setTimeout(resolve, isInit ? 700 : 1000)),
         ]).then(([imp, query, _]) => {
           if (fetchData) {
             setData(query);
