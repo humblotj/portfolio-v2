@@ -19,14 +19,14 @@ const Home: React.FC<Props> = ({ whatIDoRef }) => {
   const ref = useRef<HTMLElement>(null);
   const dispatch = useDispatch();
   const openContactModal = () => dispatch(onToggleAboutModal(true));
-  const { animateReveal, animateBlink } = useAnimation();
+  const { revealText, animateBlink } = useAnimation();
 
   useEffect(() => {
     const element = ref.current!;
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = animateReveal(reveal[i], { delay: i * 0.2 });
+      const tl = revealText(reveal[i], { delay: i * 0.2 });
 
       if (i === reveal.length - 1) {
         tl.to(
@@ -41,7 +41,6 @@ const Home: React.FC<Props> = ({ whatIDoRef }) => {
         tl.call(() => animateBlink(element), undefined, '<0.4');
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollDown = () => {

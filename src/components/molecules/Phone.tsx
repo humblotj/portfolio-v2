@@ -60,7 +60,6 @@ const Phone: React.FC<Props> = ({
         tl.kill();
       };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation]);
 
   return (

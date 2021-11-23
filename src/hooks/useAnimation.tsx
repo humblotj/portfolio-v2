@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { gsap } from 'gsap';
 
 const useAnimation = () => {
-  const animateReveal = useCallback(
+  const revealText = useCallback(
     (
       el: Element | null,
       {
@@ -115,7 +115,7 @@ const useAnimation = () => {
   }, []);
 
   return {
-    animateReveal,
+    revealText,
     animateBlink,
     skipBlink,
   };

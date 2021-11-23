@@ -70,7 +70,6 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
     tl.set(element, {
       pointerEvents: 'auto',
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width > 768, index]);
 
   return (

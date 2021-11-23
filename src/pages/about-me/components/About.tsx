@@ -16,21 +16,20 @@ const About: React.FC<Props> = ({
   setAboutAnimationDone,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { animateReveal } = useAnimation();
+  const { revealText } = useAnimation();
 
   useEffect(() => {
     const element = ref.current!;
     const reveal = element.querySelectorAll('.reveal');
 
     for (let i = 0; i < reveal.length; i++) {
-      const tl = animateReveal(reveal[i], {
+      const tl = revealText(reveal[i], {
         delay: 0.7 + i * 0.2,
       });
       if (i === reveal.length - 1) {
         tl.call(() => setAboutAnimationDone(true), undefined, '<');
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

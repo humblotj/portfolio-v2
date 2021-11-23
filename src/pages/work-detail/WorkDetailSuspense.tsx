@@ -8,19 +8,19 @@ import {
 } from 'firebase/firestore/lite';
 
 import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
-import { onSetWorkDetails } from '../../store/store';
+import { onWorkDetailsFetched } from '../../store/store';
 import { WorkDetailProps } from '../../interface';
 
 const WorkDetailSuspense = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const component = useSuspenseAnimation(import('./WorkDetail'), {
-    fetchData: getDoc(doc(getFirestore(), 'project-details', id as string)),
-    setData: (query: DocumentSnapshot<WorkDetailProps>) => {
+    fetchData: getDoc(doc(getFirestore(), 'project-details', id!)),
+    onDataFetched: (query: DocumentSnapshot<WorkDetailProps>) => {
       if (query.exists()) {
-        dispatch(onSetWorkDetails(query.data()));
+        dispatch(onWorkDetailsFetched(query.data()));
       } else {
         navigate(-1);
       }

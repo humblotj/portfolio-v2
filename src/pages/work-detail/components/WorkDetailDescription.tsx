@@ -6,6 +6,51 @@ import TagList from '../../../components/molecules/TagList';
 import TextBounce from '../../../components/molecules/TextBounce';
 import WorkDetailParallax from './WorkDetailParallax';
 import useAnimation from '../../../hooks/useAnimation';
+import RevealText from '../../../components/molecules/RevealText';
+
+const useAnimateOnInit = (ref: React.RefObject<HTMLDivElement>) => {
+  const { revealText } = useAnimation();
+
+  useEffect((): void => {
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
+
+    const animateWorkLinks = (tl: gsap.core.Timeline) =>
+      tl.to(
+        document.querySelector('.work-links'),
+        {
+          opacity: 1,
+          ease: 'power.out3',
+          duration: 0.3,
+        },
+        '<0.3',
+      );
+
+    const startAnimation = () => {
+      const descParts = element.querySelectorAll('.desc-part');
+
+      for (let j = 0; j < descParts.length; j++) {
+        const reveal = descParts[j].querySelectorAll('.reveal');
+
+        for (let i = 0; i < reveal.length; i++) {
+          const tl = revealText(reveal[i], {
+            delay: j * 0.2,
+          });
+
+          if (j === descParts.length - 1) {
+            animateWorkLinks(tl);
+          }
+        }
+      }
+    };
+
+    startAnimation();
+  }, []);
+
+  return null;
+};
 
 interface Props {
   work: WorkDetailProps;
@@ -13,38 +58,7 @@ interface Props {
 
 const WorkDetailDescription = ({ work }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { animateReveal } = useAnimation();
-
-  useEffect((): void => {
-    const element = ref.current;
-    if (!element || !work) {
-      return;
-    }
-
-    const descParts = element.querySelectorAll('.desc-part');
-
-    for (let j = 0; j < descParts.length; j++) {
-      const reveal = descParts[j].querySelectorAll('.reveal');
-      for (let i = 0; i < reveal.length; i++) {
-        const tl = animateReveal(reveal[i], {
-          delay: j * 0.2,
-        });
-
-        if (j === descParts.length - 1) {
-          tl.to(
-            document.querySelector('.work-links'),
-            {
-              opacity: 1,
-              ease: 'power.out3',
-              duration: 0.3,
-            },
-            '<0.3',
-          );
-        }
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useAnimateOnInit(ref);
 
   if (!work) {
     return null;
@@ -55,50 +69,45 @@ const WorkDetailDescription = ({ work }: Props) => {
   return (
     <div ref={ref} className="work-detail-description">
       <div className="desc-part">
-        <div className="reveal desc-heading secondary">
-          <h3 className="reveal-text">Project</h3>
-          <div className="reveal-mask" aria-hidden />
-        </div>
+        <RevealText className="desc-heading" color="secondary">
+          <h3>Project</h3>
+        </RevealText>
         <br />
-        <div className="reveal">
-          <h2 className="reveal-text">
+        <RevealText>
+          <h2>
             <TextBounce text={name} />
           </h2>
-          <div className="reveal-mask" aria-hidden />
-        </div>
+        </RevealText>
       </div>
       <WorkDetailParallax preview={work.mainPreview} />
       <div className="desc-part">
-        <div className="reveal desc-heading secondary">
-          <h3 className="reveal-text">About</h3>
-          <div className="reveal-mask" aria-hidden />
-        </div>
+        <RevealText className="desc-heading" color="secondary">
+          <h3>About</h3>
+        </RevealText>
         <br />
-        <div className="reveal no-mask">
-          <p className="reveal-text">{description}</p>
-        </div>
+        <RevealText noMask>
+          <p>{description}</p>
+        </RevealText>
       </div>
       <div className="desc-part">
-        <div className="reveal desc-heading secondary">
-          <h3 className="reveal-text">Year</h3>
-          <div className="reveal-mask" aria-hidden />
-        </div>
+        <RevealText className="desc-heading" color="secondary">
+          <h3>Year</h3>
+        </RevealText>
         <br />
-        <div className="reveal no-mask">
-          <p className="reveal-text">{year}</p>
-        </div>
+        <RevealText noMask>
+          <p>{year}</p>
+        </RevealText>
       </div>
       <div className="desc-part">
-        <div className="reveal desc-heading secondary">
-          <h3 className="reveal-text">Technologies</h3>
-          <div className="reveal-mask" aria-hidden />
-        </div>
+        <RevealText className="desc-heading" color="secondary">
+          <h3>Technologies</h3>
+        </RevealText>
         <br />
-        <div className="reveal no-mask">
-          <div className="reveal-text">
+        <RevealText noMask>
+          <div>
             <TagList tags={techs} />
           </div>
-        </div>
+        </RevealText>
       </div>
     </div>
   );

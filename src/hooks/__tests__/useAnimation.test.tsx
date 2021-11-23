@@ -6,6 +6,6 @@ test('empty element', () => {
   const { result } = renderHook(() => useAnimation());
 
   act(() => {
-    result.current.animateReveal(null);
+    result.current.revealText(null);
   });
 });

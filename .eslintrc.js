@@ -124,6 +124,7 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 1,
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
+    'react-hooks/exhaustive-deps': 1,
   },
   ignorePatterns: ['/*.*'],
 };

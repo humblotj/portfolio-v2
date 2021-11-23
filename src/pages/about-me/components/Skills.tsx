@@ -115,7 +115,7 @@ const Skills: React.FC<SkillsProp> = ({
   aboutAnimationDone,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { animateReveal } = useAnimation();
+  const { revealText } = useAnimation();
 
   useEffect(() => {
     if (aboutAnimationDone) {
@@ -125,7 +125,7 @@ const Skills: React.FC<SkillsProp> = ({
       const skillsLists = element.querySelectorAll('ul');
 
       for (let i = 0; i < reveal.length; i++) {
-        const tl = animateReveal(reveal[i], {
+        const tl = revealText(reveal[i], {
           delay: i * 0.12,
           trigger: reveal[i],
           scroller: document.querySelector('.modal-content'),
@@ -144,7 +144,6 @@ const Skills: React.FC<SkillsProp> = ({
         );
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aboutAnimationDone]);
 
   return (

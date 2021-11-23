@@ -65,7 +65,6 @@ const Nav: React.FC<Props> = ({ open, onClose }) => {
     return () => {
       tl.kill();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   return (

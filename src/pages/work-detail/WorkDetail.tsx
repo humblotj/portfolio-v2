@@ -23,7 +23,6 @@ const WorkDetail = () => {
     }
 
     return skipBlink();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!work) {

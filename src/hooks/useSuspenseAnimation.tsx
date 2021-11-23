@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { QuerySnapshot, DocumentSnapshot } from 'firebase/firestore/lite';
 
-import { onSetLoading, selectIsInit } from '../store/store';
+import { onChangeLoading, selectIsInit } from '../store/store';
 import lazyWithRetry from '../utils/lazyWithRetry';
 
 const deferPromise = () => {
@@ -17,18 +17,18 @@ const useSuspenseAnimation = (
   import_: Promise<any>,
   {
     fetchData,
-    setData,
+    onDataFetched,
   }: {
     fetchData:
       | Promise<QuerySnapshot<any>>
       | Promise<DocumentSnapshot<any>>
       | null;
-    setData:
+    onDataFetched:
       | ((query: QuerySnapshot<any>) => void)
       | ((query: DocumentSnapshot<any>) => void);
   } = {
     fetchData: null,
-    setData: () => {},
+    onDataFetched: () => {},
   },
 ) => {
   const dispatch = useDispatch();
@@ -46,9 +46,10 @@ const useSuspenseAnimation = (
           new Promise((resolve) => setTimeout(resolve, isInit ? 700 : 1000)),
         ]).then(([imp, query, _]) => {
           if (fetchData) {
-            setData(query);
+            onDataFetched(query);
           }
-          dispatch(onSetLoading(false));
+
+          dispatch(onChangeLoading(false));
           setTimeout(() => state.deferred.resolve(), 300);
           return imp;
         }),

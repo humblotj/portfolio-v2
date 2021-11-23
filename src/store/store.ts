@@ -37,13 +37,13 @@ const store = createSlice({
     onInit(state) {
       state.isInit = true;
     },
-    onSetLoading(state, action: PayloadAction<boolean>) {
+    onChangeLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
-    onSetWorks(state, action: PayloadAction<WorkProps[]>) {
+    onWorksFetched(state, action: PayloadAction<WorkProps[]>) {
       state.works = action.payload;
     },
-    onSetWorkDetails(state, action: PayloadAction<WorkDetailProps | null>) {
+    onWorkDetailsFetched(state, action: PayloadAction<WorkDetailProps | null>) {
       state.workDetails = action.payload;
     },
   },
@@ -52,9 +52,9 @@ const store = createSlice({
 export const {
   onToggleAboutModal,
   onInit,
-  onSetLoading,
-  onSetWorks,
-  onSetWorkDetails,
+  onChangeLoading,
+  onWorksFetched,
+  onWorkDetailsFetched,
 } = store.actions;
 
 export const selectIsAboutModalOpen = (state: { store: typeof initialState }) =>

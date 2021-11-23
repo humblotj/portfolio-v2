@@ -3,10 +3,10 @@ import {
   onToggleAboutModal,
   storeReducer as reducer,
   onInit,
-  onSetLoading,
+  onChangeLoading,
   initialState,
-  onSetWorkDetails,
-  onSetWorks,
+  onWorkDetailsFetched,
+  onWorksFetched,
   selectIsAboutModalOpen,
   selectIsInit,
   selectIsLoading,
@@ -35,12 +35,12 @@ it('inits', () => {
 });
 
 it('sets loading', () => {
-  const store = reducer(undefined, onSetLoading(false));
+  const store = reducer(undefined, onChangeLoading(false));
   expect(store).toEqual({
     ...initialState,
     isLoading: false,
   });
-  expect(reducer(store, onSetLoading(true))).toEqual(initialState);
+  expect(reducer(store, onChangeLoading(true))).toEqual(initialState);
 });
 
 const workDetails: WorkDetailProps = {
@@ -68,7 +68,7 @@ const workDetails: WorkDetailProps = {
 };
 
 it('sets work details', () => {
-  const store = reducer(undefined, onSetWorkDetails(workDetails));
+  const store = reducer(undefined, onWorkDetailsFetched(workDetails));
   expect(store).toEqual({
     ...initialState,
     workDetails,
@@ -107,7 +107,7 @@ const works: WorkProps[] = [
 ];
 
 it('sets works', () => {
-  const store = reducer(undefined, onSetWorks(works));
+  const store = reducer(undefined, onWorksFetched(works));
   expect(store).toEqual({
     ...initialState,
     works,

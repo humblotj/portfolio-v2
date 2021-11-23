@@ -84,7 +84,6 @@ const Experience = () => {
 
   useEffect(() => {
     onInit();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

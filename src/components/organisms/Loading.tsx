@@ -6,7 +6,11 @@ import cx from 'classnames';
 
 import './Loading.scss';
 import Strokes from '../molecules/Strokes';
-import { onSetLoading, selectIsInit, selectIsLoading } from '../../store/store';
+import {
+  onChangeLoading,
+  selectIsInit,
+  selectIsLoading,
+} from '../../store/store';
 
 gsap.registerEffect({
   name: 'counter',
@@ -54,7 +58,7 @@ const Loading = () => {
   const background = location.pathname === '/' ? '#23282a' : '#fff';
 
   useEffect(() => {
-    setTimeout(() => dispatch(onSetLoading(true)), 0);
+    setTimeout(() => dispatch(onChangeLoading(true)), 0);
     if (!isInit) {
       const tl = gsap.timeline();
       tl.to(
@@ -64,7 +68,6 @@ const Loading = () => {
       );
       tl.counter(document.querySelector('.counter'), { end: 99 }, '<');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

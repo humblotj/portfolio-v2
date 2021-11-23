@@ -128,7 +128,6 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
 
   useEffect(() => {
     onInit();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
 
   return (
