@@ -11,14 +11,7 @@ import Sns from '../../../components/organisms/Sns';
 import { onToggleAboutModal } from '../../../store/store';
 import useAnimation from '../../../hooks/useAnimation';
 
-interface Props {
-  whatIDoRef: RefObject<HTMLElement>;
-}
-
-const Home: React.FC<Props> = ({ whatIDoRef }) => {
-  const ref = useRef<HTMLElement>(null);
-  const dispatch = useDispatch();
-  const openContactModal = () => dispatch(onToggleAboutModal(true));
+const useAnimateOnInit = (ref: React.RefObject<HTMLElement>) => {
   const { revealText, animateBlink } = useAnimation();
 
   useEffect(() => {
@@ -42,6 +35,17 @@ const Home: React.FC<Props> = ({ whatIDoRef }) => {
       }
     }
   }, []);
+};
+
+interface Props {
+  whatIDoRef: RefObject<HTMLElement>;
+}
+
+const Home: React.FC<Props> = ({ whatIDoRef }) => {
+  const ref = useRef<HTMLElement>(null);
+  const dispatch = useDispatch();
+  const openContactModal = () => dispatch(onToggleAboutModal(true));
+  useAnimateOnInit(ref);
 
   const scrollDown = () => {
     whatIDoRef.current?.scrollIntoView({ behavior: 'smooth' });

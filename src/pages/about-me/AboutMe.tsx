@@ -11,12 +11,8 @@ import useSize from '../../hooks/useSize';
 
 Modal.setAppElement('body');
 
-const AboutMe: React.FC<{}> = () => {
-  const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
-  const dispatch = useDispatch();
+const useAnimationOnInit = (contentRef: HTMLDivElement | null) => {
   const [width] = useSize();
-  const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
-  const [aboutAnimationDone, setAboutAnimationDone] = useState(false);
 
   useEffect(() => {
     if (!contentRef) {
@@ -48,6 +44,15 @@ const AboutMe: React.FC<{}> = () => {
       });
     }
   }, [contentRef, width]);
+};
+
+const AboutMe: React.FC<{}> = () => {
+  const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
+  const dispatch = useDispatch();
+  const [width] = useSize();
+  const isAboutModalOpen = useSelector(selectIsAboutModalOpen);
+  const [aboutAnimationDone, setAboutAnimationDone] = useState(false);
+  useAnimationOnInit(contentRef);
 
   const onClose = useCallback(() => {
     if (!contentRef) {

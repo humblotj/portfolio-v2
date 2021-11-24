@@ -31,3 +31,9 @@
 .blink {
   opacity: 0;
 }
+
+header:not(.is-main) {
+  .blink {
+    opacity: 1 !important;
+  }
+}

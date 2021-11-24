@@ -6,9 +6,7 @@ import './WorkDetailParallax.scss';
 import { ImgSingleProp } from '../../../interface';
 import ImageWrap from '../../../components/molecules/ImageWrap';
 
-const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isMobile = preview.type === 'mobile';
+const useAnimateOnInit = (ref: React.RefObject<HTMLDivElement>) => {
   const [animationIsComplete, setAnimationIsComplete] = useState(false);
 
   useEffect(() => {
@@ -29,7 +27,15 @@ const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
     return () => {
       tl.kill();
     };
-  }, [preview]);
+  }, []);
+
+  return animationIsComplete;
+};
+
+const WorkDetailParallax = ({ preview }: { preview: ImgSingleProp }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const animationIsComplete = useAnimateOnInit(ref);
+  const isMobile = preview.type === 'mobile';
 
   return (
     <div

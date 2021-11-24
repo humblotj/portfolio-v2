@@ -6,16 +6,10 @@ import { ReactComponent as LocationIcon } from '../../../assets/icons/location.s
 import CloseButton from '../../../components/atoms/CloseButton';
 import useAnimation from '../../../hooks/useAnimation';
 
-interface Props {
-  closeContactModal: () => void;
-  setAboutAnimationDone: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const About: React.FC<Props> = ({
-  closeContactModal,
-  setAboutAnimationDone,
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
+const useAnimateOnInit = (
+  ref: React.RefObject<HTMLDivElement>,
+  onAnimationDone: React.Dispatch<React.SetStateAction<boolean>>,
+) => {
   const { revealText } = useAnimation();
 
   useEffect(() => {
@@ -27,10 +21,23 @@ const About: React.FC<Props> = ({
         delay: 0.7 + i * 0.2,
       });
       if (i === reveal.length - 1) {
-        tl.call(() => setAboutAnimationDone(true), undefined, '<');
+        tl.call(() => onAnimationDone(true), undefined, '<');
       }
     }
   }, []);
+};
+
+interface Props {
+  closeContactModal: () => void;
+  setAboutAnimationDone: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const About: React.FC<Props> = ({
+  closeContactModal,
+  setAboutAnimationDone,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useAnimateOnInit(ref, setAboutAnimationDone);
 
   return (
     <div ref={ref} className="about" data-testid="about">

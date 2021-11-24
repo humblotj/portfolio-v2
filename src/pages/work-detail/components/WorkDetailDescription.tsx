@@ -48,8 +48,6 @@ const useAnimateOnInit = (ref: React.RefObject<HTMLDivElement>) => {
 
     startAnimation();
   }, []);
-
-  return null;
 };
 
 interface Props {

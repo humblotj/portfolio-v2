@@ -13,7 +13,7 @@ const deferPromise = () => {
   return { resolve, promise };
 };
 
-const useSuspenseAnimation = (
+const useLoadComponent = (
   import_: Promise<any>,
   {
     fetchData,
@@ -66,4 +66,4 @@ const useSuspenseAnimation = (
   return <state.DeferredComponent />;
 };
 
-export default useSuspenseAnimation;
+export default useLoadComponent;

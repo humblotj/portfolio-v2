@@ -1,30 +1,18 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import './WorkDetail.scss';
+import { selectWorkDetails } from '../../store/store';
 import WorkDetailDescription from './components/WorkDetailDescription';
 import WorkPreviewCarousel from './components/WorkPreviewCarousel';
 import BackArrow from '../../components/atoms/BackArrow';
 import Strokes from '../../components/molecules/Strokes';
 import WorkDetailFooter from './components/WorkDetailFooter';
-import { onInit, selectIsInit, selectWorkDetails } from '../../store/store';
-import useAnimation from '../../hooks/useAnimation';
 import WorkDetailLinks from './components/WorkDetailLinks';
+import useDispatchInit from '../../hooks/useDispatchInit';
 
 const WorkDetail = () => {
-  const dispatch = useDispatch();
-  const isInit = useSelector(selectIsInit);
+  useDispatchInit();
   const work = useSelector(selectWorkDetails);
-  const { skipBlink } = useAnimation();
-
-  useEffect(() => {
-    if (!isInit) {
-      dispatch(onInit());
-    }
-
-    return skipBlink();
-  }, []);
-
   if (!work) {
     return null;
   }

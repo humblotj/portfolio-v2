@@ -44,10 +44,7 @@ const PreviewItem = ({ previews, name }: { previews: ImgProp; name: string }) =>
     );
   });
 
-const WorkPreviewCarousel = ({ work }: Props) => {
-  const [width] = useSize();
-  const ref = useRef<HTMLDivElement>(null);
-
+const useRevealOnInit = (ref: React.RefObject<HTMLDivElement>) => {
   useEffect(() => {
     gsap.to(ref.current!.querySelector('.carousel-wrap'), {
       opacity: 1,
@@ -56,13 +53,23 @@ const WorkPreviewCarousel = ({ work }: Props) => {
       scrollTrigger: { trigger: ref.current, start: '30% bottom' },
     });
   }, []);
+};
 
-  const slidesToShow = useMemo(() => {
-    if (work?.previews?.type === 'web') {
+const useCountSlidesToShow = (isMobile: boolean) => {
+  const [width] = useSize();
+
+  return useMemo(() => {
+    if (!isMobile) {
       return 1;
     }
     return width > 768 ? 3 : 2;
-  }, [work?.previews?.type, width]);
+  }, [width]);
+};
+
+const WorkPreviewCarousel = ({ work }: Props) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useRevealOnInit(ref);
+  const slidesToShow = useCountSlidesToShow(work?.previews?.type === 'mobile');
 
   const { previews, name } = work;
 

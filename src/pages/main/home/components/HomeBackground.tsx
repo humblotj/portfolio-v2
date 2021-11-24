@@ -3,9 +3,7 @@ import { gsap } from 'gsap';
 
 import './HomeBackground.scss';
 
-const HomeBackground: React.FC<{}> = () => {
-  const ref = useRef<HTMLDivElement>(null);
-
+const useAnimateOnInit = (ref: React.RefObject<HTMLDivElement>) => {
   useEffect(() => {
     const element = ref.current!;
 
@@ -40,6 +38,11 @@ const HomeBackground: React.FC<{}> = () => {
       '<0.15',
     );
   }, []);
+};
+
+const HomeBackground: React.FC<{}> = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  useAnimateOnInit(ref);
 
   return (
     <div ref={ref} className="home-background">

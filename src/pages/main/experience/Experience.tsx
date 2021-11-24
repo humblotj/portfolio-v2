@@ -15,11 +15,36 @@ import { IJob } from '../../../interface';
 
 const gap = 5;
 
-const Experience = () => {
-  const ref = useRef<HTMLDivElement>(null);
+const useFetchJob = () => {
   const [jobs, setJobs] = useState<IJob[]>([]);
 
-  const initAnimation = () => {
+  useEffect(() => {
+    const fetchJobs = async () => {
+      const querySnapshot = await getDocs(
+        query(collection(getFirestore(), 'jobs'), orderBy('order', 'asc')),
+      );
+      const jobs: IJob[] = [];
+      querySnapshot.forEach((doc) => {
+        jobs.push({ ...(doc as QueryDocumentSnapshot<IJob>).data() });
+      });
+      setJobs(jobs);
+    };
+
+    fetchJobs().catch(() => {});
+  }, []);
+
+  return jobs;
+};
+
+const useAnimateOnJobsFetched = (
+  ref: React.RefObject<HTMLDivElement>,
+  jobs: IJob[],
+) => {
+  useEffect(() => {
+    if (!jobs.length) {
+      return;
+    }
+
     const element = ref.current!;
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -60,31 +85,13 @@ const Experience = () => {
         y: `${-15 + i * gap}%`,
       });
     }
-  };
+  }, [jobs]);
+};
 
-  const fetchJobs = async () => {
-    const querySnapshot = await getDocs(
-      query(collection(getFirestore(), 'jobs'), orderBy('order', 'asc')),
-    );
-    const jobs: IJob[] = [];
-    querySnapshot.forEach((doc) => {
-      jobs.push({ ...(doc as QueryDocumentSnapshot<IJob>).data() });
-    });
-    setJobs(jobs);
-  };
-
-  const onInit = async () => {
-    try {
-      await fetchJobs();
-      initAnimation();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    onInit();
-  }, []);
+const Experience = () => {
+  const jobs = useFetchJob();
+  const ref = useRef<HTMLDivElement>(null);
+  useAnimateOnJobsFetched(ref, jobs);
 
   return (
     <div ref={ref} className="scroll-wrap">

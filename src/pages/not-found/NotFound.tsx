@@ -4,12 +4,9 @@ import lottie from 'lottie-web';
 import './NotFound.scss';
 import notFound from '../../assets/not-found.json';
 import BackArrow from '../../components/atoms/BackArrow';
-import useAnimation from '../../hooks/useAnimation';
+import useDispatchInit from '../../hooks/useDispatchInit';
 
-const NotFound = () => {
-  const lottieRef = useRef<HTMLDivElement>(null);
-  const { skipBlink } = useAnimation();
-
+const useAnimateOnInit = (lottieRef: React.RefObject<HTMLDivElement>) => {
   useEffect(() => {
     lottie.loadAnimation({
       container: lottieRef.current as Element,
@@ -18,9 +15,13 @@ const NotFound = () => {
       autoplay: true,
       loop: false,
     });
-
-    return skipBlink();
   }, []);
+};
+
+const NotFound = () => {
+  const lottieRef = useRef<HTMLDivElement>(null);
+  useAnimateOnInit(lottieRef);
+  useDispatchInit();
 
   return (
     <section className="not-found-sec">

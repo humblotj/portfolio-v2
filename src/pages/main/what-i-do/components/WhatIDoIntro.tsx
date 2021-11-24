@@ -8,9 +8,7 @@ import mockup800 from '../../../../assets/mobilewebapp-800.png';
 import mockup1200 from '../../../../assets/mobilewebapp-1200.png';
 import mockup1600 from '../../../../assets/mobilewebapp-1600.png';
 
-const WhatIDoIntro = () => {
-  const ref = useRef<HTMLLIElement>(null);
-
+const useAnimateOnInit = (ref: React.RefObject<HTMLLIElement>) => {
   useEffect(() => {
     const element = ref.current!;
 
@@ -38,6 +36,11 @@ const WhatIDoIntro = () => {
       duration: 0.3,
     });
   }, []);
+};
+
+const WhatIDoIntro = () => {
+  const ref = useRef<HTMLLIElement>(null);
+  useAnimateOnInit(ref);
 
   return (
     <li ref={ref} className="what-i-do-intro">

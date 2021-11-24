@@ -9,10 +9,7 @@ import TextField from '../../../components/atoms/TextField';
 import Strokes from '../../../components/molecules/Strokes';
 import { ReactComponent as ContactMask } from '../../../assets/contact-mask.svg';
 
-const Contact = forwardRef<HTMLElement>((props, ref) => {
-  const innerRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-
+const useAnimateOnEnter = (innerRef: React.RefObject<HTMLElement>) => {
   useEffect(() => {
     const element = innerRef.current!;
 
@@ -58,6 +55,12 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
       0.5,
     );
   }, []);
+};
+
+const Contact = forwardRef<HTMLElement>((props, ref) => {
+  const innerRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  useAnimateOnEnter(innerRef);
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -101,5 +104,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
     </section>
   );
 });
+
+Contact.displayName = 'Contact';
 
 export default Contact;

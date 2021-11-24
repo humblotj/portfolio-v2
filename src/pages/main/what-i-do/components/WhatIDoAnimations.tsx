@@ -4,9 +4,7 @@ import { gsap } from 'gsap';
 import './WhatIDoAnimations.scss';
 import Laptop from '../../../../components/molecules/Laptop';
 
-const WhatIDoAnimations = () => {
-  const ref = useRef<HTMLLIElement>(null);
-
+const useAnimateOnEnter = (ref: React.RefObject<HTMLLIElement>) => {
   useEffect(() => {
     const element = ref.current!;
 
@@ -28,6 +26,11 @@ const WhatIDoAnimations = () => {
       },
     );
   }, []);
+};
+
+const WhatIDoAnimations = () => {
+  const ref = useRef<HTMLLIElement>(null);
+  useAnimateOnEnter(ref);
 
   return (
     <li ref={ref} className="what-i-do-animations">

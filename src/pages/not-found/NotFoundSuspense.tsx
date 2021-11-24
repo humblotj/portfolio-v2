@@ -1,7 +1,7 @@
-import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
+import useLoadComponent from '../../hooks/useLoadComponent';
 
 const NotFoundSuspense = () => {
-  const component = useSuspenseAnimation(import('./NotFound'));
+  const component = useLoadComponent(import('./NotFound'));
 
   return component;
 };

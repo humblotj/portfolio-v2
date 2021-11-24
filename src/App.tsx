@@ -52,7 +52,7 @@ const App: React.FC<{}> = () => {
           element={<WorkDetailSuspense key={location.pathname} />}
         />
         <Route path="/" element={<MainSuspense />} />
-        <Route element={<NotFoundSuspense />} />
+        <Route path="*" element={<NotFoundSuspense />} />
       </Routes>
       <AboutMeSuspense />
     </Suspense>

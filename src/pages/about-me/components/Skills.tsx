@@ -32,12 +32,6 @@ import Bounce from '../../../components/atoms/Bounce';
 import CloseButton from '../../../components/atoms/CloseButton';
 import useAnimation from '../../../hooks/useAnimation';
 
-type SkillType = {
-  name: string;
-  component: React.FC<React.SVGProps<SVGSVGElement>>;
-  size?: string;
-}[];
-
 const proficientSkills = [
   { name: 'React', component: ReactJS },
   { name: 'React Native', component: ReactNative },
@@ -74,12 +68,16 @@ const wantToLearnSkills = [
   { name: 'Kotlin', component: Kotlin, size: 'medium' },
 ];
 
+type SkillType = {
+  name: string;
+  component: React.FC<React.SVGProps<SVGSVGElement>>;
+  size?: string;
+}[];
 interface SkillProp {
   title: string;
   skills: SkillType;
 }
 
-// eslint-disable-next-line react/display-name
 const Skill: React.FC<SkillProp> = memo(({ title, skills }) => (
   <dl>
     <dt>
@@ -106,15 +104,12 @@ const Skill: React.FC<SkillProp> = memo(({ title, skills }) => (
   </dl>
 ));
 
-interface SkillsProp {
-  closeContactModal: () => void;
-  aboutAnimationDone: boolean;
-}
-const Skills: React.FC<SkillsProp> = ({
-  closeContactModal,
-  aboutAnimationDone,
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
+Skill.displayName = 'Skill';
+
+const useAnimateOnAboutAnimationDone = (
+  ref: React.RefObject<HTMLDivElement>,
+  aboutAnimationDone: boolean,
+) => {
   const { revealText } = useAnimation();
 
   useEffect(() => {
@@ -145,6 +140,18 @@ const Skills: React.FC<SkillsProp> = ({
       }
     }
   }, [aboutAnimationDone]);
+};
+
+interface SkillsProp {
+  closeContactModal: () => void;
+  aboutAnimationDone: boolean;
+}
+const Skills: React.FC<SkillsProp> = ({
+  closeContactModal,
+  aboutAnimationDone,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useAnimateOnAboutAnimationDone(ref, aboutAnimationDone);
 
   return (
     <div ref={ref} className="skills" data-testid="skills">

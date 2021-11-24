@@ -14,15 +14,10 @@ const TechIcon = lazyWithRetry(
   () => import('../../../../components/atoms/TechIcon'),
 );
 
-interface Props {
-  index: number;
-  work: WorkProps;
-  id: string;
-}
-
-const WorkItem: React.FC<Props> = ({ index, work, id }) => {
-  const ref = useRef<HTMLLIElement>(null);
-  const { isPersonal, name, description, preview, techs } = work;
+const useAnimateOnScrollIn = (
+  ref: React.RefObject<HTMLLIElement>,
+  index: number,
+) => {
   const [width] = useSize();
 
   useEffect(() => {
@@ -71,6 +66,18 @@ const WorkItem: React.FC<Props> = ({ index, work, id }) => {
       pointerEvents: 'auto',
     });
   }, [width > 768, index]);
+};
+
+interface Props {
+  index: number;
+  work: WorkProps;
+  id: string;
+}
+
+const WorkItem: React.FC<Props> = ({ index, work, id }) => {
+  const ref = useRef<HTMLLIElement>(null);
+  useAnimateOnScrollIn(ref, index);
+  const { isPersonal, name, description, preview, techs } = work;
 
   return (
     <li ref={ref} className="work-item">

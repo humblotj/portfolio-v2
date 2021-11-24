@@ -106,18 +106,9 @@ const useAnimation = () => {
     });
   }, []);
 
-  const skipBlink = useCallback(() => {
-    const blink = document.querySelectorAll('.blink');
-    gsap.to(blink, { opacity: 1, duration: 0 });
-    return () => {
-      gsap.to(blink, { opacity: 0, duration: 0 });
-    };
-  }, []);
-
   return {
     revealText,
     animateBlink,
-    skipBlink,
   };
 };
 

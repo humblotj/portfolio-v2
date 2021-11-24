@@ -7,7 +7,7 @@ import {
   getFirestore,
 } from 'firebase/firestore/lite';
 
-import useSuspenseAnimation from '../../hooks/useSuspenseAnimation';
+import useLoadComponent from '../../hooks/useLoadComponent';
 import { onWorkDetailsFetched } from '../../store/store';
 import { WorkDetailProps } from '../../interface';
 
@@ -16,7 +16,7 @@ const WorkDetailSuspense = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const component = useSuspenseAnimation(import('./WorkDetail'), {
+  const component = useLoadComponent(import('./WorkDetail'), {
     fetchData: getDoc(doc(getFirestore(), 'project-details', id!)),
     onDataFetched: (query: DocumentSnapshot<WorkDetailProps>) => {
       if (query.exists()) {

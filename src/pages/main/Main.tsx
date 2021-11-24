@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { gsap } from 'gsap';
 
 import './Main.scss';
-import { onInit, selectIsInit } from '../../store/store';
+import { selectIsInit } from '../../store/store';
+import useDispatchInit from '../../hooks/useDispatchInit';
 import Footer from '../../components/organisms/Footer';
 import Contact from './contact/Contact';
 import Home from './home/Home';
@@ -14,13 +15,17 @@ import Strokes from '../../components/molecules/Strokes';
 import Decks from './decks/Decks';
 import WhatIDo from './what-i-do/WhatIDo';
 
-const Main: React.FC<{}> = () => {
-  const dispatch = useDispatch();
-  const isInit = useSelector(selectIsInit);
+const useScrollOnLocationChange = ({
+  whatIDoRef,
+  workRef,
+  contactRef,
+}: {
+  whatIDoRef: React.RefObject<HTMLElement>;
+  workRef: React.RefObject<HTMLElement>;
+  contactRef: React.RefObject<HTMLElement>;
+}) => {
   const location = useLocation();
-  const whatIDoRef = useRef<HTMLElement>(null);
-  const workRef = useRef<HTMLElement>(null);
-  const contactRef = useRef<HTMLElement>(null);
+  const isInit = useSelector(selectIsInit);
 
   useEffect(() => {
     const scrollTo = () => {
@@ -28,32 +33,36 @@ const Main: React.FC<{}> = () => {
         return;
       }
 
-      if (location.state === 'home') {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth',
-        });
-      }
-      if (location.state === 'what-i-do') {
-        whatIDoRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }
-      if (location.state === 'work') {
-        workRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }
-      if (location.state === 'contact') {
-        contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+      switch (location.state) {
+        case 'home':
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          });
+          break;
+        case 'what-i-do':
+          whatIDoRef.current?.scrollIntoView({ behavior: 'smooth' });
+          break;
+        case 'work':
+          workRef.current?.scrollIntoView({ behavior: 'smooth' });
+          break;
+        case 'contact':
+          contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+          break;
+        default:
+          break;
       }
     };
 
     scrollTo();
-  }, [location, isInit]);
+  }, [location]);
+};
 
+const useAnimateBurgerMenuColor = (
+  whatIDoRef: React.RefObject<HTMLElement>,
+) => {
   useEffect(() => {
-    if (!isInit) {
-      dispatch(onInit());
-    }
-
     const element = whatIDoRef.current!;
     gsap.fromTo(
       document.body.querySelectorAll('.line-menu'),
@@ -71,6 +80,15 @@ const Main: React.FC<{}> = () => {
       },
     );
   }, []);
+};
+
+const Main: React.FC<{}> = () => {
+  const whatIDoRef = useRef<HTMLElement>(null);
+  const workRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
+  useDispatchInit();
+  useScrollOnLocationChange({ whatIDoRef, workRef, contactRef });
+  useAnimateBurgerMenuColor(whatIDoRef);
 
   return (
     <>

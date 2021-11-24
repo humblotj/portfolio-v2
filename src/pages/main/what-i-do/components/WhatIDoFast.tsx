@@ -7,10 +7,9 @@ import FastClock100 from '../../../../assets/fast-clock-100.png';
 import FastClock200 from '../../../../assets/fast-clock-200.png';
 import FastClock300 from '../../../../assets/fast-clock-300.png';
 
-const WhatIDoFast = () => {
-  const ref = useRef<HTMLLIElement>(null);
-  const [isActive, setIsActive] = useState(false);
+const useAnimateOnEnter = (ref: React.RefObject<HTMLLIElement>) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isBouncing, setIsBouncing] = useState(false);
 
   useEffect(() => {
     ScrollTrigger.create({
@@ -21,9 +20,9 @@ const WhatIDoFast = () => {
           return;
         }
         setTimeout(() => {
-          setIsActive(true);
+          setIsBouncing(true);
           timeoutRef.current = setTimeout(() => {
-            setIsActive(false);
+            setIsBouncing(false);
             timeoutRef.current = null;
           }, 1000);
         }, 300);
@@ -38,6 +37,13 @@ const WhatIDoFast = () => {
     };
   }, []);
 
+  return isBouncing;
+};
+
+const WhatIDoFast = () => {
+  const ref = useRef<HTMLLIElement>(null);
+  const isBouncing = useAnimateOnEnter(ref);
+
   return (
     <li ref={ref} className="what-i-do-fast">
       <h3 className="heading">In a short time</h3>
@@ -46,7 +52,7 @@ const WhatIDoFast = () => {
         data-src={FastClock300}
         data-srcset={`${FastClock100} 100w, ${FastClock200} 200w, ${FastClock300} 300w`}
         alt="fast-clock"
-        className={cx('lazyload', { bounce: isActive })}
+        className={cx('lazyload', { bounce: isBouncing })}
         width={300}
         height={318}
       />
