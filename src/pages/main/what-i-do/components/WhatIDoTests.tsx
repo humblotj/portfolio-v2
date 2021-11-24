@@ -12,7 +12,7 @@ const WhatIDoTests = () => {
       </div>
       <img
         data-src={Coverage800}
-        data-srcSet={`${Coverage300} 300w, ${Coverage550} 550w, ${Coverage800} 800w`}
+        data-srcset={`${Coverage300} 300w, ${Coverage550} 550w, ${Coverage800} 800w`}
         alt="coverage"
         className="lazyload"
         height={290}

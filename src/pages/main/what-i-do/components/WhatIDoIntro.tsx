@@ -53,7 +53,7 @@ const WhatIDoIntro = () => {
       </div>
       <img
         data-src={mockup1600}
-        data-srcSet={`${mockup300} 300w, ${mockup550} 550w, ${mockup800} 800w, ${mockup1200} 1200w, ${mockup1600} 1600w,`}
+        data-srcset={`${mockup300} 300w, ${mockup550} 550w, ${mockup800} 800w, ${mockup1200} 1200w, ${mockup1600} 1600w,`}
         alt="mobile-app"
         className="lazyload"
         height={1143}

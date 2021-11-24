@@ -44,7 +44,7 @@ const WhatIDoFast = () => {
       <p>MVP in weeks not in months!</p>
       <img
         data-src={FastClock300}
-        data-srcSet={`${FastClock100} 100w, ${FastClock200} 200w, ${FastClock300} 300w`}
+        data-srcset={`${FastClock100} 100w, ${FastClock200} 200w, ${FastClock300} 300w`}
         alt="fast-clock"
         className={cx('lazyload', { bounce: isActive })}
         width={300}

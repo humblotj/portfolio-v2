@@ -15,7 +15,7 @@ const WhatIDoPerformance = () => {
       </h3>
       <img
         data-src={Lighthouse1600}
-        data-srcSet={`${Lighthouse300} 300w, ${Lighthouse550} 550w, ${Lighthouse800} 800w, ${Lighthouse1200} 1200w, ${Lighthouse1600} 1600w,`}
+        data-srcset={`${Lighthouse300} 300w, ${Lighthouse550} 550w, ${Lighthouse800} 800w, ${Lighthouse1200} 1200w, ${Lighthouse1600} 1600w,`}
         alt="lighthouse"
         className="lazyload"
         height={1339}
