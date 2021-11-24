@@ -16,12 +16,12 @@ const WorkDetailLinks = ({ work }: Props) => {
 
   const getStoresLink = () => (
     <div>
-      {links.ios && (
+      {links?.ios && (
         <a href={links.ios} target="_blank" rel="noreferrer" data-testid="ios">
           <AppStoreIcon />
         </a>
       )}
-      {links.android && (
+      {links?.android && (
         <a
           href={links.android}
           target="_blank"
@@ -36,7 +36,7 @@ const WorkDetailLinks = ({ work }: Props) => {
 
   const getWebLink = () => (
     <>
-      {links.web && (
+      {links?.web && (
         <Button key={links.web} onClick={() => goTo(links.web as string)}>
           Visit Site
         </Button>
@@ -46,7 +46,7 @@ const WorkDetailLinks = ({ work }: Props) => {
 
   const getGitHubLink = () => (
     <>
-      {repoUrl && (
+      {!!repoUrl && (
         <Button color="secondary" onClick={() => goTo(repoUrl)}>
           View Code
         </Button>
@@ -56,15 +56,11 @@ const WorkDetailLinks = ({ work }: Props) => {
 
   return (
     <div className="work-links">
-      {!!Object.keys(links || {}).length && (
-        <>
-          {(links.android || links.ios) && getStoresLink()}
-          <div>
-            {getWebLink()}
-            {getGitHubLink()}
-          </div>
-        </>
-      )}
+      {(links?.android || links?.ios) && getStoresLink()}
+      <div>
+        {getWebLink()}
+        {getGitHubLink()}
+      </div>
     </div>
   );
 };
