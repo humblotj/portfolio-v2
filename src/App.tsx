@@ -9,6 +9,7 @@ import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import './App.scss';
+import useScrollToTop from './hooks/useScrollToTop';
 import Loading from './components/organisms/Loading';
 import MainSuspense from './pages/main/MainSuspense';
 import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
@@ -31,12 +32,10 @@ if (process.env.NODE_ENV !== 'development') {
 getFirestore();
 
 const Header = lazyWithRetry(() => import('./components/organisms/Header'));
-const ScrollToTop = lazyWithRetry(
-  () => import('./components/organisms/ScrollToTop'),
-);
 
 const App: React.FC<{}> = () => {
   const location = useLocation();
+  useScrollToTop();
 
   useEffect(() => {
     document.body.classList.add('is-init');
@@ -45,7 +44,6 @@ const App: React.FC<{}> = () => {
   return (
     <Suspense fallback={<Loading />}>
       <Header />
-      <ScrollToTop />
       <Routes>
         <Route
           path="/work/:id"
