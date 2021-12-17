@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Router, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { getDoc } from 'firebase/firestore/lite';
 
 import { render, screen, waitFor } from '../../../utils/test-utils';

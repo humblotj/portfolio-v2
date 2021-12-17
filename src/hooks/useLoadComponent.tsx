@@ -46,7 +46,7 @@ const useLoadComponent = (
           new Promise((resolve) => setTimeout(resolve, isInit ? 700 : 1000)),
         ]).then(([imp, query, _]) => {
           if (fetchData) {
-            onDataFetched(query);
+            onDataFetched(query as any);
           }
 
           dispatch(onChangeLoading(false));

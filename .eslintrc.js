@@ -116,6 +116,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-unsafe-assignment': 1,
+    '@typescript-eslint/no-unsafe-argument': 1,
     'react/prop-types': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-unsafe-return': 1,

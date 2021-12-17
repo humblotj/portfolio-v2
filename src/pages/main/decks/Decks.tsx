@@ -173,4 +173,6 @@ const Decks = forwardRef<HTMLElement>((_, ref) => {
   );
 });
 
+Decks.displayName = 'Decks';
+
 export default Decks;
