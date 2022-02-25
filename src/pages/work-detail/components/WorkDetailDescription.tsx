@@ -1,12 +1,13 @@
+import './WorkDetailDescription.scss';
+
 import { useEffect, useRef } from 'react';
 
-import './WorkDetailDescription.scss';
-import { WorkDetailProps } from '../../../interface';
-import TagList from '../../../components/molecules/TagList';
-import TextBounce from '../../../components/molecules/TextBounce';
+import RevealText from 'components/molecules/RevealText';
+import TagList from 'components/molecules/TagList';
+import TextBounce from 'components/molecules/TextBounce';
+import useAnimation from 'hooks/useAnimation';
+import { WorkDetailProps } from 'interface';
 import WorkDetailParallax from './WorkDetailParallax';
-import useAnimation from '../../../hooks/useAnimation';
-import RevealText from '../../../components/molecules/RevealText';
 
 const useAnimateOnInit = (ref: React.RefObject<HTMLDivElement>) => {
   const { revealText } = useAnimation();

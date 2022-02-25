@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+
 import Sns from '../Sns';
 
 it('has links', () => {

@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-
 import './WhatIDoAnimations.scss';
-import Laptop from '../../../../components/molecules/Laptop';
+
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
+
+import Laptop from 'components/molecules/Laptop';
 
 const useAnimateOnEnter = (ref: React.RefObject<HTMLLIElement>) => {
   useEffect(() => {

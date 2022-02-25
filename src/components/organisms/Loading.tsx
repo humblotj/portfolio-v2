@@ -1,16 +1,13 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { gsap } from 'gsap';
-import cx from 'classnames';
-
 import './Loading.scss';
+
+import cx from 'classnames';
+import { gsap } from 'gsap';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+
+import { onChangeLoading, selectIsInit, selectIsLoading } from 'store/store';
 import Strokes from '../molecules/Strokes';
-import {
-  onChangeLoading,
-  selectIsInit,
-  selectIsLoading,
-} from '../../store/store';
 
 gsap.registerEffect({
   name: 'counter',

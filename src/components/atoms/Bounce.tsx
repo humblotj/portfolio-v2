@@ -1,7 +1,8 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import cx from 'classnames';
-
 import './Bounce.scss';
+
+import cx from 'classnames';
+import { ReactNode, useEffect, useRef, useState } from 'react';
+
 interface Props {
   children: ReactNode;
 }

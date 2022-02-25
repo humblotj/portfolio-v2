@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+
 import Strokes from '../Strokes';
 
 it('is secondary', () => {

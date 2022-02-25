@@ -1,8 +1,8 @@
 import { MemoryRouter } from 'react-router-dom';
-import { WorkProps } from '../../../../interface';
 
-import { render, screen } from '../../../../utils/test-utils';
-import { initialState } from '../../../../store/store';
+import { WorkProps } from 'interface';
+import { initialState } from 'store/store';
+import { render, screen } from 'utils/test-utils';
 import Work from '../Work';
 
 const works: WorkProps[] = [

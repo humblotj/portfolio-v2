@@ -1,6 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
-import { initialState } from '../../../store/store';
-import { render, screen } from '../../../utils/test-utils';
+
+import { initialState } from 'store/store';
+import { render, screen } from 'utils/test-utils';
 import Loading from '../Loading';
 
 describe('loading', () => {

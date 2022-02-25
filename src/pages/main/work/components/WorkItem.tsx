@@ -1,18 +1,17 @@
-import { Suspense, useEffect, useRef, memo } from 'react';
-import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import cx from 'classnames';
 import 'lazysizes';
-
 import './WorkItem.scss';
-import { WorkProps } from '../../../../interface';
-import ImageWrap from '../../../../components/molecules/ImageWrap';
-import useSize from '../../../../hooks/useSize';
-import lazyWithRetry from '../../../../utils/lazyWithRetry';
 
-const TechIcon = lazyWithRetry(
-  () => import('../../../../components/atoms/TechIcon'),
-);
+import cx from 'classnames';
+import { gsap } from 'gsap';
+import { memo, Suspense, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import lazyWithRetry from 'utils/lazyWithRetry';
+
+import ImageWrap from 'components/molecules/ImageWrap';
+import useSize from 'hooks/useSize';
+import { WorkProps } from 'interface';
+
+const TechIcon = lazyWithRetry(() => import('components/atoms/TechIcon'));
 
 const useAnimateOnScrollIn = (
   ref: React.RefObject<HTMLLIElement>,

@@ -1,12 +1,13 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-
 import './WhatIDoIntro.scss';
-import mockup300 from '../../../../assets/mobilewebapp-300.png';
-import mockup550 from '../../../../assets/mobilewebapp-550.png';
-import mockup800 from '../../../../assets/mobilewebapp-800.png';
-import mockup1200 from '../../../../assets/mobilewebapp-1200.png';
-import mockup1600 from '../../../../assets/mobilewebapp-1600.png';
+
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
+
+import mockup1200 from 'assets/mobilewebapp-1200.png';
+import mockup1600 from 'assets/mobilewebapp-1600.png';
+import mockup300 from 'assets/mobilewebapp-300.png';
+import mockup550 from 'assets/mobilewebapp-550.png';
+import mockup800 from 'assets/mobilewebapp-800.png';
 
 const useAnimateOnInit = (ref: React.RefObject<HTMLLIElement>) => {
   useEffect(() => {

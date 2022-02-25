@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '../../../utils/test-utils';
+import { render, screen, waitFor } from 'utils/test-utils';
 import About from '../components/About';
 
 it('reveals animation', async () => {

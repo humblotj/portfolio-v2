@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-
 import './HomeBackground.scss';
+
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
 
 const useAnimateOnInit = (ref: React.RefObject<HTMLDivElement>) => {
   useEffect(() => {

@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import cx from 'classnames';
-
 import './WhatIDoFast.scss';
-import FastClock100 from '../../../../assets/fast-clock-100.png';
-import FastClock200 from '../../../../assets/fast-clock-200.png';
-import FastClock300 from '../../../../assets/fast-clock-300.png';
+
+import cx from 'classnames';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useEffect, useRef, useState } from 'react';
+
+import FastClock100 from 'assets/fast-clock-100.png';
+import FastClock200 from 'assets/fast-clock-200.png';
+import FastClock300 from 'assets/fast-clock-300.png';
 
 const useAnimateOnEnter = (ref: React.RefObject<HTMLLIElement>) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);

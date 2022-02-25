@@ -1,8 +1,8 @@
+import { Suspense } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { render } from '../../../utils/test-utils';
+import { render } from 'utils/test-utils';
 import NotFoundSuspense from '../NotFoundSuspense';
-import { Suspense } from 'react';
 
 test('Not Found', () => {
   render(

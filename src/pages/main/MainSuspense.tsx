@@ -1,14 +1,14 @@
-import { useDispatch } from 'react-redux';
 import {
   collection,
   getDocs,
-  QuerySnapshot,
   getFirestore,
+  QuerySnapshot,
 } from 'firebase/firestore/lite';
+import { useDispatch } from 'react-redux';
 
-import useLoadComponent from '../../hooks/useLoadComponent';
-import { onWorksFetched } from '../../store/store';
-import { WorkProps } from '../../interface';
+import useLoadComponent from 'hooks/useLoadComponent';
+import { WorkProps } from 'interface';
+import { onWorksFetched } from 'store/store';
 
 const MainSuspense: React.FC<{}> = () => {
   const dispatch = useDispatch();

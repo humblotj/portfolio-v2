@@ -1,13 +1,13 @@
+import picture from 'assets/background.jpg';
+import videoTest from 'assets/video-test.mp4';
+import { ImgSingleProp } from 'interface';
 import {
   render,
+  renderIgnoringUnstableFlushDiscreteUpdates,
   screen,
   waitFor,
-  renderIgnoringUnstableFlushDiscreteUpdates,
-} from '../../../utils/test-utils';
-import { ImgSingleProp } from '../../../interface';
+} from 'utils/test-utils';
 import Phone from '../Phone';
-import picture from '../../../assets/background.jpg';
-import videoTest from '../../../assets/video-test.mp4';
 
 const preview: ImgSingleProp = {
   type: 'mobile',

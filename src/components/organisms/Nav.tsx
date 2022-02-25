@@ -1,13 +1,14 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { gsap } from 'gsap';
-
 import './Nav.scss';
+
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { onToggleAboutModal } from 'store/store';
 import FakeLink from '../atoms/FakeLink';
 import Strokes from '../molecules/Strokes';
 import Sns from './Sns';
-import { onToggleAboutModal } from '../../store/store';
 
 interface Props {
   open: boolean;

@@ -1,13 +1,14 @@
-import { FormEvent, forwardRef, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import './Contact.scss';
+
 import { sendForm } from 'emailjs-com';
+import { gsap } from 'gsap';
+import { FormEvent, forwardRef, useEffect, useRef } from 'react';
 import mergeRefs from 'react-merge-refs';
 
-import './Contact.scss';
-import Button from '../../../components/atoms/Button';
-import TextField from '../../../components/atoms/TextField';
-import Strokes from '../../../components/molecules/Strokes';
-import { ReactComponent as ContactMask } from '../../../assets/contact-mask.svg';
+import { ReactComponent as ContactMask } from 'assets/contact-mask.svg';
+import Button from 'components/atoms/Button';
+import TextField from 'components/atoms/TextField';
+import Strokes from 'components/molecules/Strokes';
 
 const useAnimateOnEnter = (innerRef: React.RefObject<HTMLElement>) => {
   useEffect(() => {

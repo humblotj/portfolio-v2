@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { setWindowWidth } from '../../utils/test-utils';
 
+import { setWindowWidth } from 'utils/test-utils';
 import useSize from '../useSize';
 
 test('resize empty element', () => {

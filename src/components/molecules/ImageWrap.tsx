@@ -1,8 +1,8 @@
 import { memo } from 'react';
 
-import Phone from './Phone';
+import { ImgSingleProp } from 'interface';
 import Laptop from './Laptop';
-import { ImgSingleProp } from '../../interface';
+import Phone from './Phone';
 
 interface Props {
   preview: ImgSingleProp;

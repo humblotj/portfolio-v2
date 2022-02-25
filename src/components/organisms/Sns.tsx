@@ -1,11 +1,12 @@
+import './Sns.scss';
+
 import cx from 'classnames';
 
-import './Sns.scss';
-import { ReactComponent as GitHubIcon } from '../../assets/icons/github.svg';
-import { ReactComponent as LinkedInIcon } from '../../assets/icons/linkedin.svg';
-import { ReactComponent as CodepenIcon } from '../../assets/icons/codepen.svg';
-import { ReactComponent as MailIcon } from '../../assets/icons/mail.svg';
-import { codepen, github, linkedin, mail } from '../../utils/utils';
+import { ReactComponent as CodepenIcon } from 'assets/icons/codepen.svg';
+import { ReactComponent as GitHubIcon } from 'assets/icons/github.svg';
+import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
+import { ReactComponent as MailIcon } from 'assets/icons/mail.svg';
+import { codepen, github, linkedin, mail } from 'utils/utils';
 
 const Sns: React.FC<{ blink?: boolean }> = ({ blink = false }) => (
   <ul className={cx('sns', { blink })}>

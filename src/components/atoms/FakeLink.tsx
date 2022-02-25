@@ -1,6 +1,7 @@
-import { ReactNode, MouseEvent } from 'react';
-
 import './FakeLink.scss';
+
+import { MouseEvent, ReactNode } from 'react';
+
 interface Props {
   className?: string;
   onClick?: () => void;

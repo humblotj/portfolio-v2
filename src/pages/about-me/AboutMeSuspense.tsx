@@ -7,8 +7,8 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectIsAboutModalOpen } from '../../store/store';
-import lazyWithRetry from '../../utils/lazyWithRetry';
+import { selectIsAboutModalOpen } from 'store/store';
+import lazyWithRetry from 'utils/lazyWithRetry';
 
 const AboutMeSuspense: React.FC<{}> = () => {
   const isAboutModalOpen = useSelector(selectIsAboutModalOpen);

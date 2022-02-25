@@ -1,12 +1,12 @@
+import picture from 'assets/background.jpg';
+import videoTest from 'assets/video-test.mp4';
+import { ImgSingleProp } from 'interface';
 import {
   render,
-  screen,
   renderIgnoringUnstableFlushDiscreteUpdates,
-} from '../../../utils/test-utils';
-import { ImgSingleProp } from '../../../interface';
+  screen,
+} from 'utils/test-utils';
 import ImageCrop from '../ImageCrop';
-import picture from '../../../assets/background.jpg';
-import videoTest from '../../../assets/video-test.mp4';
 
 const preview: ImgSingleProp = {
   type: 'web',

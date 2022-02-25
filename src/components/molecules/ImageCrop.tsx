@@ -1,10 +1,11 @@
-import { ReactNode, useEffect, useMemo, useRef, memo } from 'react';
-import { gsap } from 'gsap';
-import cx from 'classnames';
-
 import './ImageCrop.scss';
-import { ImgSingleProp } from '../../interface';
-import useSize from '../../hooks/useSize';
+
+import cx from 'classnames';
+import { gsap } from 'gsap';
+import { memo, ReactNode, useEffect, useMemo, useRef } from 'react';
+
+import useSize from 'hooks/useSize';
+import { ImgSingleProp } from 'interface';
 
 interface Props {
   preview: ImgSingleProp;

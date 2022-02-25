@@ -1,6 +1,7 @@
+import './BurgerMenu.scss';
+
 import cx from 'classnames';
 
-import './BurgerMenu.scss';
 interface Props {
   open: boolean;
   toggleNav: () => void;

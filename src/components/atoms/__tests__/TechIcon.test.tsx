@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import TechIcon from '../TechIcon';
 
 it('returns null', () => {

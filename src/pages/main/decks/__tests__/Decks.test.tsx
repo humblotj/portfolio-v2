@@ -1,13 +1,8 @@
 import { getDocs } from 'firebase/firestore/lite';
 
-import {
-  render,
-  screen,
-  waitFor,
-  setWindowWidth,
-} from '../../../../utils/test-utils';
+import picture from 'assets/background.jpg';
+import { render, screen, setWindowWidth, waitFor } from 'utils/test-utils';
 import Decks from '../Decks';
-import picture from '../../../../assets/background.jpg';
 
 const mockedGetDocs = getDocs as jest.Mock;
 jest.mock('firebase/firestore/lite', () => {

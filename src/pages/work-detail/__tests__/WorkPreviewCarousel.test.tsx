@@ -1,6 +1,6 @@
-import { screen, render, setWindowWidth } from '../../../utils/test-utils';
-import { ImgProp } from '../../../interface';
-import picture from '../../../assets/background.jpg';
+import picture from 'assets/background.jpg';
+import { ImgProp } from 'interface';
+import { render, screen, setWindowWidth } from 'utils/test-utils';
 import WorkPreviewCarousel from '../components/WorkPreviewCarousel';
 
 const previews: ImgProp = {

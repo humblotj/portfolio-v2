@@ -1,18 +1,18 @@
-import { WorkDetailProps, WorkProps } from './../../interface';
+import { WorkDetailProps, WorkProps } from 'interface';
 import {
-  onToggleAboutModal,
-  storeReducer as reducer,
-  onInit,
-  onChangeLoading,
   initialState,
+  onChangeLoading,
+  onInit,
+  onToggleAboutModal,
   onWorkDetailsFetched,
   onWorksFetched,
   selectIsAboutModalOpen,
   selectIsInit,
   selectIsLoading,
-  selectWorksSorted,
   selectWorkDetails,
-} from './../store';
+  selectWorksSorted,
+  storeReducer as reducer,
+} from '../store';
 
 it('should return the initial state', () => {
   expect(reducer(undefined, {} as any)).toEqual(initialState);

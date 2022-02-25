@@ -1,15 +1,16 @@
+import './Home.scss';
+
 import { RefObject, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
-import './Home.scss';
-import Button from '../../../components/atoms/Button';
-import Strokes from '../../../components/molecules/Strokes';
+import Button from 'components/atoms/Button';
+import ScrollTo from 'components/molecules/ScrollTo';
+import Strokes from 'components/molecules/Strokes';
+import TextBounce from 'components/molecules/TextBounce';
+import Sns from 'components/organisms/Sns';
+import useAnimation from 'hooks/useAnimation';
+import { onToggleAboutModal } from 'store/store';
 import HomeBackground from './components/HomeBackground';
-import ScrollTo from '../../../components/molecules/ScrollTo';
-import TextBounce from '../../../components/molecules/TextBounce';
-import Sns from '../../../components/organisms/Sns';
-import { onToggleAboutModal } from '../../../store/store';
-import useAnimation from '../../../hooks/useAnimation';
 
 const useAnimateOnInit = (ref: React.RefObject<HTMLElement>) => {
   const { revealText, animateBlink } = useAnimation();

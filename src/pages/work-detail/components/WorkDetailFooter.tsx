@@ -1,8 +1,9 @@
+import './WorkDetailFooter.scss';
+
 import { Link } from 'react-router-dom';
 
-import './WorkDetailFooter.scss';
-import { WorkDetailProps } from '../../../interface';
-import Strokes from '../../../components/molecules/Strokes';
+import Strokes from 'components/molecules/Strokes';
+import { WorkDetailProps } from 'interface';
 
 interface Props {
   work: WorkDetailProps;

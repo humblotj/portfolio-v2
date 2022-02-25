@@ -1,6 +1,6 @@
-import cx from 'classnames';
-
 import './TextField.scss';
+
+import cx from 'classnames';
 
 interface Props {
   textarea?: boolean;

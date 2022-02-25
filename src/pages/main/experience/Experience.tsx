@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
+import './Experience.scss';
+
 import {
   collection,
   getDocs,
   getFirestore,
-  QueryDocumentSnapshot,
-  query,
   orderBy,
+  query,
+  QueryDocumentSnapshot,
 } from 'firebase/firestore/lite';
+import { gsap } from 'gsap';
+import { useEffect, useRef, useState } from 'react';
 
-import './Experience.scss';
+import { IJob } from 'interface';
 import Job from './components/Job';
-import { IJob } from '../../../interface';
 
 const gap = 5;
 

@@ -1,8 +1,9 @@
 import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
+
+import { render, screen, setWindowWidth } from 'utils/test-utils';
 import AboutMe from '../../../pages/about-me/AboutMe';
-import { render, screen, setWindowWidth } from '../../../utils/test-utils';
 import Nav from '../Nav';
 
 test('is open', async () => {

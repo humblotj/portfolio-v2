@@ -1,11 +1,12 @@
+import './WhatIDo.scss';
+
 import { forwardRef } from 'react';
 
-import './WhatIDo.scss';
+import WhatIDoAnimations from './components/WhatIDoAnimations';
+import WhatIDoFast from './components/WhatIDoFast';
 import WhatIDoIntro from './components/WhatIDoIntro';
 import WhatIDoPerformance from './components/WhatIDoPerformance';
-import WhatIDoAnimations from './components/WhatIDoAnimations';
 import WhatIDoTests from './components/WhatIDoTests';
-import WhatIDoFast from './components/WhatIDoFast';
 
 const WhatIDo = forwardRef<HTMLElement>((_, ref) => {
   return (

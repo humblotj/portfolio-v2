@@ -1,8 +1,8 @@
 import { MemoryRouter } from 'react-router-dom';
 
-import { render, screen } from '../../../utils/test-utils';
-import { WorkDetailProps } from '../../../interface';
-import { initialState } from '../../../store/store';
+import { WorkDetailProps } from 'interface';
+import { initialState } from 'store/store';
+import { render, screen } from 'utils/test-utils';
 import WorkDetail from '../WorkDetail';
 
 const workDetails: WorkDetailProps = {

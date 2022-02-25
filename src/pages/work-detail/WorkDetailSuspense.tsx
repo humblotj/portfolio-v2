@@ -1,15 +1,15 @@
-import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
 import {
   doc,
-  getDoc,
   DocumentSnapshot,
+  getDoc,
   getFirestore,
 } from 'firebase/firestore/lite';
+import { useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import useLoadComponent from '../../hooks/useLoadComponent';
-import { onWorkDetailsFetched } from '../../store/store';
-import { WorkDetailProps } from '../../interface';
+import useLoadComponent from 'hooks/useLoadComponent';
+import { WorkDetailProps } from 'interface';
+import { onWorkDetailsFetched } from 'store/store';
 
 const WorkDetailSuspense = () => {
   const dispatch = useDispatch();

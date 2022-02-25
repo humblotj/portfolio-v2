@@ -1,10 +1,11 @@
-import { useEffect, useRef, memo, useState } from 'react';
-import { gsap } from 'gsap';
-
 import './Phone.scss';
-import { ImgSingleProp } from '../../interface';
+
+import { gsap } from 'gsap';
+import { memo, useEffect, useRef, useState } from 'react';
+
+import PhoneMockup from 'assets/phone-mockup.png';
+import { ImgSingleProp } from 'interface';
 import ImageCrop from './ImageCrop';
-import PhoneMockup from '../../assets/phone-mockup.png';
 
 interface Props {
   preview: ImgSingleProp;

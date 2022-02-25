@@ -1,7 +1,8 @@
 import './WhatIDoTests.scss';
-import Coverage300 from '../../../../assets/coverage-300.jpg';
-import Coverage550 from '../../../../assets/coverage-550.jpg';
-import Coverage800 from '../../../../assets/coverage-800.jpg';
+
+import Coverage300 from 'assets/coverage-300.jpg';
+import Coverage550 from 'assets/coverage-550.jpg';
+import Coverage800 from 'assets/coverage-800.jpg';
 
 const WhatIDoTests = () => {
   return (

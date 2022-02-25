@@ -1,6 +1,6 @@
-import { render, screen } from '../../../utils/test-utils';
-import { ImgSingleProp } from '../../../interface';
-import picture from '../../../assets/background.jpg';
+import picture from 'assets/background.jpg';
+import { ImgSingleProp } from 'interface';
+import { render, screen } from 'utils/test-utils';
 import WorkDetailDescription from '../components/WorkDetailDescription';
 
 const preview: ImgSingleProp = {

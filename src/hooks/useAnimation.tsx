@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
 import { gsap } from 'gsap';
+import { useCallback } from 'react';
 
 const useAnimation = () => {
   const revealText = useCallback(

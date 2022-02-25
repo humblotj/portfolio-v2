@@ -1,19 +1,20 @@
-import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { gsap } from 'gsap';
-
 import './Main.scss';
-import { selectIsInit } from '../../store/store';
-import useDispatchInit from '../../hooks/useDispatchInit';
-import Footer from '../../components/organisms/Footer';
+
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+
+import Strokes from 'components/molecules/Strokes';
+import Footer from 'components/organisms/Footer';
+import useDispatchInit from 'hooks/useDispatchInit';
+import { selectIsInit } from 'store/store';
 import Contact from './contact/Contact';
-import Home from './home/Home';
-import Work from './work/Work';
-import Experience from './experience/Experience';
-import Strokes from '../../components/molecules/Strokes';
 import Decks from './decks/Decks';
+import Experience from './experience/Experience';
+import Home from './home/Home';
 import WhatIDo from './what-i-do/WhatIDo';
+import Work from './work/Work';
 
 const useScrollOnLocationChange = ({
   whatIDoRef,

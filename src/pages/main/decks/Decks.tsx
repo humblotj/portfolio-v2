@@ -1,15 +1,16 @@
-import { useEffect, useRef, forwardRef, useState } from 'react';
-import { gsap } from 'gsap';
+import './Decks.scss';
+
+import cx from 'classnames';
 import {
   collection,
   getDocs,
   getFirestore,
   QueryDocumentSnapshot,
 } from 'firebase/firestore/lite';
-import cx from 'classnames';
+import { gsap } from 'gsap';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 
-import './Decks.scss';
-import useSize from '../../../hooks/useSize';
+import useSize from 'hooks/useSize';
 
 const Decks = forwardRef<HTMLElement>((_, ref) => {
   const [width] = useSize();

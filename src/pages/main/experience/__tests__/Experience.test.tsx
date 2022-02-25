@@ -1,6 +1,6 @@
 import { getDocs } from 'firebase/firestore/lite';
 
-import { render, screen } from '../../../../utils/test-utils';
+import { render, screen } from 'utils/test-utils';
 import Experience from '../Experience';
 
 const mockedGetDocs = getDocs as jest.Mock;

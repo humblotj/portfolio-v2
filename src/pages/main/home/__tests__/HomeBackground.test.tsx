@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '../../../../utils/test-utils';
+import { render, screen, waitFor } from 'utils/test-utils';
 import HomeBackground from '../components/HomeBackground';
 
 test('reveals animation', async () => {

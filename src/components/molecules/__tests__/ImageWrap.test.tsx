@@ -1,10 +1,10 @@
+import videoTest from 'assets/video-test.mp4';
+import { ImgSingleProp } from 'interface';
 import {
   renderIgnoringUnstableFlushDiscreteUpdates,
   screen,
-} from '../../../utils/test-utils';
-import { ImgSingleProp } from '../../../interface';
+} from 'utils/test-utils';
 import ImageWrap from '../ImageWrap';
-import videoTest from '../../../assets/video-test.mp4';
 
 const preview: ImgSingleProp = {
   type: 'web',

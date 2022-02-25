@@ -1,9 +1,10 @@
+import './Work.scss';
+
 import { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 
-import './Work.scss';
-import { WorkProps } from '../../../interface';
-import { selectWorksSorted } from '../../../store/store';
+import { WorkProps } from 'interface';
+import { selectWorksSorted } from 'store/store';
 import WorkItem from './components/WorkItem';
 
 const Work = forwardRef<HTMLElement>((_, ref) => {

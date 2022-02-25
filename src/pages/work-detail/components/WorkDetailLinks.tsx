@@ -1,9 +1,9 @@
 import './WorkDetailLinks.scss';
 
-import { WorkDetailProps } from '../../../interface';
-import Button from '../../../components/atoms/Button';
-import { ReactComponent as PlayStoreIcon } from '../../../assets/icons/playstore.svg';
-import { ReactComponent as AppStoreIcon } from '../../../assets/icons/appstore.svg';
+import { ReactComponent as AppStoreIcon } from 'assets/icons/appstore.svg';
+import { ReactComponent as PlayStoreIcon } from 'assets/icons/playstore.svg';
+import Button from 'components/atoms/Button';
+import { WorkDetailProps } from 'interface';
 
 interface Props {
   work: WorkDetailProps;

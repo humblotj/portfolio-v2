@@ -1,11 +1,11 @@
+import { getDocs } from 'firebase/firestore/lite';
 import { Suspense } from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { getDocs } from 'firebase/firestore/lite';
 
-import { render, screen } from '../../../utils/test-utils';
-import { WorkProps } from '../../../interface';
+import { WorkProps } from 'interface';
+import { initialState } from 'store/store';
+import { render, screen } from 'utils/test-utils';
 import MainSuspense from '../MainSuspense';
-import { initialState } from '../../../store/store';
 
 const works: WorkProps[] = [
   {

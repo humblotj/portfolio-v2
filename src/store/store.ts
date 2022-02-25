@@ -6,7 +6,7 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 
-import { WorkDetailProps, WorkProps } from '../interface';
+import { WorkDetailProps, WorkProps } from 'interface';
 
 export interface RootState {
   isAboutModalOpen: boolean;
@@ -25,7 +25,7 @@ export const initialState: RootState = {
 };
 
 const store = createSlice({
-  name: 'store',
+  name: 'store/store',
   initialState,
   reducers: {
     onToggleAboutModal(state, action: PayloadAction<boolean>) {

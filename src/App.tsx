@@ -1,21 +1,20 @@
+import './App.scss';
+
+import { getAnalytics } from 'firebase/analytics';
+import { FirebaseOptions, initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore/lite';
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import { initializeApp, FirebaseOptions } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
-import { getFirestore } from 'firebase/firestore/lite';
-
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-
-import './App.scss';
-import useScrollToTop from './hooks/useScrollToTop';
-import Loading from './components/organisms/Loading';
-import MainSuspense from './pages/main/MainSuspense';
-import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
+import Loading from 'components/organisms/Loading';
+import useScrollToTop from 'hooks/useScrollToTop';
+import lazyWithRetry from 'utils/lazyWithRetry';
 import AboutMeSuspense from './pages/about-me/AboutMeSuspense';
+import MainSuspense from './pages/main/MainSuspense';
 import NotFoundSuspense from './pages/not-found/NotFoundSuspense';
-import lazyWithRetry from './utils/lazyWithRetry';
+import WorkDetailSuspense from './pages/work-detail/WorkDetailSuspense';
 
 gsap.registerPlugin(ScrollTrigger);
 

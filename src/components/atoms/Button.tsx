@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
-import cx from 'classnames';
-
 import './Button.scss';
+
+import cx from 'classnames';
+import { ReactNode } from 'react';
+
 interface Props {
   type?: 'button' | 'submit';
   className?: string;

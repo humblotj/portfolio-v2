@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, useCallback, RefObject } from 'react';
+import { RefObject, useCallback, useLayoutEffect, useState } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const useSize = (ref?: RefObject<HTMLElement>) => {

@@ -1,6 +1,6 @@
+import { DocumentSnapshot, QuerySnapshot } from 'firebase/firestore/lite';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { QuerySnapshot, DocumentSnapshot } from 'firebase/firestore/lite';
 
 import { onChangeLoading, selectIsInit } from '../store/store';
 import lazyWithRetry from '../utils/lazyWithRetry';

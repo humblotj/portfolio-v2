@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import cx from 'classnames';
-
 import './WorkDetailParallax.scss';
-import { ImgSingleProp } from '../../../interface';
-import ImageWrap from '../../../components/molecules/ImageWrap';
+
+import cx from 'classnames';
+import { gsap } from 'gsap';
+import { useEffect, useRef, useState } from 'react';
+
+import ImageWrap from 'components/molecules/ImageWrap';
+import { ImgSingleProp } from 'interface';
 
 const useAnimateOnInit = (ref: React.RefObject<HTMLDivElement>) => {
   const [animationIsComplete, setAnimationIsComplete] = useState(false);

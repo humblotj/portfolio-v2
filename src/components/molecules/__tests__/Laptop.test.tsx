@@ -1,13 +1,13 @@
-import { ImgSingleProp } from '../../../interface';
-import Laptop from '../Laptop';
-import picture from '../../../assets/background.jpg';
-import videoTest from '../../../assets/video-test.mp4';
+import picture from 'assets/background.jpg';
+import videoTest from 'assets/video-test.mp4';
+import { ImgSingleProp } from 'interface';
 import {
-  renderIgnoringUnstableFlushDiscreteUpdates,
   render,
+  renderIgnoringUnstableFlushDiscreteUpdates,
   screen,
   waitFor,
-} from '../../../utils/test-utils';
+} from 'utils/test-utils';
+import Laptop from '../Laptop';
 
 const preview: ImgSingleProp = {
   type: 'web',

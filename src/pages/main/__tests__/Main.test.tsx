@@ -1,8 +1,8 @@
-import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { initialState } from '../../../store/store';
+import { MemoryRouter, Router } from 'react-router-dom';
 
-import { render, screen } from '../../../utils/test-utils';
+import { initialState } from 'store/store';
+import { render, screen } from 'utils/test-utils';
 import Main from '../Main';
 
 jest.mock('gsap/ScrollTrigger', () =>

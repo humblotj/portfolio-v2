@@ -1,5 +1,6 @@
 import './Job.scss';
-import { IJob } from '../../../../interface';
+
+import { IJob } from 'interface';
 
 const Job = ({ logo, companyName, position, period, bullets }: IJob) => {
   return (

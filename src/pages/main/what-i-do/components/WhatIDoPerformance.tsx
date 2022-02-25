@@ -1,9 +1,10 @@
 import './WhatIDoPerformance.scss';
-import Lighthouse300 from '../../../../assets/lighthouse-300.png';
-import Lighthouse550 from '../../../../assets/lighthouse-550.png';
-import Lighthouse800 from '../../../../assets/lighthouse-800.png';
-import Lighthouse1200 from '../../../../assets/lighthouse-1200.png';
-import Lighthouse1600 from '../../../../assets/lighthouse-1600.png';
+
+import Lighthouse1200 from 'assets/lighthouse-1200.png';
+import Lighthouse1600 from 'assets/lighthouse-1600.png';
+import Lighthouse300 from 'assets/lighthouse-300.png';
+import Lighthouse550 from 'assets/lighthouse-550.png';
+import Lighthouse800 from 'assets/lighthouse-800.png';
 
 const WhatIDoPerformance = () => {
   return (

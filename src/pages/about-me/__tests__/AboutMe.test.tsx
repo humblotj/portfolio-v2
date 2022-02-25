@@ -1,11 +1,7 @@
 import userEvent from '@testing-library/user-event';
-import { initialState } from '../../../store/store';
-import {
-  render,
-  screen,
-  setWindowWidth,
-  waitFor,
-} from '../../../utils/test-utils';
+
+import { initialState } from 'store/store';
+import { render, screen, setWindowWidth, waitFor } from 'utils/test-utils';
 import AboutMe from '../AboutMe';
 
 test('about me animation', async () => {

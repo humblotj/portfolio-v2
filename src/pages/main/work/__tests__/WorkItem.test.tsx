@@ -1,7 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 
-import { screen, render, waitFor } from '../../../../utils/test-utils';
-import { WorkProps } from '../../../../interface';
+import { WorkProps } from 'interface';
+import { render, screen, waitFor } from 'utils/test-utils';
 import WorkItem from '../components/WorkItem';
 
 const work: WorkProps = {

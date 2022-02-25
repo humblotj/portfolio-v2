@@ -1,12 +1,13 @@
+import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
 import { render as rtlRender } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { ReactElement } from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import { ReactElement } from 'react';
+import { Provider } from 'react-redux';
 
 import { reducer, RootState } from '../store/store';
-import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function render(
   ui: ReactElement,

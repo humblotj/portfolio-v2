@@ -1,14 +1,15 @@
-import { useMemo, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 import './WorkPreviewCarousel.scss';
-import { ImgProp, WorkDetailProps } from '../../../interface';
-import Strokes from '../../../components/molecules/Strokes';
-import Phone from '../../../components/molecules/Phone';
-import useSize from '../../../hooks/useSize';
+
+import { gsap } from 'gsap';
+import { useEffect, useMemo, useRef } from 'react';
+import Slider from 'react-slick';
+
+import Phone from 'components/molecules/Phone';
+import Strokes from 'components/molecules/Strokes';
+import useSize from 'hooks/useSize';
+import { ImgProp, WorkDetailProps } from 'interface';
 
 interface Props {
   work: WorkDetailProps;

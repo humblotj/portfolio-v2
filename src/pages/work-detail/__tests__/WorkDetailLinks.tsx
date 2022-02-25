@@ -1,9 +1,9 @@
 import userEvent from '@testing-library/user-event';
 
-import { render, screen } from '../../../utils/test-utils';
-import { initialState } from '../../../store/store';
-import WorkDetail from '../WorkDetail';
+import { initialState } from 'store/store';
+import { render, screen } from 'utils/test-utils';
 import WorkDetailLinks from '../components/WorkDetailLinks';
+import WorkDetail from '../WorkDetail';
 
 const work = {
   repoUrl: 'https://github.com',

@@ -1,7 +1,8 @@
 import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '../../../utils/test-utils';
+
+import { render, screen } from 'utils/test-utils';
 import Header from '../Header';
 
 test('nav open', async () => {

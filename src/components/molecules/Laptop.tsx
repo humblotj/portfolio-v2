@@ -1,13 +1,14 @@
-import { useEffect, useRef, memo, useState } from 'react';
-import { gsap } from 'gsap';
-
 import './Laptop.scss';
-import MacbookCover from '../../assets/macbook-cover.svg';
-import MacbookTop from '../../assets/macbook-top.svg';
-import MacbookBottom from '../../assets/macbook-bottom.svg';
+
+import { gsap } from 'gsap';
+import { memo, useEffect, useRef, useState } from 'react';
+
+import MacbookBottom from 'assets/macbook-bottom.svg';
+import MacbookCover from 'assets/macbook-cover.svg';
+import MacbookTop from 'assets/macbook-top.svg';
+import useSize from 'hooks/useSize';
+import { ImgSingleProp } from 'interface';
 import ImageCrop from './ImageCrop';
-import useSize from '../../hooks/useSize';
-import { ImgSingleProp } from '../../interface';
 
 interface Props {
   preview: ImgSingleProp;

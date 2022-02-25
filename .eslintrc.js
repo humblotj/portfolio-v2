@@ -126,6 +126,7 @@ module.exports = {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'react-hooks/exhaustive-deps': 1,
+    'react/jsx-key': 0,
   },
   ignorePatterns: ['/*.*'],
 };

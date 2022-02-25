@@ -1,8 +1,8 @@
 import { gsap } from 'gsap';
 
-import { screen, render, waitFor } from '../../../utils/test-utils';
-import { ImgSingleProp } from '../../../interface';
-import picture from '../../../assets/background.jpg';
+import picture from 'assets/background.jpg';
+import { ImgSingleProp } from 'interface';
+import { render, screen, waitFor } from 'utils/test-utils';
 import WorkDetailParallax from '../components/WorkDetailParallax';
 
 const preview: ImgSingleProp = {

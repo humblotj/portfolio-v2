@@ -1,8 +1,8 @@
+import './BackArrow.scss';
+
+import cx from 'classnames';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import cx from 'classnames';
-
-import './BackArrow.scss';
 
 interface Props {
   className?: string;

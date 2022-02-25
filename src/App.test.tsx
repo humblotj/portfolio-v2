@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import userEvent from '@testing-library/user-event';
+import { getAnalytics } from 'firebase/analytics';
+import { getDocs } from 'firebase/firestore/lite';
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { MemoryRouter } from 'react-router-dom';
-import { getDocs } from 'firebase/firestore/lite';
-import { getAnalytics } from 'firebase/analytics';
 
-import { render, screen, setWindowWidth, waitFor } from './utils/test-utils';
-import { WorkProps } from './interface';
-import userEvent from '@testing-library/user-event';
+import { WorkProps } from 'interface';
+import { render, screen, setWindowWidth, waitFor } from 'utils/test-utils';
 
 const works: WorkProps[] = [
   {

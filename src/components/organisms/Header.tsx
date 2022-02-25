@@ -1,9 +1,9 @@
-import { useState, memo } from 'react';
-import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
+import { memo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import Nav from './Nav';
 import BurgerMenu from '../atoms/BurgerMenu';
+import Nav from './Nav';
 
 const Header: React.FC<{}> = () => {
   const location = useLocation();

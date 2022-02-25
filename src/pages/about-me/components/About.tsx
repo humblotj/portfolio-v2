@@ -1,10 +1,11 @@
-import { useEffect, useRef, memo } from 'react';
-
 import './About.scss';
-import photo from '../../../assets/photo.jpg';
-import { ReactComponent as LocationIcon } from '../../../assets/icons/location.svg';
-import CloseButton from '../../../components/atoms/CloseButton';
-import useAnimation from '../../../hooks/useAnimation';
+
+import { memo, useEffect, useRef } from 'react';
+
+import { ReactComponent as LocationIcon } from 'assets/icons/location.svg';
+import photo from 'assets/photo.jpg';
+import CloseButton from 'components/atoms/CloseButton';
+import useAnimation from 'hooks/useAnimation';
 
 const useAnimateOnInit = (
   ref: React.RefObject<HTMLDivElement>,

@@ -1,12 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { sendForm } from 'emailjs-com';
 
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-} from '../../../../utils/test-utils';
+import { fireEvent, render, screen, waitFor } from 'utils/test-utils';
 import Contact from '../Contact';
 
 const setup = () => {

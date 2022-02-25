@@ -1,13 +1,14 @@
-import { useEffect, useCallback, useState } from 'react';
+import './AboutMe.scss';
+
+import { gsap } from 'gsap';
+import { useCallback, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { gsap } from 'gsap';
 
-import './AboutMe.scss';
+import useSize from 'hooks/useSize';
+import { onToggleAboutModal, selectIsAboutModalOpen } from 'store/store';
 import About from './components/About';
 import Skills from './components/Skills';
-import { onToggleAboutModal, selectIsAboutModalOpen } from '../../store/store';
-import useSize from '../../hooks/useSize';
 
 Modal.setAppElement('body');
 

@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
-import FakeLink from '../atoms/FakeLink';
-
 import './ScrollTo.scss';
+
+import { ReactNode } from 'react';
+
+import FakeLink from '../atoms/FakeLink';
 
 interface Props {
   onClick: () => void;

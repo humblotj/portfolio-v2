@@ -1,9 +1,9 @@
+import { getDoc } from 'firebase/firestore/lite';
 import { Suspense } from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { getDoc } from 'firebase/firestore/lite';
 
-import { render, screen, waitFor } from '../../../utils/test-utils';
-import { WorkDetailProps } from '../../../interface';
+import { WorkDetailProps } from 'interface';
+import { render, screen, waitFor } from 'utils/test-utils';
 import WorkDetailSuspense from '../WorkDetailSuspense';
 
 const workDetails: WorkDetailProps = {

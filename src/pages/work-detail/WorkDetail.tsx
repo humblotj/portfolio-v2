@@ -1,14 +1,15 @@
+import './WorkDetail.scss';
+
 import { useSelector } from 'react-redux';
 
-import './WorkDetail.scss';
-import { selectWorkDetails } from '../../store/store';
+import BackArrow from 'components/atoms/BackArrow';
+import Strokes from 'components/molecules/Strokes';
+import useDispatchInit from 'hooks/useDispatchInit';
+import { selectWorkDetails } from 'store/store';
 import WorkDetailDescription from './components/WorkDetailDescription';
-import WorkPreviewCarousel from './components/WorkPreviewCarousel';
-import BackArrow from '../../components/atoms/BackArrow';
-import Strokes from '../../components/molecules/Strokes';
 import WorkDetailFooter from './components/WorkDetailFooter';
 import WorkDetailLinks from './components/WorkDetailLinks';
-import useDispatchInit from '../../hooks/useDispatchInit';
+import WorkPreviewCarousel from './components/WorkPreviewCarousel';
 
 const WorkDetail = () => {
   useDispatchInit();

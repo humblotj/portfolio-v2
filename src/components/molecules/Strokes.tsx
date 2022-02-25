@@ -1,6 +1,6 @@
-import cx from 'classnames';
-
 import './Strokes.scss';
+
+import cx from 'classnames';
 
 interface Props {
   secondary?: boolean;

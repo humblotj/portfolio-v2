@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '../../../utils/test-utils';
+import { render, screen, waitFor } from 'utils/test-utils';
 import Skills from '../components/Skills';
 
 it('reveals animation', async () => {

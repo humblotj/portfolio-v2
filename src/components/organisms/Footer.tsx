@@ -1,4 +1,5 @@
 import './Footer.scss';
+
 import Sns from './Sns';
 
 const Footer: React.FC<{}> = () => (

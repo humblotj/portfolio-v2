@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import FakeLink from '../FakeLink';
 
 it('has class custom-class', () => {

@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+
 import ScrollTo from '../ScrollTo';
 
 test('scroll to', () => {
