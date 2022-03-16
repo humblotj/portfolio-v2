@@ -11,17 +11,32 @@ import { codepen, github, linkedin, mail } from 'utils/utils';
 const Sns: React.FC<{ blink?: boolean }> = ({ blink = false }) => (
   <ul className={cx('sns', { blink })}>
     <li>
-      <a target="_blank" rel="noreferrer" href={linkedin} aria-label="LinkedIn">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={linkedin}
+        aria-label="LinkedIn"
+      >
         <LinkedInIcon />
       </a>
     </li>
     <li>
-      <a target="_blank" rel="noreferrer" href={github} aria-label="Github">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={github}
+        aria-label="Github"
+      >
         <GitHubIcon />
       </a>
     </li>
     <li className="codepen">
-      <a target="_blank" rel="noreferrer" href={codepen} aria-label="Codepen">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={codepen}
+        aria-label="Codepen"
+      >
         <CodepenIcon />
       </a>
     </li>

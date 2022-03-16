@@ -17,7 +17,12 @@ const WorkDetailLinks = ({ work }: Props) => {
   const getStoresLink = () => (
     <div>
       {links?.ios && (
-        <a href={links.ios} target="_blank" rel="noreferrer" data-testid="ios">
+        <a
+          href={links.ios}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-testid="ios"
+        >
           <AppStoreIcon />
         </a>
       )}
@@ -25,7 +30,7 @@ const WorkDetailLinks = ({ work }: Props) => {
         <a
           href={links.android}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           data-testid="android"
         >
           <PlayStoreIcon />
