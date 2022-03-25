@@ -1,5 +1,5 @@
+import { sendForm } from '@emailjs/browser';
 import userEvent from '@testing-library/user-event';
-import { sendForm } from 'emailjs-com';
 
 import { fireEvent, render, screen, waitFor } from 'utils/test-utils';
 import Contact from '../Contact';

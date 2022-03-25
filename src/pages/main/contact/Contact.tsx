@@ -1,6 +1,6 @@
 import './Contact.scss';
 
-import { sendForm } from 'emailjs-com';
+import { sendForm } from '@emailjs/browser';
 import { gsap } from 'gsap';
 import { FormEvent, forwardRef, useEffect, useRef } from 'react';
 import mergeRefs from 'react-merge-refs';
